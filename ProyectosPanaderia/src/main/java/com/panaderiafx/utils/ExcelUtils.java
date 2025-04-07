@@ -143,4 +143,61 @@ public class ExcelUtils {
         }
         return null;
     }
+    public static boolean eliminarPorCodigo(String tabla, String codigo) {
+        String ruta = "C:\\Excel\\Datos\\Hoja de datos.xlsx";
+        try (FileInputStream fis = new FileInputStream(ruta);
+             XSSFWorkbook wb = new XSSFWorkbook(fis)) {
+    
+            XSSFSheet hoja = buscarHojaConTabla(wb, tabla);
+            if (hoja == null) return false;
+    
+            XSSFTable t = hoja.getTables().stream()
+                    .filter(x -> x.getName().equalsIgnoreCase(tabla))
+                    .findFirst().orElse(null);
+            if (t == null) return false;
+    
+            AreaReference area = new AreaReference(t.getArea().formatAsString(), wb.getSpreadsheetVersion());
+            int filaInicio = area.getFirstCell().getRow();
+            int filaFin = area.getLastCell().getRow();
+            int colInicio = area.getFirstCell().getCol();
+            int colFin = area.getLastCell().getCol();
+    
+            Row encabezado = hoja.getRow(filaInicio);
+            int colCodigo = -1;
+    
+            for (int i = colInicio; i <= colFin; i++) {
+                Cell celda = encabezado.getCell(i);
+                if (celda != null && celda.getStringCellValue().equalsIgnoreCase("codigo")) {
+                    colCodigo = i;
+                    break;
+                }
+            }
+    
+            if (colCodigo == -1) return false;
+    
+            for (int i = filaInicio + 1; i <= filaFin; i++) {
+                Row fila = hoja.getRow(i);
+                if (fila == null) continue;
+                Cell celdaCodigo = fila.getCell(colCodigo);
+                if (celdaCodigo != null && celdaCodigo.toString().trim().equalsIgnoreCase(codigo)) {
+                    // Vaciar la fila
+                    for (int j = colInicio; j <= colFin; j++) {
+                        Cell celda = fila.getCell(j);
+                        if (celda != null) fila.removeCell(celda);
+                    }
+    
+                    fis.close();
+                    try (FileOutputStream fos = new FileOutputStream(ruta)) {
+                        wb.write(fos);
+                        return true;
+                    }
+                }
+            }
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
 }

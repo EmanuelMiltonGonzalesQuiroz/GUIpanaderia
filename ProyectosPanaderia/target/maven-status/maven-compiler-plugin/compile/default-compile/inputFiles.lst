@@ -1,9 +1,14 @@
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\App.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\builder\FormularioBuilder.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\config\FormularioConfig.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\config\FormularioModificableBuilder.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\config\FormularioSoloLecturaBuilder.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\config\PrecioModificableBuilder.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\ControladorFactory.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\BotonModificarFactory.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CrearController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\EliminarController.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\FormularioBuilderModificar.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\GraficoController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\ModificarController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\VerController.java
@@ -13,6 +18,8 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\AccionGuardar.ja
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ExcelDataUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ExcelUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\IdentificadorUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\MapUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\TablaViewer.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\TasaCambioUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ValidacionUtils.java
