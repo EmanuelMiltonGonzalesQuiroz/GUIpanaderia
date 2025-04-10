@@ -1,53 +1,52 @@
 package com.panaderiafx.controllers;
 
+import com.panaderiafx.utils.AccionModificar;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import com.panaderiafx.config.FormularioConfig;
-import com.panaderiafx.utils.ValidacionUtils;
-import com.panaderiafx.utils.ExcelUtils;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BotonModificarFactory {
 
-    public static Button crearBotonModificar(String tabla, Map<String, String> registro, List<Node> campos) {
-        return FormularioConfig.crearBoton("Modificar", () -> {
-            Map<String, String> nuevosDatos = FormularioConfig.obtenerDatos(campos);
+    // CAMBIA el tipo de retorno a Node
+    public static Node crearBotonModificar(String tabla, Map<String, String> registro, List<Node> campos) {
+        Button boton = new Button("Modificar");
+        Label error = new Label();
+        error.setStyle("-fx-text-fill: red;");
 
-            for (Map.Entry<String, String> entry : nuevosDatos.entrySet()) {
-                String campo = entry.getKey();
-                String valor = entry.getValue();
+        boton.setOnAction(e -> {
+            Map<String, Node> mapaCampos = new HashMap<>();
 
-                boolean esNumero = campo.equalsIgnoreCase("precio") || campo.equalsIgnoreCase("monto")
-                        || campo.equalsIgnoreCase("valor") || campo.equalsIgnoreCase("factor");
+            for (Node nodo : campos) {
+                if (!(nodo instanceof VBox grupo)) continue;
+                Object userKey = grupo.getUserData();
+                if (userKey == null) continue;
 
-                if (esNumero && !ValidacionUtils.esNumeroValido(valor)) {
-                    FormularioConfig.mostrarMensaje("❌ '" + campo + "' debe ser un número válido.");
-                    return;
+                String clave = userKey.toString().toLowerCase();
+
+                // Guardamos directamente el VBox para campos especiales como "precio"
+                if (clave.equals("precio")) {
+                    mapaCampos.put(clave, grupo);
+                    continue;
                 }
-                if (!esNumero && !ValidacionUtils.esTextoValido(valor)) {
-                    FormularioConfig.mostrarMensaje("❌ '" + campo + "' no puede estar vacío.");
-                    return;
-                }
-            }
 
-            if (tabla.equals("Ingredientes")) {
-                String antiguo = registro.get("precio");
-                String nuevo = nuevosDatos.get("precio");
-                if (!Objects.equals(antiguo, nuevo)) {
-                    Map<String, String> historial = new HashMap<>();
-                    historial.put("Código", registro.get("codigo"));
-                    historial.put("Ingrediente", registro.get("nombre"));
-                    historial.put("Fecha", LocalDate.now().toString());
-                    historial.put("Precio anterior", antiguo);
-                    historial.put("Precio nuevo", nuevo);
-                    ExcelUtils.guardarEnTabla("HistorialPrecios", historial);
+                for (Node n : grupo.getChildren()) {
+                    if (n instanceof TextField tf) {
+                        mapaCampos.put(clave, tf);
+                        break;
+                    } else if (n instanceof ComboBox<?> cb) {
+                        mapaCampos.put(clave, cb);
+                        break;
+                    }
                 }
             }
 
-            boolean exito = ExcelUtils.guardarEnTabla(tabla, nuevosDatos);
-            FormularioConfig.mostrarMensaje(exito ? "✅ Modificado" : "❌ Error al modificar");
+            AccionModificar.ejecutar(tabla, mapaCampos, error);
         });
+
+        return new VBox(10, boton, error); // ✅ ahora sí correcto
     }
 }

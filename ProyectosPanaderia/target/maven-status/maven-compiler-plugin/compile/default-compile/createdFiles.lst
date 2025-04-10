@@ -1,5 +1,6 @@
 com\panaderiafx\SubPestanasFactory.class
 com\panaderiafx\utils\ValidacionUtils.class
+com\panaderiafx\config\PrecioModificableBuilder$PrecioData.class
 com\panaderiafx\controllers\CrearController.class
 com\panaderiafx\utils\AccionGuardar$1.class
 com\panaderiafx\utils\TablaViewer.class
@@ -12,13 +13,17 @@ com\panaderiafx\config\FormularioConfig$Campo.class
 com\panaderiafx\controllers\ModificarController.class
 com\panaderiafx\utils\CodigoGenerator.class
 com\panaderiafx\ControladorFactory.class
+com\panaderiafx\utils\AccionEliminar$1.class
 com\panaderiafx\config\FormularioConfig.class
 com\panaderiafx\utils\TasaCambioUtils.class
 com\panaderiafx\controllers\VerController$1.class
 com\panaderiafx\utils\AccionGuardar.class
+com\panaderiafx\utils\AccionModificar.class
 com\panaderiafx\utils\ExcelDataUtils.class
+com\panaderiafx\utils\AccionModificar$1.class
 com\panaderiafx\utils\IdentificadorUtils.class
 com\panaderiafx\utils\ExcelUtils.class
+com\panaderiafx\utils\AccionEliminar.class
 com\panaderiafx\App.class
 com\panaderiafx\controllers\EliminarController.class
 com\panaderiafx\config\PrecioModificableBuilder.class

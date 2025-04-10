@@ -46,13 +46,15 @@ public class FormularioConfig {
                 new Campo("codigo", true),
                 new Campo("nombre"),
                 new Campo("unidad", "Ingredientes", "Unidad"),
-                new Campo("precio") // Local o Dólar seleccionable
+                new Campo("precio"),
+                new Campo("categoria", "Ingredientes", "Categoria") // Local o Dólar seleccionable
         ));
 
         camposPorTabla.put("Recetas", Arrays.asList(
                 new Campo("codigo", true),
-                new Campo("nombre"),
-                new Campo("ingrediente", "Ingredientes", "Nombre")
+                new Campo("producto"),
+                new Campo("ingrediente", "Ingredientes", "Nombre"),
+                new Campo("rendimiento")
         ));
 
         camposPorTabla.put("Costos", Arrays.asList(

@@ -13,7 +13,7 @@ public class FormularioModificableBuilder {
 
     public static List<Node> crearCamposModificables(List<FormularioConfig.Campo> campos, Map<String, String> valores) {
         List<Node> nodos = new ArrayList<>();
-        valores = MapUtils.normalizarKeys(valores);
+        valores = MapUtils.normalizarKeys(valores); // Asegura claves en minúscula y sin símbolos extraños
 
         for (FormularioConfig.Campo campo : campos) {
             VBox grupo = new VBox(5);
@@ -21,15 +21,21 @@ public class FormularioModificableBuilder {
             Label etiqueta = new Label(campo.nombre.toUpperCase());
             Node input;
 
-            String valor = valores.getOrDefault(campo.nombre.toLowerCase(), "");
-
+            // Campo especial: PRECIO
             if (campo.nombre.equalsIgnoreCase("precio")) {
                 String precioLocal = valores.getOrDefault("precio", "");
-                String precioDolar = valores.getOrDefault("precio_dólar", "");
-                VBox precioField = PrecioModificableBuilder.crearCampo(precioLocal, precioDolar);
-                nodos.add(precioField);
+                if (precioLocal.isEmpty()) {
+                    precioLocal = valores.getOrDefault("precio_local", "");
+                }
+                String precioDolar = valores.getOrDefault("precio_dolar", "");
+                VBox precioBox = PrecioModificableBuilder.crearCampo(precioLocal, precioDolar);
+                precioBox.setUserData("precio");
+                nodos.add(precioBox);
                 continue;
-            }else if (campo.tablaOpciones != null) {
+            }
+
+            // Campo desde otra tabla (ComboBox editable)
+            if (campo.tablaOpciones != null) {
                 List<Map<String, String>> registros = ExcelDataUtils.obtenerTabla(campo.tablaOpciones);
                 Set<String> opciones = new LinkedHashSet<>();
 
@@ -41,16 +47,18 @@ public class FormularioModificableBuilder {
 
                 ComboBox<String> combo = new ComboBox<>(FXCollections.observableArrayList(opciones));
                 combo.setEditable(true);
-                combo.setValue(valor);
+                combo.setValue(valores.getOrDefault(campo.nombre.toLowerCase(), ""));
                 input = combo;
 
             } else {
-                TextField tf = new TextField(valor);
+                // Campo de texto simple
+                TextField tf = new TextField(valores.getOrDefault(campo.nombre.toLowerCase(), ""));
                 tf.setPrefWidth(500);
+
                 if (campo.autogenerado || campo.nombre.equalsIgnoreCase("codigo")) {
-                    tf.setDisable(true);
-                    tf.setText(valor);
+                    tf.setDisable(true); // Campo solo lectura
                 }
+
                 input = tf;
             }
 

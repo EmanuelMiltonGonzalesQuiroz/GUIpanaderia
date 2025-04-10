@@ -13,10 +13,14 @@ public class FormularioBuilderModificar {
     public static void crearFormularioParaRegistros(String tabla, List<Map<String, String>> registros, VBox destino) {
         if (registros.size() == 1) {
             VBox centrado = new VBox(15);
+            centrado.setAlignment(Pos.CENTER);
             centrado.setMaxWidth(600);
-            centrado.setStyle("-fx-alignment: center-left;");
+            centrado.setStyle("-fx-background-color: transparent;");
             crearFormularioIndividual(tabla, registros.get(0), centrado);
-            destino.getChildren().add(centrado);
+
+            HBox contenedor = new HBox(centrado);
+            contenedor.setAlignment(Pos.CENTER);
+            destino.getChildren().add(contenedor);
         } else {
             GridPane grid = new GridPane();
             grid.setHgap(50);
@@ -38,10 +42,12 @@ public class FormularioBuilderModificar {
     }
 
     private static void crearFormularioIndividual(String tabla, Map<String, String> registro, VBox destino) {
+        
         var config = FormularioConfig.camposPorTabla.get(tabla);
         List<Node> campos = FormularioModificableBuilder.crearCamposModificables(config, registro);
-
+    
         destino.getChildren().addAll(campos);
         destino.getChildren().add(BotonModificarFactory.crearBotonModificar(tabla, registro, campos));
     }
+    
 }

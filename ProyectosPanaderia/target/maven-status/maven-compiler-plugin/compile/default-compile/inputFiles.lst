@@ -14,7 +14,9 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\ModificarC
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\VerController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\Pestanas.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\SubPestanasFactory.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\AccionEliminar.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\AccionGuardar.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\AccionModificar.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ExcelDataUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ExcelUtils.java

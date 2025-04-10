@@ -55,6 +55,15 @@ public class ExcelUtils {
         }
         return valores;
     }
+    public static boolean agregarAFilaVacia(String tabla, Map<String, String> datos) {
+        try {
+            return guardarEnTabla(tabla, datos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 
     public static boolean guardarEnTabla(String tabla, Map<String, String> datos) {
         String ruta = "C:\\Excel\\Datos\\Hoja de datos.xlsx";
@@ -143,54 +152,54 @@ public class ExcelUtils {
         }
         return null;
     }
-    public static boolean eliminarPorCodigo(String tabla, String codigo) {
-        String ruta = "C:\\Excel\\Datos\\Hoja de datos.xlsx";
-        try (FileInputStream fis = new FileInputStream(ruta);
-             XSSFWorkbook wb = new XSSFWorkbook(fis)) {
+  
+    public static boolean modificarPorCodigo(String tabla, String codigo, Map<String, String> nuevosValores) {
+        try (FileInputStream fis = new FileInputStream("C:\\Excel\\Datos\\Hoja de datos.xlsx");
+             XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
     
-            XSSFSheet hoja = buscarHojaConTabla(wb, tabla);
+            XSSFSheet hoja = buscarHojaConTabla(workbook, tabla);
             if (hoja == null) return false;
     
-            XSSFTable t = hoja.getTables().stream()
-                    .filter(x -> x.getName().equalsIgnoreCase(tabla))
+            XSSFTable table = hoja.getTables().stream()
+                    .filter(t -> t.getName().equalsIgnoreCase(tabla))
                     .findFirst().orElse(null);
-            if (t == null) return false;
+            if (table == null) return false;
     
-            AreaReference area = new AreaReference(t.getArea().formatAsString(), wb.getSpreadsheetVersion());
+            AreaReference area = new AreaReference(table.getArea().formatAsString(), workbook.getSpreadsheetVersion());
             int filaInicio = area.getFirstCell().getRow();
             int filaFin = area.getLastCell().getRow();
             int colInicio = area.getFirstCell().getCol();
             int colFin = area.getLastCell().getCol();
     
             Row encabezado = hoja.getRow(filaInicio);
-            int colCodigo = -1;
-    
+            Map<String, Integer> columnas = new HashMap<>();
             for (int i = colInicio; i <= colFin; i++) {
-                Cell celda = encabezado.getCell(i);
-                if (celda != null && celda.getStringCellValue().equalsIgnoreCase("codigo")) {
-                    colCodigo = i;
-                    break;
-                }
+                String nombre = encabezado.getCell(i).getStringCellValue().trim();
+                columnas.put(nombre.toLowerCase(), i);
             }
     
-            if (colCodigo == -1) return false;
-    
-            for (int i = filaInicio + 1; i <= filaFin; i++) {
-                Row fila = hoja.getRow(i);
+            for (int r = filaInicio + 1; r <= filaFin; r++) {
+                Row fila = hoja.getRow(r);
                 if (fila == null) continue;
-                Cell celdaCodigo = fila.getCell(colCodigo);
-                if (celdaCodigo != null && celdaCodigo.toString().trim().equalsIgnoreCase(codigo)) {
-                    // Vaciar la fila
-                    for (int j = colInicio; j <= colFin; j++) {
-                        Cell celda = fila.getCell(j);
-                        if (celda != null) fila.removeCell(celda);
+                Cell celdaCodigo = fila.getCell(columnas.get("codigo"));
+                if (celdaCodigo == null) continue;
+    
+                String valorCodigo = celdaCodigo.toString().trim();
+                if (valorCodigo.equalsIgnoreCase(codigo)) {
+                    for (Map.Entry<String, String> e : nuevosValores.entrySet()) {
+                        String col = e.getKey().trim().toLowerCase();
+                        if (columnas.containsKey(col)) {
+                            Cell celda = fila.getCell(columnas.get(col));
+                            if (celda == null) celda = fila.createCell(columnas.get(col));
+                            celda.setCellValue(e.getValue());
+                        }
                     }
     
-                    fis.close();
-                    try (FileOutputStream fos = new FileOutputStream(ruta)) {
-                        wb.write(fos);
-                        return true;
+                    try (var out = new java.io.FileOutputStream("C:\\Excel\\Datos\\Hoja de datos.xlsx")) {
+                        workbook.write(out);
                     }
+    
+                    return true;
                 }
             }
     
@@ -199,5 +208,58 @@ public class ExcelUtils {
         }
         return false;
     }
+    public static boolean eliminarPorCodigo(String tabla, String codigo) {
+        try (FileInputStream fis = new FileInputStream("C:\\Excel\\Datos\\Hoja de datos.xlsx");
+             XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
+    
+            XSSFSheet hoja = buscarHojaConTabla(workbook, tabla);
+            if (hoja == null) return false;
+    
+            XSSFTable table = hoja.getTables().stream()
+                    .filter(t -> t.getName().equalsIgnoreCase(tabla))
+                    .findFirst().orElse(null);
+            if (table == null) return false;
+    
+            AreaReference area = new AreaReference(table.getArea().formatAsString(), workbook.getSpreadsheetVersion());
+            int filaInicio = area.getFirstCell().getRow();
+            int filaFin = area.getLastCell().getRow();
+            int colInicio = area.getFirstCell().getCol();
+            int colFin = area.getLastCell().getCol();
+    
+            Row encabezado = hoja.getRow(filaInicio);
+            Map<String, Integer> columnas = new HashMap<>();
+            for (int i = colInicio; i <= colFin; i++) {
+                String nombre = encabezado.getCell(i).getStringCellValue().trim();
+                columnas.put(nombre.toLowerCase(), i);
+            }
+    
+            for (int r = filaInicio + 1; r <= filaFin; r++) {
+                Row fila = hoja.getRow(r);
+                if (fila == null) continue;
+                Cell celdaCodigo = fila.getCell(columnas.get("codigo"));
+                if (celdaCodigo == null) continue;
+    
+                String valorCodigo = celdaCodigo.toString().trim();
+                if (valorCodigo.equalsIgnoreCase(codigo)) {
+                    // Limpiar toda la fila
+                    for (int j = colInicio; j <= colFin; j++) {
+                        Cell celda = fila.getCell(j);
+                        if (celda != null) fila.removeCell(celda);
+                    }
+    
+                    try (var out = new java.io.FileOutputStream("C:\\Excel\\Datos\\Hoja de datos.xlsx")) {
+                        workbook.write(out);
+                    }
+    
+                    return true;
+                }
+            }
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }    
+    
     
 }
