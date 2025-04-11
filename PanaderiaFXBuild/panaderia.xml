@@ -13,7 +13,7 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>C:\Excel\PanaderiaGUI\icons\icon.ico</icon>
+  <icon>C:\Excel\ProyectosPanaderia\icons\icon.ico</icon>
   <classPath>
     <mainClass>com.panaderiafx.App </mainClass>
     <cp>C:\Excel\ProyectosPanaderia\libs\*.jar </cp>
