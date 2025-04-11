@@ -1,48 +1,78 @@
 package com.panaderiafx.controllers;
 
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.collections.FXCollections;
-import com.panaderiafx.utils.ExcelDataUtils;
-import com.panaderiafx.utils.IdentificadorUtils;
+import com.panaderiafx.controllers.components.FormularioModificar;
+import com.panaderiafx.utils.VerUtils;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
 import java.util.*;
 
 public class ModificarController {
 
     public static ScrollPane mostrar(String tabla) {
-        VBox contenedor = new VBox(20);
-        contenedor.setStyle("-fx-padding: 30; -fx-alignment: center;");
+        List<Map<String, String>> datos = VerUtils.verTabla(tabla);
+        if (datos.isEmpty()) {
+            VBox vacio = new VBox(new Label("No hay datos disponibles para modificar en: " + tabla));
+            vacio.setStyle("-fx-alignment: center; -fx-padding: 20px;");
+            return new ScrollPane(vacio);
+        }
 
-        List<Map<String, String>> registros = ExcelDataUtils.obtenerTabla(tabla);
+        List<Map<String, Object>> definicionCampos = generarInstrucciones(tabla, datos.get(0));
+        ScrollPane sc = new ScrollPane(new FormularioModificar(tabla, definicionCampos, datos));
+        sc.setFitToWidth(true);
+        sc.setFitToHeight(true);
+        return sc;
+    }
 
-        List<String> opciones = registros.stream()
-            .map(r -> IdentificadorUtils.getIdentificadorPrimario(tabla, r))
-            .filter(op -> op != null && !op.isBlank() && !op.equals("-"))
-            .distinct()
-            .toList();
+    private static List<Map<String, Object>> generarInstrucciones(String tabla, Map<String, String> ejemplo) {
+        List<Map<String, Object>> definicion = new ArrayList<>();
 
-        ComboBox<String> cbPrincipal = new ComboBox<>(FXCollections.observableArrayList(opciones));
-        cbPrincipal.setPromptText("Seleccione un registro");
+        switch (tabla.toLowerCase()) {
+            case "ingredientes" -> {
+                for (String campo : ejemplo.keySet()) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("nombre", campo);
+                    switch (campo.toLowerCase()) {
+                        case "unidad", "categoria" -> item.put("tipo", "select");
+                        case "fecha de actualización", "código" -> item.put("tipo", "label");
+                        case "precio local" -> item.put("tipo", "precio_local");
+                        case "precio dólar" -> item.put("tipo", "precio_dolar");
+                        default -> item.put("tipo", "text");
+                    }
+                    definicion.add(item);
+                }
+            }
+            case "recetas" -> {
+                for (String campo : ejemplo.keySet()) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("nombre", campo);
+                    switch (campo.toLowerCase()) {
+                        case "producto", "ingrediente", "unidades" -> item.put("tipo", "select");
+                        case "código receta" -> item.put("tipo", "label");
+                        default -> item.put("tipo", "text");
+                    }
+                    definicion.add(item);
+                }
+            }
+            case "produccion" -> {
+                for (String campo : ejemplo.keySet()) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("nombre", campo);
+                    item.put("tipo", campo.toLowerCase().contains("fecha") ? "fecha" : "text");
+                    definicion.add(item);
+                }
+            }
+            case "parametros" -> {
+                for (String campo : ejemplo.keySet()) {
+                    Map<String, Object> item = new HashMap<>();
+                    item.put("nombre", campo);
+                    item.put("tipo", campo.equalsIgnoreCase("Nombre") ? "label" : "text");
+                    definicion.add(item);
+                }
+            }
+        }
 
-        VBox subFormularioContainer = new VBox(15);
-        subFormularioContainer.setStyle("-fx-padding: 15;");
-
-        cbPrincipal.setOnAction(e -> {
-            subFormularioContainer.getChildren().clear();
-            String seleccionado = cbPrincipal.getValue();
-
-            List<Map<String, String>> coincidencias = registros.stream()
-                .filter(r -> IdentificadorUtils.getIdentificadorPrimario(tabla, r).equals(seleccionado))
-                .toList();
-
-            FormularioBuilderModificar.crearFormularioParaRegistros(tabla, coincidencias, subFormularioContainer);
-        });
-
-        contenedor.getChildren().addAll(cbPrincipal, subFormularioContainer);
-
-        ScrollPane scroll = new ScrollPane(contenedor);
-        scroll.setFitToWidth(true);
-        scroll.setStyle("-fx-background: #FFF6DC;");
-        return scroll;
+        return definicion;
     }
 }

@@ -15,7 +15,7 @@ public class App extends Application {
         root.setCenter(Pestanas.crear());
 
         Scene scene = new Scene(root, 1000, 700);
-        scene.getRoot().setStyle("-fx-font-size: 14px; -fx-background-color: #FFF8E1;");
+        scene.getRoot().setStyle("-fx-font-size: 14px; -fx-background-color:rgb(231, 134, 43);");
 
         primaryStage.setTitle("Sistema de Panadería ");
         primaryStage.setScene(scene);

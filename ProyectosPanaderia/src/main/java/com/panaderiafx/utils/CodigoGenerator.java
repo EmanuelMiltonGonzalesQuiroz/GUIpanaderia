@@ -1,57 +1,46 @@
 package com.panaderiafx.utils;
 
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.AreaReference;
-import org.apache.poi.xssf.usermodel.*;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CodigoGenerator {
 
-    public static String generar(String tabla) {
-        String prefijo = switch (tabla.toLowerCase()) {
-            case "recetas" -> "REC";
-            case "costos" -> "COS";
-            case "tasacambio" -> "TSC";
-            case "tablaconversion" -> "CON";
-            default -> "ING";
-        };
+    public static String generarCodigo(String nombreTabla, String columnaCodigo) {
+        List<String> codigosCrudos = VerUtils.verColumna(nombreTabla, columnaCodigo);
 
-        Set<String> existentes = obtenerCodigos(tabla);
-        for (int i = 1; i < 1000; i++) {
-            String codigo = String.format("%s%03d", prefijo, i);
-            if (!existentes.contains(codigo)) return codigo;
-        }
-        return prefijo + "999";
-    }
+        Pattern pattern = Pattern.compile("^([A-Z]{3})(\\d{4})$");
+        Map<String, Set<Integer>> codigosPorPrefijo = new HashMap<>();
 
-    private static Set<String> obtenerCodigos(String tabla) {
-        Set<String> codigos = new HashSet<>();
-        try (InputStream file = new FileInputStream("C:\\Excel\\Datos\\Hoja de datos.xlsx");
-             XSSFWorkbook wb = new XSSFWorkbook(file)) {
+        for (String codigo : codigosCrudos) {
+            if (codigo == null) continue;
+            Matcher matcher = pattern.matcher(codigo.trim().toUpperCase());
+            if (matcher.matches()) {
+                String prefijo = matcher.group(1);
+                int numero = Integer.parseInt(matcher.group(2));
 
-            for (Sheet s : wb) {
-                if (s instanceof XSSFSheet xs) {
-                    for (XSSFTable t : xs.getTables()) {
-                        if (t.getName().equalsIgnoreCase(tabla)) {
-                            AreaReference area = new AreaReference(t.getArea().formatAsString(), wb.getSpreadsheetVersion());
-                            int col = area.getFirstCell().getCol();
-                            for (int i = area.getFirstCell().getRow() + 1; i <= area.getLastCell().getRow(); i++) {
-                                Row row = xs.getRow(i);
-                                if (row == null) continue;
-                                Cell c = row.getCell(col);
-                                if (c != null) codigos.add(c.toString().trim());
-                            }
-                        }
-                    }
-                }
+                codigosPorPrefijo.putIfAbsent(prefijo, new TreeSet<>());
+                codigosPorPrefijo.get(prefijo).add(numero);
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return codigos;
+
+        if (codigosPorPrefijo.isEmpty()) {
+            System.out.println("❌ No se encontró ningún código válido en la tabla.");
+            return "ERR0000";
+        }
+
+        // Usar el primer prefijo encontrado (por ejemplo "ING")
+        String prefijo = codigosPorPrefijo.keySet().iterator().next();
+        Set<Integer> usados = codigosPorPrefijo.get(prefijo);
+
+
+        for (int i = 1; i <= 9999; i++) {
+            if (!usados.contains(i)) {
+                String nuevo = prefijo + String.format("%04d", i);
+                return nuevo;
+            }
+        }
+
+        return prefijo + "9999";
     }
 }

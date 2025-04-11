@@ -12,11 +12,11 @@ public class SubPestanasFactory {
         estructura.put("Ingredientes", Arrays.asList("Ver", "Crear", "Modificar", "Eliminar", "Gráfico"));
         estructura.put("Recetas", Arrays.asList("Ver", "Crear", "Modificar", "Eliminar", "Gráfico"));
         estructura.put("Produccion", Arrays.asList("Ver", "Crear", "Modificar", "Eliminar"));
-        estructura.put("Costos", Arrays.asList("Ver", "Gráfico"));
+        estructura.put("Costos", Arrays.asList("Ver", "Crear","Gráfico"));
         estructura.put("TasaCambio", Arrays.asList("Ver", "Crear"));
         estructura.put("HistorialPrecios", Arrays.asList("Ver", "Gráfico"));
-        estructura.put("Parametros", Arrays.asList("Ver", "Modificar"));
-        estructura.put("TabladeConversión", Arrays.asList("Ver"));
+        estructura.put("Parametros", Arrays.asList("Ver", "Crear","Modificar"));
+        estructura.put("TabladeConversión", Arrays.asList("Ver","Crear"));
     }
 
     public static TabPane crear(String nombreTabla) {
