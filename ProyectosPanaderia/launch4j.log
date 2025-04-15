@@ -467,3 +467,290 @@ Launcher:	C:\Program Files\Java\jdk-17\bin\javaw.exe
 Launcher args:	-Denv.path.="" --module-path "C:\Users\milto\.m2\repository\org\openjfx\javafx-base\17.0.2\javafx-base-17.0.2-win.jar;C:\Users\milto\.m2\repository\org\openjfx\javafx-graphics\17.0.2\javafx-graphics-17.0.2-win.jar;C:\Users\milto\.m2\repository\org\openjfx\javafx-controls\17.0.2\javafx-controls-17.0.2-win.jar;C:\Users\milto\.m2\repository\org\openjfx\javafx-fxml\17.0.2\javafx-fxml-17.0.2-win.jar" --add-modules javafx.controls,javafx.fxml -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;C:\Excel\ProyectosPanaderia\libs\commons-codec-1.15.jar;C:\Excel\ProyectosPanaderia\libs\commons-collections4-4.4.jar;C:\Excel\ProyectosPanaderia\libs\commons-compress-1.21.jar;C:\Excel\ProyectosPanaderia\libs\commons-io-2.11.0.jar;C:\Excel\ProyectosPanaderia\libs\commons-math3-3.6.1.jar;C:\Excel\ProyectosPanaderia\libs\curvesapi-1.07.jar;C:\Excel\ProyectosPanaderia\libs\javafx-base-17.0.2-win.jar;C:\Excel\ProyectosPanaderia\libs\javafx-base-17.0.2.jar;C:\Excel\ProyectosPanaderia\libs\javafx-controls-17.0.2-win.jar;C:\Excel\ProyectosPanaderia\libs\javafx-controls-17.0.2.jar;C:\Excel\ProyectosPanaderia\libs\javafx-fxml-17.0.2-win.jar;C:\Excel\ProyectosPanaderia\libs\javafx-fxml-17.0.2.jar;C:\Excel\ProyectosPanaderia\libs\javafx-graphics-17.0.2-win.jar;C:\Excel\ProyectosPanaderia\libs\javafx-graphics-17.0.2.jar;C:\Excel\ProyectosPanaderia\libs\log4j-api-2.20.0.jar;C:\Excel\ProyectosPanaderia\libs\log4j-core-2.20.0.jar;C:\Excel\ProyectosPanaderia\libs\poi-5.2.3.jar;C:\Excel\ProyectosPanaderia\libs\poi-ooxml-5.2.3.jar;C:\Excel\ProyectosPanaderia\libs\poi-ooxml-lite-5.2.3.jar;C:\Excel\ProyectosPanaderia\libs\SparseBitSet-1.2.jar;C:\Excel\ProyectosPanaderia\libs\xmlbeans-5.1.1.jar" com.panaderiafx.App 
 Args length:	1712/32768 chars
 Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	1.017.000
+Java max ver:	
+JRE paths:	libs\jre\jdk-17.0.9
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\jdk-17.0.9\bin\javaw.exe (OK)
+Version string: 1.017.000_009 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\jdk-17.0.9\bin\javaw.exe
+Launcher args:	--module-path libs --add-modules javafx.controls,javafx.fxml -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	743/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	1.017.000
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	--module-path libs --add-modules javafx.controls,javafx.fxml -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	743/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	-classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	682/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	-classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	682/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	--module-path libs --add-modules javafx.controls,javafx.fxml -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	743/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	--module-path libs --add-modules javafx.controls,javafx.fxml -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	743/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	1.017.000
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	libs\*.jar
+      "      :	libs\commons-codec-1.15.jar
+      "      :	libs\commons-collections4-4.4.jar
+      "      :	libs\commons-compress-1.21.jar
+      "      :	libs\commons-io-2.11.0.jar
+      "      :	libs\commons-math3-3.6.1.jar
+      "      :	libs\curvesapi-1.07.jar
+      "      :	libs\javafx-base-17.0.2-win.jar
+      "      :	libs\javafx-base-17.0.2.jar
+      "      :	libs\javafx-controls-17.0.2-win.jar
+      "      :	libs\javafx-controls-17.0.2.jar
+      "      :	libs\javafx-fxml-17.0.2-win.jar
+      "      :	libs\javafx-fxml-17.0.2.jar
+      "      :	libs\javafx-graphics-17.0.2-win.jar
+      "      :	libs\javafx-graphics-17.0.2.jar
+      "      :	libs\log4j-api-2.20.0.jar
+      "      :	libs\log4j-core-2.20.0.jar
+      "      :	libs\poi-5.2.3.jar
+      "      :	libs\poi-ooxml-5.2.3.jar
+      "      :	libs\poi-ooxml-lite-5.2.3.jar
+      "      :	libs\SparseBitSet-1.2.jar
+      "      :	libs\xmlbeans-5.1.1.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	--module-path libs --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;libs\commons-codec-1.15.jar;libs\commons-collections4-4.4.jar;libs\commons-compress-1.21.jar;libs\commons-io-2.11.0.jar;libs\commons-math3-3.6.1.jar;libs\curvesapi-1.07.jar;libs\javafx-base-17.0.2-win.jar;libs\javafx-base-17.0.2.jar;libs\javafx-controls-17.0.2-win.jar;libs\javafx-controls-17.0.2.jar;libs\javafx-fxml-17.0.2-win.jar;libs\javafx-fxml-17.0.2.jar;libs\javafx-graphics-17.0.2-win.jar;libs\javafx-graphics-17.0.2.jar;libs\log4j-api-2.20.0.jar;libs\log4j-core-2.20.0.jar;libs\poi-5.2.3.jar;libs\poi-ooxml-5.2.3.jar;libs\poi-ooxml-lite-5.2.3.jar;libs\SparseBitSet-1.2.jar;libs\xmlbeans-5.1.1.jar" com.panaderiafx.App
+Args length:	771/32768 chars
+Exit code:	0

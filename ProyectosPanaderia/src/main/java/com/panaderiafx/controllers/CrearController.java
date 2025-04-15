@@ -1,9 +1,14 @@
 package com.panaderiafx.controllers;
 
+import com.panaderiafx.controllers.components.CampoSeleccionExtendido;
 import com.panaderiafx.controllers.components.FormularioDinamico;
+import com.panaderiafx.controllers.components.TablaBusquedaSimple;
 import com.panaderiafx.utils.VerUtils;
 import javafx.scene.control.ScrollPane;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.*;
@@ -19,12 +24,63 @@ public class CrearController {
         }
 
         List<Map<String, Object>> definicionCampos = generarInstrucciones(tabla, datos.get(0));
-        ScrollPane sc = new ScrollPane(new FormularioDinamico(tabla, definicionCampos));
+
+        HBox contenedorGeneral = new HBox(30);
+        contenedorGeneral.setPadding(new Insets(20));
+
+        VBox contenedorFormulario = new VBox();
+        contenedorFormulario.setPrefWidth(500);
+
+        VBox contenedorTabla = new VBox(); // Aquí se insertará TablaInteractiva cuando se solicite
+        contenedorTabla.setPrefWidth(400);
+
+        FormularioDinamico formulario = new FormularioDinamico(tabla, definicionCampos);
+        contenedorFormulario.getChildren().add(formulario);
+
+        formulario.getCampos().values().forEach(nodo -> {
+            if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
+                campoExtendido.setOnSeleccionarListener((columna, campo) -> {
+                    contenedorTabla.getChildren().setAll(crearTabla(columna, campo));
+                });
+            }
+        });
+
+        contenedorGeneral.getChildren().addAll(contenedorFormulario, contenedorTabla);
+
+        ScrollPane sc = new ScrollPane(contenedorGeneral);
         sc.setFitToWidth(true);
         sc.setFitToHeight(true);
         return sc;
     }
 
+    private static Node crearTabla(String columna, CampoSeleccionExtendido campoExtendido) {
+        List<Map<String, String>> datos = VerUtils.verTabla(campoExtendido.getTabla());
+    
+        // Debug
+        System.out.println("🧪 Claves detectadas: " + datos.get(0).keySet());
+        System.out.println("🧪 Usando columna: " + columna);
+    
+        List<Map<String, String>> valoresUnicos = datos.stream()
+            .map(row -> {
+                String val = row.getOrDefault(columna, "").trim();
+                return Map.of(columna, val);
+            })
+            .filter(row -> !row.get(columna).isBlank())
+            .distinct()
+            .toList();
+    
+        TablaBusquedaSimple tabla = new TablaBusquedaSimple(valoresUnicos, columna);
+        
+        tabla.setOnSeleccionar(valor -> {
+            System.out.println("✅ Valor seleccionado desde tabla: " + valor);
+            campoExtendido.setValorDesdeTabla(valor);
+            campoExtendido.getContenedorTabla().setVisible(false);
+        });
+    
+        campoExtendido.getContenedorTabla().getChildren().setAll(tabla);
+        return tabla;
+    }
+    
     private static List<Map<String, Object>> generarInstrucciones(String tabla, Map<String, String> ejemplo) {
         List<Map<String, Object>> definicion = new ArrayList<>();
 

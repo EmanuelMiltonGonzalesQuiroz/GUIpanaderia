@@ -140,7 +140,7 @@ public class TablaInteractiva extends BorderPane {
 
         ComboBox<String> selectorFilas = new ComboBox<>();
         selectorFilas.getItems().addAll("Todos", "20", "50", "100");
-        selectorFilas.setValue("Todos");
+        selectorFilas.setValue("20");
         selectorFilas.setStyle("-fx-font-size: 14px;");
         selectorFilas.setOnAction(e -> {
             String seleccion = selectorFilas.getValue();

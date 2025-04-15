@@ -2,29 +2,30 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Excel\ProyectosPanaderia\target\PanaderiaFX-1.0-SNAPSHOT.jar</jar>
+  <jar>C:\Excel\ProyectosPanaderia\target\PanaderiaFX-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
   <outfile>C:\Excel\ProyectosPanaderia\PanaderiaFX.exe</outfile>
-  <errTitle></errTitle>
+  <errTitle>Error al iniciar Panadería FX</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
   <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
-  <stayAlive>false</stayAlive>
+  <stayAlive>true</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
   <icon>C:\Excel\ProyectosPanaderia\icons\icon.ico</icon>
+
   <classPath>
-    <mainClass>com.panaderiafx.App </mainClass>
-    <cp>C:\Excel\ProyectosPanaderia\libs\*.jar </cp>
+    <mainClass>com.panaderiafx.App</mainClass>
+    <cp>libs\*.jar</cp>
   </classPath>
+
   <jre>
-    <path>%JAVA_HOME%;%PATH%</path>
-    <requiresJdk>false</requiresJdk>
+    <path>libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
     <requires64Bit>true</requires64Bit>
+    <requiresJdk>false</requiresJdk>
     <minVersion>17</minVersion>
-    <maxVersion></maxVersion>
-    <opt>-Denv.path.=&quot;%PATH %&quot;</opt>
-    <opt>--module-path &quot;C:\Users\milto\.m2\repository\org\openjfx\javafx-base\17.0.2\javafx-base-17.0.2-win.jar;C:\Users\milto\.m2\repository\org\openjfx\javafx-graphics\17.0.2\javafx-graphics-17.0.2-win.jar;C:\Users\milto\.m2\repository\org\openjfx\javafx-controls\17.0.2\javafx-controls-17.0.2-win.jar;C:\Users\milto\.m2\repository\org\openjfx\javafx-fxml\17.0.2\javafx-fxml-17.0.2-win.jar&quot; --add-modules javafx.controls,javafx.fxml</opt>
+    <opt>--module-path libs --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base</opt>
   </jre>
 </launch4jConfig>

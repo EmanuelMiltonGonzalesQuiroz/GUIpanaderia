@@ -13,15 +13,15 @@ com\panaderiafx\Pestanas.class
 com\panaderiafx\controllers\components\ListaSeleccion.class
 com\panaderiafx\controllers\ModificarController.class
 com\panaderiafx\utils\CodigoGenerator.class
-com\panaderiafx\controllers\components\FormularioEliminar.class
 com\panaderiafx\ControladorFactory.class
+com\panaderiafx\controllers\components\TablaBusquedaSimple.class
 com\panaderiafx\utils\TasaCambioUtils.class
+com\panaderiafx\controllers\components\CampoSeleccionExtendido.class
 com\panaderiafx\controllers\components\BotonAccion.class
 com\panaderiafx\controllers\components\CampoTexto.class
 com\panaderiafx\controllers\components\FormularioModificar.class
 com\panaderiafx\utils\ModificarUtils.class
 com\panaderiafx\utils\CrearUtils.class
 com\panaderiafx\App.class
-com\panaderiafx\controllers\EliminarController.class
 com\panaderiafx\utils\EliminarUtils.class
 com\panaderiafx\controllers\VerController.class

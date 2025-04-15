@@ -46,7 +46,7 @@ public class FormularioDinamico extends ContenedorFlexible {
                     codigoGenerado = CodigoGenerator.generarCodigo(nombreTabla, "Código"); // automático
                     input = new Label(codigoGenerado);
                 }
-                case "select" -> input = new ListaSeleccion(nombreTabla, nombre);
+                case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre);
                 case "precio local" -> {
                     campoPrecioLocal = new CampoTexto("Ingrese valor local");
                     input = campoPrecioLocal;
@@ -125,7 +125,10 @@ public class FormularioDinamico extends ContenedorFlexible {
                     valor = lista.getValorSeleccionado();
                 } else if (nodo instanceof Label label) {
                     valor = label.getText().trim();
+                }else if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
+                    valor = campoExtendido.getValorSeleccionado();
                 }
+                
 
                 if ((valor == null || valor.isEmpty()) && !nombre.toLowerCase().contains("código") && !nombre.toLowerCase().contains("fecha")) {
                     errores.append("El campo ").append(nombre).append(" es obligatorio.\n");
@@ -172,4 +175,8 @@ public class FormularioDinamico extends ContenedorFlexible {
 
         return guardar;
     }
+    public Map<String, Node> getCampos() {
+        return campos;
+    }
+    
 }

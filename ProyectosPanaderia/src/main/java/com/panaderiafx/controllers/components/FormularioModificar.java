@@ -1,15 +1,25 @@
 package com.panaderiafx.controllers.components;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 import com.panaderiafx.utils.TasaCambioUtils;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import java.util.*;
-
-public class FormularioModificar extends ContenedorFlexible {
+public class FormularioModificar extends ContenedorFlexible { 
 
     private final String nombreTabla;
     private final Map<String, Node> campos = new LinkedHashMap<>();
@@ -49,7 +59,14 @@ public class FormularioModificar extends ContenedorFlexible {
                 formulario.getChildren().clear();
                 campos.clear();
                 construirFormulario(filaSeleccionada, formulario);
-                formulario.getChildren().add(crearBotonModificar(filaSeleccionada));
+                HBox botones = new HBox(15);
+                botones.setAlignment(Pos.CENTER_LEFT);
+                botones.getChildren().addAll(
+                    crearBotonModificar(filaSeleccionada),
+                    crearBotonEliminar(filaSeleccionada)
+                );
+                formulario.getChildren().add(botones);
+
             }
         });
 
@@ -165,6 +182,31 @@ public class FormularioModificar extends ContenedorFlexible {
         });
     
         return modificar;
+    }
+    
+    private Button crearBotonEliminar(Map<String, String> filaSeleccionada) {
+        Button eliminar = new BotonAccion("Eliminar", "#F44336");
+    
+        eliminar.setOnAction(e -> {
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Confirmar eliminación");
+            confirm.setHeaderText(null);
+            confirm.setContentText("¿Estás seguro de eliminar este registro?");
+            Optional<ButtonType> resultado = confirm.showAndWait();
+    
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                boolean exito = com.panaderiafx.utils.EliminarUtils.eliminarFila(nombreTabla, filaSeleccionada);
+                System.out.println("🗑 Eliminando de " + nombreTabla + ": " + filaSeleccionada);
+    
+                Alert alerta = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+                alerta.setTitle(exito ? "Eliminado" : "Error");
+                alerta.setHeaderText(null);
+                alerta.setContentText(exito ? "✅ Registro eliminado exitosamente." : "❌ No se pudo eliminar el registro.");
+                alerta.show();
+            }
+        });
+    
+        return eliminar;
     }
     
 }

@@ -9,9 +9,9 @@ public class SubPestanasFactory {
     private static final Map<String, List<String>> estructura = new HashMap<>();
 
     static {
-        estructura.put("Ingredientes", Arrays.asList("Ver", "Crear", "Modificar", "Eliminar", "Gráfico"));
-        estructura.put("Recetas", Arrays.asList("Ver", "Crear", "Modificar", "Eliminar", "Gráfico"));
-        estructura.put("Produccion", Arrays.asList("Ver", "Crear", "Modificar", "Eliminar"));
+        estructura.put("Ingredientes", Arrays.asList("Ver", "Crear", "Modificar", "Gráfico"));
+        estructura.put("Recetas", Arrays.asList("Ver", "Crear", "Modificar", "Gráfico"));
+        estructura.put("Produccion", Arrays.asList("Ver", "Crear", "Modificar"));
         estructura.put("Costos", Arrays.asList("Ver", "Crear","Gráfico"));
         estructura.put("TasaCambio", Arrays.asList("Ver", "Crear"));
         estructura.put("HistorialPrecios", Arrays.asList("Ver", "Gráfico"));

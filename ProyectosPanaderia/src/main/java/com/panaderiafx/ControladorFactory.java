@@ -13,8 +13,6 @@ public class ControladorFactory {
                 return CrearController.mostrar(tabla);
             case "modificar":
                 return ModificarController.mostrar(tabla);
-            case "eliminar":
-                return EliminarController.mostrar(tabla);
             case "gráfico":
             case "grafico":
                 return GraficoController.mostrar(tabla);
