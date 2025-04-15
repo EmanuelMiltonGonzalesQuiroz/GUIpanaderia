@@ -1,0 +1,6 @@
+# Ignorar binarios y carpetas pesadas
+*.exe
+/dist/
+/libs/jre/
+/target/
+/PanaderiaFX_Installer.exe
