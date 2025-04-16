@@ -16,7 +16,6 @@ public class TablaInteractiva extends BorderPane {
     private final TableView<Map<String, String>> tabla = new TableView<>();
     private List<Map<String, String>> datosOriginales;
     private ObservableList<Map<String, String>> datosTotales;
-    private final Pagination paginador = new Pagination();
     private int filasPorPagina;
     private List<String> columnas;
     private List<String> columnasVisibles;
@@ -24,18 +23,18 @@ public class TablaInteractiva extends BorderPane {
     private double ancho = -1;
     private double alto = -1;
 
+    private final Label infoPagina = new Label();
+
     public TablaInteractiva(List<Map<String, String>> datos, List<String> columnas, int filasPorPagina) {
-        this.datosOriginales = new ArrayList<>(datos); // ⬅ Guardar copia original
+        this.datosOriginales = new ArrayList<>(datos);
         this.datosTotales = FXCollections.observableArrayList(datos);
         this.columnas = columnas;
         this.filasPorPagina = filasPorPagina;
 
         this.setStyle("-fx-background-color: #FFF3E0;");
-        this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         determinarColumnasVisibles(datos);
         construirColumnas();
-        configurarPaginacion();
 
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla.setStyle("-fx-font-size: 14px;");
@@ -53,14 +52,20 @@ public class TablaInteractiva extends BorderPane {
             }
         });
 
+        VBox contenedorCentral = new VBox(10);
+        contenedorCentral.setPadding(new Insets(10));
+        contenedorCentral.setAlignment(Pos.TOP_CENTER);
+        VBox.setVgrow(tabla, Priority.ALWAYS);
+        contenedorCentral.getChildren().addAll(tabla, crearControlesPaginacion());
+
         this.setTop(crearCabeceraBusquedaYPaginado());
+        this.setCenter(contenedorCentral);
+        configurarPaginacion(0);
     }
 
     private void determinarColumnasVisibles(List<Map<String, String>> datos) {
         if (columnas == null || columnas.isEmpty()) {
-            columnasVisibles = datos.isEmpty()
-                ? new ArrayList<>()
-                : new ArrayList<>(datos.get(0).keySet());
+            columnasVisibles = datos.isEmpty() ? new ArrayList<>() : new ArrayList<>(datos.get(0).keySet());
         } else {
             columnasVisibles = columnas;
         }
@@ -76,50 +81,57 @@ public class TablaInteractiva extends BorderPane {
         }
     }
 
-    private VBox crearPagina(int paginaIndice) {
-        int desde = paginaIndice * filasPorPagina;
-        int hasta = Math.min(desde + filasPorPagina, datosTotales.size());
+    private HBox crearControlesPaginacion() {
+        Button anterior = new Button("⬅ Anterior");
+        Button siguiente = new Button("Siguiente ➡");
 
-        tabla.setItems(FXCollections.observableArrayList(
-            datosTotales.subList(desde, hasta)
-        ));
+        anterior.setOnAction(e -> cambiarPagina(-1));
+        siguiente.setOnAction(e -> cambiarPagina(1));
 
-        VBox contenedor = new VBox(tabla);
-        contenedor.setAlignment(Pos.CENTER);
-        contenedor.setFillWidth(true);
-        contenedor.setPadding(new Insets(10));
-        VBox.setVgrow(tabla, Priority.ALWAYS);
-
-        contenedor.setPrefWidth(ancho > 0 ? ancho : Double.MAX_VALUE);
-        contenedor.setPrefHeight(alto > 0 ? alto : Double.MAX_VALUE);
-
-        return contenedor;
+        HBox paginador = new HBox(15, anterior, infoPagina, siguiente);
+        paginador.setAlignment(Pos.CENTER);
+        return paginador;
     }
 
-    private void configurarPaginacion() {
+    private int paginaActual = 0;
+
+    private void cambiarPagina(int cambio) {
+        int totalPaginas = (int) Math.ceil((double) datosTotales.size() / filasPorPagina);
+        int nuevaPagina = Math.max(0, Math.min(paginaActual + cambio, totalPaginas - 1));
+        configurarPaginacion(nuevaPagina);
+    }
+
+    private void configurarPaginacion(int pagina) {
+        this.paginaActual = pagina;
+
         if (filasPorPagina == -1) {
             tabla.setItems(datosTotales);
-            this.setCenter(tabla);
+            infoPagina.setText("Mostrando todos los registros");
             return;
         }
 
+        int desde = pagina * filasPorPagina;
+        int hasta = Math.min(desde + filasPorPagina, datosTotales.size());
+        tabla.setItems(FXCollections.observableArrayList(datosTotales.subList(desde, hasta)));
+
         int totalPaginas = (int) Math.ceil((double) datosTotales.size() / filasPorPagina);
-        paginador.setPageCount(Math.max(1, totalPaginas));
-        paginador.setPageFactory(this::crearPagina);
-        this.setCenter(paginador);
+        infoPagina.setText((pagina + 1) + "/" + totalPaginas);
     }
 
-    private HBox crearCabeceraBusquedaYPaginado() {
+    private VBox crearCabeceraBusquedaYPaginado() {
+        Label titulo = new Label("Buscar registros o ajustar visualización");
+        titulo.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
         TextField campoBusqueda = new TextField();
         campoBusqueda.setPromptText("🔍 Buscar...");
         campoBusqueda.setStyle(
-            "-fx-font-size: 16px;" +
-            "-fx-background-color: #FFF9C4;" +
-            "-fx-padding: 10px;" +
-            "-fx-border-radius: 5px;" +
-            "-fx-background-radius: 5px;" +
-            "-fx-border-color: #FBC02D;" +
-            "-fx-border-width: 1.5px;"
+                "-fx-font-size: 16px;" +
+                "-fx-background-color: #FFF9C4;" +
+                "-fx-padding: 10px;" +
+                "-fx-border-radius: 5px;" +
+                "-fx-background-radius: 5px;" +
+                "-fx-border-color: #FBC02D;" +
+                "-fx-border-width: 1.5px;"
         );
         campoBusqueda.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(campoBusqueda, Priority.ALWAYS);
@@ -130,17 +142,17 @@ public class TablaInteractiva extends BorderPane {
             } else {
                 String buscar = newVal.toLowerCase();
                 List<Map<String, String>> filtrados = datosOriginales.stream()
-                    .filter(map -> map.values().stream()
-                        .anyMatch(val -> val.toLowerCase().contains(buscar)))
-                    .collect(Collectors.toList());
+                        .filter(map -> map.values().stream()
+                                .anyMatch(val -> val.toLowerCase().contains(buscar)))
+                        .collect(Collectors.toList());
                 datosTotales = FXCollections.observableArrayList(filtrados);
             }
-            configurarPaginacion();
+            configurarPaginacion(0);
         });
 
         ComboBox<String> selectorFilas = new ComboBox<>();
         selectorFilas.getItems().addAll("Todos", "20", "50", "100");
-        selectorFilas.setValue("20");
+        selectorFilas.setValue(filasPorPagina == -1 ? "Todos" : String.valueOf(filasPorPagina));
         selectorFilas.setStyle("-fx-font-size: 14px;");
         selectorFilas.setOnAction(e -> {
             String seleccion = selectorFilas.getValue();
@@ -149,13 +161,15 @@ public class TablaInteractiva extends BorderPane {
             } else {
                 filasPorPagina = Integer.parseInt(seleccion);
             }
-            configurarPaginacion();
+            configurarPaginacion(0);
         });
 
-        HBox contenedor = new HBox(10, campoBusqueda, selectorFilas);
-        contenedor.setAlignment(Pos.CENTER_LEFT);
-        contenedor.setPadding(new Insets(10, 10, 0, 10));
-        contenedor.setStyle("-fx-background-color: transparent;");
+        HBox filtro = new HBox(10, campoBusqueda, selectorFilas);
+        filtro.setAlignment(Pos.CENTER_LEFT);
+        filtro.setPadding(new Insets(5, 0, 0, 0));
+
+        VBox contenedor = new VBox(5, titulo, filtro);
+        contenedor.setPadding(new Insets(15, 15, 5, 15));
         return contenedor;
     }
 
@@ -164,7 +178,7 @@ public class TablaInteractiva extends BorderPane {
         this.datosTotales = FXCollections.observableArrayList(nuevosDatos);
         determinarColumnasVisibles(nuevosDatos);
         construirColumnas();
-        configurarPaginacion();
+        configurarPaginacion(0);
     }
 
     public TableView<Map<String, String>> getTabla() {

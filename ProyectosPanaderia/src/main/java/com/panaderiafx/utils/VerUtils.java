@@ -123,4 +123,22 @@ public class VerUtils {
                         .allMatch(f -> f.getValue().equalsIgnoreCase(fila.getOrDefault(f.getKey(), ""))))
                 .toList();
     }
+    public static List<String> obtenerNombresTablas() {
+        List<String> nombres = new ArrayList<>();
+
+        try (FileInputStream fis = new FileInputStream(new File(RUTA_EXCEL));
+             Workbook workbook = WorkbookFactory.create(fis)) {
+
+            int total = workbook.getNumberOfSheets();
+            for (int i = 0; i < total; i++) {
+                nombres.add(workbook.getSheetName(i));
+            }
+
+        } catch (Exception e) {
+            System.err.println("❌ Error al obtener nombres de hojas: " + e.getMessage());
+        }
+
+        return nombres;
+    }
+
 }

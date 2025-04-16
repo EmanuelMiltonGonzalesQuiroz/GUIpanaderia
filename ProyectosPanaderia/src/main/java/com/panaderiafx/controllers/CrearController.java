@@ -6,6 +6,7 @@ import com.panaderiafx.controllers.components.TablaBusquedaSimple;
 import com.panaderiafx.utils.VerUtils;
 import javafx.scene.control.ScrollPane;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -16,42 +17,63 @@ import java.util.*;
 public class CrearController {
 
     public static ScrollPane mostrar(String tabla) {
-        List<Map<String, String>> datos = VerUtils.verTabla(tabla);
-        if (datos.isEmpty()) {
-            VBox vacio = new VBox(new Label("No hay estructura disponible para: " + tabla));
-            vacio.setStyle("-fx-alignment: center; -fx-padding: 20px;");
-            return new ScrollPane(vacio);
-        }
-
-        List<Map<String, Object>> definicionCampos = generarInstrucciones(tabla, datos.get(0));
-
-        HBox contenedorGeneral = new HBox(30);
-        contenedorGeneral.setPadding(new Insets(20));
-
-        VBox contenedorFormulario = new VBox();
-        contenedorFormulario.setPrefWidth(500);
-
-        VBox contenedorTabla = new VBox(); // Aquí se insertará TablaInteractiva cuando se solicite
-        contenedorTabla.setPrefWidth(400);
-
-        FormularioDinamico formulario = new FormularioDinamico(tabla, definicionCampos);
-        contenedorFormulario.getChildren().add(formulario);
-
-        formulario.getCampos().values().forEach(nodo -> {
-            if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
-                campoExtendido.setOnSeleccionarListener((columna, campo) -> {
-                    contenedorTabla.getChildren().setAll(crearTabla(columna, campo));
-                });
-            }
-        });
-
-        contenedorGeneral.getChildren().addAll(contenedorFormulario, contenedorTabla);
-
-        ScrollPane sc = new ScrollPane(contenedorGeneral);
-        sc.setFitToWidth(true);
-        sc.setFitToHeight(true);
-        return sc;
+    List<Map<String, String>> datos = VerUtils.verTabla(tabla);
+    if (datos.isEmpty()) {
+        VBox vacio = new VBox(new Label("No hay estructura disponible para: " + tabla));
+        vacio.setStyle("-fx-alignment: center; -fx-padding: 20px;");
+        return new ScrollPane(vacio);
     }
+
+    List<Map<String, Object>> definicionCampos = generarInstrucciones(tabla, datos.get(0));
+
+    VBox contenedorVertical = new VBox(20);
+    contenedorVertical.setStyle("-fx-background-color: #FFF3E0;");
+    contenedorVertical.setPadding(new Insets(20));
+
+    Label tituloPrincipal = new Label("Crear - " + tabla.substring(0, 1).toUpperCase() + tabla.substring(1));
+    tituloPrincipal.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+    tituloPrincipal.setMaxWidth(Double.MAX_VALUE);
+    tituloPrincipal.setAlignment(Pos.CENTER);
+
+    HBox contenedorGeneral = new HBox(30);
+    contenedorGeneral.setPadding(new Insets(20));
+
+    VBox contenedorFormulario = new VBox(10);
+    contenedorFormulario.setPrefWidth(500);
+
+    Label tituloFormulario = new Label("Formulario de creación");
+    tituloFormulario.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+    contenedorFormulario.getChildren().add(tituloFormulario);
+
+    VBox contenedorTabla = new VBox(10);
+    contenedorTabla.setPrefWidth(400);
+
+    Label tituloTabla = new Label("Selección de valores");
+    tituloTabla.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+    tituloTabla.setVisible(false);
+    contenedorTabla.getChildren().add(tituloTabla);
+
+    FormularioDinamico formulario = new FormularioDinamico(tabla, definicionCampos);
+    contenedorFormulario.getChildren().add(formulario);
+
+    formulario.getCampos().values().forEach(nodo -> {
+        if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
+            campoExtendido.setOnSeleccionarListener((columna, campo) -> {
+                tituloTabla.setVisible(true);
+                contenedorTabla.getChildren().removeIf(n -> n instanceof TablaBusquedaSimple);
+                contenedorTabla.getChildren().add(crearTabla(columna, campo));
+            });
+        }
+    });
+
+    contenedorGeneral.getChildren().addAll(contenedorFormulario, contenedorTabla);
+    contenedorVertical.getChildren().addAll(tituloPrincipal, contenedorGeneral);
+
+    ScrollPane sc = new ScrollPane(contenedorVertical);
+    sc.setFitToWidth(true);
+    sc.setFitToHeight(true);
+    return sc;
+}
 
     private static Node crearTabla(String columna, CampoSeleccionExtendido campoExtendido) {
         List<Map<String, String>> datos = VerUtils.verTabla(campoExtendido.getTabla());

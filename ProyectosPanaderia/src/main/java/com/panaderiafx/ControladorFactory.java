@@ -13,9 +13,6 @@ public class ControladorFactory {
                 return CrearController.mostrar(tabla);
             case "modificar":
                 return ModificarController.mostrar(tabla);
-            case "gráfico":
-            case "grafico":
-                return GraficoController.mostrar(tabla);
             default:
                 return new javafx.scene.control.Label("Sin contenido definido para: " + accion);
         }

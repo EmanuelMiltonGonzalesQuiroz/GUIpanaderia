@@ -23,73 +23,86 @@ public class ModificarController {
             vacio.setStyle("-fx-alignment: center; -fx-padding: 20px;");
             return new ScrollPane(vacio);
         }
-
+    
         List<Map<String, Object>> definicionCampos = generarInstrucciones(tabla, registros.get(0));
-
+    
+        VBox contenedorGeneral = new VBox(20);
+        contenedorGeneral.setPadding(new Insets(20));
+        contenedorGeneral.setStyle("-fx-background-color: #FFF3E0;");
+    
+        Label tituloGeneral = new Label("Modificar - " + traducirNombreTabla(tabla));
+        tituloGeneral.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+        tituloGeneral.setAlignment(Pos.CENTER);
+        tituloGeneral.setMaxWidth(Double.MAX_VALUE);
+    
         HBox root = new HBox(30);
         root.setPadding(new Insets(20));
-        root.setStyle("-fx-background-color: #FFF3E0;");
-
+        root.setAlignment(Pos.TOP_CENTER);
+    
         VBox panelIzquierdo = new VBox(10);
         panelIzquierdo.setPrefWidth(300);
         panelIzquierdo.setAlignment(Pos.TOP_CENTER);
-
-        Label tituloGeneral = new Label("Modificar - " + traducirNombreTabla(tabla));
-        tituloGeneral.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-        panelIzquierdo.getChildren().add(tituloGeneral);
-
-        // Detectar columna adecuada para búsqueda
-        String columnaBusqueda;
-        Iterator<String> it = registros.get(0).keySet().iterator();
-
-        if (it.hasNext()) {
-            String primera = it.next();
-            if (primera.toLowerCase().contains("código") && it.hasNext()) {
-                columnaBusqueda = it.next(); // usar segunda si la primera es "Código"
-            } else {
-                columnaBusqueda = primera;
-            }
-        } else {
-            columnaBusqueda = registros.get(0).keySet().iterator().next(); // fallback
-        }
-
+    
+        Label tituloIzq = new Label("Registros disponibles");
+        tituloIzq.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        panelIzquierdo.getChildren().addAll(tituloIzq);
+    
+        String columnaBusqueda = registros.get(0).keySet().stream().skip(1).findFirst().orElseGet(() ->
+                registros.get(0).keySet().iterator().next()
+        );
+    
         TablaBusquedaSimple tablaBusqueda = new TablaBusquedaSimple(registros, columnaBusqueda);
         panelIzquierdo.getChildren().add(tablaBusqueda);
-
-        VBox panelFormulario = new VBox();
+    
+        VBox panelFormulario = new VBox(10);
         panelFormulario.setPrefWidth(600);
-
-        VBox panelDerecho = new VBox();
+    
+        Label tituloCentro = new Label("Formulario de modificación");
+        tituloCentro.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        tituloCentro.setVisible(false);
+        panelFormulario.getChildren().add(tituloCentro);
+    
+        VBox panelDerecho = new VBox(10);
         panelDerecho.setPrefWidth(400);
-
+    
+        Label tituloDerecha = new Label("Selección de valores");
+        tituloDerecha.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        tituloDerecha.setVisible(false);
+        panelDerecho.getChildren().add(tituloDerecha);
+    
         tablaBusqueda.setOnSeleccionar(valor -> {
             Optional<Map<String, String>> filaOpt = registros.stream()
-                .filter(fila -> fila.getOrDefault(columnaBusqueda, "").equals(valor))
-                .findFirst();
-
+                    .filter(fila -> fila.getOrDefault(columnaBusqueda, "").equals(valor))
+                    .findFirst();
+    
             filaOpt.ifPresent(fila -> {
-                panelFormulario.getChildren().clear();
+                panelFormulario.getChildren().removeIf(n -> n instanceof FormularioModificar);
+                tituloCentro.setVisible(true);
+    
                 FormularioModificar formulario = new FormularioModificar(tabla, definicionCampos, registros, fila);
                 panelFormulario.getChildren().add(formulario);
-
+    
                 formulario.getCampos().values().forEach(nodo -> {
                     if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
                         campoExtendido.setOnSeleccionarListener((columna, campo) -> {
-                            panelDerecho.getChildren().setAll(crearTabla(columna, campo));
+                            tituloDerecha.setVisible(true);
+                            panelDerecho.getChildren().removeIf(n -> n instanceof TablaBusquedaSimple);
+                            panelDerecho.getChildren().add(crearTabla(columna, campo));
                         });
                     }
                 });
             });
         });
-
+    
         root.getChildren().addAll(panelIzquierdo, panelFormulario, panelDerecho);
-
-        ScrollPane sc = new ScrollPane(root);
+        contenedorGeneral.getChildren().addAll(tituloGeneral, root);
+    
+        ScrollPane sc = new ScrollPane(contenedorGeneral);
         sc.setFitToWidth(true);
         sc.setFitToHeight(true);
         return sc;
     }
-
+    
     private static Node crearTabla(String columna, CampoSeleccionExtendido campoExtendido) {
         List<Map<String, String>> datos = VerUtils.verTabla(campoExtendido.getTabla());
 
