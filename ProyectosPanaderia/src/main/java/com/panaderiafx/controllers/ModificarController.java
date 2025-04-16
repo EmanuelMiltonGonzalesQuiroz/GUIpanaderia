@@ -128,55 +128,40 @@ public class ModificarController {
 
     private static List<Map<String, Object>> generarInstrucciones(String tabla, Map<String, String> ejemplo) {
         List<Map<String, Object>> definicion = new ArrayList<>();
-
-        switch (tabla.toLowerCase()) {
-            case "ingredientes" -> {
-                for (String campo : ejemplo.keySet()) {
-                    Map<String, Object> item = new HashMap<>();
-                    item.put("nombre", campo);
-                    switch (campo.toLowerCase()) {
-                        case "unidad", "categoria" -> item.put("tipo", "select");
-                        case "fecha de actualización", "código" -> item.put("tipo", "label");
-                        case "precio local" -> item.put("tipo", "precio_local");
-                        case "precio dólar" -> item.put("tipo", "precio_dolar");
-                        default -> item.put("tipo", "text");
-                    }
-                    definicion.add(item);
-                }
+    
+        // Leer desde la hoja ConfiguraciónFormularios
+        List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónFormularios");
+    
+        for (Map<String, String> fila : config) {
+            String nombreTabla = fila.getOrDefault("Tabla", "").trim();
+            String campo = fila.getOrDefault("Campo", "").trim();
+            String tipo = fila.getOrDefault("Tipo", "").trim();
+    
+            if (!nombreTabla.equalsIgnoreCase(tabla)) continue;
+    
+            Map<String, Object> item = new HashMap<>();
+            item.put("nombre", campo);
+            item.put("tipo", tipo.toLowerCase());
+    
+            if (tipo.equalsIgnoreCase("select")) {
+                item.put("origen", fila.getOrDefault("Origen", "").trim());
+                item.put("datoMostrar", fila.getOrDefault("Dato a Mostrar", "").trim());
+                item.put("datoCargar", fila.getOrDefault("Dato a Cargar", "").trim());
             }
-            case "recetas" -> {
-                for (String campo : ejemplo.keySet()) {
-                    Map<String, Object> item = new HashMap<>();
-                    item.put("nombre", campo);
-                    switch (campo.toLowerCase()) {
-                        case "producto", "ingrediente", "unidades" -> item.put("tipo", "select");
-                        case "código receta" -> item.put("tipo", "label");
-                        default -> item.put("tipo", "text");
-                    }
-                    definicion.add(item);
-                }
-            }
-            case "produccion" -> {
-                for (String campo : ejemplo.keySet()) {
-                    Map<String, Object> item = new HashMap<>();
-                    item.put("nombre", campo);
-                    item.put("tipo", campo.toLowerCase().contains("fecha") ? "fecha" : "text");
-                    definicion.add(item);
-                }
-            }
-            case "parametros" -> {
-                for (String campo : ejemplo.keySet()) {
-                    Map<String, Object> item = new HashMap<>();
-                    item.put("nombre", campo);
-                    item.put("tipo", campo.equalsIgnoreCase("Nombre") ? "label" : "text");
-                    definicion.add(item);
-                }
-            }
+    
+            definicion.add(item);
         }
-
+    
+        // Si no encontró nada, retornar solo un campo de error
+        if (definicion.isEmpty()) {
+            VBox error = new VBox(new Label("❌ No hay configuración definida para: " + tabla));
+            error.setStyle("-fx-alignment: center; -fx-padding: 20px;");
+            return List.of(Map.of("nombre", "ERROR", "tipo", "label"));
+        }
+    
         return definicion;
     }
-
+    
     private static String traducirNombreTabla(String tabla) {
         return switch (tabla.toLowerCase()) {
             case "ingredientes" -> "Ingredientes";

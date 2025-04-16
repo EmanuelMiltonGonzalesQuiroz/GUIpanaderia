@@ -17,8 +17,8 @@ public class FormularioDinamico extends ContenedorFlexible {
 
     private final Map<String, Node> campos = new LinkedHashMap<>();
     private final String nombreTabla;
-    private TextField campoPrecioLocal;
-    private TextField campoPrecioDolar;
+    private CampoTexto campoPrecioLocal;
+    private CampoTexto campoPrecioDolar;
     private boolean bloqueado = false;
     private String codigoGenerado = "";
 
@@ -36,30 +36,38 @@ public class FormularioDinamico extends ContenedorFlexible {
     }
 
     private void construirFormulario(List<Map<String, Object>> camposDefinidos, VBox contenedor) {
+        List<CampoTexto> camposPrecio = new ArrayList<>();
+
         for (Map<String, Object> campo : camposDefinidos) {
             String nombre = (String) campo.get("nombre");
-            String tipo = (String) campo.get("tipo");
+            String tipo = ((String) campo.get("tipo")).toLowerCase();
             Node input;
 
-            switch (tipo.toLowerCase()) {
-                case "codigo" -> {
+            switch (tipo) {
+                case "código" -> {
                     codigoGenerado = CodigoGenerator.generarCodigo(nombreTabla, "Código"); // automático
                     input = new Label(codigoGenerado);
                 }
-                case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre);
-                case "precio local" -> { 
-                    campoPrecioLocal = new CampoTexto("Ingrese valor local");
-                    input = campoPrecioLocal;
+                case "select" -> {
+                    String origen = (String) campo.getOrDefault("origen", nombreTabla);
+                    String mostrar = (String) campo.getOrDefault("datoMostrar", nombre);
+                    String cargar = (String) campo.getOrDefault("datoCargar", nombre);
+                    input = new CampoSeleccionExtendido(origen, mostrar, cargar, "");
                 }
-                case "precio dólar" -> {
-                    campoPrecioDolar = new CampoTexto("Ingrese valor dólar");
-                    input = campoPrecioDolar;
+                case "precio" -> {
+                    CampoTexto campoPrecio = new CampoTexto("Ingrese precio...");
+                    campoPrecio.setText(null);
+                    camposPrecio.add(campoPrecio);
+                    input = campoPrecio;
                 }
                 case "fecha" -> {
                     String fechaHoy = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     input = new Label(fechaHoy);
                 }
-                default -> input = new CampoTexto("Ingrese un valor...");
+                default -> {
+                    CampoTexto campoTexto = new CampoTexto("Ingrese un valor...");
+                    input = campoTexto;
+                }
             }
 
             campos.put(nombre, input);
@@ -70,43 +78,41 @@ public class FormularioDinamico extends ContenedorFlexible {
             contenedor.getChildren().add(grupo);
         }
 
-        if (campoPrecioLocal != null && campoPrecioDolar != null) {
-            campoPrecioLocal.textProperty().addListener((obs, oldVal, newVal) -> {
-                if (bloqueado || newVal.isEmpty() || !campoPrecioLocal.isFocused()) return;
+        if (camposPrecio.size() == 2) {
+            CampoTexto campo1 = camposPrecio.get(0);
+            CampoTexto campo2 = camposPrecio.get(1);
+    
+            campo1.textProperty().addListener((obs, oldVal, newVal) -> {
+                if (bloqueado || newVal.isBlank() || !campo1.isFocused()) return;
                 try {
                     bloqueado = true;
                     double local = Double.parseDouble(newVal);
                     double tasa = TasaCambioUtils.obtenerUltimaTasa();
-                    double dolar = local / tasa;
-                    campoPrecioDolar.setText(String.format("%.4f", dolar));
-                    System.out.println("💰 Local ➤ Dólar: " + local + " ➤ " + dolar + " (tasa " + tasa + ")");
+                    double convertido = local * tasa;
+                    campo2.setText(String.format("%.4f", convertido));
                 } catch (Exception e) {
-                    campoPrecioDolar.setText("");
-                    System.out.println("⚠️ Error Local ➤ Dólar: " + e.getMessage());
+                    campo2.setText("");
                 } finally {
                     bloqueado = false;
                 }
             });
-
-            campoPrecioDolar.textProperty().addListener((obs, oldVal, newVal) -> {
-                if (bloqueado || newVal.isEmpty() || !campoPrecioDolar.isFocused()) return;
+    
+            campo2.textProperty().addListener((obs, oldVal, newVal) -> {
+                if (bloqueado || newVal.isBlank() || !campo2.isFocused()) return;
                 try {
                     bloqueado = true;
                     double dolar = Double.parseDouble(newVal);
                     double tasa = TasaCambioUtils.obtenerUltimaTasa();
-                    double local = dolar * tasa;
-                    campoPrecioLocal.setText(String.format("%.4f", local));
-                    System.out.println("💲 Dólar ➤ Local: " + dolar + " ➤ " + local + " (tasa " + tasa + ")");
+                    double convertido = dolar / tasa;
+                    campo1.setText(String.format("%.4f", convertido));
                 } catch (Exception e) {
-                    campoPrecioLocal.setText("");
-                    System.out.println("⚠️ Error Dólar ➤ Local: " + e.getMessage());
+                    campo1.setText("");
                 } finally {
                     bloqueado = false;
                 }
             });
         }
     }
-
     private Button crearBotonGuardar() {
         Button guardar = new BotonAccion("Guardar", "#4CAF50");
 
@@ -125,10 +131,9 @@ public class FormularioDinamico extends ContenedorFlexible {
                     valor = lista.getValorSeleccionado();
                 } else if (nodo instanceof Label label) {
                     valor = label.getText().trim();
-                }else if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
+                } else if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
                     valor = campoExtendido.getValorSeleccionado();
                 }
-                
 
                 if ((valor == null || valor.isEmpty()) && !nombre.toLowerCase().contains("código") && !nombre.toLowerCase().contains("fecha")) {
                     errores.append("El campo ").append(nombre).append(" es obligatorio.\n");
@@ -154,29 +159,18 @@ public class FormularioDinamico extends ContenedorFlexible {
                 return;
             }
 
-            System.out.println("📤 Intentando guardar en tabla: " + nombreTabla);
-            System.out.println("📦 Datos: " + datos);
-
             boolean exito = CrearUtils.crearFila(nombreTabla, datos);
-            if (exito) {
-                Alert ok = new Alert(Alert.AlertType.INFORMATION);
-                ok.setTitle("Éxito");
-                ok.setHeaderText(null);
-                ok.setContentText("✅ Fila guardada exitosamente.");
-                ok.show();
-            } else {
-                Alert fail = new Alert(Alert.AlertType.ERROR);
-                fail.setTitle("Error");
-                fail.setHeaderText(null);
-                fail.setContentText("❌ No se pudo guardar la fila.");
-                fail.show();
-            }
+            Alert resultado = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+            resultado.setTitle(exito ? "Éxito" : "Error");
+            resultado.setHeaderText(null);
+            resultado.setContentText(exito ? "✅ Fila guardada exitosamente." : "❌ No se pudo guardar la fila.");
+            resultado.show();
         });
 
         return guardar;
     }
+
     public Map<String, Node> getCampos() {
         return campos;
     }
-    
 }

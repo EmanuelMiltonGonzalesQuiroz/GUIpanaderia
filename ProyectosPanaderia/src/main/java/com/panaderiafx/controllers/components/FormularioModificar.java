@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,73 +56,76 @@ public class FormularioModificar extends ContenedorFlexible {
     }
     
     private void construirFormulario(Map<String, String> valores, VBox contenedor) {
-        for (Map<String, Object> campoDef : definicionCampos) {
-            String nombre = (String) campoDef.get("nombre");
-            String tipo = (String) campoDef.get("tipo");
-            String valor = valores.getOrDefault(nombre, "");
-            Node input;
+    List<CampoTexto> camposPrecio = new ArrayList<>();
 
-            switch (tipo.toLowerCase()) {
-                case "label" -> input = new Label(valor);
-                case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre, valor);
-                case "precio_local" -> {
-                    campoPrecioLocal = new CampoTexto("Ingrese valor local");
-                    campoPrecioLocal.setText(valor);
-                    input = campoPrecioLocal;
-                }
-                case "precio_dolar" -> {
-                    campoPrecioDolar = new CampoTexto("Ingrese valor dólar");
-                    campoPrecioDolar.setText(valor);
-                    input = campoPrecioDolar;
-                }
-                case "fecha" -> input = new Label(valor);
-                default -> {
-                    CampoTexto campoTexto = new CampoTexto("Modificar valor...");
-                    campoTexto.setText(valor);
-                    input = campoTexto;
-                }
+    for (Map<String, Object> campoDef : definicionCampos) {
+        String nombre = (String) campoDef.get("nombre");
+        String tipo = (String) campoDef.get("tipo");
+        String valor = valores.getOrDefault(nombre, "");
+        Node input;
+
+
+        switch (tipo.toLowerCase()) {
+            case "label" -> input = new Label(valor);
+            case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre, valor); 
+            case "precio" -> {
+                CampoTexto campoPrecio = new CampoTexto("Ingrese precio...");
+                campoPrecio.setText(valor);
+                camposPrecio.add(campoPrecio);
+                input = campoPrecio;
             }
-
-            campos.put(nombre, input);
-
-            VBox grupo = new VBox(5);
-            grupo.setAlignment(Pos.CENTER_LEFT);
-            grupo.getChildren().addAll(new EtiquetaPersonalizada(nombre), input);
-            contenedor.getChildren().add(grupo);
+            case "fecha" -> input = new Label(valor);
+            default -> {
+                CampoTexto campoTexto = new CampoTexto("Modificar valor...");
+                campoTexto.setText(valor);
+                input = campoTexto;
+            }
         }
 
-        if (campoPrecioLocal != null && campoPrecioDolar != null) {
-            campoPrecioLocal.textProperty().addListener((obs, oldVal, newVal) -> {
-                if (bloqueado || newVal.isEmpty() || !campoPrecioLocal.isFocused()) return;
-                try {
-                    bloqueado = true;
-                    double local = Double.parseDouble(newVal);
-                    double tasa = TasaCambioUtils.obtenerUltimaTasa();
-                    double dolar = local / tasa;
-                    campoPrecioDolar.setText(String.format("%.4f", dolar));
-                } catch (Exception e) {
-                    campoPrecioDolar.setText("");
-                } finally {
-                    bloqueado = false;
-                }
-            });
+        campos.put(nombre, input);
 
-            campoPrecioDolar.textProperty().addListener((obs, oldVal, newVal) -> {
-                if (bloqueado || newVal.isEmpty() || !campoPrecioDolar.isFocused()) return;
-                try {
-                    bloqueado = true;
-                    double dolar = Double.parseDouble(newVal);
-                    double tasa = TasaCambioUtils.obtenerUltimaTasa();
-                    double local = dolar * tasa;
-                    campoPrecioLocal.setText(String.format("%.4f", local));
-                } catch (Exception e) {
-                    campoPrecioLocal.setText("");
-                } finally {
-                    bloqueado = false;
-                }
-            });
-        }
+        VBox grupo = new VBox(5);
+        grupo.setAlignment(Pos.CENTER_LEFT);
+        grupo.getChildren().addAll(new EtiquetaPersonalizada(nombre), input);
+        contenedor.getChildren().add(grupo);
     }
+
+    // Si hay exactamente 2 campos tipo "precio", enlazar lógica de sincronización
+    if (camposPrecio.size() == 2) {
+        CampoTexto campo1 = camposPrecio.get(0);
+        CampoTexto campo2 = camposPrecio.get(1);
+
+        campo1.textProperty().addListener((obs, oldVal, newVal) -> {
+            if (bloqueado || newVal.isBlank() || !campo1.isFocused()) return;
+            try {
+                bloqueado = true;
+                double local = Double.parseDouble(newVal);
+                double tasa = TasaCambioUtils.obtenerUltimaTasa();
+                double convertido = local * tasa;
+                campo2.setText(String.format("%.4f", convertido));
+            } catch (Exception e) {
+                campo2.setText("");
+            } finally {
+                bloqueado = false;
+            }
+        });
+
+        campo2.textProperty().addListener((obs, oldVal, newVal) -> {
+            if (bloqueado || newVal.isBlank() || !campo2.isFocused()) return;
+            try {
+                bloqueado = true;
+                double dolar = Double.parseDouble(newVal);
+                double tasa = TasaCambioUtils.obtenerUltimaTasa();
+                double convertido = dolar / tasa;
+                campo1.setText(String.format("%.4f", convertido));
+            } catch (Exception e) {
+                campo1.setText("");
+            } finally {
+                bloqueado = false;
+            }
+        });
+    }
+}
 
     private Button crearBotonModificar(Map<String, String> original) {
         Button modificar = new BotonAccion("Actualizar", "#FF9800");

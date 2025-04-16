@@ -79154,3 +79154,829 @@ Caused by: java.lang.StackOverflowError
 ? Redirección de logs activada.
 ? Entrando a start()...
 ? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Categoria
+? Doble clic en tabla: Materia Prima
+? Valor seleccionado desde tabla: Materia Prima
+? Valor seleccionado: Materia Prima
+? Doble clic en tabla: Material Empaque
+? Valor seleccionado desde tabla: Material Empaque
+? Valor seleccionado: Material Empaque
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Azucar Blanca
+? Doble clic en tabla: Hot Dog
+? Doble clic en tabla: Sliced Bread
+? Doble clic en tabla: ING027
+? Doble clic en tabla: kilos
+? Doble clic en tabla: REC0005
+? Doble clic en tabla: Burger
+? Doble clic en tabla: ING008
+? Intentando guardar en tabla: RecetasIngredientes
+? Datos: {Código Receta=REC0005, Receta=Burger, Ingrediente=ING008, Cantidad=500, Unidades=ll, Fecha de actualización=16/04/2025}
+? Error al crear fila: C:\Panaderia\Datos\Hoja de datos.xlsx (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+? Intentando guardar en tabla: RecetasIngredientes
+? Datos: {Código Receta=REC0005, Receta=Burger, Ingrediente=ING008, Cantidad=500, Unidades=ll, Fecha de actualización=16/04/2025}
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Azucar Blanca
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Azucar Blanca
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:24)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:53)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:34)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:24)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:53)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:34)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:24)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:52)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:33)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:24)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:53)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:34)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Sal
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:24)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:53)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:34)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:33)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Doble clic en tabla: Pasta de Semitas
+? Doble clic en tabla: Sliced Bread
+? Doble clic en tabla: Mejorante
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Azucar Blanca
+Ingredientes Código ING0002
+Ingredientes Nombre Azucar Blanca
+Ingredientes Unidad Gramos
+Ingredientes Precio Local 1.0
+Ingredientes Precio Dólar 2.0
+Ingredientes Fecha de actualización 13/04/2025
+Ingredientes Categoría 
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:33)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Doble clic en tabla: Manteca
+Ingredientes Código ING0004
+Ingredientes Nombre Manteca
+Ingredientes Unidad Gramos
+Ingredientes Precio Local 1.0
+Ingredientes Precio Dólar 2.0
+Ingredientes Fecha de actualización 13/04/2025
+Ingredientes Categoría 
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:33)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Doble clic en tabla: Leche Entera
+Ingredientes Código ING0007
+Ingredientes Nombre Leche Entera
+Ingredientes Unidad Gramos
+Ingredientes Precio Local 1.0
+Ingredientes Precio Dólar 2.0
+Ingredientes Fecha de actualización 13/04/2025
+Ingredientes Categoría 
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "valorInicial" is null
+	at com.panaderiafx.controllers.components.CampoSeleccionExtendido.<init>(CampoSeleccionExtendido.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.construirFormulario(FormularioDinamico.java:55)
+	at com.panaderiafx.controllers.components.FormularioDinamico.<init>(FormularioDinamico.java:33)
+	at com.panaderiafx.controllers.CrearController.mostrar(CrearController.java:56)
+	at com.panaderiafx.ControladorFactory.getVista(ControladorFactory.java:13)
+	at com.panaderiafx.SubPestanasFactory.lambda$crear$0(SubPestanasFactory.java:35)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.controls/javafx.scene.control.Tab$1.invalidated(Tab.java:215)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
+	at javafx.base/javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
+	at javafx.controls/javafx.scene.control.Tab.setSelected(Tab.java:189)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:741)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:754)
+	at javafx.controls/javafx.scene.control.TabPane$TabPaneSelectionModel.select(TabPane.java:673)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.TabPaneBehavior.selectTab(TabPaneBehavior.java:82)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1531)
+	at javafx.controls/javafx.scene.control.skin.TabPaneSkin$TabHeaderSkin$5.handle(TabPaneSkin.java:1509)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+? Doble clic en tabla: Manteca
+Ingredientes Código ING0004
+Ingredientes Nombre Manteca
+Ingredientes Unidad Gramos
+Ingredientes Precio Local 1.0
+Ingredientes Precio Dólar 2.0
+Ingredientes Fecha de actualización 13/04/2025
+Ingredientes Categoría 
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Mejorante
+? Doble clic en tabla: Sal
+? Doble clic en tabla: Unidades
+? Doble clic en tabla: Material Empaque
+? Doble clic en tabla: 111
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Doble clic en tabla: Onza
+? Doble clic en tabla: Materia Prima
+? Doble clic en tabla: Materia Prima
+? Modificando: {Código=111, Nombre=111, Unidad=Unidades, Precio Local=1111, Precio Dólar=55, Fecha de actualización=16/04/2025, Categoría=Material Empaque 2}
+?? Nuevo valor: {Código=111, Nombre=111, Unidad=Onza, Precio Local=11111, Precio Dólar=5591.0552, Fecha de actualización=16/04/2025, Categoría=Materia Prima}
+? Doble clic en tabla: 111
+? Eliminando de Ingredientes: {Código=111, Nombre=111, Unidad=Onza, Precio Local=11111, Precio Dólar=5591.0552, Fecha de actualización=16/04/2025, Categoría=Materia Prima}
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Onza
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Unidades
+? Error procesando fila: Text '03-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '03-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-oct.-2025' could not be parsed at index 2
+? Error procesando fila: Text '02-mar.-2025' could not be parsed at index 2
+? Error procesando fila: Text '01-jun.-2025' could not be parsed at index 2
+? Última tasa encontrada (2025-03-31) ? 0.5032
+? Doble clic en tabla: Material Empaque
+? Error al crear fila: C:\Panaderia\Datos\Hoja de datos.xlsx (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+? Doble clic en tabla: qqqq
+? Eliminando de Ingredientes: {Código=ING0028, Nombre=qqqq, Unidad=Unidades, Precio Local=3, Precio Dólar=1.5096, Fecha de actualización=16/04/2025, Categoría=Material Empaque2}
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Error al leer tabla u hoja ConfiguraciónTablas: C:\Panaderia\Datos\Hoja de datos.xlsx
+? Error al obtener nombres de hojas: C:\Panaderia\Datos\Hoja de datos.xlsx (El sistema no puede encontrar la ruta especificada)
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Error al leer tabla u hoja ConfiguraciónTablas: C:\Panaderia\Datos\Hoja de datos.xlsx
+? Error al obtener nombres de hojas: C:\Panaderia\Datos\Hoja de datos.xlsx (El sistema no puede encontrar la ruta especificada)
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Error al leer tabla u hoja ConfiguraciónTablas: C:\Panaderia\Datos\Hoja de datos.xlsx
+? Error al obtener nombres de hojas: C:\Panaderia\Datos\Hoja de datos.xlsx (El sistema no puede encontrar la ruta especificada)
+? Mostrando ventana principal...
