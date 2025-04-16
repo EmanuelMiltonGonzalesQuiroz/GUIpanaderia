@@ -12,7 +12,7 @@ AppId={{E5A3893E-D3AB-4875-A694-366EFEA0B48A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
-DefaultDirName={autopf}\{#MyAppName}
+DefaultDirName=C:\Panaderia
 UninstallDisplayIcon={app}\{#MyAppExeName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).

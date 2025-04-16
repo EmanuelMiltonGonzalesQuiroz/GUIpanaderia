@@ -47,7 +47,7 @@ public class FormularioDinamico extends ContenedorFlexible {
                     input = new Label(codigoGenerado);
                 }
                 case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre);
-                case "precio local" -> {
+                case "precio local" -> { 
                     campoPrecioLocal = new CampoTexto("Ingrese valor local");
                     input = campoPrecioLocal;
                 }

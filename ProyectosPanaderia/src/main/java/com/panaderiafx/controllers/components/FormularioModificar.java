@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -29,51 +28,32 @@ public class FormularioModificar extends ContenedorFlexible {
     private final List<Map<String, String>> registros;
     private final List<Map<String, Object>> definicionCampos;
 
-    public FormularioModificar(String nombreTabla, List<Map<String, Object>> definicionCampos, List<Map<String, String>> registros) {
+    public FormularioModificar(String nombreTabla, List<Map<String, Object>> definicionCampos, List<Map<String, String>> registros, Map<String, String> filaSeleccionada) {
         this.nombreTabla = nombreTabla;
         this.registros = registros;
         this.definicionCampos = definicionCampos;
-
+    
         VBox contenedor = new VBox(15);
         contenedor.setPadding(new Insets(20));
         contenedor.setAlignment(Pos.CENTER_LEFT);
         contenedor.setMaxWidth(500);
         contenedor.setStyle("-fx-background-color: #FFF3E0;");
-
-        ComboBox<String> selector = new ComboBox<>();
-        for (Map<String, String> fila : registros) {
-            String identificador = fila.getOrDefault("Código", fila.values().iterator().next());
-            selector.getItems().add(identificador);
-        }
-
+    
         VBox formulario = new VBox(15);
-
-        selector.setPromptText("Selecciona registro a modificar");
-        selector.setOnAction(e -> {
-            String seleccionado = selector.getSelectionModel().getSelectedItem();
-            Map<String, String> filaSeleccionada = registros.stream()
-                    .filter(f -> f.containsValue(seleccionado))
-                    .findFirst().orElse(null);
-
-            if (filaSeleccionada != null) {
-                formulario.getChildren().clear();
-                campos.clear();
-                construirFormulario(filaSeleccionada, formulario);
-                HBox botones = new HBox(15);
-                botones.setAlignment(Pos.CENTER_LEFT);
-                botones.getChildren().addAll(
-                    crearBotonModificar(filaSeleccionada),
-                    crearBotonEliminar(filaSeleccionada)
-                );
-                formulario.getChildren().add(botones);
-
-            }
-        });
-
-        contenedor.getChildren().addAll(selector, formulario);
+        construirFormulario(filaSeleccionada, formulario);
+        
+        HBox botones = new HBox(15);
+        botones.setAlignment(Pos.CENTER_LEFT);
+        botones.getChildren().addAll(
+            crearBotonModificar(filaSeleccionada),
+            crearBotonEliminar(filaSeleccionada)
+        );
+        formulario.getChildren().add(botones);
+    
+        contenedor.getChildren().add(formulario);
         this.setContenido(contenedor);
     }
-
+    
     private void construirFormulario(Map<String, String> valores, VBox contenedor) {
         for (Map<String, Object> campoDef : definicionCampos) {
             String nombre = (String) campoDef.get("nombre");
@@ -83,7 +63,7 @@ public class FormularioModificar extends ContenedorFlexible {
 
             switch (tipo.toLowerCase()) {
                 case "label" -> input = new Label(valor);
-                case "select" -> input = new ListaSeleccion(nombreTabla, nombre);
+                case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre, valor);
                 case "precio_local" -> {
                     campoPrecioLocal = new CampoTexto("Ingrese valor local");
                     campoPrecioLocal.setText(valor);
@@ -154,10 +134,17 @@ public class FormularioModificar extends ContenedorFlexible {
                 Node nodo = entrada.getValue();
                 String valor = "";
     
-                if (nodo instanceof CampoTexto texto) valor = texto.getText().trim();
-                else if (nodo instanceof ListaSeleccion lista) valor = lista.getValorSeleccionado();
-                else if (nodo instanceof Label label) valor = label.getText().trim();
+                if (nodo instanceof CampoTexto texto) {
+                    valor = texto.getText().trim();
+                } else if (nodo instanceof ListaSeleccion lista) {
+                    valor = lista.getValorSeleccionado();
+                } else if (nodo instanceof CampoSeleccionExtendido extendido) {
+                    valor = extendido.getValorSeleccionado();
+                } else if (nodo instanceof Label label) {
+                    valor = label.getText().trim();
+                }
     
+                if (valor == null) valor = ""; // prevenir errores por null
                 nuevos.put(campo, valor);
             }
     
@@ -166,19 +153,11 @@ public class FormularioModificar extends ContenedorFlexible {
     
             boolean exito = com.panaderiafx.utils.ModificarUtils.modificarFila(nombreTabla, original, nuevos);
     
-            if (exito) {
-                Alert ok = new Alert(Alert.AlertType.INFORMATION);
-                ok.setTitle("Éxito");
-                ok.setHeaderText(null);
-                ok.setContentText("✅ Registro modificado exitosamente.");
-                ok.show();
-            } else {
-                Alert fail = new Alert(Alert.AlertType.ERROR);
-                fail.setTitle("Error");
-                fail.setHeaderText(null);
-                fail.setContentText("❌ No se pudo modificar el registro.");
-                fail.show();
-            }
+            Alert alerta = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+            alerta.setTitle(exito ? "Éxito" : "Error");
+            alerta.setHeaderText(null);
+            alerta.setContentText(exito ? "✅ Registro modificado exitosamente." : "❌ No se pudo modificar el registro.");
+            alerta.show();
         });
     
         return modificar;
@@ -208,5 +187,10 @@ public class FormularioModificar extends ContenedorFlexible {
     
         return eliminar;
     }
+
+    public Map<String, Node> getCampos() {
+        return campos;
+    }
+    
     
 }

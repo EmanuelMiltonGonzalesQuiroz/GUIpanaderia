@@ -77600,3 +77600,1475 @@ Caused by: java.lang.StackOverflowError
 ? Entrando a start()...
 ? No se encontró ningún código válido en la tabla.
 ? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Unidad
+? Doble clic en tabla: unidades
+? Valor seleccionado desde tabla: unidades
+? Valor seleccionado: unidades
+? Doble clic en tabla: kilos
+? Valor seleccionado desde tabla: kilos
+? Valor seleccionado: kilos
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Categoria
+? Doble clic en tabla: Material Empaque
+? Valor seleccionado desde tabla: Material Empaque
+? Valor seleccionado: Material Empaque
+? Intentando guardar en tabla: Ingredientes
+? Datos: {Código=ING0029, Nombre=frijol, Unidad=kilos, Precio Local=40, Precio Dólar=40, Fecha de actualización=15/04/2025, Categoria=Material Empaque 2}
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? Claves detectadas:
+[Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Registro ejemplo:
+{Código=ING0001, Nombre=Harina, Unidad=libras, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+? Fila:
+  Código = ING0001
+  Nombre = Harina
+  Unidad = libras
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0002
+  Nombre = Azucar Blanca
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0003
+  Nombre = Sal
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0004
+  Nombre = Manteca
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0005
+  Nombre = Propionato de Calcio
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0006
+  Nombre = Mejorante
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0007
+  Nombre = Leche Entera
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0008
+  Nombre = Levadura
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0009
+  Nombre = Bolsas
+  Unidad = unidades
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Material Empaque
+? Fila:
+  Código = ING0010
+  Nombre = Colorante
+  Unidad = onza
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0011
+  Nombre = Vainilla
+  Unidad = litro
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0012
+  Nombre = Azucar Morena
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0013
+  Nombre = Canela en Polvo
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0014
+  Nombre = Canela dulce
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0015
+  Nombre = Raisins
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0016
+  Nombre = Harina Blanca
+  Unidad = kilos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0017
+  Nombre = Harina Integral
+  Unidad = kilos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0018
+  Nombre = Ajonjoli
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0019
+  Nombre = Colorante Negro
+  Unidad = onza
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0020
+  Nombre = Todas Semillas
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0021
+  Nombre = Avena
+  Unidad = onzas
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0022
+  Nombre = Linaza
+  Unidad = onzas
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0023
+  Nombre = Chia
+  Unidad = onzas
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0024
+  Nombre = Azucar
+  Unidad = kilos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0025
+  Nombre = Leche en Polvo
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0026
+  Nombre = Soda
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0027
+  Nombre = Mantequilla
+  Unidad = gramos
+  Precio Local = 1.0
+  Precio Dólar = 2.0
+  Fecha de actualización = 04-sep.-2025
+  Categoria = Materia Prima
+? Fila:
+  Código = ING0028
+  Nombre = frijol
+  Unidad = onza
+  Precio Local = 3
+  Precio Dólar = 3
+  Fecha de actualización = 13/04/2025
+  Categoria = frijoles
+? Fila:
+  Código = ING0029
+  Nombre = frijol
+  Unidad = kilos
+  Precio Local = 40
+  Precio Dólar = 40
+  Fecha de actualización = 15/04/2025
+  Categoria = Material Empaque 2
+? No se encontró ningún código válido en la tabla.
+? Claves detectadas:
+[Código Receta, Producto, Ingrediente, Cantidad, Unidades, Rendimiento esperado en Unidades, Porcentage de Ganancias esperado]
+? Registro ejemplo:
+{Código Receta=REC0001, Producto=Sliced Bread, Ingrediente=ING001, Cantidad=100.0, Unidades=libras, Rendimiento esperado en Unidades=176.0, Porcentage de Ganancias esperado=}
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING001
+  Cantidad = 100.0
+  Unidades = libras
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING002
+  Cantidad = 2640.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING003
+  Cantidad = 660.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING004
+  Cantidad = 2640.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING005
+  Cantidad = 200.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING006
+  Cantidad = 300.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING007
+  Cantidad = 200.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING008
+  Cantidad = 700.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0001
+  Producto = Sliced Bread
+  Ingrediente = ING009
+  Cantidad = 176.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 176.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING001
+  Cantidad = 37.0
+  Unidades = libras
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING002
+  Cantidad = 3350.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING003
+  Cantidad = 230.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING004
+  Cantidad = 1200.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING006
+  Cantidad = 112.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING007
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING008
+  Cantidad = 190.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING010
+  Cantidad = 1.0
+  Unidades = onza
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0002
+  Producto = Semitas
+  Ingrediente = ING009
+  Cantidad = 645.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0003
+  Producto = Pasta de Semitas
+  Ingrediente = ING001
+  Cantidad = 37.0
+  Unidades = libras
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0003
+  Producto = Pasta de Semitas
+  Ingrediente = ING002
+  Cantidad = 3350.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0003
+  Producto = Pasta de Semitas
+  Ingrediente = ING004
+  Cantidad = 1200.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0003
+  Producto = Pasta de Semitas
+  Ingrediente = ING011
+  Cantidad = 
+  Unidades = litro
+  Rendimiento esperado en Unidades = 645.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING001
+  Cantidad = 
+  Unidades = libras
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING002
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING003
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING004
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING005
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING006
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING007
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING008
+  Cantidad = 
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0004
+  Producto = Burger
+  Ingrediente = ING009
+  Cantidad = 864.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 864.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING001
+  Cantidad = 
+  Unidades = libras
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING002
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING003
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING004
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING005
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING006
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING007
+  Cantidad = 
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING008
+  Cantidad = 
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0005
+  Producto = Hot Dog
+  Ingrediente = ING009
+  Cantidad = 640.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 640.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING001
+  Cantidad = 50.0
+  Unidades = libras
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING012
+  Cantidad = 4400.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING003
+  Cantidad = 112.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING004
+  Cantidad = 1600.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING006
+  Cantidad = 112.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING007
+  Cantidad = 300.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING008
+  Cantidad = 500.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING011
+  Cantidad = 0.25
+  Unidades = litro
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING010
+  Cantidad = 
+  Unidades = onza
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0006
+  Producto = Round Bunn
+  Ingrediente = ING009
+  Cantidad = 140.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0007
+  Producto = Refinar - Round Bunn
+  Ingrediente = ING012
+  Cantidad = 4400.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0007
+  Producto = Refinar - Round Bunn
+  Ingrediente = ING013
+  Cantidad = 125.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 140.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING001
+  Cantidad = 58.0
+  Unidades = libras
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING012
+  Cantidad = 340.2
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING003
+  Cantidad = 170.1
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING004
+  Cantidad = 2041.17
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING006
+  Cantidad = 150.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING007
+  Cantidad = 300.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING015
+  Cantidad = 680.39
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING011
+  Cantidad = 0.25
+  Unidades = litro
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING010
+  Cantidad = 
+  Unidades = onza
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0008
+  Producto = Special Bunn
+  Ingrediente = ING009
+  Cantidad = 120.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0009
+  Producto = Mezcla de Panela - Special Bunn
+  Ingrediente = ING002
+  Cantidad = 680.39
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0009
+  Producto = Mezcla de Panela - Special Bunn
+  Ingrediente = ING014
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 120.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING016
+  Cantidad = 12.0
+  Unidades = kilos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING017
+  Cantidad = 6.0
+  Unidades = kilos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING002
+  Cantidad = 990.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING003
+  Cantidad = 248.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING005
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING006
+  Cantidad = 125.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING004
+  Cantidad = 990.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING018
+  Cantidad = 50.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING019
+  Cantidad = 1.0
+  Unidades = onza
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING008
+  Cantidad = 190.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0010
+  Producto = Pan Integral
+  Ingrediente = ING009
+  Cantidad = 64.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 64.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING016
+  Cantidad = 12.0
+  Unidades = kilos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING017
+  Cantidad = 6.0
+  Unidades = kilos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING002
+  Cantidad = 990.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING003
+  Cantidad = 248.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING005
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING006
+  Cantidad = 125.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING004
+  Cantidad = 990.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING019
+  Cantidad = 1.0
+  Unidades = onza
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING008
+  Cantidad = 190.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING020
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING021
+  Cantidad = 4.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING018
+  Cantidad = 4.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING022
+  Cantidad = 4.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING023
+  Cantidad = 4.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0011
+  Producto = Pan Multigrano
+  Ingrediente = ING009
+  Cantidad = 48.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 48.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING001
+  Cantidad = 12.5
+  Unidades = libras
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING024
+  Cantidad = 0.5
+  Unidades = kilos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING003
+  Cantidad = 82.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING005
+  Cantidad = 25.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING004
+  Cantidad = 330.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING006
+  Cantidad = 38.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING025
+  Cantidad = 50.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING008
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0012
+  Producto = Exclusive White
+  Ingrediente = ING009
+  Cantidad = 16.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 16.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING001
+  Cantidad = 12.5
+  Unidades = libras
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING024
+  Cantidad = 18.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING003
+  Cantidad = 4.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING005
+  Cantidad = 25.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING004
+  Cantidad = 350.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING006
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING025
+  Cantidad = 75.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING008
+  Cantidad = 100.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0013
+  Producto = Pan Frances
+  Ingrediente = ING009
+  Cantidad = 84.0
+  Unidades = unidades
+  Rendimiento esperado en Unidades = 84.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING001
+  Cantidad = 13.0
+  Unidades = libras
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING024
+  Cantidad = 3000.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING004
+  Cantidad = 1000.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING027
+  Cantidad = 500.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING026
+  Cantidad = 200.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING003
+  Cantidad = 10.0
+  Unidades = gramos
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Fila:
+  Código Receta = REC0014
+  Producto = Galletas
+  Ingrediente = ING011
+  Cantidad = 1.0
+  Unidades = onzas
+  Rendimiento esperado en Unidades = 560.0
+  Porcentage de Ganancias esperado = 
+? Claves detectadas:
+[Fecha, Código receta, Lote, Cantidad producida, Rendimiento esperado, Diferencia, Ganancia obtenida, Ganancia esperada]
+? Registro ejemplo:
+{Fecha=31/03/2025, Código receta=REC001, Lote=1.0, Cantidad producida=48.0, Rendimiento esperado=50.0, Diferencia=2.0, Ganancia obtenida=25.0, Ganancia esperada=30.0}
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC001
+  Lote = 1.0
+  Cantidad producida = 48.0
+  Rendimiento esperado = 50.0
+  Diferencia = 2.0
+  Ganancia obtenida = 25.0
+  Ganancia esperada = 30.0
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC002
+  Lote = 2.0
+  Cantidad producida = 49.0
+  Rendimiento esperado = 51.0
+  Diferencia = 2.0
+  Ganancia obtenida = 25.5
+  Ganancia esperada = 30.6
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC003
+  Lote = 3.0
+  Cantidad producida = 50.0
+  Rendimiento esperado = 52.0
+  Diferencia = 2.0
+  Ganancia obtenida = 26.0
+  Ganancia esperada = 31.2
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC004
+  Lote = 4.0
+  Cantidad producida = 51.0
+  Rendimiento esperado = 53.0
+  Diferencia = 2.0
+  Ganancia obtenida = 26.5
+  Ganancia esperada = 31.8
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC005
+  Lote = 5.0
+  Cantidad producida = 52.0
+  Rendimiento esperado = 54.0
+  Diferencia = 2.0
+  Ganancia obtenida = 27.0
+  Ganancia esperada = 32.4
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC006
+  Lote = 6.0
+  Cantidad producida = 53.0
+  Rendimiento esperado = 55.0
+  Diferencia = 2.0
+  Ganancia obtenida = 27.5
+  Ganancia esperada = 33.0
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC007
+  Lote = 7.0
+  Cantidad producida = 54.0
+  Rendimiento esperado = 56.0
+  Diferencia = 2.0
+  Ganancia obtenida = 28.0
+  Ganancia esperada = 33.6
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC008
+  Lote = 8.0
+  Cantidad producida = 55.0
+  Rendimiento esperado = 57.0
+  Diferencia = 2.0
+  Ganancia obtenida = 28.5
+  Ganancia esperada = 34.2
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC009
+  Lote = 9.0
+  Cantidad producida = 56.0
+  Rendimiento esperado = 58.0
+  Diferencia = 2.0
+  Ganancia obtenida = 29.0
+  Ganancia esperada = 34.8
+? Fila:
+  Fecha = 31/03/2025
+  Código receta = REC010
+  Lote = 10.0
+  Cantidad producida = 57.0
+  Rendimiento esperado = 59.0
+  Diferencia = 2.0
+  Ganancia obtenida = 29.5
+  Ganancia esperada = 35.4
+? Claves detectadas:
+[Nombre, Valor, Unidad]
+? Registro ejemplo:
+{Nombre=Costo Mano Obra Hora, Valor=15.0, Unidad=Local}
+? Fila:
+  Nombre = Costo Mano Obra Hora
+  Valor = 15.0
+  Unidad = Local
+? Fila:
+  Nombre = Costo Energía kWh
+  Valor = 1.2
+  Unidad = Local
+? Fila:
+  Nombre = Porcentaje Merma
+  Valor = 5.0
+  Unidad = %
+? Fila:
+  Nombre = Costo Alquiler
+  Valor = 500.0
+  Unidad = Local
+? Fila:
+  Nombre = Seguridad Social
+  Valor = 10.0
+  Unidad = %
+? Fila:
+  Nombre = Impuestos
+  Valor = 13.0
+  Unidad = %
+? Fila:
+  Nombre = Utilidad Esperada
+  Valor = 25.0
+  Unidad = %
+? Fila:
+  Nombre = Costo Gas m3
+  Valor = 1.5
+  Unidad = Local
+? Fila:
+  Nombre = Depreciación Mensual
+  Valor = 200.0
+  Unidad = Local
+? Fila:
+  Nombre = Costo Agua m3
+  Valor = 2.0
+  Unidad = Local
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Doble clic en tabla: onza
+? Valor seleccionado: onza
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Doble clic en tabla: ING0010
+? Doble clic en tabla: 
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Doble clic en tabla: ING0003
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Doble clic en tabla: ING0002
+? Doble clic en tabla: REC0001
+? Doble clic en tabla: 31/03/2025
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Doble clic en tabla: Harina
+? Doble clic en tabla: onza
+? Valor seleccionado: onza
+? Doble clic en tabla: Material Empaque 2
+? Valor seleccionado: Material Empaque 2
+? Modificando: {Código=ING0001, Nombre=Harina, Unidad=libras, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+?? Nuevo valor: {Código=ING0001, Nombre=Harina, Unidad=, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=}
+? Error al modificar fila: C:\Program Files (x86)\Panadería FX\Datos\Hoja de datos.xlsx (Acceso denegado)
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Unidad
+? Doble clic en tabla: unidades
+? Valor seleccionado desde tabla: unidades
+? Valor seleccionado: unidades
+? Intentando guardar en tabla: Ingredientes
+? Datos: {Código=ING0030, Nombre=aaaa, Unidad=unidades, Precio Local=44, Precio Dólar=44, Fecha de actualización=16/04/2025, Categoria=44}
+? Error al crear fila: C:\Program Files (x86)\Panadería FX\Datos\Hoja de datos.xlsx (Acceso denegado)
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Doble clic en tabla: Harina
+? Doble clic en tabla: onza
+? Valor seleccionado: onza
+? Doble clic en tabla: frijoles
+? Valor seleccionado: frijoles
+? Modificando: {Código=ING0001, Nombre=Harina, Unidad=libras, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+?? Nuevo valor: {Código=ING0001, Nombre=Harina, Unidad=, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=}
+? Redirección de logs activada.
+? Entrando a start()...
+? No se encontró ningún código válido en la tabla.
+? Mostrando ventana principal...
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Unidad
+? Doble clic en tabla: litro
+? Valor seleccionado desde tabla: litro
+? Valor seleccionado: litro
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Categoria
+? Doble clic en tabla: frijoles
+? Valor seleccionado desde tabla: frijoles
+? Valor seleccionado: frijoles
+? Intentando guardar en tabla: Ingredientes
+? Datos: {Código=ING0030, Nombre=adsasd, Unidad=litro, Precio Local=5, Precio Dólar=5, Fecha de actualización=16/04/2025, Categoria=frijoles}
+? Doble clic en tabla: frijol
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Unidad
+? Doble clic en tabla: unidades
+? Valor seleccionado desde tabla: unidades
+? Valor seleccionado: unidades
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Categoria
+? Doble clic en tabla: Material Empaque 2
+? Valor seleccionado desde tabla: Material Empaque 2
+? Valor seleccionado: Material Empaque 2
+? Intentando guardar en tabla: Ingredientes
+? Datos: {Código=ING0031, Nombre=asdas, Unidad=unidades, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=Material Empaque 2}
+? Error al crear fila: C:\Panaderia\Datos\Hoja de datos.xlsx (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Unidad
+? Doble clic en tabla: unidades
+? Valor seleccionado desde tabla: unidades
+? Valor seleccionado: unidades
+? Claves detectadas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoria]
+? Usando columna: Categoria
+? Doble clic en tabla: Material Empaque
+? Valor seleccionado desde tabla: Material Empaque
+? Valor seleccionado: Material Empaque
+? Intentando guardar en tabla: Ingredientes
+? Datos: {Código=ING0028, Nombre=1231, Unidad=unidades, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=Material Empaque}
+? Doble clic en tabla: 1231
+? Doble clic en tabla: onza
+? Valor seleccionado: onza
+? Doble clic en tabla: Materia Prima
+? Valor seleccionado: Materia Prima
+? Modificando: {Código=ING0028, Nombre=1231, Unidad=unidades, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=Material Empaque}
+?? Nuevo valor: {Código=ING0028, Nombre=123155, Unidad=, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=}
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: 123155
+? Doble clic en tabla: unidades
+? Valor seleccionado: unidades
+? Modificando: {Código=ING0028, Nombre=123155, Unidad=, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=}
+?? Nuevo valor: {Código=ING0028, Nombre=123155, Unidad=, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=}
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: 123155
+? Doble clic en tabla: unidades
+? Valor seleccionado: unidades
+? Modificando: {Código=ING0028, Nombre=123155, Unidad=, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=}
+?? Nuevo valor: {Código=ING0028, Nombre=123155, Unidad=unidades, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=dddd}
+? Doble clic en tabla: Azucar Blanca
+? Redirección de logs activada.
+? Entrando a start()...
+? Mostrando ventana principal...
+? Doble clic en tabla: Manteca
+? Doble clic en tabla: unidades
+? Valor seleccionado: unidades
+? Modificando: {Código=ING0004, Nombre=Manteca, Unidad=gramos, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+?? Nuevo valor: {Código=ING0004, Nombre=Manteca, Unidad=unidades, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+? Doble clic en tabla: Manteca
+? Doble clic en tabla: gramos
+? Valor seleccionado: gramos
+? Modificando: {Código=ING0004, Nombre=Manteca, Unidad=unidades, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+?? Nuevo valor: {Código=ING0004, Nombre=Manteca, Unidad=gramos, Precio Local=1.0, Precio Dólar=2.0, Fecha de actualización=04-sep.-2025, Categoria=Materia Prima}
+? Doble clic en tabla: 123155
+? Eliminando de Ingredientes: {Código=ING0028, Nombre=123155, Unidad=unidades, Precio Local=3, Precio Dólar=3, Fecha de actualización=16/04/2025, Categoria=dddd}

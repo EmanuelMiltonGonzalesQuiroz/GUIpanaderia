@@ -12,11 +12,11 @@ public class SubPestanasFactory {
         estructura.put("Ingredientes", Arrays.asList("Ver", "Crear", "Modificar", "Gráfico"));
         estructura.put("Recetas", Arrays.asList("Ver", "Crear", "Modificar", "Gráfico"));
         estructura.put("Produccion", Arrays.asList("Ver", "Crear", "Modificar"));
-        estructura.put("Costos", Arrays.asList("Ver", "Crear","Gráfico"));
+        estructura.put("Costos", Arrays.asList("Ver", "Crear", "Gráfico"));
         estructura.put("TasaCambio", Arrays.asList("Ver", "Crear"));
         estructura.put("HistorialPrecios", Arrays.asList("Ver", "Gráfico"));
-        estructura.put("Parametros", Arrays.asList("Ver", "Crear","Modificar"));
-        estructura.put("TabladeConversión", Arrays.asList("Ver","Crear"));
+        estructura.put("Parametros", Arrays.asList("Ver", "Crear", "Modificar"));
+        estructura.put("TabladeConversión", Arrays.asList("Ver", "Crear"));
     }
 
     public static TabPane crear(String nombreTabla) {
@@ -27,8 +27,13 @@ public class SubPestanasFactory {
             Tab tab = new Tab(accion);
             tab.setClosable(false);
 
-            // Usa la fábrica de controladores para mostrar el contenido real
-            tab.setContent(ControladorFactory.getVista(accion, nombreTabla));
+            // Cargar contenido SOLO cuando se selecciona la pestaña
+            tab.setOnSelectionChanged(e -> {
+                if (tab.isSelected()) {
+                    tab.setContent(ControladorFactory.getVista(accion, nombreTabla));
+                }
+            });
+
             subTabs.getTabs().add(tab);
         }
 

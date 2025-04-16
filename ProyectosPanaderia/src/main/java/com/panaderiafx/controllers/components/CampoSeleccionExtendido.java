@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 import java.util.function.BiConsumer;
-
 public class CampoSeleccionExtendido extends VBox {
 
     private final TextField campoPersonalizado = new TextField();
@@ -17,6 +16,10 @@ public class CampoSeleccionExtendido extends VBox {
     private BiConsumer<String, CampoSeleccionExtendido> onSeleccionarListener;
 
     public CampoSeleccionExtendido(String tabla, String columna) {
+        this(tabla, columna, ""); // delega al constructor principal
+    }
+
+    public CampoSeleccionExtendido(String tabla, String columna, String valorInicial) {
         this.tabla = tabla;
         this.columna = columna;
 
@@ -41,6 +44,11 @@ public class CampoSeleccionExtendido extends VBox {
                 seleccionLabel.setText("Nada seleccionado");
             }
         });
+
+        if (!valorInicial.isBlank()) {
+            campoPersonalizado.setText(valorInicial);
+            actualizarLabel(valorInicial);
+        }
 
         HBox fila = new HBox(10, botonSeleccionar, campoPersonalizado);
         fila.setAlignment(Pos.CENTER_LEFT);
