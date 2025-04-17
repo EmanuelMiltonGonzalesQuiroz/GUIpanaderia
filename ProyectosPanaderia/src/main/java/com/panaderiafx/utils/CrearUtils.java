@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CrearUtils {
 
-    private static final String RUTA = "C:\\Panaderia\\Datos\\Hoja de datos.xlsx";
+    private static final String RUTA = "Datos\\Hoja de datos.xlsx";
 
     public static boolean crearFila(String nombreTabla, Map<String, String> nuevaFila) {
         try (FileInputStream fis = new FileInputStream(RUTA);

@@ -14,7 +14,7 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Excel
 OutputBaseFilename=PanaderiaFX_Installer
-SetupIconFile=C:\PanaderiaFX_Portable\icons\icon.ico
+SetupIconFile= C:\Excel\ProyectosPanaderia\icons\icon.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -28,7 +28,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 ; Ejecutable compilado
 Source: "C:\Excel\ProyectosPanaderia\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 ; Todo el contenido portable
-Source: "C:\PanaderiaFX_Portable\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Excel\ProyectosPanaderia\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

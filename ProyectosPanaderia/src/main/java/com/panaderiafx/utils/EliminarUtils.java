@@ -8,7 +8,7 @@ import java.util.*;
 
 public class EliminarUtils {
 
-    private static final String RUTA = "C:\\Panaderia\\Datos\\Hoja de datos.xlsx";
+    private static final String RUTA = "Datos\\Hoja de datos.xlsx";
 
     public static boolean eliminarFila(String nombreTabla, Map<String, String> condiciones) {
         try (FileInputStream fis = new FileInputStream(RUTA);

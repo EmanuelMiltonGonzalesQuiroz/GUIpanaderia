@@ -13,7 +13,7 @@ import java.util.*;
 
 public class VerUtils {
 
-    private static final String RUTA_EXCEL = "C:\\Panaderia\\Datos\\Hoja de datos.xlsx";
+    private static final String RUTA_EXCEL = "Datos\\Hoja de datos.xlsx";
 
     public static List<Map<String, String>> verTabla(String nombreTabla) {
         List<Map<String, String>> datos = new ArrayList<>();
