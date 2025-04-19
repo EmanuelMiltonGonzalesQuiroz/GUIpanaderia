@@ -23,7 +23,7 @@ public class Pestanas {
             if (mostrar.equalsIgnoreCase("Sí")) {
                 Tab tab = new Tab(nombreVisible);
                 tab.setClosable(false);
-                tab.setContent(SubPestanasFactory.crear(nombreSistema));
+                tab.setContent(SubPestanasFactory.crear(nombreSistema, nombreVisible));
                 tabPane.getTabs().add(tab);
                 agregados.add(nombreSistema.toLowerCase());
             }
@@ -35,7 +35,7 @@ public class Pestanas {
             if (!agregados.contains(hoja.toLowerCase())) {
                 Tab tab = new Tab(hoja);
                 tab.setClosable(false);
-                tab.setContent(SubPestanasFactory.crear(hoja));
+                tab.setContent(SubPestanasFactory.crear(hoja, hoja)); // Usar hoja como nombre visible por defecto
                 tabPane.getTabs().add(tab);
             }
         }

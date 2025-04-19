@@ -39,12 +39,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        System.out.println("🟢 Lanzando aplicación desde main()");
-
-        // Redirección segura a log.txt
+        // Redirigir logs desde el principio
         try {
-            FileOutputStream fos = new FileOutputStream("log.txt", true);
-            PrintStream log = new PrintStream(fos);
+            FileOutputStream fos = new FileOutputStream("log.txt", false); // limpia en cada ejecución
+            PrintStream log = new PrintStream(fos, true, "UTF-8");
             System.setOut(log);
             System.setErr(log);
             System.out.println("📌 Redirección de logs activada.");
@@ -53,11 +51,7 @@ public class App extends Application {
             e.printStackTrace();
         }
 
-        try {
-            launch(args);
-        } catch (Exception e) {
-            System.err.println("❌ Error al lanzar la aplicación:");
-            e.printStackTrace();
-        }
+        System.out.println("🟢 Lanzando aplicación desde main()");
+        launch(args);
     }
 }

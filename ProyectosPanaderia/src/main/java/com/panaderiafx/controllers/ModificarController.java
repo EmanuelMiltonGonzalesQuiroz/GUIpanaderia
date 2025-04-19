@@ -17,71 +17,75 @@ import java.util.*;
 public class ModificarController {
 
     public static ScrollPane mostrar(String tabla) {
+        return mostrar(tabla, tabla);
+    }
+
+    public static ScrollPane mostrar(String tabla, String nombreVisible) {
         List<Map<String, String>> registros = VerUtils.verTabla(tabla);
         if (registros.isEmpty()) {
-            VBox vacio = new VBox(new Label("No hay datos disponibles para modificar en: " + tabla));
+            VBox vacio = new VBox(new Label("No hay datos disponibles para modificar en: " + nombreVisible));
             vacio.setStyle("-fx-alignment: center; -fx-padding: 20px;");
             return new ScrollPane(vacio);
         }
-    
+
         List<Map<String, Object>> definicionCampos = generarInstrucciones(tabla, registros.get(0));
-    
+
         VBox contenedorGeneral = new VBox(20);
         contenedorGeneral.setPadding(new Insets(20));
         contenedorGeneral.setStyle("-fx-background-color: #FFF3E0;");
-    
-        Label tituloGeneral = new Label("Modificar - " + traducirNombreTabla(tabla));
+
+        Label tituloGeneral = new Label("Modificar - " + nombreVisible);
         tituloGeneral.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         tituloGeneral.setAlignment(Pos.CENTER);
         tituloGeneral.setMaxWidth(Double.MAX_VALUE);
-    
+
         HBox root = new HBox(30);
         root.setPadding(new Insets(20));
         root.setAlignment(Pos.TOP_CENTER);
-    
+
         VBox panelIzquierdo = new VBox(10);
         panelIzquierdo.setPrefWidth(300);
         panelIzquierdo.setAlignment(Pos.TOP_CENTER);
-    
+
         Label tituloIzq = new Label("Registros disponibles");
         tituloIzq.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         panelIzquierdo.getChildren().addAll(tituloIzq);
-    
+
         String columnaBusqueda = registros.get(0).keySet().stream().skip(1).findFirst().orElseGet(() ->
                 registros.get(0).keySet().iterator().next()
         );
-    
+
         TablaBusquedaSimple tablaBusqueda = new TablaBusquedaSimple(registros, columnaBusqueda);
         panelIzquierdo.getChildren().add(tablaBusqueda);
-    
+
         VBox panelFormulario = new VBox(10);
         panelFormulario.setPrefWidth(600);
-    
+
         Label tituloCentro = new Label("Formulario de modificación");
         tituloCentro.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         tituloCentro.setVisible(false);
         panelFormulario.getChildren().add(tituloCentro);
-    
+
         VBox panelDerecho = new VBox(10);
         panelDerecho.setPrefWidth(400);
-    
+
         Label tituloDerecha = new Label("Selección de valores");
         tituloDerecha.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         tituloDerecha.setVisible(false);
         panelDerecho.getChildren().add(tituloDerecha);
-    
+
         tablaBusqueda.setOnSeleccionar(valor -> {
             Optional<Map<String, String>> filaOpt = registros.stream()
                     .filter(fila -> fila.getOrDefault(columnaBusqueda, "").equals(valor))
                     .findFirst();
-    
+
             filaOpt.ifPresent(fila -> {
                 panelFormulario.getChildren().removeIf(n -> n instanceof FormularioModificar);
                 tituloCentro.setVisible(true);
-    
+
                 FormularioModificar formulario = new FormularioModificar(tabla, definicionCampos, registros, fila);
                 panelFormulario.getChildren().add(formulario);
-    
+
                 formulario.getCampos().values().forEach(nodo -> {
                     if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
                         campoExtendido.setOnSeleccionarListener((columna, campo) -> {
@@ -93,16 +97,16 @@ public class ModificarController {
                 });
             });
         });
-    
+
         root.getChildren().addAll(panelIzquierdo, panelFormulario, panelDerecho);
         contenedorGeneral.getChildren().addAll(tituloGeneral, root);
-    
+
         ScrollPane sc = new ScrollPane(contenedorGeneral);
         sc.setFitToWidth(true);
         sc.setFitToHeight(true);
         return sc;
     }
-    
+
     private static Node crearTabla(String columna, CampoSeleccionExtendido campoExtendido) {
         List<Map<String, String>> datos = VerUtils.verTabla(campoExtendido.getTabla());
 
@@ -128,51 +132,35 @@ public class ModificarController {
 
     private static List<Map<String, Object>> generarInstrucciones(String tabla, Map<String, String> ejemplo) {
         List<Map<String, Object>> definicion = new ArrayList<>();
-    
-        // Leer desde la hoja ConfiguraciónFormularios
+
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónFormularios");
-    
+
         for (Map<String, String> fila : config) {
             String nombreTabla = fila.getOrDefault("Tabla", "").trim();
             String campo = fila.getOrDefault("Campo", "").trim();
             String tipo = fila.getOrDefault("Tipo", "").trim();
-    
+
             if (!nombreTabla.equalsIgnoreCase(tabla)) continue;
-    
+
             Map<String, Object> item = new HashMap<>();
             item.put("nombre", campo);
             item.put("tipo", tipo.toLowerCase());
-    
+
             if (tipo.equalsIgnoreCase("select")) {
                 item.put("origen", fila.getOrDefault("Origen", "").trim());
                 item.put("datoMostrar", fila.getOrDefault("Dato a Mostrar", "").trim());
                 item.put("datoCargar", fila.getOrDefault("Dato a Cargar", "").trim());
             }
-    
+
             definicion.add(item);
         }
-    
-        // Si no encontró nada, retornar solo un campo de error
+
         if (definicion.isEmpty()) {
             VBox error = new VBox(new Label("❌ No hay configuración definida para: " + tabla));
             error.setStyle("-fx-alignment: center; -fx-padding: 20px;");
             return List.of(Map.of("nombre", "ERROR", "tipo", "label"));
         }
-    
+
         return definicion;
-    }
-    
-    private static String traducirNombreTabla(String tabla) {
-        return switch (tabla.toLowerCase()) {
-            case "ingredientes" -> "Ingredientes";
-            case "recetas" -> "Recetas";
-            case "produccion" -> "Producción";
-            case "costos" -> "Costos";
-            case "tasacambio" -> "Tasa de Cambio";
-            case "historial de precios" -> "Historial de Precios";
-            case "parametros" -> "Parámetros";
-            case "tabladeconversión" -> "Tabla de Conversión";
-            default -> tabla;
-        };
     }
 }

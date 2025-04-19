@@ -1,5 +1,7 @@
 package com.panaderiafx.controllers.components;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -63,9 +65,14 @@ public class FormularioModificar extends ContenedorFlexible {
         String tipo = (String) campoDef.get("tipo");
         String valor = valores.getOrDefault(nombre, "");
         Node input;
+        System.out.print("🔎 Verificando cambios para la tabla: ");
+
 
 
         switch (tipo.toLowerCase()) {
+            case "código" -> {// automático
+                    input = new Label(valor);
+                }
             case "label" -> input = new Label(valor);
             case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre, valor); 
             case "precio" -> {
@@ -74,7 +81,10 @@ public class FormularioModificar extends ContenedorFlexible {
                 camposPrecio.add(campoPrecio);
                 input = campoPrecio;
             }
-            case "fecha" -> input = new Label(valor);
+            case "fecha" -> {
+                String fechaHoy = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                input = new Label(fechaHoy);
+            }
             default -> {
                 CampoTexto campoTexto = new CampoTexto("Modificar valor...");
                 campoTexto.setText(valor);
@@ -129,15 +139,15 @@ public class FormularioModificar extends ContenedorFlexible {
 
     private Button crearBotonModificar(Map<String, String> original) {
         Button modificar = new BotonAccion("Actualizar", "#FF9800");
-    
+
         modificar.setOnAction(e -> {
             Map<String, String> nuevos = new LinkedHashMap<>();
-    
+
             for (var entrada : campos.entrySet()) {
                 String campo = entrada.getKey();
                 Node nodo = entrada.getValue();
                 String valor = "";
-    
+
                 if (nodo instanceof CampoTexto texto) {
                     valor = texto.getText().trim();
                 } else if (nodo instanceof ListaSeleccion lista) {
@@ -147,26 +157,33 @@ public class FormularioModificar extends ContenedorFlexible {
                 } else if (nodo instanceof Label label) {
                     valor = label.getText().trim();
                 }
-    
+
                 if (valor == null) valor = ""; // prevenir errores por null
                 nuevos.put(campo, valor);
             }
-    
-            System.out.println("🛠 Modificando: " + original);
+
+            System.out.println("🛠 Modificando: " + original + " en " + nombreTabla);
             System.out.println("➡️ Nuevo valor: " + nuevos);
-    
+
+            // 👇 Aplicar lógica adicional si es Ingredientes
+            if ("Ingredientes".equalsIgnoreCase(nombreTabla)) {
+                System.out.println("se esta moficando ingredientes");
+
+                com.panaderiafx.utils.RegistroCambiosUtils.validarYCrearRegistro(nombreTabla, original, nuevos);
+            }
+
             boolean exito = com.panaderiafx.utils.ModificarUtils.modificarFila(nombreTabla, original, nuevos);
-    
+
             Alert alerta = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
             alerta.setTitle(exito ? "Éxito" : "Error");
             alerta.setHeaderText(null);
             alerta.setContentText(exito ? "✅ Registro modificado exitosamente." : "❌ No se pudo modificar el registro.");
             alerta.show();
         });
-    
+
         return modificar;
     }
-    
+
     private Button crearBotonEliminar(Map<String, String> filaSeleccionada) {
         Button eliminar = new BotonAccion("Eliminar", "#F44336");
     

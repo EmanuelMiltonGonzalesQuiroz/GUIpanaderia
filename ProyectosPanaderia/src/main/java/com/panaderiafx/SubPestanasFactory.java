@@ -1,6 +1,7 @@
 package com.panaderiafx;
 
 import com.panaderiafx.utils.VerUtils;
+import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
@@ -8,7 +9,7 @@ import java.util.*;
 
 public class SubPestanasFactory {
 
-    public static TabPane crear(String nombreTabla) {
+    public static TabPane crear(String nombreTabla, String nombreVisible) {
         TabPane subTabs = new TabPane();
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
 
@@ -30,11 +31,18 @@ public class SubPestanasFactory {
         for (String accion : acciones) {
             Tab tab = new Tab(accion);
             tab.setClosable(false);
-            tab.setOnSelectionChanged(e -> {
+
+            // ✅ Carga inicial
+            tab.setContent(ControladorFactory.getVista(accion, nombreTabla, nombreVisible));
+
+            // ✅ Siempre recarga cuando se vuelve a seleccionar
+            tab.setOnSelectionChanged(event -> {
                 if (tab.isSelected()) {
-                    tab.setContent(ControladorFactory.getVista(accion, nombreTabla));
+                    Node nuevaVista = ControladorFactory.getVista(accion, nombreTabla, nombreVisible);
+                    tab.setContent(nuevaVista);
                 }
             });
+
             subTabs.getTabs().add(tab);
         }
 

@@ -115,16 +115,16 @@ public class FormularioDinamico extends ContenedorFlexible {
     }
     private Button crearBotonGuardar() {
         Button guardar = new BotonAccion("Guardar", "#4CAF50");
-
+    
         guardar.setOnAction(e -> {
             Map<String, String> datos = new LinkedHashMap<>();
             StringBuilder errores = new StringBuilder();
-
+    
             for (var entrada : campos.entrySet()) {
                 String nombre = entrada.getKey();
                 Node nodo = entrada.getValue();
                 String valor = "";
-
+    
                 if (nodo instanceof CampoTexto campo) {
                     valor = campo.getText().trim();
                 } else if (nodo instanceof ListaSeleccion lista) {
@@ -134,22 +134,28 @@ public class FormularioDinamico extends ContenedorFlexible {
                 } else if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
                     valor = campoExtendido.getValorSeleccionado();
                 }
-
-                if ((valor == null || valor.isEmpty()) && !nombre.toLowerCase().contains("código") && !nombre.toLowerCase().contains("fecha")) {
+    
+                if ((valor == null || valor.isEmpty()) &&
+                    !nombre.toLowerCase().contains("código") &&
+                    !nombre.toLowerCase().contains("fecha")) {
                     errores.append("El campo ").append(nombre).append(" es obligatorio.\n");
                 }
-
+    
                 datos.put(nombre, valor);
             }
-
-            if (!datos.containsKey("Código") && !codigoGenerado.isEmpty()) {
-                datos.put("Código", codigoGenerado);
+    
+            // ✅ Asegurar código antes del historial
+            if (!datos.containsKey("Código") || datos.get("Código").isBlank()) {
+                if (!codigoGenerado.isEmpty()) {
+                    datos.put("Código", codigoGenerado);
+                }
             }
-
-            if (!datos.containsKey("Fecha de actualización")) {
+    
+            // ✅ Asegurar fecha antes del historial
+            if (!datos.containsKey("Fecha de actualización") || datos.get("Fecha de actualización").isBlank()) {
                 datos.put("Fecha de actualización", LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             }
-
+    
             if (errores.length() > 0) {
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("Errores");
@@ -158,7 +164,13 @@ public class FormularioDinamico extends ContenedorFlexible {
                 alerta.show();
                 return;
             }
-
+    
+            // ✅ Registro de historial debe hacerse después de tener código
+            if ("Ingredientes".equalsIgnoreCase(nombreTabla)) {
+                System.out.println("🆕 Creando ingrediente: guardando también en historial..." + datos);
+                com.panaderiafx.utils.RegistroCambiosUtils.validarYCrearRegistro(nombreTabla, new HashMap<>(), datos);
+            }
+    
             boolean exito = CrearUtils.crearFila(nombreTabla, datos);
             Alert resultado = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
             resultado.setTitle(exito ? "Éxito" : "Error");
@@ -166,10 +178,10 @@ public class FormularioDinamico extends ContenedorFlexible {
             resultado.setContentText(exito ? "✅ Fila guardada exitosamente." : "❌ No se pudo guardar la fila.");
             resultado.show();
         });
-
+    
         return guardar;
     }
-
+    
     public Map<String, Node> getCampos() {
         return campos;
     }

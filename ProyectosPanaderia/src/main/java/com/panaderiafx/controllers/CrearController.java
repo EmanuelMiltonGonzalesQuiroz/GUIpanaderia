@@ -17,9 +17,13 @@ import java.util.*;
 public class CrearController {
 
     public static ScrollPane mostrar(String tabla) {
+        return mostrar(tabla, tabla);
+    }
+
+    public static ScrollPane mostrar(String tabla, String nombreVisible) {
         List<Map<String, String>> datos = VerUtils.verTabla(tabla);
         if (datos.isEmpty()) {
-            VBox vacio = new VBox(new Label("No hay estructura disponible para: " + tabla));
+            VBox vacio = new VBox(new Label("No hay estructura disponible para: " + nombreVisible));
             vacio.setStyle("-fx-alignment: center; -fx-padding: 20px;");
             return new ScrollPane(vacio);
         }
@@ -30,7 +34,7 @@ public class CrearController {
         contenedorVertical.setStyle("-fx-background-color: #FFF3E0;");
         contenedorVertical.setPadding(new Insets(20));
 
-        Label tituloPrincipal = new Label("Crear - " + tabla.substring(0, 1).toUpperCase() + tabla.substring(1));
+        Label tituloPrincipal = new Label("Crear - " + nombreVisible);
         tituloPrincipal.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
         tituloPrincipal.setMaxWidth(Double.MAX_VALUE);
         tituloPrincipal.setAlignment(Pos.CENTER);

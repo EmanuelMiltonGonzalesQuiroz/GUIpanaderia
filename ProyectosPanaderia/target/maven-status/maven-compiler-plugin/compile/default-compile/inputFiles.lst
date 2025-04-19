@@ -12,8 +12,12 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\SelectorOpciones.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\TablaBusquedaSimple.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\TablaInteractiva.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\BotonActualizar.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\CabeceraBusqueda.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\ControlPaginacion.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaFactory.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CrearController.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\GraficoController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\ModificarController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\VerController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\Pestanas.java
@@ -22,5 +26,8 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CrearUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\EliminarUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ModificarUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RegistroCambiosUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RegistroRelacionado.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RelacionadorVisual.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\TasaCambioUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VerUtils.java
