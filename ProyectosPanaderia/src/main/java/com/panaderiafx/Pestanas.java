@@ -1,6 +1,7 @@
 package com.panaderiafx;
 
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.controllers.CalculadoraConversion;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
@@ -39,6 +40,12 @@ public class Pestanas {
                 tabPane.getTabs().add(tab);
             }
         }
+
+        // ✅ PESTAÑA ADICIONAL: Calculadora de Conversión
+        Tab calculadora = new Tab("Calculadora de Conversión");
+        calculadora.setClosable(false);
+        calculadora.setContent(CalculadoraConversion.crearVista());
+        tabPane.getTabs().add(calculadora);
 
         return tabPane;
     }
