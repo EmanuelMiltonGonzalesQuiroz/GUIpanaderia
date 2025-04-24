@@ -29,7 +29,7 @@ public class TablaInteractiva extends BorderPane {
     public TablaInteractiva(List<Map<String, String>> datos, List<String> columnas, int filasPorPagina, String nombreTabla) {
         this.nombreTabla = nombreTabla;
 
-        List<Map<String, String>> datosTransformados = RelacionadorVisual.aplicarSustituciones(nombreTabla, datos);
+        List<Map<String, String>> datosTransformados = datos;
         this.datosOriginales = new ArrayList<>(datosTransformados);
         this.datosTotales = FXCollections.observableArrayList(datosTransformados);
         this.columnas = columnas;
@@ -51,18 +51,57 @@ public class TablaInteractiva extends BorderPane {
         contenedorCentral.setPadding(new Insets(10));
         contenedorCentral.setAlignment(Pos.TOP_CENTER);
         VBox.setVgrow(tabla, Priority.ALWAYS);
+        VBox.setVgrow(contenedorCentral, Priority.ALWAYS);
         contenedorCentral.getChildren().addAll(tabla, paginacion);
 
-        CabeceraBusqueda cabecera = new CabeceraBusqueda(
-                datosOriginales,
-                this::actualizarFiltro,
-                this::cambiarFilasPorPagina,
-                this::recargarDesdeExcel
-        );
+        // CABECERA BUSQUEDA + SELECTOR FUENTE
+        TextField campoBusqueda = new TextField();
+        campoBusqueda.setPromptText("🔍 Buscar...");
+        campoBusqueda.setStyle("-fx-font-size: 14px; -fx-background-color: #FFF9C4; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: #FBC02D; -fx-border-width: 1.5px;");
+        HBox.setHgrow(campoBusqueda, Priority.ALWAYS);
 
+        ComboBox<String> selectorFilas = new ComboBox<>();
+        selectorFilas.getItems().addAll("Todos", "20", "50", "100");
+        selectorFilas.setValue("20");
+        selectorFilas.setStyle("-fx-font-size: 16px;");
+        selectorFilas.setOnAction(e -> {
+            String seleccion = selectorFilas.getValue();
+            if ("Todos".equals(seleccion)) {
+                cambiarFilasPorPagina(-1);
+            } else {
+                cambiarFilasPorPagina(Integer.parseInt(seleccion));
+            }
+        });
+
+        BotonActualizar botonActualizar = new BotonActualizar(this::recargarDesdeExcel);
+
+        SelectorTamanoFuente selectorFuente = new SelectorTamanoFuente(this::aplicarTamanoFuente);
+
+        HBox filtro = new HBox(10, campoBusqueda, selectorFilas, botonActualizar, selectorFuente);
+        filtro.setAlignment(Pos.CENTER_LEFT);
+        filtro.setPadding(new Insets(5, 15, 0, 15));
+
+        Label titulo = new Label("Buscar registros o ajustar visualización");
+        titulo.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        VBox cabecera = new VBox(10, titulo, filtro);
+        cabecera.setPadding(new Insets(15, 15, 5, 15));
+
+        // BUSQUEDA LÓGICA
+        campoBusqueda.textProperty().addListener((obs, oldVal, newVal) -> actualizarFiltro(newVal));
+
+        VBox.setVgrow(this, Priority.ALWAYS);
         this.setTop(cabecera);
         this.setCenter(contenedorCentral);
         configurarPaginacion(0);
+    }
+
+    private void aplicarTamanoFuente(int sizePx) {
+        String estilo = "-fx-font-size: " + sizePx + "px;";
+        tabla.setStyle(estilo);
+        this.lookupAll(".text-field").forEach(n -> n.setStyle(estilo));
+        this.lookupAll(".combo-box").forEach(n -> n.setStyle(estilo));
+        this.lookupAll(".button").forEach(n -> n.setStyle(estilo));
+        this.lookupAll(".label").forEach(n -> n.setStyle(estilo));
     }
 
     private void cambiarPagina(int cambio) {

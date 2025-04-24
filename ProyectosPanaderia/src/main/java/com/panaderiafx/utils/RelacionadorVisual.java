@@ -29,7 +29,6 @@ public class RelacionadorVisual {
         }
 
         List<Map<String, String>> resultado = new ArrayList<>();
-        boolean seHizoModificacion = false;
 
         for (Map<String, String> fila : datos) {
             Map<String, String> nuevaFila = new LinkedHashMap<>(fila);
@@ -66,7 +65,6 @@ public class RelacionadorVisual {
                         String reemplazo = ref.getOrDefault(campoVisible, valorCodigo);
                         if (!reemplazo.equals(valorCodigoCrudo)) {
                             nuevaFila.put(campoReemplazar, reemplazo);
-                            seHizoModificacion = true;
                         }
                         break;
                     }
@@ -76,12 +74,6 @@ public class RelacionadorVisual {
             resultado.add(nuevaFila);
         }
         
-        if (seHizoModificacion) {
-            System.out.println("🧩 Se aplicaron transformaciones visuales a la tabla: " + tablaActual);
-            System.out.println("📥 Antes: " + datos);
-            System.out.println("📤 Después: " + resultado);
-        }
-
         return resultado;
     }
 }

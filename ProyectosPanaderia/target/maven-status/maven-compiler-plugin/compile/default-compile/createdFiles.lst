@@ -18,6 +18,7 @@ com\panaderiafx\controllers\components\ListaSeleccion.class
 com\panaderiafx\controllers\components\table\BotonActualizar.class
 com\panaderiafx\controllers\ModificarController.class
 com\panaderiafx\utils\CodigoGenerator.class
+com\panaderiafx\controllers\components\table\SelectorTamanoFuente.class
 com\panaderiafx\ControladorFactory.class
 com\panaderiafx\controllers\components\TablaBusquedaSimple.class
 com\panaderiafx\utils\TasaCambioUtils.class

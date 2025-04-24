@@ -9,7 +9,7 @@ import java.util.*;
 
 public class SubPestanasFactory {
 
-    public static TabPane crear(String nombreTabla, String nombreVisible) {
+    public static TabPane crear(String nombreTabla, String nombreVisible, boolean vistaBasica) {
         TabPane subTabs = new TabPane();
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
 
@@ -17,27 +17,29 @@ public class SubPestanasFactory {
 
         for (Map<String, String> fila : config) {
             if (fila.getOrDefault("Tabla", "").equalsIgnoreCase(nombreTabla)) {
-                if (fila.getOrDefault("Ver", "No").equalsIgnoreCase("Sí")) acciones.add("Ver");
-                if (fila.getOrDefault("Crear", "No").equalsIgnoreCase("Sí")) acciones.add("Crear");
-                if (fila.getOrDefault("Modificar", "No").equalsIgnoreCase("Sí")) acciones.add("Modificar");
+                if (vistaBasica) {
+                    if (fila.getOrDefault("Ver", "No").equalsIgnoreCase("Sí")) acciones.add("Ver");
+                } else {
+                    if (fila.getOrDefault("Ver", "No").equalsIgnoreCase("Sí")) acciones.add("Ver");
+                    if (fila.getOrDefault("Crear", "No").equalsIgnoreCase("Sí")) acciones.add("Crear");
+                    if (fila.getOrDefault("Modificar", "No").equalsIgnoreCase("Sí")) acciones.add("Modificar");
+                }
                 break;
             }
         }
 
         if (acciones.isEmpty()) {
-            acciones = Arrays.asList("Ver", "Crear", "Modificar");
+            acciones = vistaBasica ? List.of("Ver") : List.of("Ver", "Crear", "Modificar");
         }
 
         for (String accion : acciones) {
             Tab tab = new Tab(accion);
             tab.setClosable(false);
+            tab.setStyle("-fx-font-size: 16px;");
+            tab.setContent(new javafx.scene.control.Label("Cargando..."));
 
-            // ✅ Carga inicial
-            tab.setContent(ControladorFactory.getVista(accion, nombreTabla, nombreVisible));
-
-            // ✅ Siempre recarga cuando se vuelve a seleccionar
             tab.setOnSelectionChanged(event -> {
-                if (tab.isSelected()) {
+                if (tab.isSelected() && tab.getContent() instanceof javafx.scene.control.Label) {
                     Node nuevaVista = ControladorFactory.getVista(accion, nombreTabla, nombreVisible);
                     tab.setContent(nuevaVista);
                 }

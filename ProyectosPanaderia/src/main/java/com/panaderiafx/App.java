@@ -12,12 +12,19 @@ import java.io.PrintStream;
 
 public class App extends Application {
 
+    private static long startGlobal;
+
     @Override
     public void start(Stage primaryStage) {
+        long startStart = System.nanoTime();
         System.out.println("✅ Entrando a start()...");
 
         BorderPane root = new BorderPane();
+
+        long startPestanas = System.nanoTime();
         root.setCenter(Pestanas.crear());
+        long endPestanas = System.nanoTime();
+        System.out.println("⏱️ Tiempo en crear pestañas: " + ((endPestanas - startPestanas) / 1_000_000) + " ms");
 
         Scene scene = new Scene(root, 1000, 700);
         scene.getRoot().setStyle("-fx-font-size: 14px; -fx-background-color:rgb(231, 134, 43);");
@@ -34,12 +41,17 @@ public class App extends Application {
             System.out.println("⚠️ Icono no encontrado en: " + iconFile.getAbsolutePath());
         }
 
-        System.out.println("✅ Mostrando ventana principal...");
         primaryStage.show();
+
+        long endStart = System.nanoTime();
+        System.out.println("✅ Mostrando ventana principal...");
+        System.out.println("⏱️ Tiempo total en start(): " + ((endStart - startStart) / 1_000_000) + " ms");
+        System.out.println("⏱️ Tiempo desde main() hasta GUI: " + ((endStart - startGlobal) / 1_000_000) + " ms");
     }
 
     public static void main(String[] args) {
-        // Redirigir logs desde el principio
+        startGlobal = System.nanoTime();  // ⏱️ Inicio global
+
         try {
             FileOutputStream fos = new FileOutputStream("log.txt", false); // limpia en cada ejecución
             PrintStream log = new PrintStream(fos, true, "UTF-8");

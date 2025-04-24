@@ -1,6 +1,3 @@
-; Script generado por el Asistente de Inno Setup.
-; Incluye eliminación de carpeta destino antes de instalar
-
 #define MyAppName "Panadería FX"
 #define MyAppVersion "1.0"
 #define MyAppExeName "PanaderiaFX.exe"
@@ -14,7 +11,7 @@ UninstallDisplayIcon={app}\{#MyAppExeName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Excel
 OutputBaseFilename=PanaderiaFX_Installer
-SetupIconFile= C:\Excel\ProyectosPanaderia\icons\icon.ico
+SetupIconFile=C:\Excel\ProyectosPanaderia\icons\icon.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -25,9 +22,7 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Ejecutable compilado
 Source: "C:\Excel\ProyectosPanaderia\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-; Todo el contenido portable
 Source: "C:\Excel\ProyectosPanaderia\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
@@ -38,10 +33,18 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [Code]
+// Ahora está en el momento correcto: ssInstall
 procedure CurStepChanged(CurStep: TSetupStep);
+var
+  TargetDir: string;
 begin
   if CurStep = ssInstall then
   begin
-    DelTree('C:\Panaderia', True, True, True);  // Borra carpeta destino sin preguntar
+    TargetDir := ExpandConstant('{app}');
+    if DirExists(TargetDir) then
+    begin
+      Log('🧹 Eliminando contenido antiguo de: ' + TargetDir);
+      DelTree(TargetDir, False, True, True);  // más seguro que borrar C:\Panaderia entero
+    end;
   end;
 end;
