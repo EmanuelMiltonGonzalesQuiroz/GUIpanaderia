@@ -65,16 +65,22 @@ public class FormularioModificar extends ContenedorFlexible {
         String tipo = (String) campoDef.get("tipo");
         String valor = valores.getOrDefault(nombre, "");
         Node input;
+
         System.out.print("🔎 Verificando cambios para la tabla: ");
 
-
-
         switch (tipo.toLowerCase()) {
-            case "código" -> {// automático
-                    input = new Label(valor);
-                }
-            case "label" -> input = new Label(valor);
-            case "select" -> input = new CampoSeleccionExtendido(nombreTabla, nombre, valor); 
+            case "código" -> { // automático
+                input = new Label(valor);
+            }
+            case "label" -> {
+                input = new Label(valor);
+            }
+            case "select" -> {
+                String origen = (String) campoDef.getOrDefault("origen", nombreTabla);
+                String mostrar = (String) campoDef.getOrDefault("datoMostrar", nombre);
+                String cargar = (String) campoDef.getOrDefault("datoCargar", nombre);
+                input = new CampoSeleccionExtendido(origen, mostrar, cargar, valor);
+            }
             case "precio" -> {
                 CampoTexto campoPrecio = new CampoTexto("Ingrese precio...");
                 campoPrecio.setText(valor);
@@ -91,6 +97,7 @@ public class FormularioModificar extends ContenedorFlexible {
                 input = campoTexto;
             }
         }
+
 
         campos.put(nombre, input);
 
@@ -158,7 +165,7 @@ public class FormularioModificar extends ContenedorFlexible {
                     valor = label.getText().trim();
                 }
 
-                if (valor == null) valor = ""; // prevenir errores por null
+                if (valor == null) valor = ""; // prevenir errores por null 
                 nuevos.put(campo, valor);
             }
 

@@ -1,7 +1,7 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-⏱️ Tiempo en crear pestañas: 2389 ms
+⏱️ Tiempo en crear pestañas: 2695 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 3328 ms
-⏱️ Tiempo desde main() hasta GUI: 3343 ms
+⏱️ Tiempo total en start(): 3656 ms
+⏱️ Tiempo desde main() hasta GUI: 3670 ms

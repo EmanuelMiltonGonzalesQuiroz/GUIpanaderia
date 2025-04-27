@@ -30,14 +30,18 @@ public class VerController {
             return new ScrollPane(vacio);
         }
 
-        List<Map<String, String>> datos = datosOriginales;
+        List<Map<String, String>> datos;
 
-        Set<String> tablasConVista = new HashSet<>(List.of(
-                "RecetasIngredientes", "Producción", "Costos", "TabladeConversión"
-        ));
+        // 🔥 Ahora en vez de lista fija, buscamos si la tabla está en ConfiguraciónVistaTablas
+        List<String> tablasConfiguradas = VerUtils.verColumna("ConfiguraciónVistaTablas", "Tabla origen")
+                                                  .stream()
+                                                  .map(String::trim)
+                                                  .toList();
 
-        if (tablasConVista.contains(nombreTabla)) {
+        if (tablasConfiguradas.contains(nombreTabla.trim())) {
             datos = RelacionadorVisual.aplicarSustituciones(nombreTabla, datosOriginales);
+        } else {
+            datos = datosOriginales;
         }
 
         Set<String> todas = datos.get(0).keySet();

@@ -5,43 +5,40 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public class CampoSeleccionExtendido extends VBox {
 
     private final TextField campoPersonalizado = new TextField();
     private final Label seleccionLabel = new Label("Nada seleccionado");
-    private final VBox tablaContenedor = new VBox();
+    private final VBox tablaContenedor = new VBox(); // ahora sí se usa
 
     private final String tablaOrigen;
-    private final String columnaMostrar;
+    private final List<String> columnasMostrar;
     private final String columnaCargar;
 
     private BiConsumer<String, CampoSeleccionExtendido> onSeleccionarListener;
 
-    
-    public CampoSeleccionExtendido(String tabla, String columna, String valorInicial) {
-        this(tabla, columna, columna, valorInicial); // Usa misma columna si no se especifica
-    }
-    
-
-    public CampoSeleccionExtendido(String tabla, String columna, String columnaCargar, String valorInicial) {
-        this.tablaOrigen = tabla;
-        this.columnaMostrar = columna;
+    public CampoSeleccionExtendido(String tablaOrigen, String columnasMostrarTexto, String columnaCargar, String valorInicial) {
+        this.tablaOrigen = tablaOrigen;
         this.columnaCargar = columnaCargar;
-    
+        this.columnasMostrar = Arrays.stream(columnasMostrarTexto.split(","))
+                                     .map(String::trim)
+                                     .filter(s -> !s.isEmpty())
+                                     .toList();
+
         this.setSpacing(10);
         this.setPadding(new Insets(10));
         this.setAlignment(Pos.TOP_LEFT);
-    
+
         Button botonSeleccionar = new Button("Seleccionar");
         botonSeleccionar.setOnAction(e -> {
-            tablaContenedor.setVisible(true);
             if (onSeleccionarListener != null) {
-                onSeleccionarListener.accept(columnaMostrar, this);
+                onSeleccionarListener.accept(String.join(",", columnasMostrar), this);
             }
         });
-    
+
         campoPersonalizado.setPromptText("O escriba su propia opción");
         campoPersonalizado.setPrefWidth(200);
         campoPersonalizado.textProperty().addListener((obs, oldVal, newVal) -> {
@@ -51,31 +48,35 @@ public class CampoSeleccionExtendido extends VBox {
                 seleccionLabel.setText("Nada seleccionado");
             }
         });
-    
+
         if (!valorInicial.isBlank()) {
             campoPersonalizado.setText(valorInicial);
             actualizarLabel(valorInicial);
         }
-    
-        HBox fila = new HBox(10, botonSeleccionar, campoPersonalizado);
-        fila.setAlignment(Pos.CENTER_LEFT);
-    
+
+        HBox filaSuperior = new HBox(10, botonSeleccionar, campoPersonalizado);
+        filaSuperior.setAlignment(Pos.CENTER_LEFT);
+
         seleccionLabel.setStyle("-fx-font-style: italic; -fx-text-fill: #555;");
+
         tablaContenedor.setVisible(false);
-        tablaContenedor.setStyle("-fx-padding: 10; -fx-border-color: #ccc; -fx-border-width: 1px;");
-    
-        this.getChildren().addAll(fila, seleccionLabel, tablaContenedor);
+        tablaContenedor.setManaged(false);
+
+        this.getChildren().addAll(filaSuperior, seleccionLabel);
     }
-    
+
     private void actualizarLabel(String valor) {
-        String bonito = columnaMostrar.substring(0, 1).toUpperCase() + columnaMostrar.substring(1);
-        seleccionLabel.setText(bonito + " seleccionado: " + valor);
+        if (!columnasMostrar.isEmpty()) {
+            String bonito = columnasMostrar.get(0).substring(0, 1).toUpperCase() + columnasMostrar.get(0).substring(1);
+            seleccionLabel.setText(bonito + " seleccionado: " + valor);
+        } else {
+            seleccionLabel.setText("Seleccionado: " + valor);
+        }
     }
 
     public void setValorDesdeTabla(String valor) {
         campoPersonalizado.setText(valor);
         actualizarLabel(valor);
-        tablaContenedor.setVisible(false);
     }
 
     public String getValorSeleccionado() {

@@ -2,19 +2,23 @@ package com.panaderiafx.controllers;
 
 import com.panaderiafx.controllers.components.CampoSeleccionExtendido;
 import com.panaderiafx.controllers.components.FormularioModificar;
-import com.panaderiafx.controllers.components.TablaBusquedaSimple;
 import com.panaderiafx.utils.VerUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.util.*;
 
 public class ModificarController {
+
+    private static final int CANTIDAD_COLUMNAS_BUSQUEDA = 2; // 🛠 Cambia este valor para más o menos columnas
 
     public static ScrollPane mostrar(String tabla) {
         return mostrar(tabla, tabla);
@@ -44,19 +48,23 @@ public class ModificarController {
         root.setAlignment(Pos.TOP_CENTER);
 
         VBox panelIzquierdo = new VBox(10);
-        panelIzquierdo.setPrefWidth(300);
+        panelIzquierdo.setPrefWidth(400);
         panelIzquierdo.setAlignment(Pos.TOP_CENTER);
 
         Label tituloIzq = new Label("Registros disponibles");
         tituloIzq.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         panelIzquierdo.getChildren().addAll(tituloIzq);
 
-        String columnaBusqueda = registros.get(0).keySet().stream().skip(1).findFirst().orElseGet(() ->
-                registros.get(0).keySet().iterator().next()
-        );
+        ScrollPane scrollTabla = new ScrollPane();
+        scrollTabla.setFitToWidth(true);
+        scrollTabla.setFitToHeight(true);
+        scrollTabla.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // 🛠 Activar scroll horizontal
+        scrollTabla.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
-        TablaBusquedaSimple tablaBusqueda = new TablaBusquedaSimple(registros, columnaBusqueda);
-        panelIzquierdo.getChildren().add(tablaBusqueda);
+        TableView<Map<String, String>> tablaBusqueda = crearTablaBusqueda(registros);
+        scrollTabla.setContent(tablaBusqueda);
+
+        panelIzquierdo.getChildren().add(scrollTabla);
 
         VBox panelFormulario = new VBox(10);
         panelFormulario.setPrefWidth(600);
@@ -74,12 +82,9 @@ public class ModificarController {
         tituloDerecha.setVisible(false);
         panelDerecho.getChildren().add(tituloDerecha);
 
-        tablaBusqueda.setOnSeleccionar(valor -> {
-            Optional<Map<String, String>> filaOpt = registros.stream()
-                    .filter(fila -> fila.getOrDefault(columnaBusqueda, "").equals(valor))
-                    .findFirst();
-
-            filaOpt.ifPresent(fila -> {
+        tablaBusqueda.setOnMouseClicked(event -> {
+            Map<String, String> fila = tablaBusqueda.getSelectionModel().getSelectedItem();
+            if (fila != null) {
                 panelFormulario.getChildren().removeIf(n -> n instanceof FormularioModificar);
                 tituloCentro.setVisible(true);
 
@@ -88,14 +93,14 @@ public class ModificarController {
 
                 formulario.getCampos().values().forEach(nodo -> {
                     if (nodo instanceof CampoSeleccionExtendido campoExtendido) {
-                        campoExtendido.setOnSeleccionarListener((columna, campo) -> {
+                        campoExtendido.setOnSeleccionarListener((columnasMostrar, campo) -> {
                             tituloDerecha.setVisible(true);
-                            panelDerecho.getChildren().removeIf(n -> n instanceof TablaBusquedaSimple);
-                            panelDerecho.getChildren().add(crearTabla(columna, campo));
+                            panelDerecho.getChildren().removeIf(n -> n instanceof TableView);
+                            panelDerecho.getChildren().add(crearTabla(campoExtendido, columnasMostrar));
                         });
                     }
                 });
-            });
+            }
         });
 
         root.getChildren().addAll(panelIzquierdo, panelFormulario, panelDerecho);
@@ -107,52 +112,79 @@ public class ModificarController {
         return sc;
     }
 
-    private static Node crearTabla(String columna, CampoSeleccionExtendido campoExtendido) {
-        List<Map<String, String>> datos = VerUtils.verTabla(campoExtendido.getTabla());
+    private static TableView<Map<String, String>> crearTablaBusqueda(List<Map<String, String>> registros) {
+        TableView<Map<String, String>> tabla = new TableView<>();
+        tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        List<Map<String, String>> valoresUnicos = datos.stream()
-            .map(row -> {
-                String val = row.getOrDefault(columna, "").trim();
-                return Map.of(columna, val);
-            })
-            .filter(row -> !row.get(columna).isBlank())
-            .distinct()
-            .toList();
+        List<String> columnas = registros.get(0).keySet().stream()
+                .limit(CANTIDAD_COLUMNAS_BUSQUEDA)
+                .toList();
 
-        TablaBusquedaSimple tabla = new TablaBusquedaSimple(valoresUnicos, columna);
+        for (String col : columnas) {
+            TableColumn<Map<String, String>, String> columna = new TableColumn<>(col);
+            columna.setCellValueFactory(cellData -> {
+                String valor = cellData.getValue().getOrDefault(col, "");
+                return new SimpleStringProperty(valor);
+            });
+            tabla.getColumns().add(columna);
+        }
 
-        tabla.setOnSeleccionar(valor -> {
-            campoExtendido.setValorDesdeTabla(valor);
-            campoExtendido.getContenedorTabla().setVisible(false);
+        tabla.getItems().addAll(registros);
+        return tabla;
+    }
+
+    private static Node crearTabla(CampoSeleccionExtendido campoExtendido, String columnasMostrarTexto) {
+        String tablaOrigen = campoExtendido.getTabla();
+        List<String> columnas = Arrays.stream(columnasMostrarTexto.split(","))
+                                      .map(String::trim)
+                                      .filter(s -> !s.isEmpty())
+                                      .toList();
+
+        List<Map<String, String>> datos = VerUtils.verTabla(tablaOrigen);
+
+        TableView<Map<String, String>> tabla = new TableView<>();
+        tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        for (String col : columnas) {
+            TableColumn<Map<String, String>, String> columna = new TableColumn<>(col);
+            columna.setCellValueFactory(cellData -> {
+                String valor = cellData.getValue().getOrDefault(col, "");
+                return new SimpleStringProperty(valor);
+            });
+            tabla.getColumns().add(columna);
+        }
+
+        tabla.getItems().addAll(datos);
+
+        tabla.setOnMouseClicked(event -> {
+            Map<String, String> fila = tabla.getSelectionModel().getSelectedItem();
+            if (fila != null) {
+                String valor = fila.getOrDefault(campoExtendido.getColumna(), "");
+                campoExtendido.setValorDesdeTabla(valor);
+            }
         });
 
-        campoExtendido.getContenedorTabla().getChildren().setAll(tabla);
         return tabla;
     }
 
     private static List<Map<String, Object>> generarInstrucciones(String tabla, Map<String, String> ejemplo) {
         List<Map<String, Object>> definicion = new ArrayList<>();
-
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónFormularios");
 
         for (Map<String, String> fila : config) {
-            String nombreTabla = fila.getOrDefault("Tabla", "").trim();
-            String campo = fila.getOrDefault("Campo", "").trim();
-            String tipo = fila.getOrDefault("Tipo", "").trim();
+            if (!fila.getOrDefault("Tabla", "").equalsIgnoreCase(tabla)) continue;
 
-            if (!nombreTabla.equalsIgnoreCase(tabla)) continue;
+            Map<String, Object> campo = new HashMap<>();
+            campo.put("nombre", fila.get("Campo"));
+            campo.put("tipo", fila.get("Tipo").toLowerCase());
 
-            Map<String, Object> item = new HashMap<>();
-            item.put("nombre", campo);
-            item.put("tipo", tipo.toLowerCase());
-
-            if (tipo.equalsIgnoreCase("select")) {
-                item.put("origen", fila.getOrDefault("Origen", "").trim());
-                item.put("datoMostrar", fila.getOrDefault("Dato a Mostrar", "").trim());
-                item.put("datoCargar", fila.getOrDefault("Dato a Cargar", "").trim());
+            if (fila.getOrDefault("Tipo", "").equalsIgnoreCase("select")) {
+                campo.put("origen", fila.get("Origen"));
+                campo.put("datoMostrar", fila.get("Dato a Mostrar"));
+                campo.put("datoCargar", fila.get("Dato a Cargar"));
             }
 
-            definicion.add(item);
+            definicion.add(campo);
         }
 
         if (definicion.isEmpty()) {
