@@ -1,0 +1,5 @@
+mvn clean package   
+java --module-path libs\javafx\lib --add-modules javafx.controls,javafx.fxml -jar target\PanaderiaFX-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+clear                                                                                                                                                                                    
+mvn clean javafx:run

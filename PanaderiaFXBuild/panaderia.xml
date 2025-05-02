@@ -14,18 +14,31 @@
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
   <icon>C:\Excel\ProyectosPanaderia\icons\icon.ico</icon>
-
   <classPath>
     <mainClass>com.panaderiafx.App</mainClass>
-    <cp>libs\*.jar</cp>
+    <cp>target\PanaderiaFX-1.0-SNAPSHOT-jar-with-dependencies.jar</cp>
+    <cp>libs\javafx\lib\*.jar</cp>
   </classPath>
-
   <jre>
     <path>libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64</path>
-    <bundledJre64Bit>true</bundledJre64Bit>
-    <requires64Bit>true</requires64Bit>
     <requiresJdk>false</requiresJdk>
+    <requires64Bit>true</requires64Bit>
     <minVersion>17</minVersion>
-    <opt>--module-path libs --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base</opt>
+    <maxVersion></maxVersion>
+    <opt>--module-path libs/javafx/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base</opt>
   </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.0.0.0</txtFileVersion>
+    <fileDescription>PanaderiaFX</fileDescription>
+    <copyright>©2025 PanaderiaFX</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>1.0</txtProductVersion>
+    <productName>PanaderiaFX</productName>
+    <companyName>PanaderiaFX</companyName>
+    <internalName>PanaderiaFX</internalName>
+    <originalFilename>PanaderiaFX.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
 </launch4jConfig>

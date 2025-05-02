@@ -144,56 +144,88 @@ public class FormularioModificar extends ContenedorFlexible {
     }
 }
 
-    private Button crearBotonModificar(Map<String, String> original) {
-        Button modificar = new BotonAccion("Actualizar", "#FF9800");
+private Button crearBotonModificar(Map<String, String> original) {
+    Button modificar = new Button("Actualizar");
+    modificar.setStyle(
+        "-fx-background-color: #FF9800;" +
+        "-fx-text-fill: white;" +
+        "-fx-font-weight: bold;" +
+        "-fx-padding: 6 12;" +
+        "-fx-background-radius: 5px;"
+    );
 
-        modificar.setOnAction(e -> {
-            Map<String, String> nuevos = new LinkedHashMap<>();
+    modificar.setOnAction(e -> {
+        Map<String, String> nuevos = new LinkedHashMap<>();
 
-            for (var entrada : campos.entrySet()) {
-                String campo = entrada.getKey();
-                Node nodo = entrada.getValue();
-                String valor = "";
+        for (var entrada : campos.entrySet()) {
+            String campo = entrada.getKey();
+            Node nodo = entrada.getValue();
+            String valor = "";
 
-                if (nodo instanceof CampoTexto texto) {
-                    valor = texto.getText().trim();
-                } else if (nodo instanceof ListaSeleccion lista) {
-                    valor = lista.getValorSeleccionado();
-                } else if (nodo instanceof CampoSeleccionExtendido extendido) {
-                    valor = extendido.getValorSeleccionado();
-                } else if (nodo instanceof Label label) {
-                    valor = label.getText().trim();
-                }
-
-                if (valor == null) valor = ""; // prevenir errores por null 
-                nuevos.put(campo, valor);
+            if (nodo instanceof CampoTexto texto) {
+                valor = texto.getText().trim();
+            } else if (nodo instanceof ListaSeleccion lista) {
+                valor = lista.getValorSeleccionado();
+            } else if (nodo instanceof CampoSeleccionExtendido extendido) {
+                valor = extendido.getValorSeleccionado();
+            } else if (nodo instanceof Label label) {
+                valor = label.getText().trim();
             }
 
-            System.out.println("🛠 Modificando: " + original + " en " + nombreTabla);
-            System.out.println("➡️ Nuevo valor: " + nuevos);
+            if (valor == null) valor = "";
+            nuevos.put(campo, valor);
+        }
 
-            // 👇 Aplicar lógica adicional si es Ingredientes
-            if ("Ingredientes".equalsIgnoreCase(nombreTabla)) {
-                System.out.println("se esta moficando ingredientes");
+        System.out.println("🛠 Modificando: " + original + " en " + nombreTabla);
+        System.out.println("➡️ Nuevo valor: " + nuevos);
 
-                com.panaderiafx.utils.RegistroCambiosUtils.validarYCrearRegistro(nombreTabla, original, nuevos);
-            }
+        if ("Ingredientes".equalsIgnoreCase(nombreTabla)) {
+            System.out.println("se esta moficando ingredientes");
+            com.panaderiafx.utils.RegistroCambiosUtils.validarYCrearRegistro(nombreTabla, original, nuevos);
+        }
 
-            boolean exito = com.panaderiafx.utils.ModificarUtils.modificarFila(nombreTabla, original, nuevos);
+        boolean exito = com.panaderiafx.utils.ModificarUtils.modificarFila(nombreTabla, original, nuevos);
 
-            Alert alerta = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
-            alerta.setTitle(exito ? "Éxito" : "Error");
-            alerta.setHeaderText(null);
-            alerta.setContentText(exito ? "✅ Registro modificado exitosamente." : "❌ No se pudo modificar el registro.");
-            alerta.show();
-        });
+        Alert alerta = new Alert(exito ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR);
+        alerta.setTitle(exito ? "Éxito" : "Error");
+        alerta.setHeaderText(null);
+        alerta.setContentText(exito ? "✅ Registro modificado exitosamente." : "❌ No se pudo modificar el registro.");
+        alerta.show();
 
-        return modificar;
-    }
+        // 🟠 Nueva lógica: recarga desde el Excel REAL
+        if (exito) {
+            List<Map<String, String>> actualizados = com.panaderiafx.utils.VerUtils.verTabla(nombreTabla);
+            Map<String, String> filaActualizada = actualizados.stream()
+                .filter(m -> m.get("Código").equals(nuevos.get("Código")))
+                .findFirst().orElse(nuevos); // fallback
+
+            this.getChildren().clear();
+            VBox nuevoFormulario = new VBox(15);
+            construirFormulario(filaActualizada, nuevoFormulario);
+            HBox botones = new HBox(15);
+            botones.setAlignment(Pos.CENTER_LEFT);
+            botones.getChildren().addAll(
+                crearBotonModificar(filaActualizada),
+                crearBotonEliminar(filaActualizada)
+            );
+            nuevoFormulario.getChildren().add(botones);
+            this.setContenido(nuevoFormulario);
+        }
+    });
+
+    return modificar;
+}
+
 
     private Button crearBotonEliminar(Map<String, String> filaSeleccionada) {
-        Button eliminar = new BotonAccion("Eliminar", "#F44336");
-    
+        Button eliminar = new Button("Eliminar");
+        eliminar.setStyle(
+            "-fx-background-color: #F44336;" +
+            "-fx-text-fill: white;" +
+            "-fx-font-weight: bold;" +
+            "-fx-padding: 6 12;" +
+            "-fx-background-radius: 5px;"
+        );
         eliminar.setOnAction(e -> {
             Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
             confirm.setTitle("Confirmar eliminación");

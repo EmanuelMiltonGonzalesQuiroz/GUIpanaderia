@@ -6,13 +6,16 @@
 AppId={{E5A3893E-D3AB-4875-A694-366EFEA0B48A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-DefaultDirName=C:\Panaderia
+DefaultDirName={userdocs}\{#MyAppName}
+DefaultGroupName={#MyAppName}
 UninstallDisplayIcon={app}\{#MyAppExeName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Excel
 OutputBaseFilename=PanaderiaFX_Installer
 SetupIconFile=C:\Excel\ProyectosPanaderia\icons\icon.ico
 SolidCompression=yes
+Compression=lzma2
+InternalCompressLevel=max
 WizardStyle=modern
 
 [Languages]
@@ -30,21 +33,4 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-
-[Code]
-// Ahora está en el momento correcto: ssInstall
-procedure CurStepChanged(CurStep: TSetupStep);
-var
-  TargetDir: string;
-begin
-  if CurStep = ssInstall then
-  begin
-    TargetDir := ExpandConstant('{app}');
-    if DirExists(TargetDir) then
-    begin
-      Log('🧹 Eliminando contenido antiguo de: ' + TargetDir);
-      DelTree(TargetDir, False, True, True);  // más seguro que borrar C:\Panaderia entero
-    end;
-  end;
-end;
+Filename: "{app}\{#MyAppExeName}"; Description: "Iniciar {#MyAppName}"; Flags: nowait postinstall skipifsilent

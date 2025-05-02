@@ -1,6 +1,7 @@
 package com.panaderiafx;
 
 import com.panaderiafx.controllers.CalculadoraConversion;
+import com.panaderiafx.controllers.RegistroProduccion;
 import com.panaderiafx.utils.VerUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -93,6 +94,14 @@ public class Pestanas {
         calculadora.setContent(CalculadoraConversion.crearVista());
         calculadora.setStyle("-fx-font-size: 16px;");
         tabPane.getTabs().add(calculadora);
+
+        // Agrega esta línea justo antes de retornar el tabPane
+        Tab produccionResumen = new Tab("Registro de Producción");
+        produccionResumen.setClosable(false);
+        produccionResumen.setContent(RegistroProduccion.crearVista());
+        produccionResumen.setStyle("-fx-font-size: 16px;");
+        tabPane.getTabs().add(produccionResumen);
+
 
         return tabPane;
     }

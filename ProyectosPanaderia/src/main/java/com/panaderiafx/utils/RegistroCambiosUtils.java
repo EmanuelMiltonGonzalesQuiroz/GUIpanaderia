@@ -37,9 +37,6 @@ public class RegistroCambiosUtils {
         boolean cambioDolar = precioDolarNuevo != null &&
                 Math.abs(Double.parseDouble(precioDolarNuevo) - Double.parseDouble(precioDolarAntes)) > 0.0001;
     
-        List<Map<String, String>> historialAntes = VerUtils.verTabla("HistorialPrecios");
-        System.out.println("📋 HistorialPrecios ANTES:");
-        historialAntes.forEach(System.out::println);
     
         boolean creandoNuevo = condiciones == null || condiciones.isEmpty();
 
