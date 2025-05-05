@@ -1,7 +1,109 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-⏱️ Tiempo en crear pestañas: 3052 ms
+🔍 Calculando resumen para:
+   ➤ Fecha seleccionada: 5/5/2025
+   ➤ Tipo seleccionado: DÍA
+📄 Filas Producción: 12
+✅ Total ganancias: 600.00
+📄 Filas Producción: 12
+🧾 Receta producida: REC0001 | Cantidad: 300.00
+   🔧 Rendimiento: 176.00 | Factor producción: 1.7045
+   🧂 Ingredientes asociados: 9
+     ➤ Ingrediente: ING0001 | 100.00 Libras → 45.36 Kilos | Precio: 4.00 | Costo: 309.27
+     ➤ Ingrediente: ING0002 | 2640.00 Gramos → 2.64 Kilos | Precio: 0.80 | Costo: 3.60
+     ➤ Ingrediente: ING0003 | 660.00 Gramos → 0.66 Kilos | Precio: 1.50 | Costo: 1.69
+     ➤ Ingrediente: ING0004 | 2640.00 Gramos → 2.64 Kilos | Precio: 7.60 | Costo: 34.20
+     ➤ Ingrediente: ING0005 | 200.00 Gramos → 0.20 Kilos | Precio: 10.00 | Costo: 3.41
+     ➤ Ingrediente: ING0006 | 300.00 Gramos → 0.30 Litro | Precio: 3.00 | Costo: 1.53
+     ➤ Ingrediente: ING0007 | 200.00 Gramos → 0.20 Kilos | Precio: 0.85 | Costo: 0.29
+     ➤ Ingrediente: ING0008 | 700.00 Gramos → 0.70 Kilos | Precio: 7.60 | Costo: 9.07
+⚠️ Fallo conversión Unidades → Unidades | Cantidad: 176.00
+✅ Total costos directos: 363.06
+   📄 Filas Costos: 37
+     ➤ Costo indirecto: 41.00 (ajustado: 5.86) | Frecuencia: semanal
+     ➤ Costo indirecto: 6067.50 (ajustado: 202.25) | Frecuencia: mensual
+     ➤ Costo indirecto: 683.35 (ajustado: 22.78) | Frecuencia: mensual
+     ➤ Costo indirecto: 44.00 (ajustado: 6.29) | Frecuencia: semanal
+   Total costos indirectos: 237.17
+   📄 Filas Parámetros: 4
+     ➤ Mano de obra diaria detectada: 80.00 bzd/día
+     ➤ Merma estimada: 5.00%
+     ➤ Impuesto aplicado: 12.00%
+     ➤ Empleados activos considerados: 2
+     ➤ Costo total mano de obra: 160.00
+     ➤ Carga fiscal: 19.20
+     ➤ Costo por merma: 8.00
+   Total descuentos/impuestos: 187.20
+📊 RESUMEN:
+   Ganancias: 600.00
+   Costos Directos: 363.06
+   Costos Indirectos: 237.17
+   Descuentos/Impuestos: 187.20
+   TOTAL: -187.43
+⏱️ Tiempo en crear pestañas: 4533 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 3918 ms
-⏱️ Tiempo desde main() hasta GUI: 3932 ms
+⏱️ Tiempo total en start(): 5174 ms
+⏱️ Tiempo desde main() hasta GUI: 5191 ms
+Exception in thread "JavaFX Application Thread" java.lang.IllegalStateException: Duplicate key  (attempted merging values Sliced Bread and Semitas)
+	at java.base/java.util.stream.Collectors.duplicateKeyException(Collectors.java:135)
+	at java.base/java.util.stream.Collectors.lambda$uniqKeysMapAccumulator$1(Collectors.java:182)
+	at java.base/java.util.stream.ReduceOps$3ReducingSink.accept(ReduceOps.java:169)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at com.panaderiafx.controllers.components.registroproduccion.PanelDetalleProducciones.mostrar(PanelDetalleProducciones.java:58)
+	at com.panaderiafx.controllers.components.registroproduccion.VistaResumenPrincipal.lambda$crearVista$0(VistaResumenPrincipal.java:54)
+	at com.panaderiafx.controllers.components.registroproduccion.PanelResumenProduccion.lambda$crearBoton$0(PanelResumenProduccion.java:37)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:833)

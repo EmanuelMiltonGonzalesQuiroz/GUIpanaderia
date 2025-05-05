@@ -24,7 +24,7 @@ public class Pestanas {
             vistaBasica = !vistaBasica;
             String texto = vistaBasica ? "🔁 Cambiar a vista avanzada" : "🔁 Cambiar a vista básica";
             botonCambioVista.setText(texto);
-            root.setCenter(generarVista(vistaBasica)); // Recarga el contenido
+            root.setCenter(generarVista(vistaBasica));
         });
 
         cabecera.setPadding(new Insets(10));
@@ -37,6 +37,13 @@ public class Pestanas {
 
     private static TabPane generarVista(boolean vistaBasica) {
         TabPane tabPane = new TabPane();
+
+        // 👉 Primero: agregar la pestaña Registro de Producción
+        Tab produccionResumen = new Tab("Registro de Producción");
+        produccionResumen.setClosable(false);
+        produccionResumen.setContent(RegistroProduccion.crearVista());
+        produccionResumen.setStyle("-fx-font-size: 16px;");
+        tabPane.getTabs().add(produccionResumen);
 
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
         Set<String> agregados = new HashSet<>();
@@ -94,14 +101,6 @@ public class Pestanas {
         calculadora.setContent(CalculadoraConversion.crearVista());
         calculadora.setStyle("-fx-font-size: 16px;");
         tabPane.getTabs().add(calculadora);
-
-        // Agrega esta línea justo antes de retornar el tabPane
-        Tab produccionResumen = new Tab("Registro de Producción");
-        produccionResumen.setClosable(false);
-        produccionResumen.setContent(RegistroProduccion.crearVista());
-        produccionResumen.setStyle("-fx-font-size: 16px;");
-        tabPane.getTabs().add(produccionResumen);
-
 
         return tabPane;
     }
