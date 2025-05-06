@@ -2,8 +2,9 @@ package com.panaderiafx.controllers.components.registroproduccion;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.geometry.Insets;
+
 import com.panaderiafx.utils.VistaResumenUtils;
 
 import java.util.Map;
@@ -11,34 +12,29 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class VistaResumenPrincipal {
 
-    public static Node crearVista() {
-        HBox contenedor = new HBox(30);
-        contenedor.setStyle("-fx-background-color: #FFECB3; -fx-padding: 20;");
+    public static Node crearVista(VBox panelDetalleProducciones, VBox panelDetalleReceta, VBox panelIngredientes) {
+        VBox contenedorIzquierda = new VBox(15);
+        contenedorIzquierda.setStyle("-fx-background-color: #FFECB3;");
+        contenedorIzquierda.setPadding(new Insets(20));
 
-        VBox seccionResumen = new VBox(15);
-        seccionResumen.setStyle("-fx-background-color: #FFECB3;");
         Label titulo = new Label("Resumen de Producción por Día o Mes");
         titulo.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-        seccionResumen.getChildren().add(titulo);
 
         SelectorFechaTipo selector = new SelectorFechaTipo();
 
         VBox panelResumen = new VBox();
         panelResumen.setStyle("-fx-background-color: #FF9800; -fx-background-radius: 10;");
         panelResumen.setSpacing(15);
-        panelResumen.setPadding(new javafx.geometry.Insets(20));
+        panelResumen.setPadding(new Insets(20));
         panelResumen.setMaxWidth(400);
-
-        VBox panelDetalle = new VBox();
-        panelDetalle.setStyle("-fx-background-color: #FFE0B2; -fx-padding: 20; -fx-background-radius: 10;");
-        panelDetalle.setSpacing(10);
-        panelDetalle.setPrefWidth(450);
 
         AtomicReference<PanelResumenProduccion> panelRef = new AtomicReference<>();
 
         Runnable actualizar = () -> {
             String fecha = selector.getFecha();
             String tipo = selector.getTipo();
+            System.out.println("🔍 Recalculando vista con fecha: " + fecha + " y tipo: " + tipo);
+
             Map<String, Double> resumen = VistaResumenUtils.calcularResumen(fecha, tipo);
 
             panelResumen.getChildren().clear();
@@ -50,10 +46,27 @@ public class VistaResumenPrincipal {
                 resumen.getOrDefault("parametros", 0.0),
                 resumen.getOrDefault("total", 0.0),
                 (accion) -> {
+                    System.out.println("🟠 Acción clickeada: " + accion);
                     if (accion.equals("GANANCIAS") || accion.equals("COSTOS_DIRECTOS")) {
-                        PanelDetalleProducciones.mostrar(panelDetalle, fecha, tipo, panelRef.get()::actualizarGananciaYCostos);
+                        panelDetalleProducciones.getChildren().setAll(
+                            VistaGananciasCostosDirectos.crear(
+                                fecha,
+                                tipo,
+                                (codigoReceta) -> {
+                                    panelDetalleReceta.getChildren().setAll(PanelFormularioReceta.crear(codigoReceta));
+                                    panelIngredientes.getChildren().setAll(PanelIngredientesReceta.crear(codigoReceta));
+                                },
+                                (ganancia, costo) -> {
+                                    if (panelRef.get() != null) {
+                                        panelRef.get().actualizarGananciaYCosto(ganancia, costo);
+                                    }
+                                }
+                            )
+                        );
                     } else {
-                        panelDetalle.getChildren().clear();
+                        panelDetalleProducciones.getChildren().clear();
+                        panelDetalleReceta.getChildren().clear();
+                        panelIngredientes.getChildren().clear();
                     }
                 }
             );
@@ -67,8 +80,7 @@ public class VistaResumenPrincipal {
 
         actualizar.run();
 
-        seccionResumen.getChildren().addAll(selector, panelResumen);
-        contenedor.getChildren().addAll(seccionResumen, panelDetalle);
-        return contenedor;
+        contenedorIzquierda.getChildren().addAll(titulo, selector, panelResumen);
+        return contenedorIzquierda;
     }
 }

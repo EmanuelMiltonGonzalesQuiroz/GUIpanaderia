@@ -80,7 +80,7 @@ public class RegistroCambiosUtils {
                     filaNueva.put("Unidades", unidadNueva);
 
                     System.out.println("🔄 Actualizando unidad ➝ " +
-                            receta.get("Código Receta") + " [" +
+                            receta.get("Código receta") + " [" +
                             unidadAntes + " → " + unidadNueva + "]");
 
                     ModificarUtils.modificarFila("RecetasIngredientes", receta, filaNueva);

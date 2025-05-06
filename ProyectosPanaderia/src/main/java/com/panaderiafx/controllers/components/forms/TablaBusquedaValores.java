@@ -25,7 +25,7 @@ public class TablaBusquedaValores {
         final List<Map<String, String>> datosFiltrados;
 
         if (columnas.size() == 1 && columnas.get(0).equals(columnaCargar)) {
-            // ⚠️ Filtrar duplicados solo si mostrar == cargar
+            // Solo filtrar si mostrar = cargar y es 1 columna
             String col = columnas.get(0);
             Set<String> unicos = new HashSet<>();
             List<Map<String, String>> filtrados = new ArrayList<>();
@@ -39,7 +39,6 @@ public class TablaBusquedaValores {
             }
             datosFiltrados = filtrados;
         } else {
-            // Si mostrar y cargar son distintos, permitir repetidos
             datosFiltrados = datosOriginal;
         }
 
@@ -57,7 +56,10 @@ public class TablaBusquedaValores {
         tabla.setOnMouseClicked(e -> {
             Map<String, String> fila = tabla.getSelectionModel().getSelectedItem();
             if (fila != null) {
-                campo.setValorDesdeTabla(fila.getOrDefault(columnaCargar, ""));
+                String valorMostrar = fila.getOrDefault(columnas.get(0), "");
+                String valorCargar = fila.getOrDefault(columnaCargar, "");
+                System.out.println("🆗 setValorDesdeTabla => mostrar: " + valorMostrar + ", cargar: " + valorCargar);
+                campo.setValorDesdeTabla(valorMostrar, valorCargar);
             }
         });
 
