@@ -1,6 +1,5 @@
 com\panaderiafx\utils\componentes\DatosRecetaUtils.class
 com\panaderiafx\utils\componentes\FechaUtils.class
-com\panaderiafx\controllers\components\registroproduccion\PanelDetalleProducciones.class
 com\panaderiafx\controllers\components\EtiquetaPersonalizada.class
 com\panaderiafx\controllers\components\TablaInteractiva.class
 com\panaderiafx\controllers\components\table\TablaFactory.class
@@ -24,6 +23,7 @@ com\panaderiafx\utils\TasaCambioUtils.class
 com\panaderiafx\controllers\components\registroproduccion\IngredienteDetalle.class
 com\panaderiafx\controllers\components\CampoSeleccionExtendido.class
 com\panaderiafx\controllers\components\registroproduccion\VistaDetalleReceta.class
+com\panaderiafx\controllers\components\registroproduccion\PanelIngredientesReceta$1.class
 com\panaderiafx\controllers\components\registroproduccion\VistaGananciasCostosDirectos.class
 com\panaderiafx\controllers\components\CampoTexto.class
 com\panaderiafx\controllers\components\FormularioModificar.class
@@ -31,7 +31,6 @@ com\panaderiafx\utils\ModificarUtils.class
 com\panaderiafx\utils\CrearUtils.class
 com\panaderiafx\controllers\components\registroproduccion\SelectorFechaTipo.class
 com\panaderiafx\App.class
-com\panaderiafx\controllers\components\registroproduccion\PanelIngredientesReceta$IngredienteDetalle.class
 com\panaderiafx\controllers\components\registroproduccion\PanelResumenProduccion.class
 com\panaderiafx\utils\EliminarUtils.class
 com\panaderiafx\utils\VistaResumenUtils.class
@@ -52,10 +51,10 @@ com\panaderiafx\controllers\components\ListaSeleccion.class
 com\panaderiafx\controllers\components\table\BotonActualizar.class
 com\panaderiafx\utils\CodigoGenerator.class
 com\panaderiafx\controllers\components\table\SelectorTamanoFuente.class
+com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.class
 com\panaderiafx\controllers\components\registroproduccion\PanelIngredientesReceta.class
 com\panaderiafx\utils\componentes\ParseUtils.class
 com\panaderiafx\controllers\components\registroproduccion\BotonResumen.class
-com\panaderiafx\controllers\components\registroproduccion\PanelDetalleProducciones$1.class
 com\panaderiafx\controllers\components\BotonAccion.class
 com\panaderiafx\utils\componentes\CostosIndirectosUtils.class
 com\panaderiafx\controllers\components\registroproduccion\TablaProduccionesFactory$2.class

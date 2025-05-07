@@ -1,6 +1,8 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
 import com.panaderiafx.utils.VerUtils;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,44 +11,111 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class PanelFormularioReceta {
 
-    public static Node crear(String codigoReceta) {
-        VBox contenedor = new VBox(10);
-        contenedor.setStyle("-fx-background-color: #FFCC80; -fx-padding: 20; -fx-background-radius: 10;");
+    public static Node crear(String nombreReceta, BiConsumer<String, Double> actualizarGananciaEnTabla) {
+        VBox contenedor = new VBox(15);
+        contenedor.setStyle("-fx-background-color: #F36C00; -fx-padding: 20; -fx-background-radius: 10;");
+        contenedor.setAlignment(Pos.TOP_LEFT);
 
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
-        Map<String, String> receta = recetas.stream()
-                .filter(r -> r.getOrDefault("Código", "").equalsIgnoreCase(codigoReceta))
-                .findFirst()
-                .orElse(null);
+        List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
 
-        if (receta == null) {
-            contenedor.getChildren().add(new Label("Receta no encontrada"));
+        String nombreProducto = recetas.stream()
+                .filter(r -> r.getOrDefault("Código receta", "").equalsIgnoreCase(nombreReceta))
+                .map(r -> r.getOrDefault("Producto", nombreReceta))
+                .findFirst().orElse(nombreReceta);
+
+        Map<String, String> prod = producciones.stream()
+                .filter(p -> p.getOrDefault("Código receta", "").equalsIgnoreCase(nombreReceta))
+                .reduce((a, b) -> b).orElse(null);
+
+        if (prod == null) {
+            Label error = new Label("Receta no encontrada");
+            error.setStyle("-fx-background-color: #FFD180; -fx-padding: 10; -fx-border-radius: 5;");
+            contenedor.getChildren().add(error);
             return contenedor;
         }
+
+        double cantidad = parseDoubleSafe(prod.getOrDefault("Cantidad producida", "0"));
+        double precioUnidad = parseDoubleSafe(prod.getOrDefault("Precio de Venta por Unidad", "0"));
+        double precioGeneral = cantidad * precioUnidad;
+
+        TextField campoNombre = new TextField(nombreProducto);
+        campoNombre.setEditable(false);
+        campoNombre.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+
+        TextField campoCantidad = new TextField(String.format("%.0f", cantidad));
+        TextField campoPrecioUnidad = new TextField(String.format("%.2f", precioUnidad));
+        TextField campoPrecioTotal = new TextField(String.format("%.2f", precioGeneral));
+
+        final boolean[] bloqueado = {false};  // para evitar loops circulares
+
+        Runnable actualizar = () -> {
+            if (bloqueado[0]) return;
+            bloqueado[0] = true;
+
+            double cant = parseDoubleSafe(campoCantidad.getText());
+            double unit = parseDoubleSafe(campoPrecioUnidad.getText());
+            double total = cant * unit;
+
+            campoPrecioTotal.setText(String.format("%.2f", total));
+            prod.put("Cantidad producida", String.format("%.0f", cant));
+            prod.put("Precio de Venta por Unidad", String.format("%.2f", unit));
+
+            if (actualizarGananciaEnTabla != null) {
+                actualizarGananciaEnTabla.accept(nombreReceta, total);
+            }
+
+            bloqueado[0] = false;
+        };
+
+        campoCantidad.textProperty().addListener((obs, o, n) -> actualizar.run());
+        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> actualizar.run());
+        campoPrecioTotal.textProperty().addListener((obs, o, n) -> {
+            if (bloqueado[0]) return;
+            bloqueado[0] = true;
+
+            double cant = parseDoubleSafe(campoCantidad.getText());
+            double total = parseDoubleSafe(n);
+            if (cant != 0) {
+                double nuevoUnit = total / cant;
+                campoPrecioUnidad.setText(String.format("%.2f", nuevoUnit));
+            }
+
+            if (actualizarGananciaEnTabla != null) {
+                actualizarGananciaEnTabla.accept(nombreReceta, total);
+            }
+
+            bloqueado[0] = false;
+        });
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
+        grid.setPadding(new Insets(10));
 
-        TextField campoCantidad = new TextField(receta.getOrDefault("Cantidad Producida", ""));
-        TextField campoPrecioUnidad = new TextField(receta.getOrDefault("Precio por Unidad", ""));
-        TextField campoPrecioTotal = new TextField(receta.getOrDefault("Precio General", ""));
+        grid.add(crearEtiqueta("CANTIDAD PRODUCIDA"), 0, 0); grid.add(campoCantidad, 1, 0);
+        grid.add(crearEtiqueta("PRECIO DE VENTA POR UNIDAD"), 0, 1); grid.add(campoPrecioUnidad, 1, 1);
+        grid.add(crearEtiqueta("PRECIO DE VENTA GENERAL"), 0, 2); grid.add(campoPrecioTotal, 1, 2);
 
-        campoCantidad.setEditable(false);
-        campoPrecioUnidad.setEditable(false);
-        campoPrecioTotal.setEditable(false);
-
-        grid.add(new Label("Cantidad Producida:"), 0, 0);
-        grid.add(campoCantidad, 1, 0);
-        grid.add(new Label("Precio de Venta por Unidad:"), 0, 1);
-        grid.add(campoPrecioUnidad, 1, 1);
-        grid.add(new Label("Precio de Venta General:"), 0, 2);
-        grid.add(campoPrecioTotal, 1, 2);
-
-        contenedor.getChildren().add(grid);
+        contenedor.getChildren().addAll(campoNombre, grid);
         return contenedor;
+    }
+
+    private static Label crearEtiqueta(String texto) {
+        Label lbl = new Label(texto);
+        lbl.setStyle("-fx-background-color: #FFC107; -fx-font-weight: bold; -fx-padding: 5 10;");
+        return lbl;
+    }
+
+    private static double parseDoubleSafe(String val) {
+        try {
+            return Double.parseDouble(val.trim().replace(",", ""));
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }

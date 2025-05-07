@@ -1,102 +1,143 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
 import com.panaderiafx.utils.VerUtils;
-import javafx.beans.property.SimpleBooleanProperty;
+import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class PanelIngredientesReceta {
 
-    public static Node crear(String codigoReceta) {
-        VBox contenedor = new VBox(15);
-        contenedor.setPadding(new Insets(15));
-        contenedor.setStyle("-fx-background-color: #FFF3E0; -fx-background-radius: 10;");
+    public static VBox crear(String codigoReceta) {
+        VBox panel = new VBox(10);
+        panel.setStyle("-fx-background-color: #FF9800; -fx-padding: 20; -fx-background-radius: 10;");
+        panel.setPrefWidth(450);
 
-        TableView<IngredienteDetalle> tabla = new TableView<>();
+        Label titulo = new Label("INGREDIENTES");
+        titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
 
-        TableColumn<IngredienteDetalle, String> colCodigo = new TableColumn<>("Ingrediente");
-        colCodigo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().codigo));
+        List<Map<String, String>> ingredientes = VerUtils.verTabla("RecetasIngredientes");
+        List<Map<String, String>> filtrados = ingredientes.stream()
+                .filter(m -> m.getOrDefault("Código receta", "").equals(codigoReceta))
+                .toList();
 
-        TableColumn<IngredienteDetalle, String> colCantidad = new TableColumn<>("Cantidad");
-        colCantidad.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().cantidad));
+        if (filtrados.isEmpty()) {
+            Label error = new Label("Receta no encontrada");
+            error.setStyle("-fx-background-color: #FFD180; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;");
+            panel.getChildren().add(error);
+            return panel;
+        }
 
-        TableColumn<IngredienteDetalle, String> colUnidad = new TableColumn<>("Unidad");
-        colUnidad.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().unidad));
+        ObservableList<Map<String, String>> datos = FXCollections.observableArrayList();
+        for (Map<String, String> fila : filtrados) {
+            fila.put("Check", "✓");
+            datos.add(fila);
+        }
 
-        TableColumn<IngredienteDetalle, String> colCosto = new TableColumn<>("Costo");
-        colCosto.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().costo));
+        // campos de totales
+        TextField campoTotal = new TextField("0.00");
+        campoTotal.setEditable(false);
+        campoTotal.setPrefWidth(100);
 
-        TableColumn<IngredienteDetalle, Boolean> colCheck = new TableColumn<>("✓");
-        colCheck.setCellValueFactory(c -> new SimpleBooleanProperty(c.getValue().usar));
-        colCheck.setCellFactory(CheckBoxTableCell.forTableColumn(colCheck));
+        TextField campoUnitario = new TextField("0.00");
+        campoUnitario.setEditable(false);
+        campoUnitario.setPrefWidth(100);
 
-        tabla.getColumns().addAll(colCodigo, colCantidad, colUnidad, colCosto, colCheck);
+        TableView<Map<String, String>> tabla = new TableView<>(datos);
+        tabla.setPrefHeight(250);
+        tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        List<Map<String, String>> listaIngredientes = VerUtils.verTabla("Ingredientes");
-        List<Map<String, String>> recetasIngredientes = VerUtils.verTabla("RecetasIngredientes");
+        TableColumn<Map<String, String>, String> colIng = new TableColumn<>("Ingrediente");
+        colIng.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Ingrediente", "")));
 
-        // MANTENER ORDEN DE EXCEL
-        List<IngredienteDetalle> detalles = listaIngredientes.stream()
-            .map(i -> {
-                String cod = i.getOrDefault("Código", "").trim();
-                Map<String, String> filaReceta = recetasIngredientes.stream()
-                        .filter(r -> cod.equalsIgnoreCase(r.getOrDefault("Ingrediente", "").trim()))
-                        .filter(r -> codigoReceta.equalsIgnoreCase(r.getOrDefault("Código receta", "").trim()))
-                        .findFirst().orElse(null);
+        TableColumn<Map<String, String>, String> colCant = new TableColumn<>("Cantidad");
+        colCant.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad", "")));
 
-                if (filaReceta == null) return null;
+        TableColumn<Map<String, String>, String> colUnidad = new TableColumn<>("Unidad");
+        colUnidad.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Unidades", "")));
 
-                String cantidad = filaReceta.getOrDefault("Cantidad", "");
-                String unidad = filaReceta.getOrDefault("Unidades", "");
-                String costo = i.getOrDefault("Precio Local", "0");
+        TableColumn<Map<String, String>, String> colCosto = new TableColumn<>("Costo");
+        colCosto.setCellValueFactory(f -> {
+            String codIng = f.getValue().getOrDefault("Ingrediente", "");
+            double cantProducida = obtenerCantidadProduccionActual(codigoReceta);
+            double costo = CostoIngredientePorRecetaUtils.calcular(codigoReceta, codIng, cantProducida);
+            f.getValue().put("Costo", String.format("%.2f", costo)); // guarda el valor por si se vuelve a usar
+            return new SimpleStringProperty(String.format("%.2f", costo));
+        });
 
-                return new IngredienteDetalle(cod, cantidad, unidad, costo, true);
-            })
-            .filter(i -> i != null)
-            .collect(Collectors.toList());
+        TableColumn<Map<String, String>, String> colCheck = new TableColumn<>("✓");
+        colCheck.setMinWidth(60);
+        colCheck.setCellFactory(col -> new TableCell<>() {
+            private final Button btn = new Button();
 
-        tabla.getItems().setAll(detalles);
-
-        // Total de costos
-        double total = detalles.stream().mapToDouble(i -> {
-            try {
-                return Double.parseDouble(i.costo);
-            } catch (Exception e) {
-                return 0;
+            {
+                btn.setOnAction(e -> {
+                    Map<String, String> fila = getTableView().getItems().get(getIndex());
+                    String actual = fila.getOrDefault("Check", "✓");
+                    fila.put("Check", actual.equals("✓") ? " " : "✓");
+                    getTableView().refresh();
+                    actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta);
+                });
             }
-        }).sum();
 
-        HBox resumen = new HBox(10);
-        resumen.setPadding(new Insets(10));
-        resumen.setStyle("-fx-background-color: #FFCC80; -fx-background-radius: 5;");
-        Label lbl = new Label("COSTO TOTAL:");
-        TextField campo = new TextField(String.format("%.2f", total));
-        campo.setEditable(false);
-        resumen.getChildren().addAll(lbl, campo);
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    Map<String, String> fila = getTableView().getItems().get(getIndex());
+                    btn.setText(fila.getOrDefault("Check", "✓").equals("✓") ? "✓" : " ");
+                    setGraphic(btn);
+                }
+            }
+        });
+        colCheck.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Check", "✓")));
 
-        contenedor.getChildren().addAll(tabla, resumen);
-        return contenedor;
+        tabla.getColumns().addAll(colIng, colCant, colUnidad, colCosto, colCheck);
+
+        Label lblCosto = new Label("COSTO TOTAL:");
+        Label lblUnitario = new Label("COSTO x UNIDAD:");
+
+        VBox totales = new VBox(5,
+                new HBox(10, lblCosto, campoTotal),
+                new HBox(10, lblUnitario, campoUnitario)
+        );
+        totales.setPadding(new Insets(10));
+        totales.setStyle("-fx-background-color: #FFB74D;");
+
+        actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta);
+
+        panel.getChildren().addAll(titulo, tabla, totales);
+        return panel;
     }
 
-    public static class IngredienteDetalle {
-        String codigo, cantidad, unidad, costo;
-        boolean usar;
+    private static double obtenerCantidadProduccionActual(String codReceta) {
+        return VerUtils.verTabla("Produccion").stream()
+                .filter(p -> p.getOrDefault("Código receta", "").equals(codReceta))
+                .map(p -> ParseUtils.toDouble(p.getOrDefault("Cantidad producida", "0")))
+                .reduce((a, b) -> b).orElse(0.0);
+    }
 
-        public IngredienteDetalle(String codigo, String cantidad, String unidad, String costo, boolean usar) {
-            this.codigo = codigo;
-            this.cantidad = cantidad;
-            this.unidad = unidad;
-            this.costo = costo;
-            this.usar = usar;
+    private static void actualizarTotales(TableView<Map<String, String>> tabla, TextField campoTotal, TextField campoUnitario, String codReceta) {
+        double total = 0;
+        for (Map<String, String> fila : tabla.getItems()) {
+            if ("✓".equals(fila.getOrDefault("Check", "✓"))) {
+                total += ParseUtils.toDouble(fila.getOrDefault("Costo", "0"));
+            }
         }
+
+        campoTotal.setText(String.format("%.2f", total));
+
+        double cantidadProducida = obtenerCantidadProduccionActual(codReceta);
+        double unitario = (cantidadProducida > 0) ? total / cantidadProducida : 0;
+        campoUnitario.setText(String.format("%.4f", unitario));
     }
 }

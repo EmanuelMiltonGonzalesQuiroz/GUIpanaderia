@@ -2,9 +2,10 @@ package com.panaderiafx.controllers.components.registroproduccion;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Insets;
-
 import com.panaderiafx.utils.VistaResumenUtils;
 
 import java.util.Map;
@@ -33,8 +34,6 @@ public class VistaResumenPrincipal {
         Runnable actualizar = () -> {
             String fecha = selector.getFecha();
             String tipo = selector.getTipo();
-            System.out.println("🔍 Recalculando vista con fecha: " + fecha + " y tipo: " + tipo);
-
             Map<String, Double> resumen = VistaResumenUtils.calcularResumen(fecha, tipo);
 
             panelResumen.getChildren().clear();
@@ -46,19 +45,50 @@ public class VistaResumenPrincipal {
                 resumen.getOrDefault("parametros", 0.0),
                 resumen.getOrDefault("total", 0.0),
                 (accion) -> {
-                    System.out.println("🟠 Acción clickeada: " + accion);
                     if (accion.equals("GANANCIAS") || accion.equals("COSTOS_DIRECTOS")) {
                         panelDetalleProducciones.getChildren().setAll(
                             VistaGananciasCostosDirectos.crear(
                                 fecha,
                                 tipo,
                                 (codigoReceta) -> {
-                                    panelDetalleReceta.getChildren().setAll(PanelFormularioReceta.crear(codigoReceta));
+                                    panelDetalleReceta.setVisible(true);
+                                    panelIngredientes.setVisible(true);
+                                    panelDetalleReceta.getChildren().setAll(
+                                        PanelFormularioReceta.crear(codigoReceta, (cod, nuevoTotal) -> {
+                                            TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
+                                            if (tabla != null) {
+                                                for (Map<String, String> item : tabla.getItems()) {
+                                                    String codigo = item.getOrDefault("Código receta", "").trim();
+                                                    if (codigo.equalsIgnoreCase(cod.trim())) {
+                                                        double cantidad = Double.parseDouble(item.getOrDefault("Cantidad producida", "1"));
+                                                        double nuevoUnitario = Math.floor((nuevoTotal / cantidad) * 100) / 100;
+                                                        item.put("Precio de Venta por Unidad", String.format("%.2f", nuevoUnitario));
+                                                        break;
+                                                    }
+                                                }
+
+                                                tabla.refresh();
+
+                                                TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {
+                                                    // Actualiza panel izquierdo
+                                                    panelRef.get().actualizarGananciaYCosto(gan, cos);
+
+                                                    // Actualiza campo TOTAL GANANCIAS en VistaGananciasCostosDirectos
+                                                    for (Node node : panelDetalleProducciones.lookupAll(".text-field")) {
+                                                        if (node instanceof TextField tf && tf.getText().matches("\\d+(\\.\\d{1,2})?")) {
+                                                            tf.setText(String.format("%.2f", gan));
+                                                            break;
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        })
+                                    );
                                     panelIngredientes.getChildren().setAll(PanelIngredientesReceta.crear(codigoReceta));
                                 },
-                                (ganancia, costo) -> {
+                                (gan, cos) -> {
                                     if (panelRef.get() != null) {
-                                        panelRef.get().actualizarGananciaYCosto(ganancia, costo);
+                                        panelRef.get().actualizarGananciaYCosto(gan, cos);
                                     }
                                 }
                             )
@@ -67,6 +97,8 @@ public class VistaResumenPrincipal {
                         panelDetalleProducciones.getChildren().clear();
                         panelDetalleReceta.getChildren().clear();
                         panelIngredientes.getChildren().clear();
+                        panelDetalleReceta.setVisible(false);
+                        panelIngredientes.setVisible(false);
                     }
                 }
             );
@@ -79,7 +111,6 @@ public class VistaResumenPrincipal {
         selector.getBotonSeleccionar().setOnAction(e -> actualizar.run());
 
         actualizar.run();
-
         contenedorIzquierda.getChildren().addAll(titulo, selector, panelResumen);
         return contenedorIzquierda;
     }

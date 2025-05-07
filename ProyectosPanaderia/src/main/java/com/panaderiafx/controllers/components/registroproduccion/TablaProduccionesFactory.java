@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 
 import java.util.List;
 import java.util.Map;
@@ -20,10 +19,22 @@ import java.util.stream.Collectors;
 
 public class TablaProduccionesFactory {
 
-    public static TableView<Map<String, String>> crearTabla(String fecha, String tipo, Consumer<String> accionEditar, BiConsumer<Double, Double> actualizarTotales) {
+    public static TableView<Map<String, String>> ultimaTablaGenerada;
+
+    public static TableView<Map<String, String>> crearTabla(
+        String fecha,
+        String tipo,
+        Consumer<String> accionEditar,
+        BiConsumer<Double, Double> actualizarTotales,
+        Consumer<List<Map<String, String>>> exponerDatos
+    ) {
         List<Map<String, String>> produccion = VerUtils.verTabla("Produccion").stream()
                 .filter(p -> FechaUtils.coincide(p.get("Fecha"), fecha, tipo))
                 .collect(Collectors.toList());
+
+        if (exponerDatos != null) {
+            exponerDatos.accept(produccion);
+        }
 
         Map<String, String> mapaCodANombre = VerUtils.verTabla("Recetas").stream()
                 .collect(Collectors.toMap(
@@ -125,11 +136,13 @@ public class TablaProduccionesFactory {
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla.setPrefHeight(300);
 
+        ultimaTablaGenerada = tabla;
         recalcular(items, actualizarTotales);
+
         return tabla;
     }
 
-    private static void recalcular(List<Map<String, String>> datos, BiConsumer<Double, Double> actualizar) {
+    public static void recalcular(List<Map<String, String>> datos, BiConsumer<Double, Double> actualizar) {
         double sumaGanancia = 0;
         double sumaCosto = 0;
 

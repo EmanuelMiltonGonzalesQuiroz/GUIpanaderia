@@ -1,14 +1,13 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-🔍 Recalculando vista con fecha: 6/5/2025 y tipo: DÍA
 🔍 Calculando resumen para:
-   ➤ Fecha seleccionada: 6/5/2025
+   ➤ Fecha seleccionada: 7/5/2025
    ➤ Tipo seleccionado: DÍA
-📄 Filas Producción: 12
+📄 Filas Producción: 13
 ✅ Total ganancias: 0.00
-📄 Filas Producción: 12
-✅ Total general: 0.00 | Recetas procesadas: 0 | Tiempo total: 0.37 seg
+📄 Filas Producción: 13
+✅ Total general: 0.00 | Recetas procesadas: 0 | Tiempo total: 0.41 seg
    📄 Filas Costos: 37
      ➤ Costo indirecto: 41.00 (ajustado: 5.86) | Frecuencia: semanal
      ➤ Costo indirecto: 6067.50 (ajustado: 202.25) | Frecuencia: mensual
@@ -30,145 +29,37 @@
    Costos Indirectos: 237.17
    Descuentos/Impuestos: 187.20
    TOTAL: -424.37
-⏱️ Tiempo en crear pestañas: 2644 ms
+⏱️ Tiempo en crear pestañas: 2890 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 3270 ms
-⏱️ Tiempo desde main() hasta GUI: 3283 ms
-🔍 Recalculando vista con fecha: 5/2025 y tipo: MES
+⏱️ Tiempo total en start(): 3602 ms
+⏱️ Tiempo desde main() hasta GUI: 3623 ms
 🔍 Calculando resumen para:
-   ➤ Fecha seleccionada: 5/2025
-   ➤ Tipo seleccionado: MES
-📄 Filas Producción: 12
-✅ Total ganancias: 16629.00
-📄 Filas Producción: 12
-🔍 Iniciando cálculo de costos directos para receta REC0001 | cantidad: 48.00
-📥 Datos cargados (0.45 seg)
-🧾 Rendimiento: 176.00 | Factor producción: 0.2727
-   ➤ Ingrediente 1: ING0001 | 100.00 Libras → 45.36 Kilos | Precio: 4.00 | Costo: 49.48
-   ➤ Ingrediente 2: ING0002 | 2640.00 Gramos → 2.64 Kilos | Precio: 0.80 | Costo: 0.58
-   ➤ Ingrediente 3: ING0003 | 660.00 Gramos → 0.66 Kilos | Precio: 1.50 | Costo: 0.27
-   ➤ Ingrediente 4: ING0004 | 2640.00 Gramos → 2.64 Kilos | Precio: 7.60 | Costo: 5.47
-   ➤ Ingrediente 5: ING0005 | 200.00 Gramos → 0.20 Kilos | Precio: 10.00 | Costo: 0.55
-   ➤ Ingrediente 6: ING0006 | 300.00 Gramos → 0.30 Litro | Precio: 3.00 | Costo: 0.25
-   ➤ Ingrediente 7: ING0007 | 200.00 Gramos → 0.20 Kilos | Precio: 0.85 | Costo: 0.05
-   ➤ Ingrediente 8: ING0008 | 700.00 Gramos → 0.70 Kilos | Precio: 7.60 | Costo: 1.45
+   ➤ Fecha seleccionada: 6/5/2025
+   ➤ Tipo seleccionado: DÍA
+📄 Filas Producción: 13
+✅ Total ganancias: 600.00
+📄 Filas Producción: 13
+🔍 Iniciando cálculo de costos directos para receta REC0002 | cantidad: 300.00
+📥 Datos cargados (0.42 seg)
+🧾 Rendimiento: 645.00 | Factor producción: 0.4651
+   ➤ Ingrediente 1: ING0001 | 37.00 Libras → 16.78 Kilos | Precio: 4.00 | Costo: 31.22
+   ➤ Ingrediente 2: ING0002 | 3350.00 Gramos → 3.35 Kilos | Precio: 0.80 | Costo: 1.25
+   ➤ Ingrediente 3: ING0003 | 230.00 Gramos → 0.23 Kilos | Precio: 1.50 | Costo: 0.16
+   ➤ Ingrediente 4: ING0004 | 1200.00 Gramos → 1.20 Kilos | Precio: 7.60 | Costo: 4.24
+   ➤ Ingrediente 5: ING0006 | 112.00 Gramos → 0.11 Litro | Precio: 3.00 | Costo: 0.16
+   ➤ Ingrediente 6: ING0007 | 75.00 Gramos → 0.08 Kilos | Precio: 0.85 | Costo: 0.03
+   ➤ Ingrediente 7: ING0008 | 190.00 Gramos → 0.19 Kilos | Precio: 7.60 | Costo: 0.67
+   ➤ Ingrediente 8: ING0010 | 1.00 Onza → 1.00 Onza | Precio: 3.00 | Costo: 1.40
 ⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0001: 58.09 | Ingredientes procesados: 9 | Tiempo total: 1.54 seg
-🧮 Calculado: REC0001 x 48.00 = 58.09 (1.54 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0002 | cantidad: 49.00
-📥 Datos cargados (0.38 seg)
-🧾 Rendimiento: 645.00 | Factor producción: 0.0760
-   ➤ Ingrediente 1: ING0001 | 37.00 Libras → 16.78 Kilos | Precio: 4.00 | Costo: 5.10
-   ➤ Ingrediente 2: ING0002 | 3350.00 Gramos → 3.35 Kilos | Precio: 0.80 | Costo: 0.20
-   ➤ Ingrediente 3: ING0003 | 230.00 Gramos → 0.23 Kilos | Precio: 1.50 | Costo: 0.03
-   ➤ Ingrediente 4: ING0004 | 1200.00 Gramos → 1.20 Kilos | Precio: 7.60 | Costo: 0.69
-   ➤ Ingrediente 5: ING0006 | 112.00 Gramos → 0.11 Litro | Precio: 3.00 | Costo: 0.03
-   ➤ Ingrediente 6: ING0007 | 75.00 Gramos → 0.08 Kilos | Precio: 0.85 | Costo: 0.00
-   ➤ Ingrediente 7: ING0008 | 190.00 Gramos → 0.19 Kilos | Precio: 7.60 | Costo: 0.11
-   ➤ Ingrediente 8: ING0010 | 1.00 Onza → 1.00 Onza | Precio: 3.00 | Costo: 0.23
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0002: 6.39 | Ingredientes procesados: 9 | Tiempo total: 1.41 seg
-🧮 Calculado: REC0002 x 49.00 = 6.39 (1.41 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0003 | cantidad: 50.00
-📥 Datos cargados (0.35 seg)
-🧾 Rendimiento: 645.00 | Factor producción: 0.0775
-   ➤ Ingrediente 1: ING0001 | 37.00 Libras → 16.78 Kilos | Precio: 4.00 | Costo: 5.20
-   ➤ Ingrediente 2: ING0002 | 3350.00 Gramos → 3.35 Kilos | Precio: 0.80 | Costo: 0.21
-   ➤ Ingrediente 3: ING0004 | 1200.00 Gramos → 1.20 Kilos | Precio: 7.60 | Costo: 0.71
-✅ Total receta REC0003: 6.12 | Ingredientes procesados: 4 | Tiempo total: 0.70 seg
-🧮 Calculado: REC0003 x 50.00 = 6.12 (0.70 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0004 | cantidad: 51.00
-📥 Datos cargados (0.33 seg)
-🧾 Rendimiento: 864.00 | Factor producción: 0.0590
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0004: 0.00 | Ingredientes procesados: 9 | Tiempo total: 0.46 seg
-🧮 Calculado: REC0004 x 51.00 = 0.00 (0.45 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0005 | cantidad: 52.00
-📥 Datos cargados (0.32 seg)
-🧾 Rendimiento: 640.00 | Factor producción: 0.0813
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0005: 0.00 | Ingredientes procesados: 9 | Tiempo total: 0.42 seg
-🧮 Calculado: REC0005 x 52.00 = 0.00 (0.42 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0006 | cantidad: 53.00
-📥 Datos cargados (0.33 seg)
-🧾 Rendimiento: 140.00 | Factor producción: 0.3786
-   ➤ Ingrediente 1: ING0001 | 50.00 Libras → 22.68 Kilos | Precio: 4.00 | Costo: 34.34
-   ➤ Ingrediente 2: ING0012 | 4400.00 Gramos → 4.40 Kilos | Precio: 1.20 | Costo: 2.00
-   ➤ Ingrediente 3: ING0003 | 112.00 Gramos → 0.11 Kilos | Precio: 1.50 | Costo: 0.06
-   ➤ Ingrediente 4: ING0004 | 1600.00 Gramos → 1.60 Kilos | Precio: 7.60 | Costo: 4.60
-   ➤ Ingrediente 5: ING0006 | 112.00 Gramos → 0.11 Litro | Precio: 3.00 | Costo: 0.13
-   ➤ Ingrediente 6: ING0007 | 300.00 Gramos → 0.30 Kilos | Precio: 0.85 | Costo: 0.10
-⚠️ Fallo conversión Unidades → Kilos para ING0008
-   ➤ Ingrediente 8: ING0011 | 0.25 Litro → 0.25 Litro | Precio: 10.00 | Costo: 0.95
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0006: 42.18 | Ingredientes procesados: 10 | Tiempo total: 1.32 seg
-🧮 Calculado: REC0006 x 53.00 = 42.18 (1.32 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0007 | cantidad: 54.00
-📥 Datos cargados (0.32 seg)
-🧾 Rendimiento: 140.00 | Factor producción: 0.3857
-   ➤ Ingrediente 1: ING0012 | 4400.00 Gramos → 4.40 Kilos | Precio: 1.20 | Costo: 2.04
-   ➤ Ingrediente 2: ING0013 | 125.00 Gramos → 125.00 Gramos | Precio: 0.03 | Costo: 1.45
-✅ Total receta REC0007: 3.48 | Ingredientes procesados: 2 | Tiempo total: 0.54 seg
-🧮 Calculado: REC0007 x 54.00 = 3.48 (0.54 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0008 | cantidad: 55.00
-📥 Datos cargados (0.31 seg)
-🧾 Rendimiento: 120.00 | Factor producción: 0.4583
-   ➤ Ingrediente 1: ING0001 | 58.00 Libras → 26.31 Kilos | Precio: 4.00 | Costo: 48.23
-   ➤ Ingrediente 2: ING0012 | 340.20 Gramos → 0.34 Kilos | Precio: 1.20 | Costo: 0.19
-   ➤ Ingrediente 3: ING0003 | 170.10 Gramos → 0.17 Kilos | Precio: 1.50 | Costo: 0.12
-   ➤ Ingrediente 4: ING0004 | 2041.17 Gramos → 2.04 Kilos | Precio: 7.60 | Costo: 7.11
-   ➤ Ingrediente 5: ING0006 | 150.00 Gramos → 0.15 Litro | Precio: 3.00 | Costo: 0.21
-   ➤ Ingrediente 6: ING0007 | 300.00 Gramos → 0.30 Kilos | Precio: 0.85 | Costo: 0.12
-   ➤ Ingrediente 7: ING0015 | 680.39 Gramos → 680.39 Gramos | Precio: 0.06 | Costo: 18.71
-   ➤ Ingrediente 8: ING0011 | 0.25 Litro → 0.25 Litro | Precio: 10.00 | Costo: 1.15
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0008: 75.83 | Ingredientes procesados: 10 | Tiempo total: 1.28 seg
-🧮 Calculado: REC0008 x 55.00 = 75.83 (1.28 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0009 | cantidad: 56.00
-📥 Datos cargados (0.33 seg)
-🧾 Rendimiento: 120.00 | Factor producción: 0.4667
-   ➤ Ingrediente 1: ING0002 | 680.39 Gramos → 0.68 Kilos | Precio: 0.80 | Costo: 0.25
-   ➤ Ingrediente 2: ING0014 | 75.00 Gramos → 75.00 Gramos | Precio: 0.02 | Costo: 0.70
-✅ Total receta REC0009: 0.95 | Ingredientes procesados: 2 | Tiempo total: 0.54 seg
-🧮 Calculado: REC0009 x 56.00 = 0.95 (0.54 seg)
-🔍 Iniciando cálculo de costos directos para receta REC0010 | cantidad: 57.00
-📥 Datos cargados (0.33 seg)
-🧾 Rendimiento: 64.00 | Factor producción: 0.8906
-   ➤ Ingrediente 1: ING0016 | 12.00 Kilos → 12.00 Kilos | Precio: 4.00 | Costo: 42.75
-   ➤ Ingrediente 2: ING0017 | 6.00 Kilos → 6.00 Kilos | Precio: 4.50 | Costo: 24.05
-   ➤ Ingrediente 3: ING0002 | 990.00 Gramos → 0.99 Kilos | Precio: 0.80 | Costo: 0.71
-   ➤ Ingrediente 4: ING0003 | 248.00 Gramos → 0.25 Kilos | Precio: 1.50 | Costo: 0.33
-   ➤ Ingrediente 5: ING0005 | 75.00 Gramos → 0.08 Kilos | Precio: 10.00 | Costo: 0.67
-   ➤ Ingrediente 6: ING0006 | 125.00 Gramos → 0.13 Litro | Precio: 3.00 | Costo: 0.33
-   ➤ Ingrediente 7: ING0004 | 990.00 Gramos → 0.99 Kilos | Precio: 7.60 | Costo: 6.70
-   ➤ Ingrediente 8: ING0018 | 50.00 Gramos → 50.00 Gramos | Precio: 0.08 | Costo: 3.56
-   ➤ Ingrediente 9: ING0019 | 1.00 Onza → 1.00 Onza | Precio: 3.50 | Costo: 3.12
-   ➤ Ingrediente 10: ING0008 | 190.00 Gramos → 0.19 Kilos | Precio: 7.60 | Costo: 1.29
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0010: 83.50 | Ingredientes procesados: 11 | Tiempo total: 1.51 seg
-🧮 Calculado: REC0010 x 57.00 = 83.50 (1.51 seg)
-♻️ Recuperado de caché: REC0010 x 57.00 = 83.50
-🔍 Iniciando cálculo de costos directos para receta REC0001 | cantidad: 300.00
-📥 Datos cargados (0.33 seg)
-🧾 Rendimiento: 176.00 | Factor producción: 1.7045
-   ➤ Ingrediente 1: ING0001 | 100.00 Libras → 45.36 Kilos | Precio: 4.00 | Costo: 309.27
-   ➤ Ingrediente 2: ING0002 | 2640.00 Gramos → 2.64 Kilos | Precio: 0.80 | Costo: 3.60
-   ➤ Ingrediente 3: ING0003 | 660.00 Gramos → 0.66 Kilos | Precio: 1.50 | Costo: 1.69
-   ➤ Ingrediente 4: ING0004 | 2640.00 Gramos → 2.64 Kilos | Precio: 7.60 | Costo: 34.20
-   ➤ Ingrediente 5: ING0005 | 200.00 Gramos → 0.20 Kilos | Precio: 10.00 | Costo: 3.41
-   ➤ Ingrediente 6: ING0006 | 300.00 Gramos → 0.30 Litro | Precio: 3.00 | Costo: 1.53
-   ➤ Ingrediente 7: ING0007 | 200.00 Gramos → 0.20 Kilos | Precio: 0.85 | Costo: 0.29
-   ➤ Ingrediente 8: ING0008 | 700.00 Gramos → 0.70 Kilos | Precio: 7.60 | Costo: 9.07
-⚠️ Fallo conversión Unidades → Unidades para ING0009
-✅ Total receta REC0001: 363.06 | Ingredientes procesados: 9 | Tiempo total: 1.27 seg
-🧮 Calculado: REC0001 x 300.00 = 363.06 (1.27 seg)
-✅ Total general: 723.10 | Recetas procesadas: 12 | Tiempo total: 11.14 seg
+✅ Total receta REC0002: 39.13 | Ingredientes procesados: 9 | Tiempo total: 1.53 seg
+🧮 Calculado: REC0002 x 300.00 = 39.13 (1.53 seg)
+✅ Total general: 39.13 | Recetas procesadas: 1 | Tiempo total: 1.69 seg
    📄 Filas Costos: 37
-     ➤ Costo indirecto: 41.00 (ajustado: 164.00) | Frecuencia: semanal
-     ➤ Costo indirecto: 6067.50 (ajustado: 6067.50) | Frecuencia: mensual
-     ➤ Costo indirecto: 683.35 (ajustado: 683.35) | Frecuencia: mensual
-     ➤ Costo indirecto: 44.00 (ajustado: 176.00) | Frecuencia: semanal
-   Total costos indirectos: 7090.85
+     ➤ Costo indirecto: 41.00 (ajustado: 5.86) | Frecuencia: semanal
+     ➤ Costo indirecto: 6067.50 (ajustado: 202.25) | Frecuencia: mensual
+     ➤ Costo indirecto: 683.35 (ajustado: 22.78) | Frecuencia: mensual
+     ➤ Costo indirecto: 44.00 (ajustado: 6.29) | Frecuencia: semanal
+   Total costos indirectos: 237.17
    📄 Filas Parámetros: 4
      ➤ Mano de obra diaria detectada: 80.00 bzd/día
      ➤ Merma estimada: 5.00%
@@ -179,9 +70,8 @@
      ➤ Costo por merma: 8.00
    Total descuentos/impuestos: 187.20
 📊 RESUMEN:
-   Ganancias: 16629.00
-   Costos Directos: 723.10
-   Costos Indirectos: 7090.85
+   Ganancias: 600.00
+   Costos Directos: 39.13
+   Costos Indirectos: 237.17
    Descuentos/Impuestos: 187.20
-   TOTAL: 8627.85
-🟠 Acción clickeada: GANANCIAS
+   TOTAL: 136.50

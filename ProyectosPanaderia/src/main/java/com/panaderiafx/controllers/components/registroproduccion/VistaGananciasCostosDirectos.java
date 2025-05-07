@@ -6,13 +6,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.TableView;
 
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class VistaGananciasCostosDirectos {
 
-    public static Node crear(String fecha, String tipo, Consumer<String> accionEditar, BiConsumer<Double, Double> actualizarTotales) {
+    public static Node crear(
+            String fecha,
+            String tipo,
+            Consumer<String> abrirFormularioReceta,
+            BiConsumer<Double, Double> actualizarTotales) {
+
         Label ganLab = new Label("TOTAL GANANCIAS");
         TextField ganField = new TextField("0.00");
         ganField.setEditable(false);
@@ -32,22 +39,37 @@ public class VistaGananciasCostosDirectos {
 
         Label titulo = new Label("GANANCIAS Y COSTOS DIRECTOS");
         titulo.setStyle("-fx-font-weight: bold;");
-
         contenedor.getChildren().addAll(titulo);
 
-        contenedor.getChildren().add(
-            TablaProduccionesFactory.crearTabla(
-                fecha, tipo,
-                accionEditar,
-                (ganancia, costo) -> {
-                    ganField.setText(String.format("%.2f", ganancia));
-                    cosField.setText(String.format("%.2f", costo));
-                    actualizarTotales.accept(ganancia, costo);
+        final TableView<Map<String, String>>[] tablaRef = new TableView[1];
+
+        Node tabla = TablaProduccionesFactory.crearTabla(
+            fecha,
+            tipo,
+            (codigo) -> {
+                abrirFormularioReceta.accept(codigo);
+
+                if (tablaRef[0] != null) {
+                    TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), (gan, cos) -> {
+                        ganField.setText(String.format("%.2f", gan));
+                        cosField.setText(String.format("%.2f", cos));
+                        actualizarTotales.accept(gan, cos);
+                    });
                 }
-            )
+            },
+            (gan, cos) -> {
+                ganField.setText(String.format("%.2f", gan));
+                cosField.setText(String.format("%.2f", cos));
+                actualizarTotales.accept(gan, cos);
+            },
+            lista -> {} // ya no se necesita datosRef
         );
 
-        contenedor.getChildren().add(resumen);
+        if (tabla instanceof TableView) {
+            tablaRef[0] = (TableView<Map<String, String>>) tabla;
+        }
+
+        contenedor.getChildren().addAll(tabla, resumen);
         return contenedor;
     }
 }

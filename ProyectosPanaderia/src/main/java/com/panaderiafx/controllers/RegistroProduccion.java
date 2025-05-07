@@ -4,7 +4,6 @@ import com.panaderiafx.controllers.components.registroproduccion.VistaResumenPri
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -20,30 +19,35 @@ public class RegistroProduccion {
         StackPane layout = new StackPane();
         layout.setPadding(new Insets(30));
         layout.setStyle("-fx-background-color: #FFF3E0;");
-
-        // Contenedor horizontal
+    
+        // Contenedor horizontal principal (2 columnas visibles inicialmente)
         HBox contenedor = new HBox(30);
-
-        // Estilos individuales para cada panel
-        panelDetalleProducciones.setStyle("-fx-background-color: #FFE0B2; -fx-padding: 20; -fx-background-radius: 10;");
-        panelDetalleProducciones.setSpacing(10);
-        panelDetalleProducciones.setMinWidth(500);
-        panelDetalleProducciones.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        panelDetalleProducciones.setMaxWidth(Double.MAX_VALUE);
-
+    
+        // --------- Columna 1: Vista Resumen ---------
+        Node vistaResumen = VistaResumenPrincipal.crearVista(panelDetalleProducciones, panelDetalleReceta, panelIngredientes);
+    
+        // --------- Columna 2: Contenedor con recetas e ingredientes (pero oculto al inicio) ---------
+        VBox panelDerecho = new VBox(20);
+        panelDerecho.setStyle("-fx-background-color: transparent;");
+        panelDerecho.getChildren().addAll(panelDetalleReceta, panelIngredientes);
+    
         panelDetalleReceta.setStyle("-fx-background-color: #FFF8E1; -fx-padding: 20; -fx-background-radius: 10;");
         panelDetalleReceta.setSpacing(10);
-        panelDetalleReceta.setMinWidth(450);
-        panelDetalleReceta.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        panelDetalleReceta.setMaxWidth(Double.MAX_VALUE);
+    
+        panelIngredientes.setStyle("-fx-background-color: #FF9800; -fx-padding: 20; -fx-background-radius: 10;");
+        panelIngredientes.setSpacing(10);
+    
+        // --------- Columna central: Detalle de producciones ---------
+        panelDetalleProducciones.setStyle("-fx-background-color: #FFE0B2; -fx-padding: 20; -fx-background-radius: 10;");
+        panelDetalleProducciones.setSpacing(10);
+        panelDetalleReceta.setVisible(false);
+        panelIngredientes.setVisible(false);
 
-        // Vista izquierda: resumen
-        Node vistaResumen = VistaResumenPrincipal.crearVista(panelDetalleProducciones, panelDetalleReceta, panelIngredientes);
-
-        // Agrega todas las vistas al contenedor
-        contenedor.getChildren().addAll(vistaResumen, panelDetalleProducciones, panelDetalleReceta, panelIngredientes);
+    
+        contenedor.getChildren().addAll(vistaResumen, panelDetalleProducciones, panelDerecho);
         layout.getChildren().add(contenedor);
-
+    
         return layout;
     }
+    
 }

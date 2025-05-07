@@ -1,6 +1,5 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 public class VistaDetalleReceta {
@@ -9,7 +8,7 @@ public class VistaDetalleReceta {
         VBox panel = new VBox(10);
         panel.setStyle("-fx-background-color: #FFE0B2; -fx-padding: 20; -fx-background-radius: 10;");
         panel.getChildren().addAll(
-                PanelFormularioReceta.crear(codigoReceta),
+                PanelFormularioReceta.crear(codigoReceta, null),
                 PanelIngredientesReceta.crear(codigoReceta)
         );
         return panel;
