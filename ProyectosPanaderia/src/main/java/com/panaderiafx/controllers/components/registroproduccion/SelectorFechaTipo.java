@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 public class SelectorFechaTipo extends VBox {
 
     private final DatePicker selectorFecha;
-    private final ComboBox<String> selectorTipo;
     private final Button botonSeleccionar;
     private final Button botonActualizar;
 
@@ -28,18 +27,10 @@ public class SelectorFechaTipo extends VBox {
         estilizarBoton(botonSeleccionar);
         filaFecha.getChildren().addAll(lblFecha, selectorFecha, botonSeleccionar);
 
-        HBox filaTipo = new HBox(10);
-        filaTipo.setAlignment(Pos.CENTER_LEFT);
-        Label lblTipo = new Label("TIPO");
-        lblTipo.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
-        selectorTipo = new ComboBox<>();
-        selectorTipo.getItems().addAll("DÍA", "MES");
-        selectorTipo.setValue("DÍA");
         botonActualizar = new Button("ACTUALIZAR");
         estilizarBoton(botonActualizar);
-        filaTipo.getChildren().addAll(lblTipo, selectorTipo, botonActualizar);
 
-        this.getChildren().addAll(filaFecha, filaTipo);
+        this.getChildren().addAll(filaFecha, botonActualizar);
     }
 
     private void estilizarBoton(Button b) {
@@ -48,13 +39,11 @@ public class SelectorFechaTipo extends VBox {
 
     public String getFecha() {
         LocalDate fecha = selectorFecha.getValue();
-        return selectorTipo.getValue().equalsIgnoreCase("DÍA")
-                ? fecha.format(DateTimeFormatter.ofPattern("d/M/yyyy"))
-                : fecha.format(DateTimeFormatter.ofPattern("M/yyyy"));
+        return fecha.format(DateTimeFormatter.ofPattern("d/M/yyyy"));
     }
 
     public String getTipo() {
-        return selectorTipo.getValue();
+        return "DÍA";  // Forzado a "DÍA"
     }
 
     public Button getBotonActualizar() {

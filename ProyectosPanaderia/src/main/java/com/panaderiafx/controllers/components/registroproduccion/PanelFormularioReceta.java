@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.TableView;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,7 @@ import java.util.function.BiConsumer;
 
 public class PanelFormularioReceta {
 
-    public static Node crear(String nombreReceta, BiConsumer<String, Double> actualizarGananciaEnTabla) {
+    public static Node crear(String nombreReceta, Map<String, String> fila, BiConsumer<String, Double> actualizarGananciaEnTabla) {
         VBox contenedor = new VBox(15);
         contenedor.setStyle("-fx-background-color: #F36C00; -fx-padding: 20; -fx-background-radius: 10;");
         contenedor.setAlignment(Pos.TOP_LEFT);
@@ -51,9 +52,9 @@ public class PanelFormularioReceta {
         TextField campoPrecioUnidad = new TextField(String.format("%.2f", precioUnidad));
         TextField campoPrecioTotal = new TextField(String.format("%.2f", precioGeneral));
 
-        final boolean[] bloqueado = {false};  // para evitar loops circulares
+        final boolean[] bloqueado = {false};
 
-        Runnable actualizar = () -> {
+        Runnable actualizarTodo = () -> {
             if (bloqueado[0]) return;
             bloqueado[0] = true;
 
@@ -69,28 +70,43 @@ public class PanelFormularioReceta {
                 actualizarGananciaEnTabla.accept(nombreReceta, total);
             }
 
+            TableView<Map<String, String>> tabla = TablaProduccionesFactory.ultimaTablaGenerada;
+            if (tabla != null) {
+                tabla.refresh();
+                TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {});
+            }
+
             bloqueado[0] = false;
         };
 
-        campoCantidad.textProperty().addListener((obs, o, n) -> actualizar.run());
-        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> actualizar.run());
-        campoPrecioTotal.textProperty().addListener((obs, o, n) -> {
+        Runnable actualizarDesdeTotal = () -> {
             if (bloqueado[0]) return;
             bloqueado[0] = true;
 
             double cant = parseDoubleSafe(campoCantidad.getText());
-            double total = parseDoubleSafe(n);
-            if (cant != 0) {
-                double nuevoUnit = total / cant;
-                campoPrecioUnidad.setText(String.format("%.2f", nuevoUnit));
-            }
+            double total = parseDoubleSafe(campoPrecioTotal.getText());
+            double unit = cant != 0 ? total / cant : 0;
+
+            campoPrecioUnidad.setText(String.format("%.2f", unit));
+            prod.put("Cantidad producida", String.format("%.0f", cant));
+            prod.put("Precio de Venta por Unidad", String.format("%.2f", unit));
 
             if (actualizarGananciaEnTabla != null) {
                 actualizarGananciaEnTabla.accept(nombreReceta, total);
             }
 
+            TableView<Map<String, String>> tabla = TablaProduccionesFactory.ultimaTablaGenerada;
+            if (tabla != null) {
+                tabla.refresh();
+                TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {});
+            }
+
             bloqueado[0] = false;
-        });
+        };
+
+        campoCantidad.textProperty().addListener((obs, o, n) -> actualizarTodo.run());
+        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> actualizarTodo.run());
+        campoPrecioTotal.textProperty().addListener((obs, o, n) -> actualizarDesdeTotal.run());
 
         GridPane grid = new GridPane();
         grid.setHgap(10);

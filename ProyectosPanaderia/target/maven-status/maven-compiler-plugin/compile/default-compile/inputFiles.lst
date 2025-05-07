@@ -41,6 +41,10 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\VerControl
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\Pestanas.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\SubPestanasFactory.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosDirectosUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosIndirectosUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheGananciasUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheParametrosUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheTotalUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CalculoCostosUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.java

@@ -1,5 +1,6 @@
 package com.panaderiafx.utils;
 
+import com.panaderiafx.utils.cache.*;
 import com.panaderiafx.utils.componentes.*;
 
 import java.util.*;
@@ -17,8 +18,20 @@ public class VistaResumenUtils {
         double costosDirectos = CostosDirectosUtils.calcular(fecha, tipo);
         double costosIndirectos = CostosIndirectosUtils.calcular(tipo);
         double parametros = ParametrosUtils.calcular(tipo);
-
         double total = ganancias - costosDirectos - costosIndirectos - parametros;
+
+        // GUARDADO EN CACHÉ + LOG
+        System.out.printf("💾 Guardando en caché: Ganancias = %.2f\n", ganancias);
+        CacheGananciasUtils.set(ganancias);
+
+        System.out.printf("💾 Guardando en caché: Costos Directos = %.2f\n", costosDirectos);
+        CacheCostosDirectosUtils.setTotal(costosDirectos);
+
+        System.out.printf("💾 Guardando en caché: Costos Indirectos = %.2f\n", costosIndirectos);
+        CacheCostosIndirectosUtils.set(costosIndirectos);
+
+        System.out.printf("💾 Guardando en caché: Parámetros = %.2f\n", parametros);
+        CacheParametrosUtils.set(parametros);
 
         resultado.put("ganancias", ganancias);
         resultado.put("costos_directos", costosDirectos);
@@ -26,12 +39,12 @@ public class VistaResumenUtils {
         resultado.put("parametros", parametros);
         resultado.put("total", total);
 
-        System.out.println("📊 RESUMEN:");
-        System.out.printf("   Ganancias: %.2f\n", ganancias);
-        System.out.printf("   Costos Directos: %.2f\n", costosDirectos);
-        System.out.printf("   Costos Indirectos: %.2f\n", costosIndirectos);
-        System.out.printf("   Descuentos/Impuestos: %.2f\n", parametros);
-        System.out.printf("   TOTAL: %.2f\n", total);
+        System.out.println("📊 RESUMEN FINAL:");
+        System.out.printf("   ➤ Ganancias: %.2f\n", ganancias);
+        System.out.printf("   ➤ Costos Directos: %.2f\n", costosDirectos);
+        System.out.printf("   ➤ Costos Indirectos: %.2f\n", costosIndirectos);
+        System.out.printf("   ➤ Descuentos / Impuestos: %.2f\n", parametros);
+        System.out.printf("   ➤ TOTAL: %.2f\n", total);
 
         return resultado;
     }

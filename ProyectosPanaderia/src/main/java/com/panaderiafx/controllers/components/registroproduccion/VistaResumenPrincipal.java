@@ -3,10 +3,10 @@ package com.panaderiafx.controllers.components.registroproduccion;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Insets;
 import com.panaderiafx.utils.VistaResumenUtils;
+import com.panaderiafx.utils.cache.*;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -34,27 +34,30 @@ public class VistaResumenPrincipal {
         Runnable actualizar = () -> {
             String fecha = selector.getFecha();
             String tipo = selector.getTipo();
-            Map<String, Double> resumen = VistaResumenUtils.calcularResumen(fecha, tipo);
+
+            VistaResumenUtils.calcularResumen(fecha, tipo);
+
+            double ganancia = CacheGananciasUtils.get();
+            double costoDirecto = CacheCostosDirectosUtils.total();
+            double costoIndirecto = CacheCostosIndirectosUtils.get();
+            double parametros = CacheParametrosUtils.get();
+            double total = ganancia - costoDirecto - costoIndirecto - parametros;
 
             panelResumen.getChildren().clear();
 
             PanelResumenProduccion panel = new PanelResumenProduccion(
-                resumen.getOrDefault("ganancias", 0.0),
-                resumen.getOrDefault("costos_directos", 0.0),
-                resumen.getOrDefault("costos_indirectos", 0.0),
-                resumen.getOrDefault("parametros", 0.0),
-                resumen.getOrDefault("total", 0.0),
+                ganancia, costoDirecto, costoIndirecto, parametros, total,
                 (accion) -> {
                     if (accion.equals("GANANCIAS") || accion.equals("COSTOS_DIRECTOS")) {
                         panelDetalleProducciones.getChildren().setAll(
                             VistaGananciasCostosDirectos.crear(
                                 fecha,
                                 tipo,
-                                (codigoReceta) -> {
+                                (codigoReceta, fila) -> {
                                     panelDetalleReceta.setVisible(true);
                                     panelIngredientes.setVisible(true);
                                     panelDetalleReceta.getChildren().setAll(
-                                        PanelFormularioReceta.crear(codigoReceta, (cod, nuevoTotal) -> {
+                                        PanelFormularioReceta.crear(codigoReceta, fila, (cod, nuevoTotal) -> {                            
                                             TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
                                             if (tabla != null) {
                                                 for (Map<String, String> item : tabla.getItems()) {
@@ -66,20 +69,12 @@ public class VistaResumenPrincipal {
                                                         break;
                                                     }
                                                 }
-
                                                 tabla.refresh();
 
                                                 TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {
-                                                    // Actualiza panel izquierdo
+                                                    CacheGananciasUtils.set(gan);
+                                                    CacheCostosDirectosUtils.setTotal(cos);
                                                     panelRef.get().actualizarGananciaYCosto(gan, cos);
-
-                                                    // Actualiza campo TOTAL GANANCIAS en VistaGananciasCostosDirectos
-                                                    for (Node node : panelDetalleProducciones.lookupAll(".text-field")) {
-                                                        if (node instanceof TextField tf && tf.getText().matches("\\d+(\\.\\d{1,2})?")) {
-                                                            tf.setText(String.format("%.2f", gan));
-                                                            break;
-                                                        }
-                                                    }
                                                 });
                                             }
                                         })
@@ -87,9 +82,9 @@ public class VistaResumenPrincipal {
                                     panelIngredientes.getChildren().setAll(PanelIngredientesReceta.crear(codigoReceta));
                                 },
                                 (gan, cos) -> {
-                                    if (panelRef.get() != null) {
-                                        panelRef.get().actualizarGananciaYCosto(gan, cos);
-                                    }
+                                    CacheGananciasUtils.set(gan);
+                                    CacheCostosDirectosUtils.setTotal(cos);
+                                    panelRef.get().actualizarGananciaYCosto(gan, cos);
                                 }
                             )
                         );
@@ -100,8 +95,7 @@ public class VistaResumenPrincipal {
                         panelDetalleReceta.setVisible(false);
                         panelIngredientes.setVisible(false);
                     }
-                }
-            );
+                });
 
             panelRef.set(panel);
             panelResumen.getChildren().add(panel);

@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
+import com.panaderiafx.utils.cache.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import java.util.function.Consumer;
@@ -11,7 +12,10 @@ public class PanelResumenProduccion extends VBox {
     private final TextField parametrosField = new TextField();
     private final TextField totalField = new TextField();
 
-    private double ganancia, costoDirecto, costoIndirecto, parametros;
+    private double ganancia;
+    private double costoDirecto;
+    private double costoIndirecto;
+    private double parametros;
 
     public PanelResumenProduccion(double ganancia, double costoDirecto, double costoIndirecto, double parametros, double total,
                                   Consumer<String> onClick) {
@@ -30,6 +34,15 @@ public class PanelResumenProduccion extends VBox {
             fila("PARÁMETROS", parametrosField, parametros, null),
             fila("TOTAL", totalField, total, null)
         );
+
+        // Observadores conectados a los 4 caches
+        CacheGananciasUtils.agregarObservador(this::actualizarGanancia);
+        CacheCostosDirectosUtils.agregarObservador(this::actualizarCostoDirecto);
+        CacheCostosIndirectosUtils.agregarObservador(this::actualizarCostoIndirecto);
+        CacheParametrosUtils.agregarObservador(this::actualizarParametros);
+
+        // Inicialización visual
+        actualizarTodo();
     }
 
     private HBox fila(String titulo, TextField campo, double valor, Consumer<String> onClick) {
@@ -40,12 +53,42 @@ public class PanelResumenProduccion extends VBox {
         campo.setText(String.format("%.2f", valor));
         campo.setEditable(false);
         campo.setStyle("-fx-font-weight: bold;");
+        campo.setMinWidth(100);
 
         HBox fila = new HBox(10, etiqueta, campo);
         if (onClick != null) {
             fila.setOnMouseClicked(e -> onClick.accept(titulo.replace(" ", "_")));
         }
         return fila;
+    }
+
+    private void actualizarGanancia() {
+        this.ganancia = CacheGananciasUtils.get();
+        gananciaField.setText(String.format("%.2f", ganancia));
+        actualizarTotal();
+    }
+
+    private void actualizarCostoDirecto() {
+        this.costoDirecto = CacheCostosDirectosUtils.total();
+        costoDirectoField.setText(String.format("%.2f", costoDirecto));
+        actualizarTotal();
+    }
+
+    private void actualizarCostoIndirecto() {
+        this.costoIndirecto = CacheCostosIndirectosUtils.get();
+        costoIndirectoField.setText(String.format("%.2f", costoIndirecto));
+        actualizarTotal();
+    }
+
+    private void actualizarParametros() {
+        this.parametros = CacheParametrosUtils.get();
+        parametrosField.setText(String.format("%.2f", parametros));
+        actualizarTotal();
+    }
+
+    private void actualizarTotal() {
+        double total = ganancia - costoDirecto - costoIndirecto - parametros;
+        totalField.setText(String.format("%.2f", total));
     }
 
     public void actualizarGananciaYCosto(double nuevaGanancia, double nuevoCostoDirecto) {
@@ -56,8 +99,10 @@ public class PanelResumenProduccion extends VBox {
         actualizarTotal();
     }
 
-    private void actualizarTotal() {
-        double total = ganancia - costoDirecto - costoIndirecto - parametros;
-        totalField.setText(String.format("%.2f", total));
+    private void actualizarTodo() {
+        actualizarGanancia();
+        actualizarCostoDirecto();
+        actualizarCostoIndirecto();
+        actualizarParametros();
     }
 }

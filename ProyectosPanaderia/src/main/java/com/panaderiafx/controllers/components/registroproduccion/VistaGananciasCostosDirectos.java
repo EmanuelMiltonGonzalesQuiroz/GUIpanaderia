@@ -1,5 +1,7 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
+import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
+import com.panaderiafx.utils.cache.CacheGananciasUtils;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,21 +12,22 @@ import javafx.scene.control.TableView;
 
 import java.util.Map;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class VistaGananciasCostosDirectos {
 
     public static Node crear(
             String fecha,
             String tipo,
-            Consumer<String> abrirFormularioReceta,
+            BiConsumer<String, Map<String, String>> abrirFormularioReceta,
             BiConsumer<Double, Double> actualizarTotales) {
 
         Label ganLab = new Label("TOTAL GANANCIAS");
+        ganLab.setStyle("-fx-font-weight: bold;");
         TextField ganField = new TextField("0.00");
         ganField.setEditable(false);
 
         Label cosLab = new Label("TOTAL COSTOS");
+        cosLab.setStyle("-fx-font-weight: bold;");
         TextField cosField = new TextField("0.00");
         cosField.setEditable(false);
 
@@ -43,26 +46,27 @@ public class VistaGananciasCostosDirectos {
 
         final TableView<Map<String, String>>[] tablaRef = new TableView[1];
 
+        BiConsumer<Double, Double> actualizarCampos = (gan, cos) -> {
+            ganField.setText(String.format("%.2f", gan));
+            cosField.setText(String.format("%.2f", cos));
+            CacheGananciasUtils.set(gan);
+            CacheCostosDirectosUtils.setTotal(cos);
+            actualizarTotales.accept(gan, cos);
+        };
+
         Node tabla = TablaProduccionesFactory.crearTabla(
             fecha,
             tipo,
-            (codigo) -> {
-                abrirFormularioReceta.accept(codigo);
-
+            (codigo, fila) -> {
+                abrirFormularioReceta.accept(codigo, fila);
+            
                 if (tablaRef[0] != null) {
-                    TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), (gan, cos) -> {
-                        ganField.setText(String.format("%.2f", gan));
-                        cosField.setText(String.format("%.2f", cos));
-                        actualizarTotales.accept(gan, cos);
-                    });
+                    TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos);
+                    tablaRef[0].refresh();
                 }
             },
-            (gan, cos) -> {
-                ganField.setText(String.format("%.2f", gan));
-                cosField.setText(String.format("%.2f", cos));
-                actualizarTotales.accept(gan, cos);
-            },
-            lista -> {} // ya no se necesita datosRef
+            actualizarCampos,
+            lista -> {}
         );
 
         if (tabla instanceof TableView) {

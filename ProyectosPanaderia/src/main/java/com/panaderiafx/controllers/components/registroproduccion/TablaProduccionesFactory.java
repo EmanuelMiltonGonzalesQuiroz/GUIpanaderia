@@ -5,6 +5,7 @@ import com.panaderiafx.utils.componentes.CostosDirectosPorRecetaUtils;
 import com.panaderiafx.utils.componentes.FechaUtils;
 import com.panaderiafx.utils.componentes.ParseUtils;
 import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
+import com.panaderiafx.utils.cache.CacheGananciasUtils;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -24,7 +25,7 @@ public class TablaProduccionesFactory {
     public static TableView<Map<String, String>> crearTabla(
         String fecha,
         String tipo,
-        Consumer<String> accionEditar,
+        BiConsumer<String, Map<String, String>> accionEditar,
         BiConsumer<Double, Double> actualizarTotales,
         Consumer<List<Map<String, String>>> exponerDatos
     ) {
@@ -48,7 +49,6 @@ public class TablaProduccionesFactory {
         }
 
         ObservableList<Map<String, String>> items = FXCollections.observableArrayList(produccion);
-
         TableView<Map<String, String>> tabla = new TableView<>(items);
 
         TableColumn<Map<String, String>, String> colProducto = new TableColumn<>("RECETA");
@@ -61,6 +61,10 @@ public class TablaProduccionesFactory {
         TableColumn<Map<String, String>, String> colFecha = new TableColumn<>("FECHA");
         colFecha.setMinWidth(100);
         colFecha.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Fecha", "")));
+
+        TableColumn<Map<String, String>, String> colCantidad = new TableColumn<>("CANTIDAD");
+        colCantidad.setMinWidth(100);
+        colCantidad.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad producida", "0")));
 
         TableColumn<Map<String, String>, String> colGanancia = new TableColumn<>("GANANCIA");
         colGanancia.setMinWidth(100);
@@ -75,19 +79,26 @@ public class TablaProduccionesFactory {
         colCosto.setCellValueFactory(f -> {
             String cod = f.getValue().getOrDefault("Código receta", "");
             double cant = ParseUtils.toDouble(f.getValue().getOrDefault("Cantidad producida", "0"));
-            if (CacheCostosDirectosUtils.contiene(cod, cant)) {
-                return new SimpleStringProperty(String.format("%.2f", CacheCostosDirectosUtils.obtener(cod, cant)));
-            }
-            double costo = CostosDirectosPorRecetaUtils.calcular(cod, cant);
-            CacheCostosDirectosUtils.guardar(cod, cant, costo);
-            return new SimpleStringProperty(String.format("%.2f", costo));
+
+            double costoPorUnidad = CostosDirectosPorRecetaUtils.calcularPorUnidad(cod);
+            double costoTotal = costoPorUnidad * cant;
+
+            CacheCostosDirectosUtils.guardar(cod, cant, costoTotal);
+            return new SimpleStringProperty(String.format("%.2f", costoTotal));
+        });
+
+        TableColumn<Map<String, String>, String> colCostoUnitario = new TableColumn<>("COSTO/U");
+        colCostoUnitario.setMinWidth(80);
+        colCostoUnitario.setCellValueFactory(f -> {
+            String cod = f.getValue().getOrDefault("Código receta", "");
+            double costoPorUnidad = CostosDirectosPorRecetaUtils.calcularPorUnidad(cod);
+            return new SimpleStringProperty(String.format("%.2f", costoPorUnidad));
         });
 
         TableColumn<Map<String, String>, String> colCheck = new TableColumn<>("CHECK");
         colCheck.setMinWidth(60);
         colCheck.setCellFactory(col -> new TableCell<>() {
             private final Button btn = new Button();
-
             {
                 btn.setOnAction(e -> {
                     Map<String, String> fila = getTableView().getItems().get(getIndex());
@@ -121,7 +132,12 @@ public class TablaProduccionesFactory {
                 btn.setOnAction(event -> {
                     Map<String, String> datos = getTableView().getItems().get(getIndex());
                     String cod = datos.getOrDefault("Código receta", "");
-                    accionEditar.accept(cod);
+                    accionEditar.accept(cod, datos);
+
+
+                    // 🆕 actualiza la tabla en lugar de recrearla 
+                    tabla.refresh();
+                    recalcular(tabla.getItems(), actualizarTotales);
                 });
             }
 
@@ -132,13 +148,12 @@ public class TablaProduccionesFactory {
             }
         });
 
-        tabla.getColumns().addAll(colProducto, colFecha, colGanancia, colCosto, colCheck, colEditar);
+        tabla.getColumns().addAll(colProducto, colFecha, colCantidad, colGanancia, colCosto, colCostoUnitario, colCheck, colEditar);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla.setPrefHeight(300);
 
         ultimaTablaGenerada = tabla;
         recalcular(items, actualizarTotales);
-
         return tabla;
     }
 
@@ -154,16 +169,17 @@ public class TablaProduccionesFactory {
             double ganancia = cant * precioU;
 
             String cod = fila.getOrDefault("Código receta", "");
-            double costo = CacheCostosDirectosUtils.contiene(cod, cant)
-                    ? CacheCostosDirectosUtils.obtener(cod, cant)
-                    : CostosDirectosPorRecetaUtils.calcular(cod, cant);
 
-            CacheCostosDirectosUtils.guardar(cod, cant, costo);
+            double costoPorUnidad = CostosDirectosPorRecetaUtils.calcularPorUnidad(cod);
+            double costoTotal = costoPorUnidad * cant;
+            CacheCostosDirectosUtils.guardar(cod, cant, costoTotal);
 
             sumaGanancia += ganancia;
-            sumaCosto += costo;
+            sumaCosto += costoTotal;
         }
 
+        CacheGananciasUtils.set(sumaGanancia);
+        CacheCostosDirectosUtils.setTotal(sumaCosto);
         actualizar.accept(sumaGanancia, sumaCosto);
     }
 }

@@ -3,6 +3,8 @@ package com.panaderiafx.controllers.components.registroproduccion;
 import com.panaderiafx.utils.VerUtils;
 import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
 import com.panaderiafx.utils.componentes.ParseUtils;
+import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,7 +70,7 @@ public class PanelIngredientesReceta {
             String codIng = f.getValue().getOrDefault("Ingrediente", "");
             double cantProducida = obtenerCantidadProduccionActual(codigoReceta);
             double costo = CostoIngredientePorRecetaUtils.calcular(codigoReceta, codIng, cantProducida);
-            f.getValue().put("Costo", String.format("%.2f", costo)); // guarda el valor por si se vuelve a usar
+            f.getValue().put("Costo", String.format("%.2f", costo));
             return new SimpleStringProperty(String.format("%.2f", costo));
         });
 
@@ -139,5 +141,8 @@ public class PanelIngredientesReceta {
         double cantidadProducida = obtenerCantidadProduccionActual(codReceta);
         double unitario = (cantidadProducida > 0) ? total / cantidadProducida : 0;
         campoUnitario.setText(String.format("%.4f", unitario));
+
+        // Notifica a la caché para que el resumen total reaccione
+        CacheCostosDirectosUtils.editar(codReceta, cantidadProducida, total);
     }
 }
