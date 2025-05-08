@@ -19,11 +19,13 @@ public class Pestanas {
 
         VBox cabecera = new VBox(10);
         Button botonCambioVista = new Button("🔁 Cambiar a vista avanzada");
-        botonCambioVista.setStyle("-fx-background-color: #03A9F4; -fx-text-fill: white; -fx-padding: 6 12; -fx-font-weight: bold;");
+        actualizarEstiloBoton(botonCambioVista, vistaBasica);
+
         botonCambioVista.setOnAction(e -> {
             vistaBasica = !vistaBasica;
             String texto = vistaBasica ? "🔁 Cambiar a vista avanzada" : "🔁 Cambiar a vista básica";
             botonCambioVista.setText(texto);
+            actualizarEstiloBoton(botonCambioVista, vistaBasica);
             root.setCenter(generarVista(vistaBasica));
         });
 
@@ -35,10 +37,17 @@ public class Pestanas {
         return root;
     }
 
+    private static void actualizarEstiloBoton(Button boton, boolean esVistaBasica) {
+        if (esVistaBasica) {
+            boton.setStyle("-fx-background-color: #03A9F4; -fx-text-fill: white; -fx-padding: 6 12; -fx-font-weight: bold;");
+        } else {
+            boton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: black; -fx-padding: 6 12; -fx-font-weight: bold;");
+        }
+    }
+
     private static TabPane generarVista(boolean vistaBasica) {
         TabPane tabPane = new TabPane();
 
-        // 👉 Primero: agregar la pestaña Registro de Producción
         Tab produccionResumen = new Tab("Registro de Producción");
         produccionResumen.setClosable(false);
         produccionResumen.setContent(RegistroProduccion.crearVista());
