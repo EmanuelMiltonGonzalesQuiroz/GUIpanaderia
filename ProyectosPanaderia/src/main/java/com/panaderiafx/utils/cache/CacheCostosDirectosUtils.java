@@ -5,6 +5,7 @@ import java.util.*;
 public class CacheCostosDirectosUtils {
 
     private static final Map<String, Double> cache = new HashMap<>();
+    private static final Map<String, Double> cacheUnidad = new HashMap<>();
     private static final List<Runnable> observadores = new ArrayList<>();
 
     private static double total = 0;
@@ -22,14 +23,19 @@ public class CacheCostosDirectosUtils {
     }
 
     public static void guardar(String codReceta, double cantidad, double costo) {
+        // Eliminar claves anteriores con mismo codReceta
+        cache.keySet().removeIf(k -> k.startsWith(codReceta + "|"));
+    
         String key = clave(codReceta, cantidad);
-        boolean existe = cache.containsKey(key);
         cache.put(key, costo);
+    
         recalcularTotal();
-        System.out.printf("💾 %s costo directo: [%s] = %.2f\n", existe ? "Editando" : "Agregando", key, costo);
+        System.out.printf("💾 Guardando costo directo: [%s] = %.2f\n", key, costo);
         System.out.printf("   ➤ Total costos directos actualizado: %.2f\n", total);
+    
         notificarObservadores();
     }
+    
 
     public static void editar(String codReceta, double cantidad, double nuevoCosto) {
         guardar(codReceta, cantidad, nuevoCosto);
@@ -37,6 +43,7 @@ public class CacheCostosDirectosUtils {
 
     public static void limpiar() {
         cache.clear();
+        cacheUnidad.clear();
         total = 0;
         System.out.println("🧹 Caché de costos directos limpiado.");
         notificarObservadores();
@@ -50,20 +57,20 @@ public class CacheCostosDirectosUtils {
         for (Runnable r : observadores) r.run();
     }
 
-    public static double total() {
+    private static void recalcularTotal() {
+        total = cache.values().stream().mapToDouble(Double::doubleValue).sum();
+    }
+
+    // Cambiado de total() a get()
+    public static double get() {
         return total;
     }
 
-    public static void setTotal(double nuevoTotal) {
+    public static void set(double nuevoTotal) {
         total = nuevoTotal;
         System.out.printf("📝 Total costos directos forzado a: %.2f\n", total);
         notificarObservadores();
     }
-
-    private static void recalcularTotal() {
-        total = cache.values().stream().mapToDouble(Double::doubleValue).sum();
-    }
-    private static final Map<String, Double> cacheUnidad = new HashMap<>();
 
     public static void guardarUnidad(String codReceta, double costoUnidad) {
         cacheUnidad.put(codReceta, costoUnidad);
@@ -76,5 +83,4 @@ public class CacheCostosDirectosUtils {
     public static double obtenerUnidad(String codReceta) {
         return cacheUnidad.getOrDefault(codReceta, 0.0);
     }
-
 }

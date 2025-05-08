@@ -1,8 +1,10 @@
 package com.panaderiafx.utils.componentes;
 
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.cache.CacheGananciasUtils;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 public class ParametrosUtils {
 
@@ -11,49 +13,54 @@ public class ParametrosUtils {
         System.out.println("   📄 Filas Parámetros: " + parametros.size());
 
         double total = 0.0;
+        double ganancia = CacheGananciasUtils.get();
+        System.out.printf("   💰 Ganancia actual (desde caché): %.2f\n", ganancia);
 
         double costoManoObra = 0.0;
-        double porcentajeMerma = 0.0;
-        double porcentajeImpuesto = 0.0;
         int empleados = 1;
+        boolean activoManoObra = true;
+        boolean activoEmpleados = true;
 
-        for (Map<String, String> param : parametros) {
-            String codigo = param.getOrDefault("Código", "");
-            double valor = ParseUtils.toDouble(param.getOrDefault("Valor", "0"));
-            String unidad = param.getOrDefault("Unidad", "").toLowerCase();
+        for (Map<String, String> fila : parametros) {
+            String codigo = fila.getOrDefault("Código", "").trim();
+            String nombre = fila.getOrDefault("Nombre", "?");
+            String unidad = fila.getOrDefault("Unidad", "").trim().toLowerCase();
+            boolean check = fila.getOrDefault("Check", "✓").equals("✓");
+            double valor = ParseUtils.toDouble(fila.getOrDefault("Valor", "0"));
+
+            System.out.printf("   🔎 Param: %s | Código: %s | Valor: %.2f | Unidad: %s | Activo: %s\n",
+                    nombre, codigo, valor, unidad, check ? "✓" : "✗");
 
             switch (codigo) {
-                case "PAR0001" -> { // Costo Mano Obra Diario
+                case "PAR0001" -> {
                     costoManoObra = valor;
-                    System.out.printf("     ➤ Mano de obra diaria detectada: %.2f %s\n", valor, unidad);
+                    activoManoObra = check;
                 }
                 case "PAR0002" -> {
-                    porcentajeMerma = valor;
-                    System.out.printf("     ➤ Merma estimada: %.2f%%\n", valor);
-                }
-                case "PAR0006" -> {
-                    porcentajeImpuesto = valor;
-                    System.out.printf("     ➤ Impuesto aplicado: %.2f%%\n", valor);
-                }
-                case "PAR0007" -> {
                     empleados = (int) valor;
-                    System.out.printf("     ➤ Empleados activos considerados: %d\n", empleados);
+                    activoEmpleados = check;
+                }
+                default -> {
+                    if (unidad.contains("%") && check) {
+                        double desc = ganancia * (valor / 100.0);
+                        total += desc;
+                        System.out.printf("     ➤ Descuento aplicado: %.2f%% de %.2f = %.2f\n",
+                                valor, ganancia, desc);
+                    }
                 }
             }
         }
 
-        // Calcular componentes individuales
-        double manoObraTotal = costoManoObra * empleados;
-        double impuestoTotal = manoObraTotal * (porcentajeImpuesto / 100);
-        double mermaCosto = manoObraTotal * (porcentajeMerma / 100);
+        double manoObra = (activoManoObra && activoEmpleados) ? costoManoObra * empleados : 0;
+        if (manoObra > 0)
+            System.out.printf("     ➤ Mano de obra total: %.2f (%d empleados x %.2f)\n",
+                    manoObra, empleados, costoManoObra);
+        else
+            System.out.println("     ⚠ Mano de obra desactivada.");
 
-        System.out.printf("     ➤ Costo total mano de obra: %.2f\n", manoObraTotal);
-        System.out.printf("     ➤ Carga fiscal: %.2f\n", impuestoTotal);
-        System.out.printf("     ➤ Costo por merma: %.2f\n", mermaCosto);
+        total += manoObra;
 
-        total = manoObraTotal + impuestoTotal + mermaCosto;
-        System.out.printf("   Total descuentos/impuestos: %.2f\n", total);
-
+        System.out.printf("   ✅ Total parámetros calculados: %.2f\n", total);
         return total;
     }
 }

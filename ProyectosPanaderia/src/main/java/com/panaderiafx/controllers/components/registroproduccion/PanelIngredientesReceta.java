@@ -4,7 +4,6 @@ import com.panaderiafx.utils.VerUtils;
 import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
 import com.panaderiafx.utils.componentes.ParseUtils;
 import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,10 +13,19 @@ import javafx.scene.layout.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 public class PanelIngredientesReceta {
 
-    public static VBox crear(String codigoReceta) {
+    private static TableView<Map<String, String>> tablaActual = null;
+    private static TextField campoTotalActual = null;
+    private static TextField campoUnitarioActual = null;
+    private static String recetaActual = null;
+    private static Map<String, String> prodActual = null;
+    private static BiConsumer<String, Double> actualizadorActual = null;
+
+    public static VBox crear(String codigoReceta, Map<String, String> prod, BiConsumer<String, Double> actualizarCostoEnTabla) {
         VBox panel = new VBox(10);
         panel.setStyle("-fx-background-color: #FF9800; -fx-padding: 20; -fx-background-radius: 10;");
         panel.setPrefWidth(450);
@@ -25,14 +33,22 @@ public class PanelIngredientesReceta {
         Label titulo = new Label("INGREDIENTES");
         titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
 
-        List<Map<String, String>> ingredientes = VerUtils.verTabla("RecetasIngredientes");
-        List<Map<String, String>> filtrados = ingredientes.stream()
+        List<Map<String, String>> recetasIngredientes = VerUtils.verTabla("RecetasIngredientes");
+        List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
+
+        Map<String, String> mapaNombre = ingredientes.stream()
+                .collect(Collectors.toMap(
+                        i -> i.getOrDefault("Código", "").trim(),
+                        i -> i.getOrDefault("Nombre", "").trim()
+                ));
+
+        List<Map<String, String>> filtrados = recetasIngredientes.stream()
                 .filter(m -> m.getOrDefault("Código receta", "").equals(codigoReceta))
                 .toList();
 
         if (filtrados.isEmpty()) {
             Label error = new Label("Receta no encontrada");
-            error.setStyle("-fx-background-color: #FFD180; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;");
+            error.setStyle("-fx-background-color: #FFD180; -fx-padding: 10; -fx-border-radius: 5;");
             panel.getChildren().add(error);
             return panel;
         }
@@ -40,15 +56,17 @@ public class PanelIngredientesReceta {
         ObservableList<Map<String, String>> datos = FXCollections.observableArrayList();
         for (Map<String, String> fila : filtrados) {
             fila.put("Check", "✓");
+            String codIng = fila.getOrDefault("Ingrediente", "");
+            double costo = CostoIngredientePorRecetaUtils.calcular(codigoReceta, codIng, 1);
+            fila.put("Costo", String.format("%.2f", costo));
             datos.add(fila);
         }
 
-        // campos de totales
-        TextField campoTotal = new TextField("0.00");
+        TextField campoTotal = new TextField(prod.getOrDefault("Costo directo", "0.00"));
         campoTotal.setEditable(false);
         campoTotal.setPrefWidth(100);
 
-        TextField campoUnitario = new TextField("0.00");
+        TextField campoUnitario = new TextField(prod.getOrDefault("Costo/U", "0.0000"));
         campoUnitario.setEditable(false);
         campoUnitario.setPrefWidth(100);
 
@@ -57,7 +75,11 @@ public class PanelIngredientesReceta {
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         TableColumn<Map<String, String>, String> colIng = new TableColumn<>("Ingrediente");
-        colIng.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Ingrediente", "")));
+        colIng.setMinWidth(100);
+        colIng.setCellValueFactory(f -> {
+            String cod = f.getValue().getOrDefault("Ingrediente", "");
+            return new SimpleStringProperty(mapaNombre.getOrDefault(cod, cod));
+        });
 
         TableColumn<Map<String, String>, String> colCant = new TableColumn<>("Cantidad");
         colCant.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad", "")));
@@ -66,16 +88,10 @@ public class PanelIngredientesReceta {
         colUnidad.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Unidades", "")));
 
         TableColumn<Map<String, String>, String> colCosto = new TableColumn<>("Costo");
-        colCosto.setCellValueFactory(f -> {
-            String codIng = f.getValue().getOrDefault("Ingrediente", "");
-            double cantProducida = obtenerCantidadProduccionActual(codigoReceta);
-            double costo = CostoIngredientePorRecetaUtils.calcular(codigoReceta, codIng, cantProducida);
-            f.getValue().put("Costo", String.format("%.2f", costo));
-            return new SimpleStringProperty(String.format("%.2f", costo));
-        });
+        colCosto.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Costo", "0.00")));
 
         TableColumn<Map<String, String>, String> colCheck = new TableColumn<>("✓");
-        colCheck.setMinWidth(60);
+        colCheck.setMinWidth(30);
         colCheck.setCellFactory(col -> new TableCell<>() {
             private final Button btn = new Button();
 
@@ -85,7 +101,7 @@ public class PanelIngredientesReceta {
                     String actual = fila.getOrDefault("Check", "✓");
                     fila.put("Check", actual.equals("✓") ? " " : "✓");
                     getTableView().refresh();
-                    actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta);
+                    actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta, prod, actualizarCostoEnTabla);
                 });
             }
 
@@ -115,34 +131,66 @@ public class PanelIngredientesReceta {
         totales.setPadding(new Insets(10));
         totales.setStyle("-fx-background-color: #FFB74D;");
 
-        actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta);
+        tablaActual = tabla;
+        campoTotalActual = campoTotal;
+        campoUnitarioActual = campoUnitario;
+        recetaActual = codigoReceta;
+        prodActual = prod;
+        actualizadorActual = actualizarCostoEnTabla;
+
+        actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta, prod, actualizarCostoEnTabla);
 
         panel.getChildren().addAll(titulo, tabla, totales);
         return panel;
     }
 
-    private static double obtenerCantidadProduccionActual(String codReceta) {
-        return VerUtils.verTabla("Produccion").stream()
+    private static double obtenerRendimientoDesdeRecetas(String codReceta) {
+        return VerUtils.verTabla("Recetas").stream()
                 .filter(p -> p.getOrDefault("Código receta", "").equals(codReceta))
-                .map(p -> ParseUtils.toDouble(p.getOrDefault("Cantidad producida", "0")))
-                .reduce((a, b) -> b).orElse(0.0);
+                .map(p -> ParseUtils.toDouble(p.getOrDefault("Rendimiento", "0")))
+                .findFirst().orElse(0.0);
     }
 
-    private static void actualizarTotales(TableView<Map<String, String>> tabla, TextField campoTotal, TextField campoUnitario, String codReceta) {
+    private static void actualizarTotales(TableView<Map<String, String>> tabla, TextField campoTotal, TextField campoUnitario,
+                                          String codReceta, Map<String, String> prod, BiConsumer<String, Double> actualizarCostoEnTabla) {
         double total = 0;
+
         for (Map<String, String> fila : tabla.getItems()) {
-            if ("✓".equals(fila.getOrDefault("Check", "✓"))) {
-                total += ParseUtils.toDouble(fila.getOrDefault("Costo", "0"));
-            }
+            if (!"✓".equals(fila.getOrDefault("Check", "✓"))) continue;
+
+            String codIng = fila.getOrDefault("Ingrediente", "");
+            double costo = CostoIngredientePorRecetaUtils.calcular(codReceta, codIng, 1);
+            fila.put("Costo", String.format("%.2f", costo));
+            total += costo;
         }
 
-        campoTotal.setText(String.format("%.2f", total));
+        double rendimiento = obtenerRendimientoDesdeRecetas(codReceta);
+        double costoUnitario = (rendimiento > 0) ? total / rendimiento : 0;
+        double cantidadProducida = prod != null ? ParseUtils.toDouble(prod.getOrDefault("Cantidad producida", "0")) : 0;
+        double costoTotalFinal = costoUnitario * cantidadProducida;
 
-        double cantidadProducida = obtenerCantidadProduccionActual(codReceta);
-        double unitario = (cantidadProducida > 0) ? total / cantidadProducida : 0;
-        campoUnitario.setText(String.format("%.4f", unitario));
+        if (prod != null) {
+            prod.put("Costo directo", String.format("%.2f", costoTotalFinal));
+            prod.put("Costo/U", String.format("%.2f", costoUnitario));
+        }
 
-        // Notifica a la caché para que el resumen total reaccione
-        CacheCostosDirectosUtils.editar(codReceta, cantidadProducida, total);
+        campoTotal.setText(String.format("%.2f", costoTotalFinal));
+        campoUnitario.setText(String.format("%.4f", costoUnitario));
+
+        CacheCostosDirectosUtils.editar(codReceta, rendimiento, costoTotalFinal);
+        if (actualizarCostoEnTabla != null) {
+            actualizarCostoEnTabla.accept(codReceta, costoTotalFinal);
+        }
+
+        if (VistaGananciasCostosDirectos.recalcularTotales != null) {
+            VistaGananciasCostosDirectos.recalcularTotales.run();
+        }
+    }
+
+    public static void forzarRecalculo() {
+        if (tablaActual != null && campoTotalActual != null && campoUnitarioActual != null &&
+                recetaActual != null && prodActual != null) {
+            actualizarTotales(tablaActual, campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
+        }
     }
 }

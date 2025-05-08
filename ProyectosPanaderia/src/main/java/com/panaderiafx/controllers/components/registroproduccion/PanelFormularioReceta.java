@@ -8,30 +8,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.TableView;
 
-import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class PanelFormularioReceta {
 
-    public static Node crear(String nombreReceta, Map<String, String> fila, BiConsumer<String, Double> actualizarGananciaEnTabla) {
+    public static Node crear(String nombreReceta, Map<String, String> prod,
+                             BiConsumer<String, Double> actualizarGananciaEnTabla,
+                             Runnable onCantidadActualizada) {
+
         VBox contenedor = new VBox(15);
         contenedor.setStyle("-fx-background-color: #F36C00; -fx-padding: 20; -fx-background-radius: 10;");
         contenedor.setAlignment(Pos.TOP_LEFT);
 
-        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
-        List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
-
-        String nombreProducto = recetas.stream()
+        String nombreProducto = VerUtils.verTabla("Recetas").stream()
                 .filter(r -> r.getOrDefault("Código receta", "").equalsIgnoreCase(nombreReceta))
                 .map(r -> r.getOrDefault("Producto", nombreReceta))
                 .findFirst().orElse(nombreReceta);
-
-        Map<String, String> prod = producciones.stream()
-                .filter(p -> p.getOrDefault("Código receta", "").equalsIgnoreCase(nombreReceta))
-                .reduce((a, b) -> b).orElse(null);
 
         if (prod == null) {
             Label error = new Label("Receta no encontrada");
@@ -54,7 +48,13 @@ public class PanelFormularioReceta {
 
         final boolean[] bloqueado = {false};
 
-        Runnable actualizarTodo = () -> {
+        Runnable recalculo = () -> {
+            if (VistaGananciasCostosDirectos.recalcularTotales != null) {
+                VistaGananciasCostosDirectos.recalcularTotales.run();
+            }
+        };
+
+        Runnable actualizarDesdeCantidadYUnitario = () -> {
             if (bloqueado[0]) return;
             bloqueado[0] = true;
 
@@ -64,18 +64,18 @@ public class PanelFormularioReceta {
 
             campoPrecioTotal.setText(String.format("%.2f", total));
             prod.put("Cantidad producida", String.format("%.0f", cant));
-            prod.put("Precio de Venta por Unidad", String.format("%.2f", unit));
+            prod.put("Precio de Venta por Unidad", String.valueOf(unit));
+            prod.put("Precio de Venta General", String.valueOf(total));
 
             if (actualizarGananciaEnTabla != null) {
                 actualizarGananciaEnTabla.accept(nombreReceta, total);
             }
 
-            TableView<Map<String, String>> tabla = TablaProduccionesFactory.ultimaTablaGenerada;
-            if (tabla != null) {
-                tabla.refresh();
-                TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {});
+            if (onCantidadActualizada != null) {
+                onCantidadActualizada.run();
             }
 
+            recalculo.run();
             bloqueado[0] = false;
         };
 
@@ -89,24 +89,26 @@ public class PanelFormularioReceta {
 
             campoPrecioUnidad.setText(String.format("%.2f", unit));
             prod.put("Cantidad producida", String.format("%.0f", cant));
-            prod.put("Precio de Venta por Unidad", String.format("%.2f", unit));
+            prod.put("Precio de Venta por Unidad", String.valueOf(unit));
+            prod.put("Precio de Venta General", String.valueOf(total));
 
             if (actualizarGananciaEnTabla != null) {
                 actualizarGananciaEnTabla.accept(nombreReceta, total);
             }
 
-            TableView<Map<String, String>> tabla = TablaProduccionesFactory.ultimaTablaGenerada;
-            if (tabla != null) {
-                tabla.refresh();
-                TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {});
+            if (onCantidadActualizada != null) {
+                onCantidadActualizada.run();
             }
 
+            recalculo.run();
             bloqueado[0] = false;
         };
 
-        campoCantidad.textProperty().addListener((obs, o, n) -> actualizarTodo.run());
-        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> actualizarTodo.run());
-        campoPrecioTotal.textProperty().addListener((obs, o, n) -> actualizarDesdeTotal.run());
+        campoCantidad.textProperty().addListener((obs, o, n) -> actualizarDesdeCantidadYUnitario.run());
+        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> actualizarDesdeCantidadYUnitario.run());
+        campoPrecioTotal.focusedProperty().addListener((obs, wasFocused, isFocused) -> {
+            if (!isFocused) actualizarDesdeTotal.run();
+        });
 
         GridPane grid = new GridPane();
         grid.setHgap(10);

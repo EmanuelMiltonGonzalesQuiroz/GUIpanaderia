@@ -16,13 +16,14 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ListaSeleccion.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\BotonResumen.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\IngredienteDetalle.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\PanelCostosIndirectosResumen.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\PanelFormularioReceta.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\PanelIngredientesReceta.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\PanelParametrosResumen.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\PanelResumenProduccion.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\SelectorFechaTipo.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\StageHelper.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\TablaProduccionesFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\VistaDetalleReceta.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\VistaGananciasCostosDirectos.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion\VistaResumenPrincipal.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\SelectorOpciones.java

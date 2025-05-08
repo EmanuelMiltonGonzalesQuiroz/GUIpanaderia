@@ -5,8 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Insets;
+
 import com.panaderiafx.utils.VistaResumenUtils;
 import com.panaderiafx.utils.cache.*;
+import com.panaderiafx.utils.componentes.ParseUtils;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -38,7 +40,7 @@ public class VistaResumenPrincipal {
             VistaResumenUtils.calcularResumen(fecha, tipo);
 
             double ganancia = CacheGananciasUtils.get();
-            double costoDirecto = CacheCostosDirectosUtils.total();
+            double costoDirecto = CacheCostosDirectosUtils.get();
             double costoIndirecto = CacheCostosIndirectosUtils.get();
             double parametros = CacheParametrosUtils.get();
             double total = ganancia - costoDirecto - costoIndirecto - parametros;
@@ -48,57 +50,107 @@ public class VistaResumenPrincipal {
             PanelResumenProduccion panel = new PanelResumenProduccion(
                 ganancia, costoDirecto, costoIndirecto, parametros, total,
                 (accion) -> {
-                    if (accion.equals("GANANCIAS") || accion.equals("COSTOS_DIRECTOS")) {
-                        panelDetalleProducciones.getChildren().setAll(
-                            VistaGananciasCostosDirectos.crear(
-                                fecha,
-                                tipo,
-                                (codigoReceta, fila) -> {
-                                    panelDetalleReceta.setVisible(true);
-                                    panelIngredientes.setVisible(true);
-                                    panelDetalleReceta.getChildren().setAll(
-                                        PanelFormularioReceta.crear(codigoReceta, fila, (cod, nuevoTotal) -> {                            
-                                            TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
-                                            if (tabla != null) {
-                                                for (Map<String, String> item : tabla.getItems()) {
-                                                    String codigo = item.getOrDefault("Código receta", "").trim();
-                                                    if (codigo.equalsIgnoreCase(cod.trim())) {
-                                                        double cantidad = Double.parseDouble(item.getOrDefault("Cantidad producida", "1"));
-                                                        double nuevoUnitario = Math.floor((nuevoTotal / cantidad) * 100) / 100;
-                                                        item.put("Precio de Venta por Unidad", String.format("%.2f", nuevoUnitario));
-                                                        break;
-                                                    }
-                                                }
-                                                tabla.refresh();
+                    panelDetalleReceta.setVisible(false);
+                    panelIngredientes.setVisible(false);
+                    panelDetalleReceta.getChildren().clear();
+                    panelIngredientes.getChildren().clear();
 
-                                                TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {
-                                                    CacheGananciasUtils.set(gan);
-                                                    CacheCostosDirectosUtils.setTotal(cos);
-                                                    panelRef.get().actualizarGananciaYCosto(gan, cos);
-                                                });
-                                            }
-                                        })
-                                    );
-                                    panelIngredientes.getChildren().setAll(PanelIngredientesReceta.crear(codigoReceta));
-                                },
-                                (gan, cos) -> {
-                                    CacheGananciasUtils.set(gan);
-                                    CacheCostosDirectosUtils.setTotal(cos);
-                                    panelRef.get().actualizarGananciaYCosto(gan, cos);
-                                }
-                            )
-                        );
-                    } else {
-                        panelDetalleProducciones.getChildren().clear();
-                        panelDetalleReceta.getChildren().clear();
-                        panelIngredientes.getChildren().clear();
-                        panelDetalleReceta.setVisible(false);
-                        panelIngredientes.setVisible(false);
+                    switch (accion) {
+                        case "GANANCIAS", "COSTOS_DIRECTOS" -> {
+                            panelDetalleProducciones.getChildren().setAll(
+                                VistaGananciasCostosDirectos.crear(
+                                    fecha,
+                                    tipo,
+                                    (codigoReceta, fila) -> {
+                                        panelDetalleReceta.setVisible(true);
+                                        panelIngredientes.setVisible(true);
+
+                                        Runnable actualizarIngredientes = () -> {
+                                            panelIngredientes.getChildren().setAll(
+                                                PanelIngredientesReceta.crear(codigoReceta, fila, (cod, nuevoCosto) -> {
+                                                    TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
+                                                    if (tabla != null) {
+                                                        for (Map<String, String> item : tabla.getItems()) {
+                                                            String codigo = item.getOrDefault("Código receta", "").trim();
+                                                            if (codigo.equalsIgnoreCase(cod.trim())) {
+                                                                double cantidad = ParseUtils.toDouble(item.getOrDefault("Cantidad producida", "1"));
+                                                                double unitario = cantidad > 0 ? nuevoCosto / cantidad : 0;
+                                                                item.put("Costo directo", String.format("%.2f", nuevoCosto));
+                                                                item.put("Costo/U", String.format("%.2f", unitario));
+                                                                break;
+                                                            }
+                                                        }
+                                                        tabla.refresh();
+                                                        TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {
+                                                            CacheGananciasUtils.set(gan);
+                                                            CacheCostosDirectosUtils.set(cos);
+                                                            panelRef.get().actualizarGananciaYCosto(gan, cos);
+                                                        });
+                                                    }
+                                                })
+                                            );
+                                        };
+
+                                        panelDetalleReceta.getChildren().setAll(
+                                            PanelFormularioReceta.crear(codigoReceta, fila, (cod, nuevoTotal) -> {
+                                                TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
+                                                if (tabla != null) {
+                                                    for (Map<String, String> item : tabla.getItems()) {
+                                                        String codigo = item.getOrDefault("Código receta", "").trim();
+                                                        if (codigo.equalsIgnoreCase(cod.trim())) {
+                                                            double cantidad = ParseUtils.toDouble(item.getOrDefault("Cantidad producida", "1"));
+                                                            double nuevoUnitario = Math.floor((nuevoTotal / cantidad) * 100) / 100;
+                                                            item.put("Precio de Venta por Unidad", String.format("%.2f", nuevoUnitario));
+                                                            item.put("Cantidad producida", String.format("%.0f", cantidad));
+                                                            break;
+                                                        }
+                                                    }
+                                                    tabla.refresh();
+                                                    TablaProduccionesFactory.recalcular(tabla.getItems(), (gan, cos) -> {
+                                                        CacheGananciasUtils.set(gan);
+                                                        CacheCostosDirectosUtils.set(cos);
+                                                        panelRef.get().actualizarGananciaYCosto(gan, cos);
+                                                    });
+                                                }
+                                            }, actualizarIngredientes)
+                                        );
+
+                                        actualizarIngredientes.run();
+                                    },
+                                    (gan, cos) -> {
+                                        CacheGananciasUtils.set(gan);
+                                        CacheCostosDirectosUtils.set(cos);
+                                        panelRef.get().actualizarGananciaYCosto(gan, cos);
+                                    }
+                                )
+                            );
+
+                            PanelIngredientesReceta.forzarRecalculo();
+                        }
+                        case "COSTOS_INDIRECTOS" -> {
+                            panelDetalleProducciones.getChildren().setAll(
+                                PanelCostosIndirectosResumen.crear()
+                            );
+                        }
+                        case "PARÁMETROS" -> {
+                            panelDetalleProducciones.getChildren().setAll(
+                                PanelParametrosResumen.crear()
+                            );
+                        }
                     }
-                });
+                }
+            );
 
             panelRef.set(panel);
             panelResumen.getChildren().add(panel);
+
+            // 🔁 Escuchar cambios en parámetros para actualizar visualmente
+            CacheParametrosUtils.agregarObservador(() -> {
+                double nuevo = CacheParametrosUtils.get();
+                if (panelRef.get() != null) {
+                    panelRef.get().actualizarParametros(nuevo);
+                }
+            });
         };
 
         selector.getBotonActualizar().setOnAction(e -> actualizar.run());

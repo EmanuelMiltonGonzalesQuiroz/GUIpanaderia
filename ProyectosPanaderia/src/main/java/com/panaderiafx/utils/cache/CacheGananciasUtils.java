@@ -9,6 +9,10 @@ public class CacheGananciasUtils {
     public static void set(double nuevoValor) {
         valor = nuevoValor;
         System.out.printf("💾 Guardando Ganancias: %.2f\n", valor);
+
+        // 🔁 Recalcular parámetros cada vez que cambia la ganancia
+        CacheParametrosUtils.recalcular();
+
         notificar();
     }
 

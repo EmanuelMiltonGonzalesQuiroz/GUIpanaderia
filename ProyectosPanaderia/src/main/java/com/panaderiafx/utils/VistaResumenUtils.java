@@ -15,9 +15,12 @@ public class VistaResumenUtils {
         Map<String, Double> resultado = new HashMap<>();
 
         double ganancias = GananciasUtils.calcular(fecha, tipo);
+        CacheGananciasUtils.set(ganancias); // 👈 esto debe ir antes del cálculo de parámetros
+
         double costosDirectos = CostosDirectosUtils.calcular(fecha, tipo);
         double costosIndirectos = CostosIndirectosUtils.calcular(tipo);
-        double parametros = ParametrosUtils.calcular(tipo);
+        double parametros = ParametrosUtils.calcular(tipo); // ahora sí, ya con ganancia actualizada
+
         double total = ganancias - costosDirectos - costosIndirectos - parametros;
 
         // GUARDADO EN CACHÉ + LOG
@@ -25,7 +28,7 @@ public class VistaResumenUtils {
         CacheGananciasUtils.set(ganancias);
 
         System.out.printf("💾 Guardando en caché: Costos Directos = %.2f\n", costosDirectos);
-        CacheCostosDirectosUtils.setTotal(costosDirectos);
+        CacheCostosDirectosUtils.set(costosDirectos);
 
         System.out.printf("💾 Guardando en caché: Costos Indirectos = %.2f\n", costosIndirectos);
         CacheCostosIndirectosUtils.set(costosIndirectos);

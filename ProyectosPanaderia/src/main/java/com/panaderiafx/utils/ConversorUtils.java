@@ -18,10 +18,15 @@ public class ConversorUtils {
     );
 
     public static Double convertir(String tipoLogico,
-                                   String unidadOrigen,
-                                   String unidadDestino,
-                                   double cantidad,
-                                   String ingrediente) {
+                               String unidadOrigen,
+                               String unidadDestino,
+                               double cantidad,
+                               String ingrediente) {
+
+        if (unidadOrigen.equalsIgnoreCase(unidadDestino)) {
+            System.out.printf("⚠️ Unidades iguales [%s], retorno directo: %.2f%n", unidadOrigen, cantidad);
+            return cantidad;
+        }
 
         List<Map<String, String>> datos = VerUtils.verTabla(TABLA);
 
@@ -43,7 +48,6 @@ public class ConversorUtils {
         return base / divisor;
     }
 
-    // 🔹 Obtener valor en gramos o mililitros
     private static Double convertirAUnidadBase(double cantidad,
                                                String unidad,
                                                String ingrediente,

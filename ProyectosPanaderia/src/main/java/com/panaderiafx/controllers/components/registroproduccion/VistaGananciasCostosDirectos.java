@@ -1,7 +1,5 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
-import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
-import com.panaderiafx.utils.cache.CacheGananciasUtils;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,6 +12,8 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class VistaGananciasCostosDirectos {
+
+    public static Runnable recalcularTotales = null;
 
     public static Node crear(
             String fecha,
@@ -49,8 +49,6 @@ public class VistaGananciasCostosDirectos {
         BiConsumer<Double, Double> actualizarCampos = (gan, cos) -> {
             ganField.setText(String.format("%.2f", gan));
             cosField.setText(String.format("%.2f", cos));
-            CacheGananciasUtils.set(gan);
-            CacheCostosDirectosUtils.setTotal(cos);
             actualizarTotales.accept(gan, cos);
         };
 
@@ -59,7 +57,6 @@ public class VistaGananciasCostosDirectos {
             tipo,
             (codigo, fila) -> {
                 abrirFormularioReceta.accept(codigo, fila);
-            
                 if (tablaRef[0] != null) {
                     TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos);
                     tablaRef[0].refresh();
@@ -71,6 +68,12 @@ public class VistaGananciasCostosDirectos {
 
         if (tabla instanceof TableView) {
             tablaRef[0] = (TableView<Map<String, String>>) tabla;
+            TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos); // ← corrección clave
+            tablaRef[0].refresh();
+            recalcularTotales = () -> {
+                TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos);
+                tablaRef[0].refresh();
+            };
         }
 
         contenedor.getChildren().addAll(tabla, resumen);

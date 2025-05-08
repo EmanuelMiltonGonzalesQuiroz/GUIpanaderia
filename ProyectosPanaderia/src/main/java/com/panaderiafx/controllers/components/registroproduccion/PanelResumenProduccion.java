@@ -30,8 +30,8 @@ public class PanelResumenProduccion extends VBox {
         getChildren().addAll(
             fila("GANANCIAS", gananciaField, ganancia, onClick),
             fila("COSTOS DIRECTOS", costoDirectoField, costoDirecto, onClick),
-            fila("COSTOS INDIRECTOS", costoIndirectoField, costoIndirecto, null),
-            fila("PARÁMETROS", parametrosField, parametros, null),
+            fila("COSTOS INDIRECTOS", costoIndirectoField, costoIndirecto, onClick),
+            fila("PARÁMETROS", parametrosField, parametros, onClick),
             fila("TOTAL", totalField, total, null)
         );
 
@@ -69,7 +69,7 @@ public class PanelResumenProduccion extends VBox {
     }
 
     private void actualizarCostoDirecto() {
-        this.costoDirecto = CacheCostosDirectosUtils.total();
+        this.costoDirecto = CacheCostosDirectosUtils.get();
         costoDirectoField.setText(String.format("%.2f", costoDirecto));
         actualizarTotal();
     }
@@ -105,4 +105,11 @@ public class PanelResumenProduccion extends VBox {
         actualizarCostoIndirecto();
         actualizarParametros();
     }
+    public void actualizarParametros(double nuevoValor) {
+        this.parametros = nuevoValor;
+        parametrosField.setText(String.format("%.2f", nuevoValor));
+        actualizarTotal();
+    }
+    
+    
 }

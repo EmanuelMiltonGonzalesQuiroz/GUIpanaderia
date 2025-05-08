@@ -1,12 +1,11 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
 import com.panaderiafx.utils.VerUtils;
-import com.panaderiafx.utils.componentes.CostosDirectosPorRecetaUtils;
+import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
 import com.panaderiafx.utils.componentes.FechaUtils;
 import com.panaderiafx.utils.componentes.ParseUtils;
 import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
 import com.panaderiafx.utils.cache.CacheGananciasUtils;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,11 +22,11 @@ public class TablaProduccionesFactory {
     public static TableView<Map<String, String>> ultimaTablaGenerada;
 
     public static TableView<Map<String, String>> crearTabla(
-        String fecha,
-        String tipo,
-        BiConsumer<String, Map<String, String>> accionEditar,
-        BiConsumer<Double, Double> actualizarTotales,
-        Consumer<List<Map<String, String>>> exponerDatos
+            String fecha,
+            String tipo,
+            BiConsumer<String, Map<String, String>> accionEditar,
+            BiConsumer<Double, Double> actualizarTotales,
+            Consumer<List<Map<String, String>>> exponerDatos
     ) {
         List<Map<String, String>> produccion = VerUtils.verTabla("Produccion").stream()
                 .filter(p -> FechaUtils.coincide(p.get("Fecha"), fecha, tipo))
@@ -46,6 +45,14 @@ public class TablaProduccionesFactory {
 
         for (Map<String, String> fila : produccion) {
             fila.put("Check", "✓");
+
+            String codReceta = fila.getOrDefault("Código receta", "");
+            double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad producida", "0"));
+            double costoUnitario = CostoIngredientePorRecetaUtils.calcularUnitarioDesdeReceta(codReceta);
+            double costoTotal = costoUnitario * cantidad;
+
+            fila.put("Costo directo", String.format("%.2f", costoTotal));
+            fila.put("Costo/U", String.format("%.2f", costoUnitario));
         }
 
         ObservableList<Map<String, String>> items = FXCollections.observableArrayList(produccion);
@@ -70,30 +77,18 @@ public class TablaProduccionesFactory {
         colGanancia.setMinWidth(100);
         colGanancia.setCellValueFactory(f -> {
             double cant = ParseUtils.toDouble(f.getValue().getOrDefault("Cantidad producida", "0"));
-            double precioU = ParseUtils.toDouble(f.getValue().getOrDefault("Precio de Venta por Unidad", "0"));
+            String precioUraw = f.getValue().getOrDefault("Precio de Venta por Unidad", "0");
+            double precioU = ParseUtils.toDouble(precioUraw);
             return new SimpleStringProperty(String.format("%.2f", cant * precioU));
         });
 
         TableColumn<Map<String, String>, String> colCosto = new TableColumn<>("COSTO");
         colCosto.setMinWidth(100);
-        colCosto.setCellValueFactory(f -> {
-            String cod = f.getValue().getOrDefault("Código receta", "");
-            double cant = ParseUtils.toDouble(f.getValue().getOrDefault("Cantidad producida", "0"));
-
-            double costoPorUnidad = CostosDirectosPorRecetaUtils.calcularPorUnidad(cod);
-            double costoTotal = costoPorUnidad * cant;
-
-            CacheCostosDirectosUtils.guardar(cod, cant, costoTotal);
-            return new SimpleStringProperty(String.format("%.2f", costoTotal));
-        });
+        colCosto.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Costo directo", "0.00")));
 
         TableColumn<Map<String, String>, String> colCostoUnitario = new TableColumn<>("COSTO/U");
         colCostoUnitario.setMinWidth(80);
-        colCostoUnitario.setCellValueFactory(f -> {
-            String cod = f.getValue().getOrDefault("Código receta", "");
-            double costoPorUnidad = CostosDirectosPorRecetaUtils.calcularPorUnidad(cod);
-            return new SimpleStringProperty(String.format("%.2f", costoPorUnidad));
-        });
+        colCostoUnitario.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Costo/U", "0.00")));
 
         TableColumn<Map<String, String>, String> colCheck = new TableColumn<>("CHECK");
         colCheck.setMinWidth(60);
@@ -127,15 +122,11 @@ public class TablaProduccionesFactory {
         colEditar.setMinWidth(90);
         colEditar.setCellFactory(param -> new TableCell<>() {
             final Button btn = new Button("EDITAR");
-
             {
                 btn.setOnAction(event -> {
                     Map<String, String> datos = getTableView().getItems().get(getIndex());
                     String cod = datos.getOrDefault("Código receta", "");
                     accionEditar.accept(cod, datos);
-
-
-                    // 🆕 actualiza la tabla en lugar de recrearla 
                     tabla.refresh();
                     recalcular(tabla.getItems(), actualizarTotales);
                 });
@@ -168,18 +159,13 @@ public class TablaProduccionesFactory {
             double precioU = ParseUtils.toDouble(fila.getOrDefault("Precio de Venta por Unidad", "0"));
             double ganancia = cant * precioU;
 
-            String cod = fila.getOrDefault("Código receta", "");
-
-            double costoPorUnidad = CostosDirectosPorRecetaUtils.calcularPorUnidad(cod);
-            double costoTotal = costoPorUnidad * cant;
-            CacheCostosDirectosUtils.guardar(cod, cant, costoTotal);
-
+            double costoTotal = ParseUtils.toDouble(fila.getOrDefault("Costo directo", "0"));
             sumaGanancia += ganancia;
             sumaCosto += costoTotal;
         }
 
         CacheGananciasUtils.set(sumaGanancia);
-        CacheCostosDirectosUtils.setTotal(sumaCosto);
+        CacheCostosDirectosUtils.set(sumaCosto);
         actualizar.accept(sumaGanancia, sumaCosto);
     }
 }
