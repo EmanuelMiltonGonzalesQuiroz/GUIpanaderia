@@ -42,12 +42,15 @@ public class EliminarUtils {
                         });
 
                 if (coincide) {
-                    for (int col = 0; col < headerRow.getLastCellNum(); col++) {
-                        Cell celda = fila.getCell(col);
-                        if (celda != null) celda.setCellValue("");
+                    // Eliminar físicamente
+                    hoja.removeRow(fila);
+                    if (f < hoja.getLastRowNum()) {
+                        hoja.shiftRows(f + 1, hoja.getLastRowNum(), -1);
                     }
+
                     try (FileOutputStream fos = new FileOutputStream(RUTA)) {
                         libro.write(fos);
+                        System.out.println("🗑 Fila eliminada correctamente de: " + nombreTabla);
                         return true;
                     }
                 }

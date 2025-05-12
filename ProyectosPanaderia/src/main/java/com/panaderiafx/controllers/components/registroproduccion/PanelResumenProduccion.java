@@ -28,8 +28,8 @@ public class PanelResumenProduccion extends VBox {
         setStyle("-fx-background-color: #F36C00; -fx-padding: 20; -fx-background-radius: 10;");
 
         getChildren().addAll(
-            fila("GANANCIAS", gananciaField, ganancia, onClick),
-            fila("COSTOS DIRECTOS", costoDirectoField, costoDirecto, onClick),
+            fila("GANANCIA B.", gananciaField, ganancia, onClick),
+            fila("COSTOS DIRECTOS R.", costoDirectoField, costoDirecto, onClick),
             fila("COSTOS INDIRECTOS", costoIndirectoField, costoIndirecto, onClick),
             fila("PARÁMETROS", parametrosField, parametros, onClick),
             fila("TOTAL", totalField, total, null)

@@ -57,7 +57,8 @@ public class PanelIngredientesReceta {
         for (Map<String, String> fila : filtrados) {
             fila.put("Check", "✓");
             String codIng = fila.getOrDefault("Ingrediente", "");
-            double costo = CostoIngredientePorRecetaUtils.calcular(codigoReceta, codIng, 1);
+            double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad", "1"));
+            double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, fila.getOrDefault("Unidades", ""), cantidad);
             fila.put("Costo", String.format("%.2f", costo));
             datos.add(fila);
         }
@@ -82,6 +83,40 @@ public class PanelIngredientesReceta {
         });
 
         TableColumn<Map<String, String>, String> colCant = new TableColumn<>("Cantidad");
+        colCant.setCellFactory(col -> new TableCell<>() {
+            private final TextField editor = new TextField();
+
+            {
+                editor.setOnAction(e -> actualizarCantidad());
+                editor.focusedProperty().addListener((obs, old, focus) -> {
+                    if (!focus) actualizarCantidad();
+                });
+            }
+
+            private void actualizarCantidad() {
+                Map<String, String> fila = getTableView().getItems().get(getIndex());
+                String cantidadStr = editor.getText();
+                fila.put("Cantidad", cantidadStr);
+                double cantidad = ParseUtils.toDouble(cantidadStr);
+                String codIng = fila.getOrDefault("Ingrediente", "");
+                String unidad = fila.getOrDefault("Unidades", "");
+                double nuevoCosto = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
+                fila.put("Costo", String.format("%.2f", nuevoCosto));
+                getTableView().refresh();
+                actualizarTotales(getTableView().getItems(), campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
+            }
+
+            @Override
+            protected void updateItem(String val, boolean empty) {
+                super.updateItem(val, empty);
+                if (empty) setGraphic(null);
+                else {
+                    Map<String, String> fila = getTableView().getItems().get(getIndex());
+                    editor.setText(fila.getOrDefault("Cantidad", ""));
+                    setGraphic(editor);
+                }
+            }
+        });
         colCant.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad", "")));
 
         TableColumn<Map<String, String>, String> colUnidad = new TableColumn<>("Unidad");
@@ -101,7 +136,7 @@ public class PanelIngredientesReceta {
                     String actual = fila.getOrDefault("Check", "✓");
                     fila.put("Check", actual.equals("✓") ? " " : "✓");
                     getTableView().refresh();
-                    actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta, prod, actualizarCostoEnTabla);
+                    actualizarTotales(getTableView().getItems(), campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
                 });
             }
 
@@ -138,48 +173,55 @@ public class PanelIngredientesReceta {
         prodActual = prod;
         actualizadorActual = actualizarCostoEnTabla;
 
-        actualizarTotales(tabla, campoTotal, campoUnitario, codigoReceta, prod, actualizarCostoEnTabla);
+        actualizarTotales(datos, campoTotal, campoUnitario, codigoReceta, prod, actualizarCostoEnTabla);
 
         panel.getChildren().addAll(titulo, tabla, totales);
         return panel;
     }
 
-    private static double obtenerRendimientoDesdeRecetas(String codReceta) {
+    private static double obtenerRendimientoDesdeDatosActuales(Map<String, String> prod) {
+        double r = ParseUtils.toDouble(prod.getOrDefault("Rendimiento", "0"));
+        if (r > 0) return r;
+    
+        // Intentar recuperar desde la tabla Recetas si no está en prod
+        String cod = prod.getOrDefault("Código receta", "");
+        if (cod.isEmpty()) return 0;
+    
         return VerUtils.verTabla("Recetas").stream()
-                .filter(p -> p.getOrDefault("Código receta", "").equals(codReceta))
+                .filter(p -> cod.equals(p.get("Código receta")))
                 .map(p -> ParseUtils.toDouble(p.getOrDefault("Rendimiento", "0")))
                 .findFirst().orElse(0.0);
     }
+    
 
-    private static void actualizarTotales(TableView<Map<String, String>> tabla, TextField campoTotal, TextField campoUnitario,
+    private static void actualizarTotales(List<Map<String, String>> datos, TextField campoTotal, TextField campoUnitario,
                                           String codReceta, Map<String, String> prod, BiConsumer<String, Double> actualizarCostoEnTabla) {
         double total = 0;
-
-        for (Map<String, String> fila : tabla.getItems()) {
+        for (Map<String, String> fila : datos) {
             if (!"✓".equals(fila.getOrDefault("Check", "✓"))) continue;
 
             String codIng = fila.getOrDefault("Ingrediente", "");
-            double costo = CostoIngredientePorRecetaUtils.calcular(codReceta, codIng, 1);
+            double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad", "1"));
+            String unidad = fila.getOrDefault("Unidades", "");
+            double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
             fila.put("Costo", String.format("%.2f", costo));
             total += costo;
         }
 
-        double rendimiento = obtenerRendimientoDesdeRecetas(codReceta);
+        double rendimiento = obtenerRendimientoDesdeDatosActuales(prod);
         double costoUnitario = (rendimiento > 0) ? total / rendimiento : 0;
-        double cantidadProducida = prod != null ? ParseUtils.toDouble(prod.getOrDefault("Cantidad producida", "0")) : 0;
+        double cantidadProducida = ParseUtils.toDouble(prod.getOrDefault("Cantidad producida", "0"));
         double costoTotalFinal = costoUnitario * cantidadProducida;
 
-        if (prod != null) {
-            prod.put("Costo directo", String.format("%.2f", costoTotalFinal));
-            prod.put("Costo/U", String.format("%.2f", costoUnitario));
-        }
+        prod.put("Costo directo", String.format("%.2f", costoTotalFinal));
+        prod.put("Costo/U", String.format("%.2f", costoUnitario));
 
         campoTotal.setText(String.format("%.2f", costoTotalFinal));
         campoUnitario.setText(String.format("%.4f", costoUnitario));
 
         CacheCostosDirectosUtils.editar(codReceta, rendimiento, costoTotalFinal);
-        if (actualizarCostoEnTabla != null) {
-            actualizarCostoEnTabla.accept(codReceta, costoTotalFinal);
+        if (actualizadorActual != null) {
+            actualizadorActual.accept(codReceta, costoTotalFinal);
         }
 
         if (VistaGananciasCostosDirectos.recalcularTotales != null) {
@@ -190,7 +232,7 @@ public class PanelIngredientesReceta {
     public static void forzarRecalculo() {
         if (tablaActual != null && campoTotalActual != null && campoUnitarioActual != null &&
                 recetaActual != null && prodActual != null) {
-            actualizarTotales(tablaActual, campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
+            actualizarTotales(tablaActual.getItems(), campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
         }
     }
 }

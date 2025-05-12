@@ -94,5 +94,23 @@ public class CostoIngredientePorRecetaUtils {
     
         return suma / rendimiento;
     }
+    public static double calcularDesdeDatosDirectos(String codIngrediente, String unidadUsada, double cantidadUsada) {
+        if (codIngrediente == null || unidadUsada == null || cantidadUsada <= 0) return 0;
+    
+        List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
+    
+        Map<String, String> filaIngrediente = ingredientes.stream()
+                .filter(i -> codIngrediente.equals(i.get("Código")))
+                .findFirst().orElse(null);
+        if (filaIngrediente == null) return 0;
+    
+        String unidadIngrediente = filaIngrediente.getOrDefault("Unidad", "").trim();
+        double precio = ParseUtils.toDouble(filaIngrediente.getOrDefault("Precio Local", "0"));
+    
+        Double cantidadConvertida = ConversorUtils.convertir("Peso", unidadUsada, unidadIngrediente, cantidadUsada, codIngrediente);
+        if (cantidadConvertida == null || cantidadConvertida <= 0) return 0;
+    
+        return cantidadConvertida * precio;
+    }
     
 }

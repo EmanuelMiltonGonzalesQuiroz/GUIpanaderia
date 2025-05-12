@@ -1,14 +1,14 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Insets;
 
 import com.panaderiafx.utils.VistaResumenUtils;
 import com.panaderiafx.utils.cache.*;
 import com.panaderiafx.utils.componentes.ParseUtils;
+import com.panaderiafx.utils.componentes.ResumenGananciasUtils;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -20,7 +20,7 @@ public class VistaResumenPrincipal {
         contenedorIzquierda.setStyle("-fx-background-color: #FFECB3;");
         contenedorIzquierda.setPadding(new Insets(20));
 
-        Label titulo = new Label("Resumen de Producción por Día o Mes");
+        Label titulo = new Label("Resumen de Producción por Día");
         titulo.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
         SelectorFechaTipo selector = new SelectorFechaTipo();
@@ -32,6 +32,24 @@ public class VistaResumenPrincipal {
         panelResumen.setMaxWidth(400);
 
         AtomicReference<PanelResumenProduccion> panelRef = new AtomicReference<>();
+
+        // Botón guardar ganancias
+        Button botonGuardarGanancias = new Button("💾 GUARDAR GANANCIAS");
+        botonGuardarGanancias.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+        botonGuardarGanancias.setOnAction(ev -> {
+            TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
+            if (tabla != null) {
+                String fecha = selector.getFecha();
+                for (Map<String, String> fila : tabla.getItems()) {
+                    ResumenGananciasUtils.registrarGananciaProduccion(fecha, fila);
+                }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText(null);
+                alert.setContentText("✅ Ganancias guardadas correctamente.");
+                alert.showAndWait();
+            }
+        });
 
         Runnable actualizar = () -> {
             String fecha = selector.getFecha();
@@ -56,7 +74,7 @@ public class VistaResumenPrincipal {
                     panelIngredientes.getChildren().clear();
 
                     switch (accion) {
-                        case "GANANCIAS", "COSTOS_DIRECTOS" -> {
+                        case "GANANCIA_B.", "COSTOS_DIRECTOS_R." -> {
                             panelDetalleProducciones.getChildren().setAll(
                                 VistaGananciasCostosDirectos.crear(
                                     fecha,
@@ -142,9 +160,8 @@ public class VistaResumenPrincipal {
             );
 
             panelRef.set(panel);
-            panelResumen.getChildren().add(panel);
+            panelResumen.getChildren().addAll(panel, botonGuardarGanancias);
 
-            // 🔁 Escuchar cambios en parámetros para actualizar visualmente
             CacheParametrosUtils.agregarObservador(() -> {
                 double nuevo = CacheParametrosUtils.get();
                 if (panelRef.get() != null) {

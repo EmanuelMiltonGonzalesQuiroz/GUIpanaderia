@@ -2,24 +2,27 @@
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
 🔍 Calculando resumen para:
-   ➤ Fecha seleccionada: 8/5/2025
+   ➤ Fecha seleccionada: 12/5/2025
    ➤ Tipo seleccionado: DÍA
-📄 Filas Producción: 15
-✅ Total ganancias: 0.00
-💾 Guardando Ganancias: 0.00
-🔁 Usando ganancia actual: 0.00 para parámetros
+📄 Filas Producción: 1
+✅ Total ganancias: 800.00
+💾 Guardando Ganancias: 800.00
+🔁 Usando ganancia actual: 800.00 para parámetros
    📄 Filas Parámetros: 4
-   💰 Ganancia actual (desde caché): 0.00
+   💰 Ganancia actual (desde caché): 800.00
    🔎 Param: Costo Mano Obra Diario | Código: PAR0001 | Valor: 80.00 | Unidad: bzd/día | Activo: ✓
    🔎 Param: Cantidad de Empleados | Código: PAR0002 | Valor: 3.00 | Unidad: personas | Activo: ✓
    🔎 Param: Merma Estimada Ingredientes | Código: PAR0003 | Valor: 5.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 5.00% de 0.00 = 0.00
+     ➤ Descuento aplicado: 5.00% de 800.00 = 40.00
    🔎 Param: Carga Fiscal sobre Producción | Código: PAR0004 | Valor: 12.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 12.00% de 0.00 = 0.00
+     ➤ Descuento aplicado: 12.00% de 800.00 = 96.00
      ➤ Mano de obra total: 240.00 (3 empleados x 80.00)
-   ✅ Total parámetros calculados: 240.00
-💾 Guardando Parámetros: 240.00
+   ✅ Total parámetros calculados: 376.00
+💾 Guardando Parámetros: 376.00
 🧹 Caché de costos directos limpiado.
+⚠️ Unidades iguales [Unidades], retorno directo: 176.00
+💾 Guardando costo directo: [REC0001|400.0] = 524.07
+   ➤ Total costos directos actualizado: 524.07
    📄 Filas Costos: 37
      ➤ Costo indirecto: 41.00 (ajustado: 5.86) | Frecuencia: semanal
      ➤ Costo indirecto: 6067.50 (ajustado: 202.25) | Frecuencia: mensual
@@ -27,44 +30,47 @@
      ➤ Costo indirecto: 44.00 (ajustado: 6.29) | Frecuencia: semanal
    Total costos indirectos: 237.17
    📄 Filas Parámetros: 4
-   💰 Ganancia actual (desde caché): 0.00
+   💰 Ganancia actual (desde caché): 800.00
    🔎 Param: Costo Mano Obra Diario | Código: PAR0001 | Valor: 80.00 | Unidad: bzd/día | Activo: ✓
    🔎 Param: Cantidad de Empleados | Código: PAR0002 | Valor: 3.00 | Unidad: personas | Activo: ✓
    🔎 Param: Merma Estimada Ingredientes | Código: PAR0003 | Valor: 5.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 5.00% de 0.00 = 0.00
+     ➤ Descuento aplicado: 5.00% de 800.00 = 40.00
    🔎 Param: Carga Fiscal sobre Producción | Código: PAR0004 | Valor: 12.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 12.00% de 0.00 = 0.00
+     ➤ Descuento aplicado: 12.00% de 800.00 = 96.00
      ➤ Mano de obra total: 240.00 (3 empleados x 80.00)
-   ✅ Total parámetros calculados: 240.00
-💾 Guardando en caché: Ganancias = 0.00
-💾 Guardando Ganancias: 0.00
-🔁 Usando ganancia actual: 0.00 para parámetros
+   ✅ Total parámetros calculados: 376.00
+💾 Guardando en caché: Ganancias = 800.00
+💾 Guardando Ganancias: 800.00
+🔁 Usando ganancia actual: 800.00 para parámetros
    📄 Filas Parámetros: 4
-   💰 Ganancia actual (desde caché): 0.00
+   💰 Ganancia actual (desde caché): 800.00
    🔎 Param: Costo Mano Obra Diario | Código: PAR0001 | Valor: 80.00 | Unidad: bzd/día | Activo: ✓
    🔎 Param: Cantidad de Empleados | Código: PAR0002 | Valor: 3.00 | Unidad: personas | Activo: ✓
    🔎 Param: Merma Estimada Ingredientes | Código: PAR0003 | Valor: 5.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 5.00% de 0.00 = 0.00
+     ➤ Descuento aplicado: 5.00% de 800.00 = 40.00
    🔎 Param: Carga Fiscal sobre Producción | Código: PAR0004 | Valor: 12.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 12.00% de 0.00 = 0.00
+     ➤ Descuento aplicado: 12.00% de 800.00 = 96.00
      ➤ Mano de obra total: 240.00 (3 empleados x 80.00)
-   ✅ Total parámetros calculados: 240.00
-💾 Guardando Parámetros: 240.00
-💾 Guardando en caché: Costos Directos = 0.00
-📝 Total costos directos forzado a: 0.00
+   ✅ Total parámetros calculados: 376.00
+💾 Guardando Parámetros: 376.00
+💾 Guardando en caché: Costos Directos = 524.07
+📝 Total costos directos forzado a: 524.07
 💾 Guardando en caché: Costos Indirectos = 237.17
 💾 Guardando Costos Indirectos: 237.17
-💾 Guardando en caché: Parámetros = 240.00
-💾 Guardando Parámetros: 240.00
+💾 Guardando en caché: Parámetros = 376.00
+💾 Guardando Parámetros: 376.00
 📊 RESUMEN FINAL:
-   ➤ Ganancias: 0.00
-   ➤ Costos Directos: 0.00
+   ➤ Ganancias: 800.00
+   ➤ Costos Directos: 524.07
    ➤ Costos Indirectos: 237.17
-   ➤ Descuentos / Impuestos: 240.00
-   ➤ TOTAL: -477.17
-⏱️ Tiempo en crear pestañas: 2934 ms
+   ➤ Descuentos / Impuestos: 376.00
+   ➤ TOTAL: -337.25
+🔵 Iniciando generación de código para tabla: Recetas
+🔎 Columnas encontradas: [Código receta, Producto, Rendimiento, Unidad Rendimiento, Unidades por Lote, Molde/Lote, Categoría, Subcategoría, Observaciones, Versión]
+🟡 Columna de código proporcionada: Código receta
+🗂️ Códigos extraídos: [REC0001, REC0002, REC0003, REC0004, REC0005, REC0006, REC0007, REC0008, REC0009, REC0010, REC0011, REC0012, REC0013, REC0014]
+✅ Código generado: REC0015
+⏱️ Tiempo en crear pestañas: 11654 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 3445 ms
-⏱️ Tiempo desde main() hasta GUI: 3461 ms
-💾 Guardando Parámetros: 240.00
-💾 Guardando Parámetros: 480.00
+⏱️ Tiempo total en start(): 12953 ms
+⏱️ Tiempo desde main() hasta GUI: 12971 ms

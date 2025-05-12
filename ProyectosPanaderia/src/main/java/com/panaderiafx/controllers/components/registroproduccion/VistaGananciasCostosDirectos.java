@@ -21,12 +21,12 @@ public class VistaGananciasCostosDirectos {
             BiConsumer<String, Map<String, String>> abrirFormularioReceta,
             BiConsumer<Double, Double> actualizarTotales) {
 
-        Label ganLab = new Label("TOTAL GANANCIAS");
+        Label ganLab = new Label("TOTAL GANANCIA B.");
         ganLab.setStyle("-fx-font-weight: bold;");
         TextField ganField = new TextField("0.00");
         ganField.setEditable(false);
 
-        Label cosLab = new Label("TOTAL COSTOS");
+        Label cosLab = new Label("TOTAL COSTOS RECETAS");
         cosLab.setStyle("-fx-font-weight: bold;");
         TextField cosField = new TextField("0.00");
         cosField.setEditable(false);

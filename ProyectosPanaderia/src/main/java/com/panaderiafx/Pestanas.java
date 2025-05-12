@@ -1,7 +1,9 @@
 package com.panaderiafx;
 
 import com.panaderiafx.controllers.CalculadoraConversion;
+import com.panaderiafx.controllers.RegistroIngresos;
 import com.panaderiafx.controllers.RegistroProduccion;
+import com.panaderiafx.controllers.RegistroRecetas; // ← NUEVO IMPORTANTE
 import com.panaderiafx.utils.VerUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -53,6 +55,19 @@ public class Pestanas {
         produccionResumen.setContent(RegistroProduccion.crearVista());
         produccionResumen.setStyle("-fx-font-size: 16px;");
         tabPane.getTabs().add(produccionResumen);
+
+        Tab ingresosResumen = new Tab("Registro de Ingresos");
+        ingresosResumen.setClosable(false);
+        ingresosResumen.setContent(RegistroIngresos.crearVista());
+        ingresosResumen.setStyle("-fx-font-size: 16px;");
+        tabPane.getTabs().add(ingresosResumen);
+
+        // NUEVO: Registro de Recetas
+        Tab recetasTab = new Tab("Registro de Recetas");
+        recetasTab.setClosable(false);
+        recetasTab.setContent(RegistroRecetas.crearVista());
+        recetasTab.setStyle("-fx-font-size: 16px;");
+        tabPane.getTabs().add(recetasTab);
 
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
         Set<String> agregados = new HashSet<>();

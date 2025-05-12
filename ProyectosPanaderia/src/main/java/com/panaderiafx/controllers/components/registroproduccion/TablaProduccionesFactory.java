@@ -73,7 +73,7 @@ public class TablaProduccionesFactory {
         colCantidad.setMinWidth(100);
         colCantidad.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad producida", "0")));
 
-        TableColumn<Map<String, String>, String> colGanancia = new TableColumn<>("GANANCIA");
+        TableColumn<Map<String, String>, String> colGanancia = new TableColumn<>("GANANCIA B.");
         colGanancia.setMinWidth(100);
         colGanancia.setCellValueFactory(f -> {
             double cant = ParseUtils.toDouble(f.getValue().getOrDefault("Cantidad producida", "0"));
@@ -82,7 +82,7 @@ public class TablaProduccionesFactory {
             return new SimpleStringProperty(String.format("%.2f", cant * precioU));
         });
 
-        TableColumn<Map<String, String>, String> colCosto = new TableColumn<>("COSTO");
+        TableColumn<Map<String, String>, String> colCosto = new TableColumn<>("COSTO R.");
         colCosto.setMinWidth(100);
         colCosto.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Costo directo", "0.00")));
 
