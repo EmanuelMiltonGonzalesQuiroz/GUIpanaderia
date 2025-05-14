@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.util.*;
@@ -23,13 +24,15 @@ public class TablaIngredientesEditable {
     public TablaIngredientesEditable() {
         List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
 
+        // Mapear nombre → código
         this.mapaNombreACodigo = ingredientes.stream()
                 .collect(Collectors.toMap(
                         m -> m.getOrDefault("Nombre", "").trim(),
                         m -> m.getOrDefault("Código", "").trim(),
-                        (v1, v2) -> v1 // en caso de duplicados, conserva el primero
+                        (v1, v2) -> v1
                 ));
 
+        // Lista de nombres únicos
         this.listaIngredientes = ingredientes.stream()
                 .map(m -> m.getOrDefault("Nombre", "").trim())
                 .filter(n -> !n.isEmpty())
@@ -37,11 +40,18 @@ public class TablaIngredientesEditable {
                 .sorted()
                 .collect(Collectors.toList());
 
-        this.listaUnidades = List.of("Gramos", "Libras", "Unidades", "Onzas", "Litros");
+        // Lista de unidades únicas desde Ingredientes
+        this.listaUnidades = ingredientes.stream()
+                .map(m -> m.getOrDefault("Unidad", "").trim())
+                .filter(n -> !n.isEmpty())
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
 
         tabla.setItems(datos);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        tabla.setPrefHeight(300);
+        tabla.setPrefHeight(400);
+        tabla.setMinWidth(500);
 
         crearColumnas();
     }
@@ -76,8 +86,7 @@ public class TablaIngredientesEditable {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) setGraphic(null);
-                else setGraphic(btn);
+                setGraphic(empty ? null : btn);
             }
         });
 
@@ -114,7 +123,7 @@ public class TablaIngredientesEditable {
 
             {
                 combo.setItems(FXCollections.observableArrayList(opciones));
-                combo.setEditable(true);
+                combo.setEditable(false);
                 combo.valueProperty().addListener((obs, old, val) -> {
                     if (getIndex() >= 0 && getIndex() < datos.size()) {
                         if ("Ingrediente".equals(campo)) {
@@ -149,15 +158,23 @@ public class TablaIngredientesEditable {
     }
 
     public Node getNodeConBoton() {
-        VBox contenedor = new VBox(10, tabla);
+        VBox contenedor = new VBox(10);
+        contenedor.setStyle("-fx-background-color: #FFE0B2; -fx-padding: 10; -fx-border-color: #FF9800; -fx-border-width: 2;");
         Button btnAgregar = new Button("➕ Añadir ingrediente");
         btnAgregar.setOnAction(e -> agregarFilaVacia());
         btnAgregar.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
-        contenedor.getChildren().add(btnAgregar);
+
+        contenedor.getChildren().addAll(tabla, btnAgregar);
+        VBox.setVgrow(tabla, Priority.ALWAYS);
         return contenedor;
     }
 
     public List<Map<String, String>> getFilas() {
         return new ArrayList<>(datos);
+    }
+
+    public void limpiarTabla() {
+        datos.clear();
+        agregarFilaVacia();
     }
 }

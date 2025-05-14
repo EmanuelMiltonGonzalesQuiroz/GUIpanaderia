@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
 import java.util.*;
@@ -46,6 +47,10 @@ public class FormularioCabeceraReceta {
 
         campoObservaciones.setPrefRowCount(3);
 
+        restringirSoloNumeros(campoRendimiento);
+        restringirSoloNumeros(campoUnidadesLote);
+        restringirSoloNumeros(campoMoldeLote);
+
         int f = 0;
         grid.add(crearEtiqueta("Producto:"), 0, f);
         grid.add(comboProducto, 1, f++);
@@ -76,6 +81,12 @@ public class FormularioCabeceraReceta {
 
         grid.add(crearEtiqueta("Observaciones:"), 0, f);
         grid.add(campoObservaciones, 1, f++);
+    }
+
+    private void restringirSoloNumeros(TextField campo) {
+        campo.addEventFilter(KeyEvent.KEY_TYPED, e -> {
+            if (!e.getCharacter().matches("[0-9.]")) e.consume();
+        });
     }
 
     private void autocompletarVersion() {
@@ -117,7 +128,20 @@ public class FormularioCabeceraReceta {
         datos.put("Molde/Lote", campoMoldeLote.getText().trim());
         datos.put("Categoría", comboCategoria.getValue());
         datos.put("Subcategoría", comboSubcategoria.getValue());
-        datos.put("Observaciones", campoObservaciones.getText().trim());
+        datos.put("Observaciones", campoObservaciones.getText().trim().isEmpty() ? "Ninguna" : campoObservaciones.getText().trim());
         return datos;
+    }
+
+    public void limpiarCampos() {
+        comboProducto.getEditor().clear();
+        campoVersion.clear();
+        campoRendimiento.clear();
+        comboUnidad.getSelectionModel().clearSelection();
+        campoUnidadesLote.clear();
+        campoMoldeLote.clear();
+        comboCategoria.getSelectionModel().clearSelection();
+        comboSubcategoria.getSelectionModel().clearSelection();
+        campoObservaciones.clear();
+        campoCodigo.setText(CodigoGenerator.generarCodigo("Recetas", "Código receta"));
     }
 }

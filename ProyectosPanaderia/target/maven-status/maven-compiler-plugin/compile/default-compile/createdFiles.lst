@@ -14,7 +14,6 @@ com\panaderiafx\controllers\components\forms\ContenedorFactory.class
 com\panaderiafx\controllers\components\registroproduccion\TablaProduccionesFactory$1.class
 com\panaderiafx\utils\componentes\CostosDirectosUtils.class
 com\panaderiafx\controllers\components\ContenedorFlexible.class
-com\panaderiafx\controllers\components\registroproduccion2\IngredientesNuevaReceta$2.class
 com\panaderiafx\utils\VerUtils.class
 com\panaderiafx\controllers\components\registroproduccion\TablaProduccionesFactory.class
 com\panaderiafx\Pestanas.class
@@ -66,7 +65,6 @@ com\panaderiafx\utils\componentes\CostosDirectosPorRecetaUtils.class
 com\panaderiafx\utils\RegistroRelacionado.class
 com\panaderiafx\controllers\components\registroproduccion\PanelParametrosResumen$1.class
 com\panaderiafx\controllers\components\ListaSeleccion.class
-com\panaderiafx\controllers\components\registroproduccion2\IngredientesNuevaReceta.class
 com\panaderiafx\controllers\components\table\BotonActualizar.class
 com\panaderiafx\utils\CodigoGenerator.class
 com\panaderiafx\controllers\components\table\SelectorTamanoFuente.class
@@ -86,7 +84,6 @@ com\panaderiafx\controllers\components\registroproduccion\VistaResumenPrincipal.
 com\panaderiafx\controllers\RegistroProduccion.class
 com\panaderiafx\utils\VersionUtils.class
 com\panaderiafx\utils\ConversorUtils.class
-com\panaderiafx\controllers\components\registroproduccion2\IngredientesNuevaReceta$1.class
 com\panaderiafx\controllers\components\registroreceta\FormularioCabeceraReceta.class
 com\panaderiafx\controllers\CalculadoraConversion.class
 com\panaderiafx\utils\cache\CacheParametrosUtils.class

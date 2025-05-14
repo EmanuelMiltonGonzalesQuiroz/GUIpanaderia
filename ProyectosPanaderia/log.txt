@@ -1,28 +1,43 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
+⏱️ Tiempo en crear pestañas: 1760 ms
+✅ Mostrando ventana principal...
+⏱️ Tiempo total en start(): 2587 ms
+⏱️ Tiempo desde main() hasta GUI: 2602 ms
+🔵 Iniciando generación de código para tabla: Recetas
+🔎 Columnas encontradas: [Código receta, Producto, Rendimiento, Unidad Rendimiento, Unidades por Lote, Molde/Lote, Categoría, Subcategoría, Observaciones, Versión]
+🟡 Columna de código proporcionada: Código receta
+🗂️ Códigos extraídos: [REC0001, REC0002, REC0003, REC0004, REC0005, REC0006, REC0007, REC0008, REC0009, REC0010, REC0011, REC0012, REC0013, REC0014]
+✅ Código generado: REC0015
 🔍 Calculando resumen para:
-   ➤ Fecha seleccionada: 12/5/2025
+   ➤ Fecha seleccionada: 14/5/2025
    ➤ Tipo seleccionado: DÍA
-📄 Filas Producción: 1
-✅ Total ganancias: 800.00
-💾 Guardando Ganancias: 800.00
-🔁 Usando ganancia actual: 800.00 para parámetros
+📄 Filas Producción: 3
+✅ Total ganancias: 53000.00
+💾 Guardando Ganancias: 53000.00
+🔁 Usando ganancia actual: 53000.00 para parámetros
    📄 Filas Parámetros: 4
-   💰 Ganancia actual (desde caché): 800.00
+   💰 Ganancia actual (desde caché): 53000.00
    🔎 Param: Costo Mano Obra Diario | Código: PAR0001 | Valor: 80.00 | Unidad: bzd/día | Activo: ✓
    🔎 Param: Cantidad de Empleados | Código: PAR0002 | Valor: 3.00 | Unidad: personas | Activo: ✓
    🔎 Param: Merma Estimada Ingredientes | Código: PAR0003 | Valor: 5.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 5.00% de 800.00 = 40.00
+     ➤ Descuento aplicado: 5.00% de 53000.00 = 2650.00
    🔎 Param: Carga Fiscal sobre Producción | Código: PAR0004 | Valor: 12.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 12.00% de 800.00 = 96.00
+     ➤ Descuento aplicado: 12.00% de 53000.00 = 6360.00
      ➤ Mano de obra total: 240.00 (3 empleados x 80.00)
-   ✅ Total parámetros calculados: 376.00
-💾 Guardando Parámetros: 376.00
+   ✅ Total parámetros calculados: 9250.00
+💾 Guardando Parámetros: 9250.00
 🧹 Caché de costos directos limpiado.
+📥 Datos de conversión cargados en caché: 39 filas.
 ⚠️ Unidades iguales [Unidades], retorno directo: 176.00
-💾 Guardando costo directo: [REC0001|400.0] = 524.07
-   ➤ Total costos directos actualizado: 524.07
+💾 Guardando costo directo: [REC0001|1000.0] = 1310.19
+   ➤ Total costos directos actualizado: 1310.19
+⚠️ Unidades iguales [Litro], retorno directo: 0.25
+⚠️ Unidades iguales [Onzas], retorno directo: 0.14
+⚠️ Unidades iguales [Unidades], retorno directo: 140.00
+💾 Guardando costo directo: [REC0006|10000.0] = 8988.39
+   ➤ Total costos directos actualizado: 10298.57
    📄 Filas Costos: 37
      ➤ Costo indirecto: 41.00 (ajustado: 5.86) | Frecuencia: semanal
      ➤ Costo indirecto: 6067.50 (ajustado: 202.25) | Frecuencia: mensual
@@ -30,47 +45,38 @@
      ➤ Costo indirecto: 44.00 (ajustado: 6.29) | Frecuencia: semanal
    Total costos indirectos: 237.17
    📄 Filas Parámetros: 4
-   💰 Ganancia actual (desde caché): 800.00
+   💰 Ganancia actual (desde caché): 53000.00
    🔎 Param: Costo Mano Obra Diario | Código: PAR0001 | Valor: 80.00 | Unidad: bzd/día | Activo: ✓
    🔎 Param: Cantidad de Empleados | Código: PAR0002 | Valor: 3.00 | Unidad: personas | Activo: ✓
    🔎 Param: Merma Estimada Ingredientes | Código: PAR0003 | Valor: 5.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 5.00% de 800.00 = 40.00
+     ➤ Descuento aplicado: 5.00% de 53000.00 = 2650.00
    🔎 Param: Carga Fiscal sobre Producción | Código: PAR0004 | Valor: 12.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 12.00% de 800.00 = 96.00
+     ➤ Descuento aplicado: 12.00% de 53000.00 = 6360.00
      ➤ Mano de obra total: 240.00 (3 empleados x 80.00)
-   ✅ Total parámetros calculados: 376.00
-💾 Guardando en caché: Ganancias = 800.00
-💾 Guardando Ganancias: 800.00
-🔁 Usando ganancia actual: 800.00 para parámetros
+   ✅ Total parámetros calculados: 9250.00
+💾 Guardando en caché: Ganancias = 53000.00
+💾 Guardando Ganancias: 53000.00
+🔁 Usando ganancia actual: 53000.00 para parámetros
    📄 Filas Parámetros: 4
-   💰 Ganancia actual (desde caché): 800.00
+   💰 Ganancia actual (desde caché): 53000.00
    🔎 Param: Costo Mano Obra Diario | Código: PAR0001 | Valor: 80.00 | Unidad: bzd/día | Activo: ✓
    🔎 Param: Cantidad de Empleados | Código: PAR0002 | Valor: 3.00 | Unidad: personas | Activo: ✓
    🔎 Param: Merma Estimada Ingredientes | Código: PAR0003 | Valor: 5.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 5.00% de 800.00 = 40.00
+     ➤ Descuento aplicado: 5.00% de 53000.00 = 2650.00
    🔎 Param: Carga Fiscal sobre Producción | Código: PAR0004 | Valor: 12.00 | Unidad: % | Activo: ✓
-     ➤ Descuento aplicado: 12.00% de 800.00 = 96.00
+     ➤ Descuento aplicado: 12.00% de 53000.00 = 6360.00
      ➤ Mano de obra total: 240.00 (3 empleados x 80.00)
-   ✅ Total parámetros calculados: 376.00
-💾 Guardando Parámetros: 376.00
-💾 Guardando en caché: Costos Directos = 524.07
-📝 Total costos directos forzado a: 524.07
+   ✅ Total parámetros calculados: 9250.00
+💾 Guardando Parámetros: 9250.00
+💾 Guardando en caché: Costos Directos = 10298.57
+📝 Total costos directos forzado a: 10298.57
 💾 Guardando en caché: Costos Indirectos = 237.17
 💾 Guardando Costos Indirectos: 237.17
-💾 Guardando en caché: Parámetros = 376.00
-💾 Guardando Parámetros: 376.00
+💾 Guardando en caché: Parámetros = 9250.00
+💾 Guardando Parámetros: 9250.00
 📊 RESUMEN FINAL:
-   ➤ Ganancias: 800.00
-   ➤ Costos Directos: 524.07
+   ➤ Ganancias: 53000.00
+   ➤ Costos Directos: 10298.57
    ➤ Costos Indirectos: 237.17
-   ➤ Descuentos / Impuestos: 376.00
-   ➤ TOTAL: -337.25
-🔵 Iniciando generación de código para tabla: Recetas
-🔎 Columnas encontradas: [Código receta, Producto, Rendimiento, Unidad Rendimiento, Unidades por Lote, Molde/Lote, Categoría, Subcategoría, Observaciones, Versión]
-🟡 Columna de código proporcionada: Código receta
-🗂️ Códigos extraídos: [REC0001, REC0002, REC0003, REC0004, REC0005, REC0006, REC0007, REC0008, REC0009, REC0010, REC0011, REC0012, REC0013, REC0014]
-✅ Código generado: REC0015
-⏱️ Tiempo en crear pestañas: 11654 ms
-✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 12953 ms
-⏱️ Tiempo desde main() hasta GUI: 12971 ms
+   ➤ Descuentos / Impuestos: 9250.00
+   ➤ TOTAL: 33214.26

@@ -14,8 +14,7 @@ public class FormularioNuevaReceta {
     private final TextField campoPrecioUnidad = new TextField();
     private final TextField campoPrecioTotal = new TextField();
 
-    private String cacheCantidad = "";
-    private String cachePrecioUnidad = "";
+    private boolean actualizando = false;
 
     private GridPane grid;
     private Label campoNombreProducto;
@@ -41,7 +40,10 @@ public class FormularioNuevaReceta {
         campoNombreProducto = crearValorLabel("-");
         campoVersion = crearValorLabel("-");
         campoRendimiento = crearValorLabel("-");
-        campoPrecioTotal.setEditable(false);
+
+        restringirSoloNumeros(campoCantidad);
+        restringirSoloNumeros(campoPrecioUnidad);
+        restringirSoloNumeros(campoPrecioTotal);
 
         grid.add(crearEtiqueta("Producto:"), 0, 0);
         grid.add(campoNombreProducto, 1, 0);
@@ -61,22 +63,41 @@ public class FormularioNuevaReceta {
         grid.add(crearEtiqueta("Precio total:"), 0, 5);
         grid.add(campoPrecioTotal, 1, 5);
 
-        campoCantidad.textProperty().addListener((obs, o, n) -> recalcular());
-        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> recalcular());
+        campoCantidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
+        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
+        campoPrecioTotal.textProperty().addListener((obs, o, n) -> recalcularDesdeTotal());
     }
 
-    private void recalcular() {
-        String nuevaCantidad = campoCantidad.getText().trim();
-        String nuevoPrecio = campoPrecioUnidad.getText().trim();
+    private void recalcularDesdeUnidad() {
+        if (actualizando) return;
+        actualizando = true;
 
-        if (nuevaCantidad.equals(cacheCantidad) && nuevoPrecio.equals(cachePrecioUnidad)) return;
+        double cantidad = parseDouble(campoCantidad.getText());
+        double precioUnidad = parseDouble(campoPrecioUnidad.getText());
 
-        cacheCantidad = nuevaCantidad;
-        cachePrecioUnidad = nuevoPrecio;
+        if (cantidad <= 0) {
+            campoPrecioTotal.setText("0.00");
+        } else {
+            campoPrecioTotal.setText(String.format("%.2f", cantidad * precioUnidad));
+        }
 
-        double cant = parseDouble(nuevaCantidad);
-        double unit = parseDouble(nuevoPrecio);
-        campoPrecioTotal.setText(String.format("%.2f", cant * unit));
+        actualizando = false;
+    }
+
+    private void recalcularDesdeTotal() {
+        if (actualizando) return;
+        actualizando = true;
+
+        double cantidad = parseDouble(campoCantidad.getText());
+        double precioTotal = parseDouble(campoPrecioTotal.getText());
+
+        if (cantidad <= 0) {
+            campoPrecioUnidad.setText("0.00");
+        } else {
+            campoPrecioUnidad.setText(String.format("%.2f", precioTotal / cantidad));
+        }
+
+        actualizando = false;
     }
 
     public String getCantidad() {
@@ -93,12 +114,10 @@ public class FormularioNuevaReceta {
 
     public void setCantidad(String valor) {
         campoCantidad.setText(valor);
-        cacheCantidad = "";
     }
 
     public void setPrecioUnitario(String valor) {
         campoPrecioUnidad.setText(valor);
-        cachePrecioUnidad = "";
     }
 
     public void setPrecioTotal(String valor) {
@@ -136,5 +155,13 @@ public class FormularioNuevaReceta {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    private void restringirSoloNumeros(TextField campo) {
+        campo.textProperty().addListener((obs, oldText, newText) -> {
+            if (!newText.matches("\\d*(\\.\\d{0,2})?")) {
+                campo.setText(oldText);
+            }
+        });
     }
 }

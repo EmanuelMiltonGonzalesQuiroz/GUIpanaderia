@@ -49,13 +49,24 @@ public class VistaRegistroProduccion {
             String fecha = selector.getFechaSeleccionada();
             String cantidad = formExtra.getCantidad();
             String precioU = formExtra.getPrecioUnitario();
+            String total = formExtra.getPrecioTotal();
 
-            if (codReceta == null || fecha.isEmpty() || cantidad.isEmpty() || precioU.isEmpty()) {
+            if (codReceta == null || fecha.isEmpty() || cantidad.isEmpty() || precioU.isEmpty() || total.isEmpty()) {
                 mostrarError("Complete todos los campos antes de guardar.");
                 return;
             }
 
-            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, ""); // costo se omite
+            try {
+                if (Double.parseDouble(cantidad) == 0 || Double.parseDouble(precioU) == 0 || Double.parseDouble(total) == 0) {
+                    mostrarError("Cantidad, precio unitario y total deben ser mayores a cero.");
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                mostrarError("Los valores numéricos no son válidos.");
+                return;
+            }
+
+            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, total);
             mostrarConfirmacion("✅ Producción guardada correctamente.");
         });
 

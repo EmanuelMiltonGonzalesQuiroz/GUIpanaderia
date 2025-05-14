@@ -40,7 +40,7 @@ public class VistaGananciasCostosDirectos {
         contenedor.setStyle("-fx-background-color: #FF9800; -fx-background-radius: 10;");
         contenedor.setFillWidth(true);
 
-        Label titulo = new Label("GANANCIAS Y COSTOS DIRECTOS");
+        Label titulo = new Label("GANANCIAS BRUTAS Y COSTOS DE RECETAS");
         titulo.setStyle("-fx-font-weight: bold;");
         contenedor.getChildren().addAll(titulo);
 

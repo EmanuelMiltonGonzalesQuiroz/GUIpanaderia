@@ -28,8 +28,18 @@ public class BotonGuardarProduccion extends HBox {
             String precioU = formExtra.getPrecioUnitario();
             String total = formExtra.getPrecioTotal();
 
-            if (cantidad.isEmpty() || precioU.isEmpty()) {
-                mostrarError("Debe ingresar cantidad y precio por unidad.");
+            if (cantidad.isEmpty() || precioU.isEmpty() || total.isEmpty()) {
+                mostrarError("Debe ingresar cantidad, precio por unidad y precio total.");
+                return;
+            }
+
+            try {
+                if (Double.parseDouble(cantidad) == 0 || Double.parseDouble(precioU) == 0 || Double.parseDouble(total) == 0) {
+                    mostrarError("Cantidad, precio unitario y total deben ser mayores a cero.");
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                mostrarError("Los valores numéricos no son válidos.");
                 return;
             }
 
