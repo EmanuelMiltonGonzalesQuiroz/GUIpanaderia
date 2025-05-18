@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import com.panaderiafx.utils.VistaResumenUtils;
 import com.panaderiafx.utils.cache.*;
 import com.panaderiafx.utils.componentes.ParseUtils;
+import com.panaderiafx.utils.componentes.RegistroVariableDiaUtils;
 import com.panaderiafx.utils.componentes.ResumenGananciasUtils;
 
 import java.util.Map;
@@ -33,7 +34,6 @@ public class VistaResumenPrincipal {
 
         AtomicReference<PanelResumenProduccion> panelRef = new AtomicReference<>();
 
-        // Botón guardar ganancias
         Button botonGuardarGanancias = new Button("💾 GUARDAR GANANCIAS");
         botonGuardarGanancias.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
         botonGuardarGanancias.setOnAction(ev -> {
@@ -63,10 +63,13 @@ public class VistaResumenPrincipal {
             double parametros = CacheParametrosUtils.get();
             double total = ganancia - costoDirecto - costoIndirecto - parametros;
 
+            // ✅ Guardar solo el TOTAL del día
+            RegistroVariableDiaUtils.guardarCostoDelDia(fecha, tipo, "TOTAL", total);
+
             panelResumen.getChildren().clear();
 
             PanelResumenProduccion panel = new PanelResumenProduccion(
-                ganancia, costoDirecto, costoIndirecto, parametros, total,
+                ganancia, costoDirecto, total,
                 (accion) -> {
                     panelDetalleReceta.setVisible(false);
                     panelIngredientes.setVisible(false);
@@ -145,16 +148,6 @@ public class VistaResumenPrincipal {
 
                             PanelIngredientesReceta.forzarRecalculo();
                         }
-                        case "COSTOS_INDIRECTOS" -> {
-                            panelDetalleProducciones.getChildren().setAll(
-                                PanelCostosIndirectosResumen.crear()
-                            );
-                        }
-                        case "PARÁMETROS" -> {
-                            panelDetalleProducciones.getChildren().setAll(
-                                PanelParametrosResumen.crear()
-                            );
-                        }
                     }
                 }
             );
@@ -162,12 +155,6 @@ public class VistaResumenPrincipal {
             panelRef.set(panel);
             panelResumen.getChildren().addAll(panel, botonGuardarGanancias);
 
-            CacheParametrosUtils.agregarObservador(() -> {
-                double nuevo = CacheParametrosUtils.get();
-                if (panelRef.get() != null) {
-                    panelRef.get().actualizarParametros(nuevo);
-                }
-            });
         };
 
         selector.getBotonActualizar().setOnAction(e -> actualizar.run());

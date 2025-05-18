@@ -4,6 +4,7 @@ import com.panaderiafx.controllers.CalculadoraConversion;
 import com.panaderiafx.controllers.RegistroIngresos;
 import com.panaderiafx.controllers.RegistroProduccion;
 import com.panaderiafx.controllers.RegistroRecetas;
+import com.panaderiafx.controllers.LibroSemanalController;
 import com.panaderiafx.utils.VerUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -51,14 +52,14 @@ public class Pestanas {
         TabPane tabPane = new TabPane();
         Set<String> agregados = new HashSet<>();
 
-        // TAB 1: Registro de Producción (único que se carga inmediatamente)
+        // TAB 1: Registro de Producción
         Tab produccionResumen = new Tab("Registro de Producción");
         produccionResumen.setClosable(false);
         produccionResumen.setStyle("-fx-font-size: 16px;");
-        produccionResumen.setContent(RegistroProduccion.crearVista()); // carga inmediata
+        produccionResumen.setContent(RegistroProduccion.crearVista());
         tabPane.getTabs().add(produccionResumen);
 
-        // TAB 2: Registro de Ingresos (lazy)
+        // TAB 2: Registro de Ingresos
         Tab ingresosResumen = new Tab("Registro de Ingresos");
         ingresosResumen.setClosable(false);
         ingresosResumen.setStyle("-fx-font-size: 16px;");
@@ -70,7 +71,7 @@ public class Pestanas {
         });
         tabPane.getTabs().add(ingresosResumen);
 
-        // TAB 3: Registro de Recetas (lazy)
+        // TAB 3: Registro de Recetas
         Tab recetasTab = new Tab("Registro de Recetas");
         recetasTab.setClosable(false);
         recetasTab.setStyle("-fx-font-size: 16px;");
@@ -82,7 +83,7 @@ public class Pestanas {
         });
         tabPane.getTabs().add(recetasTab);
 
-        // Otras pestañas desde configuración
+        // TAB 4+: Tablas desde configuración
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
         for (Map<String, String> fila : config) {
             String nombreSistema = fila.get("Tabla");
@@ -111,7 +112,7 @@ public class Pestanas {
             }
         }
 
-        // Pestañas restantes si es vista avanzada
+        // Tablas restantes si vista avanzada
         if (!vistaBasica) {
             List<String> hojas = VerUtils.obtenerNombresTablas();
             for (String hoja : hojas) {
@@ -133,7 +134,7 @@ public class Pestanas {
             }
         }
 
-        // Calculadora de Conversión (lazy)
+        // TAB: Calculadora de Conversión
         Tab calculadora = new Tab("Calculadora de Conversión");
         calculadora.setClosable(false);
         calculadora.setStyle("-fx-font-size: 16px;");
@@ -144,6 +145,18 @@ public class Pestanas {
             }
         });
         tabPane.getTabs().add(calculadora);
+
+        // NUEVA TAB: Libro Semanal (flujo de caja)
+        Tab libroSemanal = new Tab("Libro Semanal");
+        libroSemanal.setClosable(false);
+        libroSemanal.setStyle("-fx-font-size: 16px;");
+        libroSemanal.setContent(new Label("Cargando..."));
+        libroSemanal.setOnSelectionChanged(e -> {
+            if (libroSemanal.isSelected() && libroSemanal.getContent() instanceof Label) {
+                libroSemanal.setContent(LibroSemanalController.crearVista());
+            }
+        });
+        tabPane.getTabs().add(libroSemanal);
 
         return tabPane;
     }

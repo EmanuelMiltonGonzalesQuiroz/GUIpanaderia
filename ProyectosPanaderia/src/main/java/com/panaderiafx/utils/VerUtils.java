@@ -3,6 +3,7 @@ package com.panaderiafx.utils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.AreaReference;
 import org.apache.poi.ss.util.CellReference;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.util.*;
@@ -113,8 +114,41 @@ public class VerUtils {
         return verTabla(nombreTabla).stream()
                 .filter(fila -> filtros.entrySet().stream()
                         .allMatch(f -> f.getValue().equalsIgnoreCase(fila.getOrDefault(f.getKey(), ""))))
-                .toList();
+                
+                        .toList();
     }
+    public static List<String> obtenerColumnas(String nombreHoja) {
+        List<String> columnas = new ArrayList<>();
+
+        try (FileInputStream fis = new FileInputStream("Datos\\Hoja de datos.xlsx");
+            Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheet(nombreHoja);
+            if (sheet == null) {
+                System.err.println("❌ Hoja no encontrada: " + nombreHoja);
+                return columnas;
+            }
+
+            Row header = sheet.getRow(0);
+            if (header == null) {
+                System.err.println("❌ Encabezado vacío en hoja: " + nombreHoja);
+                return columnas;
+            }
+
+            for (int c = 0; c < header.getLastCellNum(); c++) {
+                Cell celda = header.getCell(c);
+                if (celda != null) {
+                    columnas.add(celda.getStringCellValue().trim());
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("❌ Error al leer columnas de hoja " + nombreHoja + ": " + e.getMessage());
+        }
+
+        return columnas;
+    }
+
 
     public static List<String> obtenerNombresTablas() {
         List<String> nombres = new ArrayList<>();

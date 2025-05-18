@@ -13,6 +13,15 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\TablaBusquedaValores.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FormularioDinamico.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FormularioModificar.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\DetallePorDiaVista.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\LibroSemanalService.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleCostosIndirectos.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleParametros.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\ResumenSemanal.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\SelectorSemana.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\TableCellSwitchEstiloFactory.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\VistaLibroSemanal.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ListaSeleccion.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\BotonGuardarProduccion.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\FormularioNuevaReceta.java
@@ -44,6 +53,7 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaFactory.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CrearController.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\LibroSemanalController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\ModificarController.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroIngresos.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroProduccion.java
@@ -54,8 +64,10 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\SubPestanasFactory.jav
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosDirectosUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosIndirectosUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheGananciasUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheLibroSemanal.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheParametrosUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheTotalUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\EditorTemporalCache.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CalculoCostosUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.java
@@ -65,8 +77,10 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\Cost
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\DatosRecetaUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\FechaUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\GananciasUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\GuardarLibroSemanalUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ParametrosUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ParseUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\RegistroVariableDiaUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ResumenGananciasUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CrearUtils.java

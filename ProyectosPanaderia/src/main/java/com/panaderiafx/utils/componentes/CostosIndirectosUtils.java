@@ -23,13 +23,14 @@ public class CostosIndirectosUtils {
             String frecuencia = fila.getOrDefault("Frecuencia", "").trim().toLowerCase();
 
             double ajustado = switch (frecuencia) {
-                case "mensual" -> tipo.equalsIgnoreCase("DÍA") ? precio / 30 : precio;
-                case "semanal" -> tipo.equalsIgnoreCase("DÍA") ? precio / 7 : precio * 4;
+                case "mensual" -> tipo.equalsIgnoreCase("DÍA") ? precio / 30.0 : precio / 4.0;
+                case "diario", "día", "dia" -> tipo.equalsIgnoreCase("DÍA") ? precio : precio * 7.0;
+                case "semanal" -> precio;
                 default -> 0;
             };
 
             System.out.printf("     ➤ Costo indirecto: %.2f (ajustado: %.2f) | Frecuencia: %s\n",
-                              precio, ajustado, frecuencia);
+                    precio, ajustado, frecuencia);
 
             total += ajustado;
         }
