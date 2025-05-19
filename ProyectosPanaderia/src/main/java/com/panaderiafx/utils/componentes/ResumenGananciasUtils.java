@@ -3,6 +3,7 @@ package com.panaderiafx.utils.componentes;
 import com.panaderiafx.utils.CodigoGenerator;
 import com.panaderiafx.utils.CrearUtils;
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.cache.CacheCostosDirectosUtils;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,10 +13,11 @@ import java.util.Optional;
 public class ResumenGananciasUtils {
 
     public static void registrarGananciaProduccion(String fecha, Map<String, String> prod) {
-        System.out.println("produccion: " + prod);
+        System.out.println("📝 Registrando ganancia para producción: " + prod);
 
         Map<String, String> fila = new LinkedHashMap<>();
 
+        String codigoProduccion = prod.getOrDefault("Código Producción", "").trim();
         String codigoReceta = prod.getOrDefault("Código receta", "").trim();
         String version = prod.getOrDefault("Versión", "").trim();
         String producto = prod.getOrDefault("Producto", "").trim();
@@ -45,16 +47,18 @@ public class ResumenGananciasUtils {
 
         // === COSTOS ===
         double costoUnitario = ParseUtils.toDouble(prod.getOrDefault("Costo/U", "-1"));
+        double costoTotal = 0.0;
 
-        // Si no se proporcionó el costo unitario, calcular desde receta
-        if (costoUnitario < 0 && !codigoReceta.isEmpty()) {
-            costoUnitario = CostosDirectosPorRecetaUtils.calcularPorUnidad(codigoReceta);
+        if (!codigoProduccion.isEmpty()) {
+            if (costoUnitario < 0) {
+                costoUnitario = CacheCostosDirectosUtils.obtenerUnidad(codigoProduccion);
+            }
+            costoTotal = CacheCostosDirectosUtils.obtener(codigoProduccion);
         }
 
-        // Recalcular SIEMPRE el costo total si hay cantidad
-        double costoTotal = (cantidad > 0 && costoUnitario >= 0)
-                ? costoUnitario * cantidad
-                : 0.0;
+        if (costoTotal <= 0 && cantidad > 0) {
+            costoTotal = costoUnitario * cantidad;
+        }
 
         // === GANANCIA ===
         double ganancia = (precioVenta * cantidad) - costoTotal;

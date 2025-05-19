@@ -12,14 +12,13 @@ public class CostosDirectosUtils {
     public static double calcular(String fechaSeleccionada, String tipo) {
         if (fechaSeleccionada == null || tipo == null) return 0.0;
 
-        // Limpiar caché antes de cada cálculo
+        System.out.println("🧹 Caché de costos directos limpiado.");
         CacheCostosDirectosUtils.limpiar();
 
-        // Cargar tablas una sola vez
         List<Map<String, String>> produccion = VerUtils.verTabla("Produccion");
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
 
-        // Crear mapa de rendimientos: Código receta → Rendimiento
+        // Mapa para validar rendimiento de recetas
         Map<String, Double> mapaRendimientos = new HashMap<>();
         for (Map<String, String> fila : recetas) {
             String cod = fila.getOrDefault("Código receta", "").trim();
@@ -31,18 +30,33 @@ public class CostosDirectosUtils {
             }
         }
 
-        // Calcular suma de costos directos por cada receta producida en esa fecha
-        return produccion.stream()
+        System.out.printf("📄 Filas Producción: %d%n", produccion.size());
+
+        double total = produccion.stream()
                 .filter(f -> FechaUtils.coincide(f.getOrDefault("Fecha", ""), fechaSeleccionada, tipo))
                 .mapToDouble(f -> {
-                    String cod = f.getOrDefault("Código receta", "").trim();
-                    if (cod.isEmpty()) return 0.0;
+                    String codProd = f.getOrDefault("Código Producción", "").trim();
+                    String codReceta = f.getOrDefault("Código receta", "").trim();
+                    double cantidad = ParseUtils.toDouble(f.getOrDefault("Cantidad producida", "0"));
 
-                    double rendimiento = mapaRendimientos.getOrDefault(cod, 0.0);
-                    if (rendimiento <= 0) return 0.0;
+                    if (codProd.isEmpty() || codReceta.isEmpty() || cantidad <= 0) {
+                        System.out.printf("⚠️ Producción inválida: Código=%s Receta=%s Cantidad=%.2f%n", codProd, codReceta, cantidad);
+                        return 0.0;
+                    }
 
-                    return CostosDirectosPorRecetaUtils.calcular(cod, rendimiento);
+                    double costo = CostosDirectosPorRecetaUtils.calcular(codProd, codReceta, cantidad);
+
+                    if (costo <= 0) {
+                        System.out.printf("⚠️ Producción inválida: Código=%s Receta=%s Cantidad=%.2f CostoTotal=%.2f%n",
+                                codProd, codReceta, cantidad, costo);
+                    }
+
+                    return costo;
                 })
                 .sum();
+
+        System.out.printf("✅ Total costos directos: %.2f%n", total);
+        CacheCostosDirectosUtils.set(total);
+        return total;
     }
 }

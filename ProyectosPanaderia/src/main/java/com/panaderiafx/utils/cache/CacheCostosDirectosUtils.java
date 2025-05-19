@@ -10,35 +10,24 @@ public class CacheCostosDirectosUtils {
 
     private static double total = 0;
 
-    public static String clave(String codReceta, double cantidad) {
-        return codReceta.trim() + "|" + cantidad;
+    public static boolean contiene(String codProduccion) {
+        return cache.containsKey(codProduccion);
     }
 
-    public static boolean contiene(String codReceta, double cantidad) {
-        return cache.containsKey(clave(codReceta, cantidad));
+    public static Double obtener(String codProduccion) {
+        return cache.get(codProduccion);
     }
 
-    public static Double obtener(String codReceta, double cantidad) {
-        return cache.get(clave(codReceta, cantidad));
-    }
-
-    public static void guardar(String codReceta, double cantidad, double costo) {
-        // Eliminar claves anteriores con mismo codReceta
-        cache.keySet().removeIf(k -> k.startsWith(codReceta + "|"));
-    
-        String key = clave(codReceta, cantidad);
-        cache.put(key, costo);
-    
+    public static void guardar(String codProduccion, double costo) {
+        cache.put(codProduccion, costo);
         recalcularTotal();
-        System.out.printf("💾 Guardando costo directo: [%s] = %.2f\n", key, costo);
+        System.out.printf("💾 Guardando costo directo: [%s] = %.2f\n", codProduccion, costo);
         System.out.printf("   ➤ Total costos directos actualizado: %.2f\n", total);
-    
         notificarObservadores();
     }
-    
 
-    public static void editar(String codReceta, double cantidad, double nuevoCosto) {
-        guardar(codReceta, cantidad, nuevoCosto);
+    public static void editar(String codProduccion, double nuevoCosto) {
+        guardar(codProduccion, nuevoCosto);
     }
 
     public static void limpiar() {
@@ -61,7 +50,6 @@ public class CacheCostosDirectosUtils {
         total = cache.values().stream().mapToDouble(Double::doubleValue).sum();
     }
 
-    // Cambiado de total() a get()
     public static double get() {
         return total;
     }
@@ -72,15 +60,15 @@ public class CacheCostosDirectosUtils {
         notificarObservadores();
     }
 
-    public static void guardarUnidad(String codReceta, double costoUnidad) {
-        cacheUnidad.put(codReceta, costoUnidad);
+    public static void guardarUnidad(String codProduccion, double costoUnidad) {
+        cacheUnidad.put(codProduccion, costoUnidad);
     }
 
-    public static boolean contieneUnidad(String codReceta) {
-        return cacheUnidad.containsKey(codReceta);
+    public static boolean contieneUnidad(String codProduccion) {
+        return cacheUnidad.containsKey(codProduccion);
     }
 
-    public static double obtenerUnidad(String codReceta) {
-        return cacheUnidad.getOrDefault(codReceta, 0.0);
+    public static double obtenerUnidad(String codProduccion) {
+        return cacheUnidad.getOrDefault(codProduccion, 0.0);
     }
 }

@@ -52,7 +52,6 @@ public class CacheLibroSemanal {
 
     private static void recalcularTotal() {
         double total = get(Tipo.GANANCIA_B)
-                     - get(Tipo.COSTO_DIRECTO)
                      - get(Tipo.COSTO_INDIRECTO)
                      - get(Tipo.PARAMETROS)
                      + get(Tipo.COSTOS_DIA);

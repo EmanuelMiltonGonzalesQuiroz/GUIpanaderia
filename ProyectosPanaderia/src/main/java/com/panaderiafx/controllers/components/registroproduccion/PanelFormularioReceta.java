@@ -1,6 +1,6 @@
 package com.panaderiafx.controllers.components.registroproduccion;
 
-import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.cache.RecetaCacheUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -14,7 +14,7 @@ import java.util.function.BiConsumer;
 
 public class PanelFormularioReceta {
 
-    public static Node crear(String nombreReceta, Map<String, String> prod,
+    public static Node crear(String codigoReceta, Map<String, String> prod,
                              BiConsumer<String, Double> actualizarGananciaEnTabla,
                              Runnable onCantidadActualizada) {
 
@@ -22,12 +22,9 @@ public class PanelFormularioReceta {
         contenedor.setStyle("-fx-background-color: #F36C00; -fx-padding: 20; -fx-background-radius: 10;");
         contenedor.setAlignment(Pos.TOP_LEFT);
 
-        String nombreProducto = VerUtils.verTabla("Recetas").stream()
-                .filter(r -> r.getOrDefault("Código receta", "").equalsIgnoreCase(nombreReceta))
-                .map(r -> r.getOrDefault("Producto", nombreReceta))
-                .findFirst().orElse(nombreReceta);
+        String nombreProducto = RecetaCacheUtils.obtenerNombre(codigoReceta);
 
-        if (prod == null) {
+        if (prod == null || nombreProducto == null || nombreProducto.isBlank()) {
             Label error = new Label("Receta no encontrada");
             error.setStyle("-fx-background-color: #FFD180; -fx-padding: 10; -fx-border-radius: 5;");
             contenedor.getChildren().add(error);
@@ -68,7 +65,7 @@ public class PanelFormularioReceta {
             prod.put("Precio de Venta General", String.valueOf(total));
 
             if (actualizarGananciaEnTabla != null) {
-                actualizarGananciaEnTabla.accept(nombreReceta, total);
+                actualizarGananciaEnTabla.accept(codigoReceta, total);
             }
 
             if (onCantidadActualizada != null) {
@@ -93,7 +90,7 @@ public class PanelFormularioReceta {
             prod.put("Precio de Venta General", String.valueOf(total));
 
             if (actualizarGananciaEnTabla != null) {
-                actualizarGananciaEnTabla.accept(nombreReceta, total);
+                actualizarGananciaEnTabla.accept(codigoReceta, total);
             }
 
             if (onCantidadActualizada != null) {

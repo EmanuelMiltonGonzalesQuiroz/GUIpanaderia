@@ -61,6 +61,7 @@ com\panaderiafx\utils\cache\EditorTemporalCache.class
 com\panaderiafx\utils\ConversorUtils.class
 com\panaderiafx\controllers\components\registroreceta\FormularioCabeceraReceta.class
 com\panaderiafx\utils\cache\CacheParametrosUtils.class
+com\panaderiafx\utils\cache\RecetaCacheUtils.class
 com\panaderiafx\controllers\components\forms\TablaBusquedaRegistros.class
 com\panaderiafx\utils\componentes\FechaUtils.class
 com\panaderiafx\controllers\components\registroreceta\VistaCrearRecetaCompleta.class

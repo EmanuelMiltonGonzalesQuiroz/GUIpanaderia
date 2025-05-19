@@ -21,11 +21,11 @@ public class PanelIngredientesReceta {
     private static TableView<Map<String, String>> tablaActual = null;
     private static TextField campoTotalActual = null;
     private static TextField campoUnitarioActual = null;
-    private static String recetaActual = null;
+    private static String produccionActual = null;
     private static Map<String, String> prodActual = null;
     private static BiConsumer<String, Double> actualizadorActual = null;
 
-    public static VBox crear(String codigoReceta, Map<String, String> prod, BiConsumer<String, Double> actualizarCostoEnTabla) {
+    public static VBox crear(String codigoReceta, Map<String, String> prod, String codigoProduccion, BiConsumer<String, Double> actualizarCostoEnTabla) {
         VBox panel = new VBox(10);
         panel.setStyle("-fx-background-color: #FF9800; -fx-padding: 20; -fx-background-radius: 10;");
         panel.setPrefWidth(450);
@@ -43,10 +43,11 @@ public class PanelIngredientesReceta {
                 ));
 
         List<Map<String, String>> filtrados = recetasIngredientes.stream()
-                .filter(m -> m.getOrDefault("Código receta", "").equals(codigoReceta))
+                .filter(m -> m.getOrDefault("Código receta", "").trim().equalsIgnoreCase(codigoReceta.trim()))
                 .toList();
 
         if (filtrados.isEmpty()) {
+            System.out.println("❌ No se encontraron ingredientes para la receta: " + codigoReceta);
             Label error = new Label("Receta no encontrada");
             error.setStyle("-fx-background-color: #FFD180; -fx-padding: 10; -fx-border-radius: 5;");
             panel.getChildren().add(error);
@@ -103,14 +104,15 @@ public class PanelIngredientesReceta {
                 double nuevoCosto = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
                 fila.put("Costo", String.format("%.2f", nuevoCosto));
                 getTableView().refresh();
-                actualizarTotales(getTableView().getItems(), campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
+                actualizarTotales(getTableView().getItems(), campoTotalActual, campoUnitarioActual, produccionActual, prodActual, actualizadorActual);
             }
 
             @Override
             protected void updateItem(String val, boolean empty) {
                 super.updateItem(val, empty);
-                if (empty) setGraphic(null);
-                else {
+                if (empty) {
+                    setGraphic(null);
+                } else {
                     Map<String, String> fila = getTableView().getItems().get(getIndex());
                     editor.setText(fila.getOrDefault("Cantidad", ""));
                     setGraphic(editor);
@@ -136,7 +138,7 @@ public class PanelIngredientesReceta {
                     String actual = fila.getOrDefault("Check", "✓");
                     fila.put("Check", actual.equals("✓") ? " " : "✓");
                     getTableView().refresh();
-                    actualizarTotales(getTableView().getItems(), campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
+                    actualizarTotales(getTableView().getItems(), campoTotalActual, campoUnitarioActual, produccionActual, prodActual, actualizadorActual);
                 });
             }
 
@@ -169,11 +171,11 @@ public class PanelIngredientesReceta {
         tablaActual = tabla;
         campoTotalActual = campoTotal;
         campoUnitarioActual = campoUnitario;
-        recetaActual = codigoReceta;
+        produccionActual = codigoProduccion;
         prodActual = prod;
         actualizadorActual = actualizarCostoEnTabla;
 
-        actualizarTotales(datos, campoTotal, campoUnitario, codigoReceta, prod, actualizarCostoEnTabla);
+        actualizarTotales(datos, campoTotal, campoUnitario, codigoProduccion, prod, actualizarCostoEnTabla);
 
         panel.getChildren().addAll(titulo, tabla, totales);
         return panel;
@@ -182,20 +184,18 @@ public class PanelIngredientesReceta {
     private static double obtenerRendimientoDesdeDatosActuales(Map<String, String> prod) {
         double r = ParseUtils.toDouble(prod.getOrDefault("Rendimiento", "0"));
         if (r > 0) return r;
-    
-        // Intentar recuperar desde la tabla Recetas si no está en prod
-        String cod = prod.getOrDefault("Código receta", "");
+
+        String cod = prod.getOrDefault("Código receta", "").trim();
         if (cod.isEmpty()) return 0;
-    
+
         return VerUtils.verTabla("Recetas").stream()
-                .filter(p -> cod.equals(p.get("Código receta")))
+                .filter(p -> cod.equalsIgnoreCase(p.getOrDefault("Código receta", "").trim()))
                 .map(p -> ParseUtils.toDouble(p.getOrDefault("Rendimiento", "0")))
                 .findFirst().orElse(0.0);
     }
-    
 
     private static void actualizarTotales(List<Map<String, String>> datos, TextField campoTotal, TextField campoUnitario,
-                                          String codReceta, Map<String, String> prod, BiConsumer<String, Double> actualizarCostoEnTabla) {
+                                          String codProduccion, Map<String, String> prod, BiConsumer<String, Double> actualizarCostoEnTabla) {
         double total = 0;
         for (Map<String, String> fila : datos) {
             if (!"✓".equals(fila.getOrDefault("Check", "✓"))) continue;
@@ -219,9 +219,9 @@ public class PanelIngredientesReceta {
         campoTotal.setText(String.format("%.2f", costoTotalFinal));
         campoUnitario.setText(String.format("%.4f", costoUnitario));
 
-        CacheCostosDirectosUtils.editar(codReceta, rendimiento, costoTotalFinal);
+        CacheCostosDirectosUtils.editar(codProduccion, costoTotalFinal);
         if (actualizadorActual != null) {
-            actualizadorActual.accept(codReceta, costoTotalFinal);
+            actualizadorActual.accept(codProduccion, costoTotalFinal);
         }
 
         if (VistaGananciasCostosDirectos.recalcularTotales != null) {
@@ -231,8 +231,8 @@ public class PanelIngredientesReceta {
 
     public static void forzarRecalculo() {
         if (tablaActual != null && campoTotalActual != null && campoUnitarioActual != null &&
-                recetaActual != null && prodActual != null) {
-            actualizarTotales(tablaActual.getItems(), campoTotalActual, campoUnitarioActual, recetaActual, prodActual, actualizadorActual);
+                produccionActual != null && prodActual != null) {
+            actualizarTotales(tablaActual.getItems(), campoTotalActual, campoUnitarioActual, produccionActual, prodActual, actualizadorActual);
         }
     }
 }

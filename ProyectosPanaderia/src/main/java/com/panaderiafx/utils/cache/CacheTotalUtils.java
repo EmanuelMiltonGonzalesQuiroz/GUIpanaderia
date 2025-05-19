@@ -8,9 +8,7 @@ public class CacheTotalUtils {
 
     public static void recalcular() {
         total = CacheGananciasUtils.get()
-              - CacheCostosDirectosUtils.get()
-              - CacheCostosIndirectosUtils.get()
-              - CacheParametrosUtils.get();
+              - CacheCostosDirectosUtils.get();
         System.out.printf("📊 Recalculando TOTAL: %.2f\n", total);
         notificar();
     }

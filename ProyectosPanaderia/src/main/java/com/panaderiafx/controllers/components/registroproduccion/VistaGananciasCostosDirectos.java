@@ -55,8 +55,10 @@ public class VistaGananciasCostosDirectos {
         Node tabla = TablaProduccionesFactory.crearTabla(
             fecha,
             tipo,
-            (codigo, fila) -> {
-                abrirFormularioReceta.accept(codigo, fila);
+            (codigoProduccion, fila) -> {
+                String codigoReceta = fila.getOrDefault("Código receta", "").trim();
+                abrirFormularioReceta.accept(codigoReceta, fila);  // ✅ PASAMOS el código de RECETA
+
                 if (tablaRef[0] != null) {
                     TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos);
                     tablaRef[0].refresh();
@@ -68,7 +70,7 @@ public class VistaGananciasCostosDirectos {
 
         if (tabla instanceof TableView) {
             tablaRef[0] = (TableView<Map<String, String>>) tabla;
-            TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos); // ← corrección clave
+            TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos);
             tablaRef[0].refresh();
             recalcularTotales = () -> {
                 TablaProduccionesFactory.recalcular(tablaRef[0].getItems(), actualizarCampos);

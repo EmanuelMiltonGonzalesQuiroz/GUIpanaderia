@@ -30,23 +30,13 @@ public class VistaResumenUtils {
         System.out.printf("💾 Guardando en caché: Costos Directos = %.2f\n", costosDirectos);
         CacheCostosDirectosUtils.set(costosDirectos);
 
-        System.out.printf("💾 Guardando en caché: Costos Indirectos = %.2f\n", costosIndirectos);
-        CacheCostosIndirectosUtils.set(costosIndirectos);
-
-        System.out.printf("💾 Guardando en caché: Parámetros = %.2f\n", parametros);
-        CacheParametrosUtils.set(parametros);
-
         resultado.put("ganancias", ganancias);
         resultado.put("costos_directos", costosDirectos);
-        resultado.put("costos_indirectos", costosIndirectos);
-        resultado.put("parametros", parametros);
         resultado.put("total", total);
 
         System.out.println("📊 RESUMEN FINAL:");
         System.out.printf("   ➤ Ganancias: %.2f\n", ganancias);
         System.out.printf("   ➤ Costos Directos: %.2f\n", costosDirectos);
-        System.out.printf("   ➤ Costos Indirectos: %.2f\n", costosIndirectos);
-        System.out.printf("   ➤ Descuentos / Impuestos: %.2f\n", parametros);
         System.out.printf("   ➤ TOTAL: %.2f\n", total);
 
         return resultado;

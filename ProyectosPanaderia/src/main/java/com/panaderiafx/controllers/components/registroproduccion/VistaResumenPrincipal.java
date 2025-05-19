@@ -8,7 +8,6 @@ import javafx.geometry.Insets;
 import com.panaderiafx.utils.VistaResumenUtils;
 import com.panaderiafx.utils.cache.*;
 import com.panaderiafx.utils.componentes.ParseUtils;
-import com.panaderiafx.utils.componentes.RegistroVariableDiaUtils;
 import com.panaderiafx.utils.componentes.ResumenGananciasUtils;
 
 import java.util.Map;
@@ -63,9 +62,6 @@ public class VistaResumenPrincipal {
             double parametros = CacheParametrosUtils.get();
             double total = ganancia - costoDirecto - costoIndirecto - parametros;
 
-            // ✅ Guardar solo el TOTAL del día
-            RegistroVariableDiaUtils.guardarCostoDelDia(fecha, tipo, "TOTAL", total);
-
             panelResumen.getChildren().clear();
 
             PanelResumenProduccion panel = new PanelResumenProduccion(
@@ -86,14 +82,16 @@ public class VistaResumenPrincipal {
                                         panelDetalleReceta.setVisible(true);
                                         panelIngredientes.setVisible(true);
 
+                                        String codigoProduccion = fila.getOrDefault("Código Producción", "").trim();
+
                                         Runnable actualizarIngredientes = () -> {
                                             panelIngredientes.getChildren().setAll(
-                                                PanelIngredientesReceta.crear(codigoReceta, fila, (cod, nuevoCosto) -> {
+                                                PanelIngredientesReceta.crear(codigoReceta, fila, codigoProduccion, (cod, nuevoCosto) -> {
                                                     TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
                                                     if (tabla != null) {
                                                         for (Map<String, String> item : tabla.getItems()) {
-                                                            String codigo = item.getOrDefault("Código receta", "").trim();
-                                                            if (codigo.equalsIgnoreCase(cod.trim())) {
+                                                            String codigo = item.getOrDefault("Código Producción", "").trim();
+                                                            if (codigo.equalsIgnoreCase(codigoProduccion)) {
                                                                 double cantidad = ParseUtils.toDouble(item.getOrDefault("Cantidad producida", "1"));
                                                                 double unitario = cantidad > 0 ? nuevoCosto / cantidad : 0;
                                                                 item.put("Costo directo", String.format("%.2f", nuevoCosto));
@@ -117,8 +115,8 @@ public class VistaResumenPrincipal {
                                                 TableView<Map<String, String>> tabla = (TableView<Map<String, String>>) panelDetalleProducciones.lookup(".table-view");
                                                 if (tabla != null) {
                                                     for (Map<String, String> item : tabla.getItems()) {
-                                                        String codigo = item.getOrDefault("Código receta", "").trim();
-                                                        if (codigo.equalsIgnoreCase(cod.trim())) {
+                                                        String codigo = item.getOrDefault("Código Producción", "").trim();
+                                                        if (codigo.equalsIgnoreCase(codigoProduccion)) {
                                                             double cantidad = ParseUtils.toDouble(item.getOrDefault("Cantidad producida", "1"));
                                                             double nuevoUnitario = Math.floor((nuevoTotal / cantidad) * 100) / 100;
                                                             item.put("Precio de Venta por Unidad", String.format("%.2f", nuevoUnitario));
@@ -154,7 +152,6 @@ public class VistaResumenPrincipal {
 
             panelRef.set(panel);
             panelResumen.getChildren().addAll(panel, botonGuardarGanancias);
-
         };
 
         selector.getBotonActualizar().setOnAction(e -> actualizar.run());

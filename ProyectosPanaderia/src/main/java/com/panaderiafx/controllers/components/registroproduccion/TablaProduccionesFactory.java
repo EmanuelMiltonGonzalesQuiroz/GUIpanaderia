@@ -36,23 +36,39 @@ public class TablaProduccionesFactory {
             exponerDatos.accept(produccion);
         }
 
-        Map<String, String> mapaCodANombre = VerUtils.verTabla("Recetas").stream()
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+
+        Map<String, String> mapaCodANombre = recetas.stream()
                 .collect(Collectors.toMap(
                         r -> r.getOrDefault("Código receta", "").trim(),
                         r -> r.getOrDefault("Producto", "").trim(),
                         (a, b) -> a
                 ));
 
+        Map<String, String> mapaCodAVersion = recetas.stream()
+                .collect(Collectors.toMap(
+                        r -> r.getOrDefault("Código receta", "").trim(),
+                        r -> r.getOrDefault("Versión", "").trim(),
+                        (a, b) -> a
+                ));
+
         for (Map<String, String> fila : produccion) {
             fila.put("Check", "✓");
 
-            String codReceta = fila.getOrDefault("Código receta", "");
+            String codReceta = fila.getOrDefault("Código receta", "").trim();
+            String codProduccion = fila.getOrDefault("Código Producción", "").trim();
             double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad producida", "0"));
+
             double costoUnitario = CostoIngredientePorRecetaUtils.calcularUnitarioDesdeReceta(codReceta);
             double costoTotal = costoUnitario * cantidad;
 
-            fila.put("Costo directo", String.format("%.2f", costoTotal));
             fila.put("Costo/U", String.format("%.2f", costoUnitario));
+            fila.put("Costo directo", String.format("%.2f", costoTotal));
+
+            if (!codProduccion.isEmpty()) {
+                CacheCostosDirectosUtils.editar(codProduccion, costoTotal);
+                CacheCostosDirectosUtils.guardarUnidad(codProduccion, costoUnitario);
+            }
         }
 
         ObservableList<Map<String, String>> items = FXCollections.observableArrayList(produccion);
@@ -65,25 +81,31 @@ public class TablaProduccionesFactory {
             return new SimpleStringProperty(mapaCodANombre.getOrDefault(cod, cod));
         });
 
+        TableColumn<Map<String, String>, String> colVersion = new TableColumn<>("VERSIÓN");
+        colVersion.setMinWidth(90);
+        colVersion.setCellValueFactory(f -> {
+            String cod = f.getValue().getOrDefault("Código receta", "");
+            return new SimpleStringProperty(mapaCodAVersion.getOrDefault(cod, ""));
+        });
+
         TableColumn<Map<String, String>, String> colFecha = new TableColumn<>("FECHA");
         colFecha.setMinWidth(100);
         colFecha.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Fecha", "")));
 
         TableColumn<Map<String, String>, String> colCantidad = new TableColumn<>("CANTIDAD");
-        colCantidad.setMinWidth(100);
+        colCantidad.setMinWidth(90);
         colCantidad.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad producida", "0")));
 
         TableColumn<Map<String, String>, String> colGanancia = new TableColumn<>("GANANCIA B.");
         colGanancia.setMinWidth(100);
         colGanancia.setCellValueFactory(f -> {
             double cant = ParseUtils.toDouble(f.getValue().getOrDefault("Cantidad producida", "0"));
-            String precioUraw = f.getValue().getOrDefault("Precio de Venta por Unidad", "0");
-            double precioU = ParseUtils.toDouble(precioUraw);
+            double precioU = ParseUtils.toDouble(f.getValue().getOrDefault("Precio de Venta por Unidad", "0"));
             return new SimpleStringProperty(String.format("%.2f", cant * precioU));
         });
 
         TableColumn<Map<String, String>, String> colCosto = new TableColumn<>("COSTO R.");
-        colCosto.setMinWidth(100);
+        colCosto.setMinWidth(90);
         colCosto.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Costo directo", "0.00")));
 
         TableColumn<Map<String, String>, String> colCostoUnitario = new TableColumn<>("COSTO/U");
@@ -125,7 +147,7 @@ public class TablaProduccionesFactory {
             {
                 btn.setOnAction(event -> {
                     Map<String, String> datos = getTableView().getItems().get(getIndex());
-                    String cod = datos.getOrDefault("Código receta", "");
+                    String cod = datos.getOrDefault("Código Producción", "");
                     accionEditar.accept(cod, datos);
                     tabla.refresh();
                     recalcular(tabla.getItems(), actualizarTotales);
@@ -139,7 +161,18 @@ public class TablaProduccionesFactory {
             }
         });
 
-        tabla.getColumns().addAll(colProducto, colFecha, colCantidad, colGanancia, colCosto, colCostoUnitario, colCheck, colEditar);
+        tabla.getColumns().addAll(
+            colProducto,
+            colVersion,
+            colFecha,
+            colCantidad,
+            colGanancia,
+            colCosto,
+            colCostoUnitario,
+            colCheck,
+            colEditar
+        );
+
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla.setPrefHeight(300);
 

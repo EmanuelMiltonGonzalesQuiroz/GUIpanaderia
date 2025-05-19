@@ -8,12 +8,12 @@ import java.util.Map;
 
 public class CostosDirectosPorRecetaUtils {
 
-    public static double calcular(String codReceta, double ignorado) {
+    public static double calcular(String codigoProduccion, String codReceta, double cantidadProduccion) {
+        if (codigoProduccion == null || codigoProduccion.isBlank()) return 0.0;
         if (codReceta == null || codReceta.isBlank()) return 0.0;
+        if (cantidadProduccion <= 0) return 0.0;
 
-        // Cargar tablas necesarias una sola vez
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
-        List<Map<String, String>> produccion = VerUtils.verTabla("Produccion");
         List<Map<String, String>> recetasIngredientes = VerUtils.verTabla("RecetasIngredientes");
 
         double rendimiento = recetas.stream()
@@ -21,16 +21,9 @@ public class CostosDirectosPorRecetaUtils {
                 .map(r -> ParseUtils.toDouble(r.getOrDefault("Rendimiento", "0")))
                 .findFirst().orElse(0.0);
 
-        if (rendimiento <= 0) return 0.0;
-
-        double cantidadProduccion = produccion.stream()
-                .filter(p -> codReceta.equals(p.getOrDefault("Código receta", "")))
-                .map(p -> ParseUtils.toDouble(p.getOrDefault("Cantidad producida", "0")))
-                .reduce((a, b) -> b) // tomar la última ocurrencia si hay varias
-                .orElse(0.0);
-
-        if (CacheCostosDirectosUtils.contiene(codReceta, cantidadProduccion)) {
-            return CacheCostosDirectosUtils.obtener(codReceta, cantidadProduccion);
+        if (rendimiento <= 0) {
+            System.out.printf("⚠️ Rendimiento inválido para receta %s (prod %s): %.2f%n", codReceta, codigoProduccion, rendimiento);
+            return 0.0;
         }
 
         List<Map<String, String>> ingredientes = recetasIngredientes.stream()
@@ -42,6 +35,9 @@ public class CostosDirectosPorRecetaUtils {
             String codIng = ing.getOrDefault("Ingrediente", "").trim();
             if (!codIng.isEmpty()) {
                 double costo = CostoIngredientePorRecetaUtils.calcular(codReceta, codIng, rendimiento);
+                if (costo == 0) {
+                    System.out.printf("⚠️ Costo 0 para ingrediente %s en receta %s (prod %s)%n", codIng, codReceta, codigoProduccion);
+                }
                 sumaCostos += costo;
             }
         }
@@ -49,19 +45,22 @@ public class CostosDirectosPorRecetaUtils {
         double costoUnitario = sumaCostos / rendimiento;
         double costoTotal = costoUnitario * cantidadProduccion;
 
-        CacheCostosDirectosUtils.guardar(codReceta, cantidadProduccion, costoTotal);
-        CacheCostosDirectosUtils.guardarUnidad(codReceta, costoUnitario);
+        System.out.printf("✅ Costo total receta %s (%s): %.2f (unitario: %.4f * %.0f)%n",
+                codReceta, codigoProduccion, costoTotal, costoUnitario, cantidadProduccion);
+
+        CacheCostosDirectosUtils.guardar(codigoProduccion, costoTotal);
+        CacheCostosDirectosUtils.guardarUnidad(codigoProduccion, costoUnitario);
 
         return costoTotal;
     }
 
-    public static double calcularPorUnidad(String codReceta) {
-        if (codReceta == null || codReceta.isBlank()) return 0.0;
+    public static double calcularPorUnidad(String codigoProduccion, String codReceta) {
+        if (codigoProduccion == null || codReceta == null || codReceta.isBlank()) return 0.0;
 
-        if (CacheCostosDirectosUtils.contieneUnidad(codReceta)) {
-            return CacheCostosDirectosUtils.obtenerUnidad(codReceta);
+        if (CacheCostosDirectosUtils.contieneUnidad(codigoProduccion)) {
+            return CacheCostosDirectosUtils.obtenerUnidad(codigoProduccion);
         }
 
-        return calcular(codReceta, 1.0); // segundo argumento ignorado
+        return calcular(codigoProduccion, codReceta, 1.0);
     }
 }

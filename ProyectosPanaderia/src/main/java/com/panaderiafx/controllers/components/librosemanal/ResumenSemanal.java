@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 public class ResumenSemanal extends VBox {
 
     private final Map<Tipo, TextField> campos = new HashMap<>();
-    private final TextField totalField = new TextField("0.00");
+    private final TextField totalField = new TextField("0.00"); 
     private Consumer<Tipo> onMostrarDetalle = null;
     private LocalDate fechaInicio;
 
