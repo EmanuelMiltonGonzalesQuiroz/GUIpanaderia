@@ -63,6 +63,7 @@ com\panaderiafx\controllers\components\registroreceta\FormularioCabeceraReceta.c
 com\panaderiafx\utils\cache\CacheParametrosUtils.class
 com\panaderiafx\utils\cache\RecetaCacheUtils.class
 com\panaderiafx\controllers\components\forms\TablaBusquedaRegistros.class
+com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia$5.class
 com\panaderiafx\utils\componentes\FechaUtils.class
 com\panaderiafx\controllers\components\registroreceta\VistaCrearRecetaCompleta.class
 com\panaderiafx\controllers\components\registroproduccion2\PanelSelectorRecetaConTabla.class
@@ -86,6 +87,7 @@ com\panaderiafx\controllers\components\registroproduccion2\FormularioNuevaReceta
 com\panaderiafx\controllers\components\CampoTexto.class
 com\panaderiafx\controllers\components\FormularioModificar.class
 com\panaderiafx\App.class
+com\panaderiafx\utils\ConversorMezclaUtils.class
 com\panaderiafx\controllers\components\registroproduccion2\BotonGuardarProduccion.class
 com\panaderiafx\controllers\components\registroreceta\TablaIngredientesEditable$3.class
 com\panaderiafx\utils\VistaResumenUtils.class

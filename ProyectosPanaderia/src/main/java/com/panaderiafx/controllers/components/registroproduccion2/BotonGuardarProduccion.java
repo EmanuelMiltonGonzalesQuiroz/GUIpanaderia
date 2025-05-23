@@ -27,6 +27,7 @@ public class BotonGuardarProduccion extends HBox {
             String cantidad = formExtra.getCantidad();
             String precioU = formExtra.getPrecioUnitario();
             String total = formExtra.getPrecioTotal();
+            String mezcla = formExtra.getMezclas(); // nuevo campo
 
             if (cantidad.isEmpty() || precioU.isEmpty() || total.isEmpty()) {
                 mostrarError("Debe ingresar cantidad, precio por unidad y precio total.");
@@ -43,7 +44,7 @@ public class BotonGuardarProduccion extends HBox {
                 return;
             }
 
-            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, total);
+            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, total, mezcla);
             mostrarConfirmacion("Producción registrada correctamente.");
         });
 

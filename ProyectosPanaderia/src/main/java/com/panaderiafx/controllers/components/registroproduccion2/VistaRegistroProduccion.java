@@ -13,15 +13,13 @@ public class VistaRegistroProduccion {
         Label titulo = new Label("Registrar Nueva Producción");
         titulo.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
-        // Panel selector receta
         PanelSelectorRecetaConTabla selector = new PanelSelectorRecetaConTabla();
         selector.setPrefWidth(600);
         selector.setPrefHeight(400);
 
-        // Panel derecho
         FormularioNuevaReceta formExtra = new FormularioNuevaReceta();
         VBox panelFormularioReceta = new VBox();
-        VBox panelIngredientesReceta = new VBox(); // Se mantiene aunque ahora puede estar vacío
+        VBox panelIngredientesReceta = new VBox();
         VBox columnaDerecha = new VBox(20, panelFormularioReceta, panelIngredientesReceta);
         columnaDerecha.setPrefWidth(500);
         VBox.setVgrow(panelFormularioReceta, Priority.ALWAYS);
@@ -31,16 +29,12 @@ public class VistaRegistroProduccion {
         HBox.setHgrow(selector, Priority.NEVER);
         HBox.setHgrow(columnaDerecha, Priority.ALWAYS);
 
-        // Botón guardar
         Button btnGuardar = new Button("💾 GUARDAR PRODUCCIÓN");
         btnGuardar.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
 
-        // Botón actualizar
         Button btnActualizar = new Button("🔁 ACTUALIZAR");
         btnActualizar.setStyle("-fx-background-color: #FFA726; -fx-text-fill: black; -fx-font-weight: bold;");
-        btnActualizar.setOnAction(e -> {
-            selector.recargar(); // Método que debe existir en PanelSelectorRecetaConTabla
-        });
+        btnActualizar.setOnAction(e -> selector.recargar());
 
         HBox filaBotones = new HBox(10, btnGuardar, btnActualizar);
 
@@ -50,6 +44,7 @@ public class VistaRegistroProduccion {
             String cantidad = formExtra.getCantidad();
             String precioU = formExtra.getPrecioUnitario();
             String total = formExtra.getPrecioTotal();
+            String mezcla = formExtra.getMezclas();
 
             if (codReceta == null || fecha.isEmpty() || cantidad.isEmpty() || precioU.isEmpty() || total.isEmpty()) {
                 mostrarError("Complete todos los campos antes de guardar.");
@@ -66,11 +61,10 @@ public class VistaRegistroProduccion {
                 return;
             }
 
-            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, total);
+            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, total, mezcla);
             mostrarConfirmacion("✅ Producción guardada correctamente.");
         });
 
-        // Evento al seleccionar receta
         selector.setOnRecetaSeleccionada(filaCompleta -> {
             String codReceta = filaCompleta.getOrDefault("Código receta", null);
             String version = filaCompleta.getOrDefault("Versión", "-");
@@ -78,6 +72,7 @@ public class VistaRegistroProduccion {
             String nombreProducto = filaCompleta.getOrDefault("Producto", codReceta);
             if (codReceta == null) return;
 
+            formExtra.setCodigoReceta(codReceta);
             Node nodoFormulario = formExtra.crear(nombreProducto, version, rendimiento);
             formExtra.setCantidad("0");
             formExtra.setPrecioUnitario("0");
@@ -86,7 +81,6 @@ public class VistaRegistroProduccion {
             panelFormularioReceta.getChildren().setAll(nodoFormulario);
         });
 
-        // Sección final
         contenedor.getChildren().addAll(titulo, detalle, filaBotones);
         return contenedor;
     }

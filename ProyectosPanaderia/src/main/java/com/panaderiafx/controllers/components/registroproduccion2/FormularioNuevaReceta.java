@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components.registroproduccion2;
 
+import com.panaderiafx.utils.ConversorMezclaUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import java.util.function.Supplier;
 public class FormularioNuevaReceta {
 
     private final TextField campoCantidad = new TextField();
+    private final TextField campoMezcla = new TextField();
     private final TextField campoPrecioUnidad = new TextField();
     private final TextField campoPrecioTotal = new TextField();
 
@@ -21,13 +23,20 @@ public class FormularioNuevaReceta {
     private Label campoVersion;
     private Label campoRendimiento;
 
+    private String codigoRecetaActual;
+
     public Node crear(String nombreProducto, String version, String rendimiento) {
         if (grid == null) inicializarGrid();
 
         campoNombreProducto.setText(nombreProducto);
         campoVersion.setText(version != null ? version : "-");
         campoRendimiento.setText(rendimiento != null ? rendimiento : "-");
+
         return grid;
+    }
+
+    public void setCodigoReceta(String codigo) {
+        this.codigoRecetaActual = codigo;
     }
 
     private void inicializarGrid() {
@@ -42,6 +51,7 @@ public class FormularioNuevaReceta {
         campoRendimiento = crearValorLabel("-");
 
         restringirSoloNumeros(campoCantidad);
+        restringirSoloNumeros(campoMezcla);
         restringirSoloNumeros(campoPrecioUnidad);
         restringirSoloNumeros(campoPrecioTotal);
 
@@ -54,18 +64,34 @@ public class FormularioNuevaReceta {
         grid.add(crearEtiqueta("Rendimiento:"), 0, 2);
         grid.add(campoRendimiento, 1, 2);
 
-        grid.add(crearEtiqueta("Cantidad producida:"), 0, 3);
-        grid.add(campoCantidad, 1, 3);
+        grid.add(crearEtiqueta("Mezclas usadas:"), 0, 3);
+        grid.add(campoMezcla, 1, 3);
 
-        grid.add(crearEtiqueta("Precio por unidad:"), 0, 4);
-        grid.add(campoPrecioUnidad, 1, 4);
+        grid.add(crearEtiqueta("Cantidad producida:"), 0, 4);
+        grid.add(campoCantidad, 1, 4);
 
-        grid.add(crearEtiqueta("Precio total:"), 0, 5);
-        grid.add(campoPrecioTotal, 1, 5);
+        grid.add(crearEtiqueta("Precio por unidad:"), 0, 5);
+        grid.add(campoPrecioUnidad, 1, 5);
+
+        grid.add(crearEtiqueta("Precio total:"), 0, 6);
+        grid.add(campoPrecioTotal, 1, 6);
 
         campoCantidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
         campoPrecioUnidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
         campoPrecioTotal.textProperty().addListener((obs, o, n) -> recalcularDesdeTotal());
+
+        campoMezcla.textProperty().addListener((obs, o, n) -> {
+            if (actualizando) return;
+            actualizando = true;
+
+            double mezcla = parseDouble(n);
+            if (mezcla > 0 && codigoRecetaActual != null) {
+                int cantidad = ConversorMezclaUtils.calcularProduccionDesdeMezclas(mezcla, codigoRecetaActual);
+                campoCantidad.setText(String.valueOf(cantidad));
+            }
+
+            actualizando = false;
+        });
     }
 
     private void recalcularDesdeUnidad() {
@@ -83,6 +109,10 @@ public class FormularioNuevaReceta {
 
         actualizando = false;
     }
+    public String getMezclas() {
+        return campoMezcla.getText().trim();
+    }
+
 
     private void recalcularDesdeTotal() {
         if (actualizando) return;

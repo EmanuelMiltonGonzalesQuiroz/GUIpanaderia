@@ -201,7 +201,66 @@ public class PanelDetalleVariableDia {
             }
         });
 
-        tabla.getColumns().addAll(colCodigo, colFecha, colVariable, colDescripcion, colEfecto);
+        TableColumn<Map<String, String>, String> colProduccion = new TableColumn<>("Producción asociada");
+            colProduccion.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Producción asociada", "-")));
+            colProduccion.setCellFactory(tc -> new TableCell<>() {
+                private final ComboBox<String> combo = new ComboBox<>();
+                private final Map<String, String> mapaFechaPorCodigo = new HashMap<>();
+
+                {
+                    combo.setOnAction(e -> {
+                        int idx = getIndex();
+                        if (idx >= 0 && idx < tabla.getItems().size()) {
+                            Map<String, String> fila = tabla.getItems().get(idx);
+                            String codSeleccionado = combo.getValue();
+                            if (codSeleccionado != null) {
+                                fila.put("Producción asociada", codSeleccionado);
+                                String fecha = mapaFechaPorCodigo.getOrDefault(codSeleccionado, null);
+                                if (fecha != null) {
+                                    fila.put("Fecha", fecha);
+                                }
+                                EditorTemporalCache.guardarFila("VariableDia", fila.get("Código"), fila);
+                                tabla.refresh();
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
+                        List<String> opciones = new ArrayList<>();
+                        mapaFechaPorCodigo.clear();
+
+                        for (Map<String, String> prod : producciones) {
+                            String cod = prod.getOrDefault("Código Producción", "-");
+                            String fecha = prod.getOrDefault("Fecha", "-");
+                            LocalDate f = ParseUtils.toDate(fecha);
+                            if (f != null && !f.isBefore(fechaInicio) && !f.isAfter(fechaInicio.plusDays(6))) {
+                                opciones.add(cod);
+                                mapaFechaPorCodigo.put(cod, fecha);
+                            }
+                        }
+
+                        combo.setItems(FXCollections.observableArrayList(opciones));
+
+                        Map<String, String> fila = tabla.getItems().get(getIndex());
+                        String actual = fila.getOrDefault("Producción asociada", "-");
+
+                        combo.setValue(actual);
+                        setGraphic(combo);
+                    }
+                }
+            });
+
+
+
+        tabla.getColumns().addAll(colCodigo, colFecha, colVariable, colDescripcion, colProduccion, colEfecto);
+
 
         Button botonAgregar = new Button("+ Agregar");
         botonAgregar.setOnAction(e -> {
@@ -212,6 +271,7 @@ public class PanelDetalleVariableDia {
             nueva.put("Fecha", fecha);
             nueva.put("Descripción", "Nuevo gasto");
             nueva.put("Valor", "0");
+            nueva.put("Producción asociada", "-");
             nueva.put("EFECTO", "-");
             tabla.getItems().add(nueva);
             EditorTemporalCache.guardarFila("VariableDia", codigo, nueva);
