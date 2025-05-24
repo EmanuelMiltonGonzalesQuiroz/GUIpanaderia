@@ -1,10 +1,498 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-⏱️ Tiempo en crear pestañas: 1646 ms
+⏱️ Tiempo en crear pestañas: 2531 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2342 ms
-⏱️ Tiempo desde main() hasta GUI: 2356 ms
+⏱️ Tiempo total en start(): 3445 ms
+⏱️ Tiempo desde main() hasta GUI: 3467 ms
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003]
+✅ Código generado: PRO0004
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0004
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0002
+   ➤ [Cantidad producida] columna 3 ➝ 122
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0004, Fecha=18/05/2025, Código receta=REC0002, Cantidad producida=122, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004]
+✅ Código generado: PRO0005
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0005
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0003
+   ➤ [Cantidad producida] columna 3 ➝ 436
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0005, Fecha=18/05/2025, Código receta=REC0003, Cantidad producida=436, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005]
+✅ Código generado: PRO0006
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0006
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0004
+   ➤ [Cantidad producida] columna 3 ➝ 40
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 1.55
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0006, Fecha=18/05/2025, Código receta=REC0004, Cantidad producida=40, Precio de Venta por Unidad=5, Mezcla=1.55}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006]
+✅ Código generado: PRO0007
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0007
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0005
+   ➤ [Cantidad producida] columna 3 ➝ 1280
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.37
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0007, Fecha=18/05/2025, Código receta=REC0005, Cantidad producida=1280, Precio de Venta por Unidad=5, Mezcla=0.37}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007]
+✅ Código generado: PRO0008
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0008
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0006
+   ➤ [Cantidad producida] columna 3 ➝ 70
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0008, Fecha=18/05/2025, Código receta=REC0006, Cantidad producida=70, Precio de Venta por Unidad=5, Mezcla=0.25}
+⚠️ No se encontró ingrediente 'harina' en receta REC0007. Usando ingrediente alternativo: ING0012
+⚠️ No se encontró ingrediente 'harina' en receta REC0007. Usando ingrediente alternativo: ING0012
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008]
+✅ Código generado: PRO0009
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0009
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0007
+   ➤ [Cantidad producida] columna 3 ➝ 361
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0009, Fecha=18/05/2025, Código receta=REC0007, Cantidad producida=361, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009]
+✅ Código generado: PRO0010
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0010
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0008
+   ➤ [Cantidad producida] columna 3 ➝ 120
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.58
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0010, Fecha=18/05/2025, Código receta=REC0008, Cantidad producida=120, Precio de Venta por Unidad=5, Mezcla=0.58}
+⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010]
+✅ Código generado: PRO0011
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0011
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0009
+   ➤ [Cantidad producida] columna 3 ➝ 4640
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.58
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0011, Fecha=18/05/2025, Código receta=REC0009, Cantidad producida=4640, Precio de Venta por Unidad=5, Mezcla=0.58}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011]
+✅ Código generado: PRO0012
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0012
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0010
+   ➤ [Cantidad producida] columna 3 ➝ 63
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.26
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0012, Fecha=18/05/2025, Código receta=REC0010, Cantidad producida=63, Precio de Venta por Unidad=5, Mezcla=0.26}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012]
+✅ Código generado: PRO0013
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0013
+   ➤ [Fecha] columna 1 ➝ 18/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0011
+   ➤ [Cantidad producida] columna 3 ➝ 31
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.17
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0013, Fecha=18/05/2025, Código receta=REC0011, Cantidad producida=31, Precio de Venta por Unidad=5, Mezcla=0.17}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013]
+✅ Código generado: PRO0014
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0014
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0001
+   ➤ [Cantidad producida] columna 3 ➝ 176
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 1
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0014, Fecha=19/05/2025, Código receta=REC0001, Cantidad producida=176, Precio de Venta por Unidad=5, Mezcla=1}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014]
+✅ Código generado: PRO0015
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0015
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0002
+   ➤ [Cantidad producida] columna 3 ➝ 436
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0015, Fecha=19/05/2025, Código receta=REC0002, Cantidad producida=436, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015]
+✅ Código generado: PRO0016
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0016
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0003
+   ➤ [Cantidad producida] columna 3 ➝ 436
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0016, Fecha=19/05/2025, Código receta=REC0003, Cantidad producida=436, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016]
+✅ Código generado: PRO0017
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0017
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0004
+   ➤ [Cantidad producida] columna 3 ➝ 13
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.5
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0017, Fecha=19/05/2025, Código receta=REC0004, Cantidad producida=13, Precio de Venta por Unidad=5, Mezcla=0.5}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017]
+✅ Código generado: PRO0018
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0018
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0005
+   ➤ [Cantidad producida] columna 3 ➝ 1280
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.37
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0018, Fecha=19/05/2025, Código receta=REC0005, Cantidad producida=1280, Precio de Venta por Unidad=5, Mezcla=0.37}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018]
+✅ Código generado: PRO0019
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0019
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0006
+   ➤ [Cantidad producida] columna 3 ➝ 70
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0019, Fecha=19/05/2025, Código receta=REC0006, Cantidad producida=70, Precio de Venta por Unidad=5, Mezcla=0.25}
+⚠️ No se encontró ingrediente 'harina' en receta REC0007. Usando ingrediente alternativo: ING0012
+⚠️ No se encontró ingrediente 'harina' en receta REC0007. Usando ingrediente alternativo: ING0012
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019]
+✅ Código generado: PRO0020
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0020
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0007
+   ➤ [Cantidad producida] columna 3 ➝ 361
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0020, Fecha=19/05/2025, Código receta=REC0007, Cantidad producida=361, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020]
+✅ Código generado: PRO0021
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0021
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0008
+   ➤ [Cantidad producida] columna 3 ➝ 52
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0021, Fecha=19/05/2025, Código receta=REC0008, Cantidad producida=52, Precio de Venta por Unidad=5, Mezcla=0.25}
+⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021]
+✅ Código generado: PRO0022
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0022
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0009
+   ➤ [Cantidad producida] columna 3 ➝ 3120
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.39
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0022, Fecha=19/05/2025, Código receta=REC0009, Cantidad producida=3120, Precio de Venta por Unidad=5, Mezcla=0.39}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022]
+✅ Código generado: PRO0023
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0023
+   ➤ [Fecha] columna 1 ➝ 19/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0010
+   ➤ [Cantidad producida] columna 3 ➝ 63
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.26
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0023, Fecha=19/05/2025, Código receta=REC0010, Cantidad producida=63, Precio de Venta por Unidad=5, Mezcla=0.26}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023]
+✅ Código generado: PRO0024
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0024
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0001
+   ➤ [Cantidad producida] columna 3 ➝ 176
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 1
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0024, Fecha=20/05/2025, Código receta=REC0001, Cantidad producida=176, Precio de Venta por Unidad=5, Mezcla=1}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024]
+✅ Código generado: PRO0025
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0025
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0002
+   ➤ [Cantidad producida] columna 3 ➝ 436
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0025, Fecha=20/05/2025, Código receta=REC0002, Cantidad producida=436, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025]
+✅ Código generado: PRO0026
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0026
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0003
+   ➤ [Cantidad producida] columna 3 ➝ 436
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0026, Fecha=20/05/2025, Código receta=REC0003, Cantidad producida=436, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026]
+✅ Código generado: PRO0027
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0027
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0004
+   ➤ [Cantidad producida] columna 3 ➝ 26
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 1
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0027, Fecha=20/05/2025, Código receta=REC0004, Cantidad producida=26, Precio de Venta por Unidad=5, Mezcla=1}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027]
+✅ Código generado: PRO0028
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0028
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0005
+   ➤ [Cantidad producida] columna 3 ➝ 1280
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.37
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0028, Fecha=20/05/2025, Código receta=REC0005, Cantidad producida=1280, Precio de Venta por Unidad=5, Mezcla=0.37}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028]
+✅ Código generado: PRO0029
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0029
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0006
+   ➤ [Cantidad producida] columna 3 ➝ 70
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0029, Fecha=20/05/2025, Código receta=REC0006, Cantidad producida=70, Precio de Venta por Unidad=5, Mezcla=0.25}
+⚠️ No se encontró ingrediente 'harina' en receta REC0007. Usando ingrediente alternativo: ING0012
+⚠️ No se encontró ingrediente 'harina' en receta REC0007. Usando ingrediente alternativo: ING0012
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029]
+✅ Código generado: PRO0030
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0030
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0007
+   ➤ [Cantidad producida] columna 3 ➝ 361
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.25
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0030, Fecha=20/05/2025, Código receta=REC0007, Cantidad producida=361, Precio de Venta por Unidad=5, Mezcla=0.25}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030]
+✅ Código generado: PRO0031
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0031
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0008
+   ➤ [Cantidad producida] columna 3 ➝ 81
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.39
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0031, Fecha=20/05/2025, Código receta=REC0008, Cantidad producida=81, Precio de Venta por Unidad=5, Mezcla=0.39}
 ⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
 ⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
 ⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+⚠️ No se encontró ingrediente 'harina' en receta REC0009. Usando ingrediente alternativo: ING0002
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031]
+✅ Código generado: PRO0032
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0032
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0009
+   ➤ [Cantidad producida] columna 3 ➝ 3120
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.39
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0032, Fecha=20/05/2025, Código receta=REC0009, Cantidad producida=3120, Precio de Venta por Unidad=5, Mezcla=0.39}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031, PRO0032]
+✅ Código generado: PRO0033
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0033
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0010
+   ➤ [Cantidad producida] columna 3 ➝ 85
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.35
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0033, Fecha=20/05/2025, Código receta=REC0010, Cantidad producida=85, Precio de Venta por Unidad=5, Mezcla=0.35}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031, PRO0032, PRO0033]
+✅ Código generado: PRO0034
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0034
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0011
+   ➤ [Cantidad producida] columna 3 ➝ 47
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.26
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0034, Fecha=20/05/2025, Código receta=REC0011, Cantidad producida=47, Precio de Venta por Unidad=5, Mezcla=0.26}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031, PRO0032, PRO0033, PRO0034]
+✅ Código generado: PRO0035
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0035
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0012
+   ➤ [Cantidad producida] columna 3 ➝ 15
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.12
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0035, Fecha=20/05/2025, Código receta=REC0012, Cantidad producida=15, Precio de Venta por Unidad=5, Mezcla=0.12}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031, PRO0032, PRO0033, PRO0034, PRO0035]
+✅ Código generado: PRO0036
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0036
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0013
+   ➤ [Cantidad producida] columna 3 ➝ 87
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.13
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0036, Fecha=20/05/2025, Código receta=REC0013, Cantidad producida=87, Precio de Venta por Unidad=5, Mezcla=0.13}
+🔵 Iniciando generación de código para tabla: Produccion
+🔎 Columnas encontradas: [Código Producción, Fecha, Código receta, Cantidad producida, Precio de Venta por Unidad, Mezcla]
+🟡 Columna de código proporcionada: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031, PRO0032, PRO0033, PRO0034, PRO0035, PRO0036]
+✅ Código generado: PRO0037
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0037
+   ➤ [Fecha] columna 1 ➝ 20/05/2025
+   ➤ [Código receta] columna 2 ➝ REC0014
+   ➤ [Cantidad producida] columna 3 ➝ 560
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 5
+   ➤ [Mezcla] columna 5 ➝ 0.13
+✅ Fila creada correctamente en hoja 'Produccion'.
+✅ Producción registrada: {Código Producción=PRO0037, Fecha=20/05/2025, Código receta=REC0014, Cantidad producida=560, Precio de Venta por Unidad=5, Mezcla=0.13}
