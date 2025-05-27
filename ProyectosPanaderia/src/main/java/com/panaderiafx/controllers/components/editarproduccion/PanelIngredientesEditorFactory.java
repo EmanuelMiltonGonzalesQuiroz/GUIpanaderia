@@ -1,8 +1,7 @@
 package com.panaderiafx.controllers.components.editarproduccion;
 
-import com.panaderiafx.controllers.components.editarproduccion.receta.PanelIngredientesEstiloUtils;
+import com.panaderiafx.controllers.components.editarproduccion.helpers.EscaladoIngredientesUtils;
 import com.panaderiafx.controllers.components.editarproduccion.receta.PanelIngredientesTablaFactory;
-import com.panaderiafx.utils.ConversorUtils;
 import com.panaderiafx.utils.VerUtils;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -10,135 +9,120 @@ import javafx.scene.layout.VBox;
 
 import java.util.*;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 public class PanelIngredientesEditorFactory {
 
+    private static Map<String, String> cacheNombresIngredientes;
+    private static List<Map<String, String>> cacheFuenteIngredientes;
+    private static String cacheCodigoProduccion = "";
+    private static int ultimaCantidadActual = -1;
+
     public static VBox crear(Map<String, String> produccion,
                              ObservableList<Map<String, String>> datos,
-                             BiConsumer<String, Double> actualizarCostoEnTabla,
-                             Map<String, String> mapaNombreIngredientes) {
+                             BiConsumer<String, Double> actualizarCostoEnTabla) {
+
+        long tInicio = System.currentTimeMillis();
 
         String codigoProduccion = produccion.get("Código Producción");
         String codigoReceta = produccion.get("Código Receta");
         int cantidadActual = parseInt(produccion.getOrDefault("Cantidad Producida", "0"));
-        datos.clear();
+
+        // ⚡ Cache de nombres de ingredientes
+        if (cacheNombresIngredientes == null) {
+            cacheNombresIngredientes = VerUtils.verTablaConCache("Ingredientes").stream()
+                    .filter(f -> f.containsKey("Código") && f.containsKey("Nombre"))
+                    .collect(Collectors.toMap(
+                            f -> f.get("Código"),
+                            f -> f.get("Nombre"),
+                            (a, b) -> a
+                    ));
+        }
 
         List<Map<String, String>> filaProduccion = VerUtils.verFilas("Produccion", Map.of("Código Producción", codigoProduccion));
         int cantidadBase = filaProduccion.isEmpty() ? 0 : parseInt(filaProduccion.get(0).getOrDefault("Cantidad Producida", "0"));
+        produccion.put("Cantidad Base", String.valueOf(cantidadBase));
 
-        List<Map<String, String>> ingredientesProduccion = VerUtils.verFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
+        // ⚡ Usar ProduccionIngredientes si existe y contiene datos útiles
+        if (cacheFuenteIngredientes == null || !cacheCodigoProduccion.equals(codigoProduccion)) {
+            List<Map<String, String>> ingredientesProduccion = VerUtils.verFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
+            boolean usarProduccion = !ingredientesProduccion.isEmpty() && contieneCantidadesUsadas(ingredientesProduccion);
 
-        if (!ingredientesProduccion.isEmpty()) {
-            double factor = (cantidadBase > 0) ? (double) cantidadActual / cantidadBase : 1.0;
+            cacheFuenteIngredientes = usarProduccion
+                    ? ingredientesProduccion
+                    : VerUtils.verFilas("RecetasIngredientes", Map.of("Código receta", codigoReceta));
 
-            if (cantidadActual != cantidadBase) {
-                System.out.printf("🔁 Cantidad producida cambiada: base=%d → nueva=%d, factor=%.4f%n", cantidadBase, cantidadActual, factor);
-            }
-
-            for (Map<String, String> fila : ingredientesProduccion) {
-                double originalCantidad = parseDouble(fila.getOrDefault("Cantidad Usada", "0"));
-                double originalCosto = parseDouble(fila.getOrDefault("Costo Total", "0"));
-                double nuevaCantidad = originalCantidad * factor;
-                double nuevoCosto = originalCosto * factor;
-                double costoUnitario = originalCantidad == 0 ? 0 : originalCosto / originalCantidad;
-
-                Map<String, String> editable = new LinkedHashMap<>();
-                editable.put("Ingrediente", fila.getOrDefault("Ingrediente", ""));
-                editable.put("Nombre Ingrediente", fila.getOrDefault("Nombre Ingrediente", ""));
-                editable.put("Cantidad Base", String.format("%.4f", originalCantidad));
-                editable.put("Cantidad", String.format("%.4f", nuevaCantidad));
-                editable.put("Unidades", fila.getOrDefault("Unidad", ""));
-                editable.put("Costo", String.format("%.4f", nuevoCosto));
-                editable.put("Costo Unitario", String.format("%.4f", costoUnitario));
-                editable.put("Check", "✓".equals(fila.getOrDefault("Incluye", "")) ? "✓" : " ");
-                datos.add(editable);
-            }
-
+            cacheCodigoProduccion = codigoProduccion;
+            System.out.println(usarProduccion ? "🔁 Cargando desde ProduccionIngredientes..." : "📄 Usando RecetasIngredientes...");
         } else {
-            List<Map<String, String>> receta = VerUtils.verFilas("Recetas", Map.of("Código receta", codigoReceta));
-            double rendimiento = receta.isEmpty() ? 0 : parseDouble(receta.get(0).getOrDefault("Rendimiento", "0"));
-            if (rendimiento <= 0) {
-                VBox errorBox = new VBox(PanelIngredientesEstiloUtils.crearLabelError("❌ No se encontró rendimiento para la receta."));
-                errorBox.setStyle("-fx-padding: 20; -fx-background-color: #FFF3E0; -fx-border-color: red;");
-                return errorBox;
-            }
-
-            double factor = cantidadActual / rendimiento;
-            System.out.printf("📐 No había ProduccionIngredientes. Escalando desde RecetasIngredientes con factor: %.4f%n", factor);
-
-            if (factor == 0) {
-                System.out.println("⚠️ Factor de escalado = 0. No se recalcularán ingredientes.");
-                return new VBox(new Label("⚠️ No se pudo escalar los ingredientes. Factor 0."));
-            }
-
-            List<Map<String, String>> base = VerUtils.verFilas("RecetasIngredientes", Map.of("Código receta", codigoReceta));
-
-            for (Map<String, String> fila : base) {
-                double cantidadOriginal = parseDouble(fila.getOrDefault("Cantidad", "0"));
-                String unidad = fila.getOrDefault("Unidades", "");
-                String ingrediente = fila.getOrDefault("Ingrediente", "");
-
-                double nuevaCantidad = cantidadOriginal * factor;
-                double costoUnitario = calcularCostoUnitario(ingrediente, unidad);
-                double costoTotal = nuevaCantidad * costoUnitario;
-
-                Map<String, String> map = new LinkedHashMap<>();
-                map.put("Ingrediente", ingrediente);
-                map.put("Nombre Ingrediente", mapaNombreIngredientes.getOrDefault(ingrediente, ""));
-                map.put("Cantidad Base", String.format("%.4f", cantidadOriginal));
-                map.put("Cantidad", String.format("%.4f", nuevaCantidad));
-                map.put("Unidades", unidad);
-                map.put("Costo", String.format("%.4f", costoTotal));
-                map.put("Costo Unitario", String.format("%.4f", costoUnitario));
-                map.put("Check", "✓");
-                datos.add(map);
-            }
+            System.out.println("🔄 Usando ingredientes desde caché.");
         }
 
-        // LOG adicional para verificar qué se cargó
-        System.out.println("📦 Ingredientes escalados generados:");
-        for (Map<String, String> fila : datos) {
-            System.out.printf("   - [%s] %s %s → Costo: %s%n",
-                    fila.getOrDefault("Ingrediente", "?"),
-                    fila.getOrDefault("Cantidad", "?"),
-                    fila.getOrDefault("Unidades", "?"),
-                    fila.getOrDefault("Costo", "?"));
+        datos.clear();
+        cacheFuenteIngredientes.forEach(fila -> datos.add(crearFilaIngrediente(fila)));
+
+        double rendimiento = EscaladoIngredientesUtils.obtenerRendimientoReceta(codigoReceta);
+        double factor = calcularFactor(cantidadActual, cantidadBase, rendimiento, cantidadBase > 0);
+
+        if (cantidadActual != ultimaCantidadActual && factor != 1.0) {
+            EscaladoIngredientesUtils.actualizarIngredientesDesdeCantidad(
+                    cantidadActual, cantidadBase, codigoReceta, datos, produccion
+            );
+            imprimirIngredientes(datos);
+            ultimaCantidadActual = cantidadActual;
+        } else {
+            System.out.println("⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.");
         }
 
-        VBox tabla = PanelIngredientesTablaFactory.crearTabla(
-                datos,
-                mapaNombreIngredientes,
-                produccion,
-                codigoProduccion,
-                actualizarCostoEnTabla
-        );
-
+        // 🔄 Crea tabla y panel
+        VBox tabla = PanelIngredientesTablaFactory.crearTabla(datos, produccion, codigoProduccion, actualizarCostoEnTabla);
         VBox contenedor = new VBox(10, new Label("Ingredientes registrados:"), tabla);
         contenedor.setPrefWidth(500);
         contenedor.setStyle("-fx-padding: 20; -fx-background-color: #FFFDE7; -fx-background-radius: 10;");
-        PanelRecargaIngredientesUtils.inicializar(
-            contenedor, datos, produccion, mapaNombreIngredientes, actualizarCostoEnTabla
-        );
 
+        // ⚡ Inicia la recarga con los ingredientes editables actuales
+        PanelRecargaIngredientesUtil.inicializar(contenedor, datos, produccion, actualizarCostoEnTabla);
+
+        // ⚠️ Importante: aseguramos que también los ingredientes lleguen al formulario
+        if (!datos.isEmpty()) {
+            produccion.put("__ingredientes", "ok"); // Marca para debug
+        }
+
+        System.out.printf("⏱️ Tiempo en PanelIngredientesEditorFactory: %d ms%n", System.currentTimeMillis() - tInicio);
         return contenedor;
     }
 
-    private static double calcularCostoUnitario(String codIngrediente, String unidadDestino) {
-        List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
-        Map<String, String> fila = ingredientes.stream()
-                .filter(i -> codIngrediente.equalsIgnoreCase(i.get("Código")))
-                .findFirst()
-                .orElse(null);
+    private static Map<String, String> crearFilaIngrediente(Map<String, String> fila) {
+        String cod = fila.getOrDefault("Ingrediente", "");
+        return new LinkedHashMap<>(Map.of(
+                "Ingrediente", cod,
+                "Nombre Ingrediente", cacheNombresIngredientes.getOrDefault(cod, ""),
+                "Unidades", fila.getOrDefault("Unidad", fila.getOrDefault("Unidades", "")),
+                "Cantidad Base", fila.getOrDefault("Cantidad Usada", fila.getOrDefault("Cantidad", "0")),
+                "Cantidad", fila.getOrDefault("Cantidad Usada", fila.getOrDefault("Cantidad", "0")),
+                "Costo", fila.getOrDefault("Costo Total", "0"),
+                "Costo Unitario", fila.getOrDefault("Costo Unitario", "0"),
+                "Check", fila.getOrDefault("Incluye", "✓")
+        ));
+    }
 
-        if (fila == null) return 0;
+    private static void imprimirIngredientes(List<Map<String, String>> datos) {
+        System.out.println("📦 Ingredientes escalados generados:");
+        datos.forEach(fila -> System.out.printf("   - [%s] %s %s → Costo: %s%n",
+                fila.getOrDefault("Ingrediente", "?"),
+                fila.getOrDefault("Cantidad", "?"),
+                fila.getOrDefault("Unidades", "?"),
+                fila.getOrDefault("Costo", "?")));
+    }
 
-        String unidadBase = fila.getOrDefault("Unidad", "").trim();
-        double precioBase = parseDouble(fila.getOrDefault("Precio Local", "0"));
+    private static double calcularFactor(int cantidadActual, int cantidadBase, double rendimiento, boolean usarProduccion) {
+        if (usarProduccion && cantidadBase > 0) return (double) cantidadActual / cantidadBase;
+        if (rendimiento > 0) return cantidadActual / rendimiento;
+        return 1.0;
+    }
 
-        Double cantidadConvertida = ConversorUtils.convertir("Peso", unidadBase, unidadDestino, 1.0, codIngrediente);
-        if (cantidadConvertida == null || cantidadConvertida == 0) return 0;
-
-        return precioBase / cantidadConvertida;
+    private static boolean contieneCantidadesUsadas(List<Map<String, String>> lista) {
+        return lista.stream().anyMatch(f -> parseDouble(f.getOrDefault("Cantidad Usada", "0")) > 0);
     }
 
     private static double parseDouble(String val) {

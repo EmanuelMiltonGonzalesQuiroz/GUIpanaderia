@@ -7,8 +7,11 @@ C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ContenedorFlexible.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\EditarProduccionUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\FormularioEditorProduccionFactory.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\EscaladoIngredientesUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\FormularioCamposFactory.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\TotalesProduccionUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelIngredientesEditorFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtils.java
+C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtil.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredientesFactory.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesEstiloUtils.java
 C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesTablaFactory.java

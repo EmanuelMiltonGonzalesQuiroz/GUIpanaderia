@@ -4,10 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
@@ -15,6 +15,10 @@ public class VistaEditarProduccion extends BorderPane {
 
     private final VBox panelFormulario;
     private final VBox panelIngredientes;
+    private final VBox contenedorSelector;
+
+    private ObservableList<Map<String, String>> datosIngredientes;
+    private Map<String, String> produccionActual;
 
     public VistaEditarProduccion() {
         setPadding(new Insets(15));
@@ -31,38 +35,58 @@ public class VistaEditarProduccion extends BorderPane {
         panelIngredientes = crearPlaceholder("Tabla editable de ingredientes usados");
         panelIngredientes.setPrefWidth(700);
 
+        Button botonActualizar = new Button("🔄 Actualizar Vista");
+        botonActualizar.setStyle("-fx-font-size: 14px; -fx-background-color: #FFB74D; -fx-text-fill: black;");
+        botonActualizar.setOnAction(e -> recargarVistaCompleta());
+
         Node selector = SelectorProduccionEditorFactory.crearSelector((produccion) -> {
             if (produccion == null) return;
 
-            // Lista compartida entre tabla y formulario
-            ObservableList<Map<String, String>> datosIngredientes = FXCollections.observableArrayList();
+            this.produccionActual = produccion;
+            this.datosIngredientes = FXCollections.observableArrayList();
 
-            // Crear formulario editable vinculado a lista
-            VBox formulario = FormularioEditorProduccionFactory.crearFormulario(produccion, datosIngredientes);
-
-            // Callback para actualizar totales (costo total)
-            BiConsumer<String, Double> actualizarTotales = (codigo, nuevoCostoTotal) -> {
-                FormularioEditorProduccionFactory.actualizarTotales(codigo, nuevoCostoTotal);
-            };
-
-            // Crear panel de ingredientes dinámicamente escalado
-            VBox ingredientes = PanelIngredientesEditorFactory.crear(
-                    produccion,
-                    datosIngredientes,
-                    actualizarTotales,
-                    Collections.emptyMap() // Puedes pasar mapaNombreIngredientes real si lo tienes
-            );
-
-            // Actualizar paneles visuales
-            panelFormulario.getChildren().setAll(formulario.getChildren());
-            panelIngredientes.getChildren().setAll(ingredientes.getChildren());
+            recargarVistaCompleta();
         });
 
-        VBox contenedorSelector = new VBox(selector);
+        contenedorSelector = new VBox(10, botonActualizar, selector);
         contenedorSelector.setPrefWidth(600);
 
         contenedor.getChildren().addAll(contenedorSelector, panelFormulario, panelIngredientes);
         setCenter(contenedor);
+    }
+
+    private void recargarVistaCompleta() {
+        if (this.produccionActual == null || this.datosIngredientes == null) return;
+
+        BiConsumer<String, Double> actualizarTotales = (codigo, nuevoCostoTotal) -> {
+            FormularioEditorProduccionFactory.actualizarTotales(codigo, nuevoCostoTotal);
+            recargarTablaIngredientes();
+        };
+
+        VBox formulario = FormularioEditorProduccionFactory.crearFormulario(
+                produccionActual, datosIngredientes, this::recargarTablaIngredientes
+        );
+
+        VBox ingredientes = PanelIngredientesEditorFactory.crear(
+                produccionActual, datosIngredientes, actualizarTotales
+        );
+
+        panelFormulario.getChildren().setAll(formulario.getChildren());
+        panelIngredientes.getChildren().setAll(ingredientes.getChildren());
+    }
+
+    private void recargarTablaIngredientes() {
+        if (this.produccionActual == null || this.datosIngredientes == null) return;
+
+        BiConsumer<String, Double> actualizarTotales = (codigo, nuevoCostoTotal) -> {
+            FormularioEditorProduccionFactory.actualizarTotales(codigo, nuevoCostoTotal);
+        };
+
+        VBox ingredientesActualizados = PanelIngredientesEditorFactory.crear(
+                produccionActual, datosIngredientes, actualizarTotales
+        );
+
+        panelIngredientes.getChildren().setAll(ingredientesActualizados.getChildren());
     }
 
     private VBox crearPlaceholder(String texto) {

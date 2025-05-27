@@ -77,4 +77,23 @@ public class ModificarUtils {
 
         return false;
     }
+    public static boolean modificarFilaSoloSiCambio(String nombreTabla, Map<String, String> condiciones, Map<String, String> nuevosValores) {
+        Map<String, String> filaActual = VerUtils.verFila(nombreTabla, condiciones);
+        if (filaActual == null) {
+            System.err.println("❌ Fila no encontrada en '" + nombreTabla + "' para condiciones: " + condiciones);
+            return false;
+        }
+
+        boolean hayCambios = nuevosValores.entrySet().stream().anyMatch(e ->
+                !Objects.equals(filaActual.getOrDefault(e.getKey(), "").trim(), e.getValue().trim())
+        );
+
+        if (!hayCambios) {
+            System.out.println("🔄 Sin cambios reales en fila de '" + nombreTabla + "', se omite escritura.");
+            return false;
+        }
+
+        return modificarFila(nombreTabla, condiciones, nuevosValores);
+    }
+
 }

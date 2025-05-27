@@ -1,7 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion.receta;
 
 import com.panaderiafx.utils.componentes.ParseUtils;
-import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -38,29 +37,12 @@ public class PanelTotalesFactory {
                                          Map<String, String> prod,
                                          BiConsumer<String, Double> actualizar) {
 
-        double total = 0.0;
-
-        for (Map<String, String> fila : datos) {
-            if (!"✓".equals(fila.getOrDefault("Check", "✓"))) continue;
-
-            double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad", "1"));
-            String codIng = fila.getOrDefault("Ingrediente", "");
-            String unidad = fila.getOrDefault("Unidades", "");
-
-            double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
-            fila.put("Costo", String.format("%.2f", costo));
-            total += costo;
-        }
+        double total = datos.stream()
+                .filter(f -> "✓".equals(f.getOrDefault("Check", "")))
+                .mapToDouble(f -> ParseUtils.toDouble(f.getOrDefault("Costo", "0")))
+                .sum();
 
         double cantidadProducida = ParseUtils.toDouble(prod.getOrDefault("Cantidad producida", "0"));
-        double cantidadBase = ParseUtils.toDouble(prod.getOrDefault("Cantidad Base", String.valueOf(cantidadProducida)));
-
-        if (cantidadBase != 0 && cantidadProducida != cantidadBase) {
-            double factor = cantidadProducida / cantidadBase;
-            System.out.printf("🔁 Cantidad producida cambiada: base=%s → nueva=%s, factor=%.4f%n",
-                    cantidadBase, cantidadProducida, factor);
-        }
-
         double costoUnitario = (cantidadProducida > 0) ? total / cantidadProducida : 0.0;
 
         campoTotal.setText(String.format("%.2f", total));

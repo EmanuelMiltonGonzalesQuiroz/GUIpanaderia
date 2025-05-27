@@ -5,6 +5,7 @@ import org.apache.poi.ss.util.AreaReference;
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+
 import java.io.FileInputStream;
 import java.util.*;
 
@@ -174,6 +175,17 @@ public class VerUtils {
                 .map(fila -> fila.getOrDefault(campoRetorno, ""))
                 .findFirst()
                 .orElse("");
+    }
+
+    private static final Map<String, List<Map<String, String>>> cacheTablas = new HashMap<>();
+
+    public static List<Map<String, String>> verTablaConCache(String nombreTabla) {
+        if (cacheTablas.containsKey(nombreTabla)) {
+            return cacheTablas.get(nombreTabla);
+        }
+        List<Map<String, String>> datos = verTabla(nombreTabla);
+        cacheTablas.put(nombreTabla, datos);
+        return datos;
     }
 
 }

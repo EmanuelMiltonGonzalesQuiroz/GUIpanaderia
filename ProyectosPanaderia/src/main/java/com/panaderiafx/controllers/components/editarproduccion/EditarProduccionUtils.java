@@ -1,69 +1,68 @@
 package com.panaderiafx.controllers.components.editarproduccion;
 
-import com.panaderiafx.utils.ConversorMezclaUtils;
 import com.panaderiafx.utils.EliminarUtils;
 import com.panaderiafx.utils.ModificarUtils;
 import com.panaderiafx.utils.VerUtils;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.*;
 
 public class EditarProduccionUtils {
-
-    private static final String RUTA = "Datos\\Hoja de datos.xlsx";
 
     public static void editarProduccionYIngredientes(String codigoProduccion,
                                                      TextField campoFecha,
                                                      TextField campoCantidad,
                                                      TextField campoPrecioU,
                                                      TextField campoMezcla,
-                                                     TextField campoProducto) {
+                                                     TextField campoProducto,
+                                                     ObservableList<Map<String, String>> ingredientesActuales) {
         if (codigoProduccion == null || codigoProduccion.isBlank()) {
             mostrarError("Código de producción no válido.");
             return;
         }
 
-        // === 1. Leer datos actuales
         Map<String, String> filaProd = VerUtils.verFila("Produccion", Map.of("Código Producción", codigoProduccion));
         if (filaProd == null) {
             mostrarError("Producción no encontrada.");
             return;
         }
 
-        // === 2. Calcular campos derivados
         double cantidad = parseDouble(campoCantidad.getText());
         double precioUnit = parseDouble(campoPrecioU.getText());
-        String codReceta = filaProd.get("Código Receta");
-        double rendimiento = ConversorMezclaUtils.obtenerRendimientoReceta(codReceta);
 
-        double factor = (rendimiento > 0) ? cantidad / rendimiento : 0;
         double costoTotal = 0.0;
 
-        List<Map<String, String>> ingredientes = VerUtils.verFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
-        for (Map<String, String> ingrediente : ingredientes) {
-            String codIng = ingrediente.get("Ingrediente");
-            double baseCantidad = parseDouble(ingrediente.getOrDefault("Cantidad Base", ingrediente.getOrDefault("Cantidad Usada", "0")));
-            double nuevaCantidad = baseCantidad * factor;
-            double costoUnitario = parseDouble(ingrediente.getOrDefault("Costo Unitario", "0"));
-            double nuevoCosto = nuevaCantidad * costoUnitario;
-            costoTotal += nuevoCosto;
+        for (Map<String, String> fila : ingredientesActuales) {
+            String codIng = fila.getOrDefault("Ingrediente", "");
+            String cantidadStr = fila.getOrDefault("Cantidad", "0");
+            String costoStr = fila.getOrDefault("Costo", "0");
+            String incluye = fila.getOrDefault("Check", "✓");
+
+            double cantidadUsada = parseDouble(cantidadStr);
+            double costoTotalIng = parseDouble(costoStr);
 
             Map<String, String> nuevosValoresIng = new LinkedHashMap<>();
-            nuevosValoresIng.put("Cantidad Usada", String.format("%.4f", nuevaCantidad));
-            nuevosValoresIng.put("Costo Total", String.format("%.4f", nuevoCosto));
+            nuevosValoresIng.put("Cantidad Usada", String.format("%.4f", cantidadUsada));
+            nuevosValoresIng.put("Costo Total", String.format("%.4f", costoTotalIng));
+            nuevosValoresIng.put("Incluye", incluye);
+            nuevosValoresIng.put("Fecha Registro", filaProd.getOrDefault("Fecha", ""));
 
-            ModificarUtils.modificarFila("ProduccionIngredientes", Map.of(
+            boolean modificado = ModificarUtils.modificarFila("ProduccionIngredientes", Map.of(
                     "Código Producción", codigoProduccion,
                     "Ingrediente", codIng
             ), nuevosValoresIng);
+
+            if (modificado) {
+                System.out.println("🧾 Ingrediente [" + codIng + "] modificado con nuevos valores.");
+            }
+
+            if ("✓".equals(incluye)) {
+                costoTotal += costoTotalIng;
+            }
         }
 
-        // === 3. Actualizar la fila de Producción
         double costoU = (cantidad > 0) ? costoTotal / cantidad : 0.0;
         double gananciaTotal = (precioUnit * cantidad) - costoTotal;
 
@@ -78,7 +77,9 @@ public class EditarProduccionUtils {
                 "Ganancia Tota", String.format("%.2f", gananciaTotal)
         );
 
-        boolean actualizado = ModificarUtils.modificarFila("Produccion", Map.of("Código Producción", codigoProduccion), nuevosValores);
+        boolean actualizado = ModificarUtils.modificarFila("Produccion", Map.of(
+                "Código Producción", codigoProduccion
+        ), nuevosValores);
 
         if (actualizado) {
             mostrarConfirmacion("✅ Producción e ingredientes actualizados correctamente.");
@@ -94,65 +95,13 @@ public class EditarProduccionUtils {
         }
 
         boolean eliminadoProd = EliminarUtils.eliminarFila("Produccion", Map.of("Código Producción", codigoProduccion));
-        int eliminados = eliminarFilasProduccionIngredientes(codigoProduccion);
+        int eliminados = EliminarUtils.eliminarFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
 
         if (eliminadoProd || eliminados > 0) {
-            mostrarConfirmacion("🗑 Producción y " + eliminados + " ingredientes eliminados correctamente.");
+            mostrarConfirmacion("🗑 Producción y " + eliminados + " ingredientes eliminados.");
         } else {
-            mostrarError("No se pudo eliminar la producción ni sus ingredientes.");
+            mostrarError("❌ No se pudo eliminar la producción.");
         }
-    }
-
-    private static int eliminarFilasProduccionIngredientes(String codigoProduccion) {
-        int eliminados = 0;
-        try (FileInputStream fis = new FileInputStream(RUTA);
-             Workbook libro = new XSSFWorkbook(fis)) {
-
-            Sheet hoja = libro.getSheet("ProduccionIngredientes");
-            if (hoja == null) return 0;
-
-            Row headerRow = hoja.getRow(0);
-            Map<String, Integer> columnas = new LinkedHashMap<>();
-            for (int c = 0; c < headerRow.getLastCellNum(); c++) {
-                Cell celda = headerRow.getCell(c);
-                if (celda != null) {
-                    columnas.put(celda.getStringCellValue().trim(), c);
-                }
-            }
-
-            List<Integer> filasAEliminar = new ArrayList<>();
-
-            for (int f = 1; f <= hoja.getLastRowNum(); f++) {
-                Row fila = hoja.getRow(f);
-                if (fila == null) continue;
-
-                int col = columnas.getOrDefault("Código Producción", -1);
-                if (col == -1) continue;
-                Cell celda = fila.getCell(col);
-                String contenido = celda != null ? celda.toString().trim() : "";
-                if (codigoProduccion.equalsIgnoreCase(contenido)) {
-                    filasAEliminar.add(f);
-                }
-            }
-
-            Collections.reverse(filasAEliminar);
-            for (int f : filasAEliminar) {
-                hoja.removeRow(hoja.getRow(f));
-                if (f < hoja.getLastRowNum()) {
-                    hoja.shiftRows(f + 1, hoja.getLastRowNum(), -1);
-                }
-                eliminados++;
-            }
-
-            try (FileOutputStream fos = new FileOutputStream(RUTA)) {
-                libro.write(fos);
-            }
-
-        } catch (Exception e) {
-            System.err.println("❌ Error al eliminar ingredientes: " + e.getMessage());
-        }
-
-        return eliminados;
     }
 
     private static void mostrarConfirmacion(String mensaje) {

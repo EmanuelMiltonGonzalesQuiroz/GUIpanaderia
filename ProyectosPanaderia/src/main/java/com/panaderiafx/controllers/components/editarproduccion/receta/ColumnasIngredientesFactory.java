@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion.receta;
 
+import com.panaderiafx.utils.VerUtils;
 import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
 import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,11 +13,12 @@ import java.util.function.BiConsumer;
 
 public class ColumnasIngredientesFactory {
 
-    public static TableColumn<Map<String, String>, String> columnaIngrediente(Map<String, String> mapaNombre) {
+    public static TableColumn<Map<String, String>, String> columnaIngrediente() {
         TableColumn<Map<String, String>, String> col = new TableColumn<>("Ingrediente");
         col.setCellValueFactory(f -> {
             String cod = f.getValue().getOrDefault("Ingrediente", "");
-            return new SimpleStringProperty(mapaNombre.getOrDefault(cod, cod));
+            String nombre = VerUtils.buscarPorCodigo("Ingredientes", "Código", cod, "Nombre");
+            return new SimpleStringProperty(nombre.isEmpty() ? cod : nombre);
         });
         return col;
     }
@@ -48,14 +50,17 @@ public class ColumnasIngredientesFactory {
 
             private void actualizar() {
                 Map<String, String> fila = getTableView().getItems().get(getIndex());
-                String cantidadStr = editor.getText();
-                fila.put("Cantidad", cantidadStr);
-                double cantidad = ParseUtils.toDouble(cantidadStr);
+                String nuevaCantidad = editor.getText().trim();
+                fila.put("Cantidad", nuevaCantidad);
+
+                double cantidad = ParseUtils.toDouble(nuevaCantidad);
                 String codIng = fila.getOrDefault("Ingrediente", "");
                 String unidad = fila.getOrDefault("Unidades", "");
                 double nuevoCosto = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
+
                 fila.put("Costo", String.format("%.2f", nuevoCosto));
                 getTableView().refresh();
+
                 actualizarTotales(datos, campoTotal, campoUnitario, codProduccion, prod, actualizarCostoEnTabla);
             }
 
@@ -65,11 +70,12 @@ public class ColumnasIngredientesFactory {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    editor.setText(getItem());
+                    editor.setText(val);
                     setGraphic(editor);
                 }
             }
         });
+
         col.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Cantidad", "")));
         return col;
     }
@@ -108,6 +114,7 @@ public class ColumnasIngredientesFactory {
                 }
             }
         });
+
         col.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Check", "✓")));
         return col;
     }
@@ -120,25 +127,27 @@ public class ColumnasIngredientesFactory {
             Map<String, String> prod,
             BiConsumer<String, Double> actualizarCostoEnTabla
     ) {
-        double total = datos.stream()
-                .filter(f -> "✓".equals(f.getOrDefault("Check", "✓")))
-                .mapToDouble(f -> {
-                    double cantidad = ParseUtils.toDouble(f.getOrDefault("Cantidad", "1"));
-                    String codIng = f.getOrDefault("Ingrediente", "");
-                    String unidad = f.getOrDefault("Unidades", "");
-                    double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
-                    f.put("Costo", String.format("%.2f", costo));
-                    return costo;
-                }).sum();
+        double total = 0.0;
 
-        double cantidadProducida = ParseUtils.toDouble(prod.getOrDefault("Cantidad producida", "0"));
+        for (Map<String, String> fila : datos) {
+            if ("✓".equals(fila.getOrDefault("Check", "✓"))) {
+                double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad", "0"));
+                String codIng = fila.getOrDefault("Ingrediente", "");
+                String unidad = fila.getOrDefault("Unidades", "");
+                double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
+                fila.put("Costo", String.format("%.2f", costo));
+                total += costo;
+            }
+        }
+
+        double cantidadProducida = ParseUtils.toDouble(prod.getOrDefault("Cantidad Producida", "0"));
         double costoUnitario = (cantidadProducida > 0) ? total / cantidadProducida : 0.0;
 
         campoTotal.setText(String.format("%.2f", total));
         campoUnitario.setText(String.format("%.4f", costoUnitario));
 
-        prod.put("Costo directo", String.format("%.2f", total));
-        prod.put("Costo/U", String.format("%.4f", costoUnitario));
+        prod.put("Costo Total", String.format("%.2f", total));
+        prod.put("Costo Directo/U", String.format("%.4f", costoUnitario));
 
         if (actualizarCostoEnTabla != null) {
             actualizarCostoEnTabla.accept(codProduccion, total);

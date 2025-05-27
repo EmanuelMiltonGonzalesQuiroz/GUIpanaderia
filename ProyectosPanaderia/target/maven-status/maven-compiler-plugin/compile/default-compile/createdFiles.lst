@@ -5,10 +5,10 @@ com\panaderiafx\controllers\components\librosemanal\ResumenSemanal.class
 com\panaderiafx\controllers\components\librosemanal\VistaLibroSemanal.class
 com\panaderiafx\utils\componentes\CostosDirectosUtils.class
 com\panaderiafx\controllers\components\ContenedorFlexible.class
+com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtil.class
 com\panaderiafx\utils\componentes\RegistroVariableDiaUtils.class
 com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesTablaFactory.class
 com\panaderiafx\Pestanas.class
-com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtils.class
 com\panaderiafx\controllers\RegistroRecetas.class
 com\panaderiafx\controllers\ModificarController.class
 com\panaderiafx\controllers\components\registroproduccion2\receta\ColumnasIngredientesFactory$2.class
@@ -24,6 +24,7 @@ com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredien
 com\panaderiafx\utils\ModificarUtils.class
 com\panaderiafx\controllers\components\editarproduccion\PanelIngredientesEditorFactory.class
 com\panaderiafx\utils\CrearUtils.class
+com\panaderiafx\controllers\components\editarproduccion\helpers\TotalesProduccionUtils.class
 com\panaderiafx\controllers\components\librosemanal\PanelDetalleParametros$1.class
 com\panaderiafx\utils\EliminarUtils.class
 com\panaderiafx\controllers\components\librosemanal\ResumenSemanal$1.class
@@ -86,6 +87,7 @@ com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredien
 com\panaderiafx\controllers\components\editarproduccion\EditarProduccionUtils.class
 com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredientesFactory.class
 com\panaderiafx\utils\ConversorMezclaUtils.class
+com\panaderiafx\controllers\components\editarproduccion\helpers\EscaladoIngredientesUtils.class
 com\panaderiafx\controllers\components\registroproduccion2\BotonGuardarProduccion.class
 com\panaderiafx\controllers\components\registroreceta\TablaIngredientesEditable$3.class
 com\panaderiafx\utils\VistaResumenUtils.class
@@ -109,6 +111,7 @@ com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.class
 com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesTablaFactory.class
 com\panaderiafx\controllers\components\BotonAccion.class
 com\panaderiafx\controllers\components\registroproduccion2\GuardarProduccionUtils.class
+com\panaderiafx\controllers\components\editarproduccion\helpers\FormularioCamposFactory.class
 com\panaderiafx\utils\componentes\GuardarLibroSemanalUtils.class
 com\panaderiafx\controllers\RegistroProduccion.class
 com\panaderiafx\utils\VersionUtils.class
