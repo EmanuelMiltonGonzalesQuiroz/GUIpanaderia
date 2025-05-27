@@ -1,12 +1,9 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-⏱️ Tiempo en crear pestañas: 2027 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 15 ⏱️ 1525 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 516 ms
+⏱️ Tiempo en crear pestañas: 2195 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 3089 ms
-⏱️ Tiempo desde main() hasta GUI: 3105 ms
-📥 Datos de conversión cargados en caché: 30 filas.
-⚠️ Unidades iguales [Onzas], retorno directo: 0.54
-⚠️ Unidades iguales [Unidades], retorno directo: 348.00
-⚠️ Unidades iguales [Onzas], retorno directo: 0.67
-⚠️ Unidades iguales [Unidades], retorno directo: 435.00
+⏱️ Tiempo total en start(): 2831 ms
+⏱️ Tiempo desde main() hasta GUI: 2845 ms

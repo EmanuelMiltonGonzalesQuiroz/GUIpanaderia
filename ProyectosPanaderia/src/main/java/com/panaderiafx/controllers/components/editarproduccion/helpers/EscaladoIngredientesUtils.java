@@ -5,6 +5,7 @@ import com.panaderiafx.utils.ConversorUtils;
 import com.panaderiafx.utils.VerUtils;
 import javafx.collections.ObservableList;
 
+import java.util.List;
 import java.util.Map;
 
 public class EscaladoIngredientesUtils {
@@ -83,7 +84,12 @@ public class EscaladoIngredientesUtils {
     }
 
     public static double calcularCostoUnitario(String codIngrediente, String unidadDestino) {
-        return VerUtils.verTabla("Ingredientes").stream()
+        // 🚫 Si necesitas forzar recarga desde el Excel original:
+        // VerUtils.forzarActualizacion("Ingredientes");
+
+        List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
+
+        return ingredientes.stream()
                 .filter(i -> codIngrediente.equalsIgnoreCase(i.get("Código")))
                 .findFirst()
                 .map(fila -> {
@@ -91,6 +97,7 @@ public class EscaladoIngredientesUtils {
                     double precioBase = TotalesProduccionUtils.parseDouble(fila.getOrDefault("Precio Local", "0"));
                     Double cantidadConvertida = ConversorUtils.convertir("Peso", unidadBase, unidadDestino, 1.0, codIngrediente);
                     return (cantidadConvertida == null || cantidadConvertida == 0) ? 0 : precioBase / cantidadConvertida;
-                }).orElse(0.0);
+                })
+                .orElse(0.0);
     }
 }

@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 public class PanelIngredientesEditorFactory {
 
     private static Map<String, String> cacheNombresIngredientes;
-    private static List<Map<String, String>> cacheFuenteIngredientes;
     private static String cacheCodigoProduccion = "";
     private static int ultimaCantidadActual = -1;
+    private static VBox tablaAnterior;
 
     public static VBox crear(Map<String, String> produccion,
                              ObservableList<Map<String, String>> datos,
@@ -28,8 +28,15 @@ public class PanelIngredientesEditorFactory {
         String codigoReceta = produccion.get("Código Receta");
         int cantidadActual = parseInt(produccion.getOrDefault("Cantidad Producida", "0"));
 
-        // ⚡ Cache de nombres de ingredientes
+        // ⚠️ Si no cambió nada y hay tabla previa, se reutiliza
+        if (cantidadActual == ultimaCantidadActual && cacheCodigoProduccion.equals(codigoProduccion) && tablaAnterior != null) {
+            System.out.println("♻️ Reutilizando tabla de ingredientes sin cambios.");
+            return tablaAnterior;
+        }
+
+        // ⚡ Nombres de ingredientes sí usan caché porque no cambian
         if (cacheNombresIngredientes == null) {
+            System.out.println("📥 Cargando nombres de ingredientes...");
             cacheNombresIngredientes = VerUtils.verTablaConCache("Ingredientes").stream()
                     .filter(f -> f.containsKey("Código") && f.containsKey("Nombre"))
                     .collect(Collectors.toMap(
@@ -39,53 +46,52 @@ public class PanelIngredientesEditorFactory {
                     ));
         }
 
+        // 🚫 Datos de producción se deben leer sin caché para ver cambios
+        VerUtils.forzarActualizacion("Produccion");
         List<Map<String, String>> filaProduccion = VerUtils.verFilas("Produccion", Map.of("Código Producción", codigoProduccion));
         int cantidadBase = filaProduccion.isEmpty() ? 0 : parseInt(filaProduccion.get(0).getOrDefault("Cantidad Producida", "0"));
         produccion.put("Cantidad Base", String.valueOf(cantidadBase));
 
-        // ⚡ Usar ProduccionIngredientes si existe y contiene datos útiles
-        if (cacheFuenteIngredientes == null || !cacheCodigoProduccion.equals(codigoProduccion)) {
-            List<Map<String, String>> ingredientesProduccion = VerUtils.verFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
-            boolean usarProduccion = !ingredientesProduccion.isEmpty() && contieneCantidadesUsadas(ingredientesProduccion);
+        // 🔁 Leer ingredientes desde ProduccionIngredientes si hay datos válidos
+        VerUtils.forzarActualizacion("ProduccionIngredientes");
+        List<Map<String, String>> ingredientesProduccion = VerUtils.verFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
+        boolean usarProduccion = !ingredientesProduccion.isEmpty() && contieneCantidadesUsadas(ingredientesProduccion);
 
-            cacheFuenteIngredientes = usarProduccion
-                    ? ingredientesProduccion
-                    : VerUtils.verFilas("RecetasIngredientes", Map.of("Código receta", codigoReceta));
+        List<Map<String, String>> fuente = usarProduccion
+                ? ingredientesProduccion
+                : VerUtils.verFilas("RecetasIngredientes", Map.of("Código receta", codigoReceta));
 
-            cacheCodigoProduccion = codigoProduccion;
-            System.out.println(usarProduccion ? "🔁 Cargando desde ProduccionIngredientes..." : "📄 Usando RecetasIngredientes...");
-        } else {
-            System.out.println("🔄 Usando ingredientes desde caché.");
-        }
+        cacheCodigoProduccion = codigoProduccion;
+        System.out.println(usarProduccion ? "🔁 Cargando desde ProduccionIngredientes..." : "📄 Usando RecetasIngredientes...");
 
         datos.clear();
-        cacheFuenteIngredientes.forEach(fila -> datos.add(crearFilaIngrediente(fila)));
+        fuente.forEach(fila -> datos.add(crearFilaIngrediente(fila)));
 
         double rendimiento = EscaladoIngredientesUtils.obtenerRendimientoReceta(codigoReceta);
         double factor = calcularFactor(cantidadActual, cantidadBase, rendimiento, cantidadBase > 0);
 
         if (cantidadActual != ultimaCantidadActual && factor != 1.0) {
+            long tEscalar = System.currentTimeMillis();
             EscaladoIngredientesUtils.actualizarIngredientesDesdeCantidad(
                     cantidadActual, cantidadBase, codigoReceta, datos, produccion
             );
+            System.out.printf("⏱️ Tiempo en escalado: %d ms%n", System.currentTimeMillis() - tEscalar);
             imprimirIngredientes(datos);
             ultimaCantidadActual = cantidadActual;
         } else {
             System.out.println("⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.");
         }
 
-        // 🔄 Crea tabla y panel
         VBox tabla = PanelIngredientesTablaFactory.crearTabla(datos, produccion, codigoProduccion, actualizarCostoEnTabla);
         VBox contenedor = new VBox(10, new Label("Ingredientes registrados:"), tabla);
         contenedor.setPrefWidth(500);
         contenedor.setStyle("-fx-padding: 20; -fx-background-color: #FFFDE7; -fx-background-radius: 10;");
+        tablaAnterior = contenedor;
 
-        // ⚡ Inicia la recarga con los ingredientes editables actuales
         PanelRecargaIngredientesUtil.inicializar(contenedor, datos, produccion, actualizarCostoEnTabla);
 
-        // ⚠️ Importante: aseguramos que también los ingredientes lleguen al formulario
         if (!datos.isEmpty()) {
-            produccion.put("__ingredientes", "ok"); // Marca para debug
+            produccion.put("__ingredientes", "ok");
         }
 
         System.out.printf("⏱️ Tiempo en PanelIngredientesEditorFactory: %d ms%n", System.currentTimeMillis() - tInicio);

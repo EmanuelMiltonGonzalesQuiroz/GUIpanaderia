@@ -5,15 +5,32 @@ import org.apache.poi.ss.util.AreaReference;
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
 import java.io.FileInputStream;
 import java.util.*;
 
 public class VerUtils {
 
     private static final String RUTA_EXCEL = "Datos\\Hoja de datos.xlsx";
+    private static final Map<String, List<Map<String, String>>> cacheTablas = new HashMap<>();
 
+    // ✅ Versión con caché (para uso general)
+    public static List<Map<String, String>> verTablaConCache(String nombreTabla) {
+        return verTabla(nombreTabla, true);
+    }
+
+    // ✅ Versión sin caché (para refrescar cambios hechos al Excel)
     public static List<Map<String, String>> verTabla(String nombreTabla) {
+        return verTabla(nombreTabla, false);
+    }
+
+    // 🧠 Interno
+    private static List<Map<String, String>> verTabla(String nombreTabla, boolean usarCache) {
+        if (usarCache && cacheTablas.containsKey(nombreTabla)) {
+            System.out.println("⚡ Recuperando tabla '" + nombreTabla + "' desde caché.");
+            return cacheTablas.get(nombreTabla);
+        }
+
+        long inicio = System.currentTimeMillis();
         List<Map<String, String>> datos = new ArrayList<>();
 
         try (FileInputStream fis = new FileInputStream(RUTA_EXCEL);
@@ -56,11 +73,13 @@ public class VerUtils {
                         if (!vacia) datos.add(filaMap);
                     }
 
+                    if (usarCache) cacheTablas.put(nombreTabla, datos);
+                    System.out.println("📄 Cargada tabla '" + nombreTabla + "' desde rango nombrado. Filas: " + datos.size() +
+                            " ⏱️ " + (System.currentTimeMillis() - inicio) + " ms");
                     return datos;
                 }
             }
 
-            // Si no hay rango nombrado, buscar por nombre de hoja
             sheet = libro.getSheet(nombreTabla);
             if (sheet != null) {
                 Iterator<Row> filas = sheet.iterator();
@@ -86,6 +105,10 @@ public class VerUtils {
 
                     if (!vacia) datos.add(filaMap);
                 }
+
+                if (usarCache) cacheTablas.put(nombreTabla, datos);
+                System.out.println("📄 Cargada tabla '" + nombreTabla + "' desde hoja. Filas: " + datos.size() +
+                        " ⏱️ " + (System.currentTimeMillis() - inicio) + " ms");
             }
 
         } catch (Exception e) {
@@ -94,6 +117,13 @@ public class VerUtils {
         }
 
         return datos;
+    }
+
+    // ✅ Forzar recarga de tabla específica
+    public static void forzarActualizacion(String nombreTabla) {
+        if (cacheTablas.remove(nombreTabla) != null) {
+            System.out.println("♻️ Caché de tabla '" + nombreTabla + "' eliminada.");
+        }
     }
 
     public static List<String> verColumna(String nombreTabla, String columna) {
@@ -115,14 +145,14 @@ public class VerUtils {
         return verTabla(nombreTabla).stream()
                 .filter(fila -> filtros.entrySet().stream()
                         .allMatch(f -> f.getValue().equalsIgnoreCase(fila.getOrDefault(f.getKey(), ""))))
-                
-                        .toList();
+                .toList();
     }
+
     public static List<String> obtenerColumnas(String nombreHoja) {
         List<String> columnas = new ArrayList<>();
 
-        try (FileInputStream fis = new FileInputStream("Datos\\Hoja de datos.xlsx");
-            Workbook workbook = new XSSFWorkbook(fis)) {
+        try (FileInputStream fis = new FileInputStream(RUTA_EXCEL);
+             Workbook workbook = new XSSFWorkbook(fis)) {
 
             Sheet sheet = workbook.getSheet(nombreHoja);
             if (sheet == null) {
@@ -150,7 +180,6 @@ public class VerUtils {
         return columnas;
     }
 
-
     public static List<String> obtenerNombresTablas() {
         List<String> nombres = new ArrayList<>();
 
@@ -169,6 +198,7 @@ public class VerUtils {
 
         return nombres;
     }
+
     public static String buscarPorCodigo(String tabla, String campoClave, String valorClave, String campoRetorno) {
         return verTabla(tabla).stream()
                 .filter(fila -> valorClave.equalsIgnoreCase(fila.getOrDefault(campoClave, "")))
@@ -176,16 +206,4 @@ public class VerUtils {
                 .findFirst()
                 .orElse("");
     }
-
-    private static final Map<String, List<Map<String, String>>> cacheTablas = new HashMap<>();
-
-    public static List<Map<String, String>> verTablaConCache(String nombreTabla) {
-        if (cacheTablas.containsKey(nombreTabla)) {
-            return cacheTablas.get(nombreTabla);
-        }
-        List<Map<String, String>> datos = verTabla(nombreTabla);
-        cacheTablas.put(nombreTabla, datos);
-        return datos;
-    }
-
 }

@@ -31,11 +31,10 @@ public class EditarProduccionUtils {
 
         double cantidad = parseDouble(campoCantidad.getText());
         double precioUnit = parseDouble(campoPrecioU.getText());
-
         double costoTotal = 0.0;
 
         for (Map<String, String> fila : ingredientesActuales) {
-            String codIng = fila.getOrDefault("Ingrediente", "");
+            String codIng = fila.getOrDefault("Ingrediente", "").trim();
             String cantidadStr = fila.getOrDefault("Cantidad", "0");
             String costoStr = fila.getOrDefault("Costo", "0");
             String incluye = fila.getOrDefault("Check", "✓");
@@ -74,7 +73,7 @@ public class EditarProduccionUtils {
                 "Producto", campoProducto.getText().trim(),
                 "Costo Total", String.format("%.2f", costoTotal),
                 "Costo Directo/U", String.format("%.4f", costoU),
-                "Ganancia Tota", String.format("%.2f", gananciaTotal)
+                "Ganancia Total", String.format("%.2f", gananciaTotal)
         );
 
         boolean actualizado = ModificarUtils.modificarFila("Produccion", Map.of(
@@ -83,6 +82,8 @@ public class EditarProduccionUtils {
 
         if (actualizado) {
             mostrarConfirmacion("✅ Producción e ingredientes actualizados correctamente.");
+            VerUtils.forzarActualizacion("Produccion");
+            VerUtils.forzarActualizacion("ProduccionIngredientes");
         } else {
             mostrarError("No se pudo actualizar la producción.");
         }
@@ -94,11 +95,18 @@ public class EditarProduccionUtils {
             return;
         }
 
-        boolean eliminadoProd = EliminarUtils.eliminarFila("Produccion", Map.of("Código Producción", codigoProduccion));
-        int eliminados = EliminarUtils.eliminarFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
+        long tInicio = System.currentTimeMillis();
 
-        if (eliminadoProd || eliminados > 0) {
-            mostrarConfirmacion("🗑 Producción y " + eliminados + " ingredientes eliminados.");
+        int eliminadosIngredientes = EliminarUtils.eliminarFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
+        boolean eliminadoProduccion = EliminarUtils.eliminarFila("Produccion", Map.of("Código Producción", codigoProduccion));
+
+        VerUtils.forzarActualizacion("Produccion");
+        VerUtils.forzarActualizacion("ProduccionIngredientes");
+
+        if (eliminadoProduccion || eliminadosIngredientes > 0) {
+            System.out.printf("✅ Producción y %d ingrediente(s) eliminados. ⏱️ %d ms%n",
+                    eliminadosIngredientes, System.currentTimeMillis() - tInicio);
+            mostrarConfirmacion("🗑 Producción y " + eliminadosIngredientes + " ingrediente(s) eliminados.");
         } else {
             mostrarError("❌ No se pudo eliminar la producción.");
         }
@@ -124,7 +132,7 @@ public class EditarProduccionUtils {
         try {
             return Double.parseDouble(val.replace(",", "").trim());
         } catch (Exception e) {
-            return 0;
+            return 0.0;
         }
     }
 }

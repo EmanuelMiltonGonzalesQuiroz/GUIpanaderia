@@ -13,10 +13,11 @@ public class ConversorUtils {
             Map.entry("Onzas", 28.3495),
             Map.entry("Litro", 1000.0),
             Map.entry("Mililitros", 1.0),
-            Map.entry("Onza", 29.5735) // Onza líquida
+            Map.entry("Onza", 29.5735)
     );
 
     private static List<Map<String, String>> CACHE_DATOS;
+    private static final Map<String, Double> CACHE_EQUIVALENCIAS = new HashMap<>();
 
     public static Double convertir(String tipoLogico,
                                    String unidadOrigen,
@@ -38,11 +39,9 @@ public class ConversorUtils {
             default -> List.of(tipoLogico);
         };
 
-        // Paso 1: convertir a gramos o mililitros
         Double base = convertirAUnidadBase(cantidad, unidadOrigen, ingrediente, tiposPermitidos, datos);
         if (base == null) return null;
 
-        // Paso 2: convertir desde gramos/mL a unidad destino
         Double divisor = equivalenciaParaUnidad(unidadDestino, ingrediente, tiposPermitidos, datos);
         if (divisor == null || divisor <= 0) return null;
 
@@ -64,10 +63,18 @@ public class ConversorUtils {
                                                  String ingrediente,
                                                  List<String> tiposPermitidos,
                                                  List<Map<String, String>> datos) {
+        String clave = ingrediente + "|" + unidad;
+        if (CACHE_EQUIVALENCIAS.containsKey(clave)) {
+            return CACHE_EQUIVALENCIAS.get(clave);
+        }
 
-        if (UNIDADES_ESTANDAR.containsKey(unidad)) return UNIDADES_ESTANDAR.get(unidad);
+        if (UNIDADES_ESTANDAR.containsKey(unidad)) {
+            Double val = UNIDADES_ESTANDAR.get(unidad);
+            CACHE_EQUIVALENCIAS.put(clave, val);
+            return val;
+        }
 
-        return datos.stream()
+        Double resultado = datos.stream()
                 .filter(d -> tiposPermitidos.contains(d.getOrDefault("Tipo lógico", "")))
                 .filter(d -> unidad.equalsIgnoreCase(d.get("Unidad base")))
                 .sorted(Comparator.comparing(d -> {
@@ -78,6 +85,12 @@ public class ConversorUtils {
                 .filter(val -> val > 0)
                 .findFirst()
                 .orElse(null);
+
+        if (resultado != null) {
+            CACHE_EQUIVALENCIAS.put(clave, resultado);
+        }
+
+        return resultado;
     }
 
     private static double extraerNumero(String entrada) {
@@ -92,7 +105,7 @@ public class ConversorUtils {
 
     private static List<Map<String, String>> obtenerDatos() {
         if (CACHE_DATOS == null) {
-            CACHE_DATOS = VerUtils.verTabla(TABLA);
+            CACHE_DATOS = VerUtils.verTablaConCache(TABLA);
             System.out.println("📥 Datos de conversión cargados en caché: " + CACHE_DATOS.size() + " filas.");
         }
         return CACHE_DATOS;
