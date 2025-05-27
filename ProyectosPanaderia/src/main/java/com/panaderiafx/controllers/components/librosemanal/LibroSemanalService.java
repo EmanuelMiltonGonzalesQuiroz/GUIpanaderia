@@ -17,7 +17,7 @@ public class LibroSemanalService {
 
     public static void cargarResumenSemanal(LocalDate inicio) {
         LocalDate fin = inicio.plusDays(6);
-        List<Map<String, String>> ganancias = VerUtils.verTabla("GananciasProduccion");
+        List<Map<String, String>> ganancias = VerUtils.verTabla("Produccion");
         List<Map<String, String>> variableDia = VerUtils.verTabla("VariableDia");
 
         double gananciaTotal = 0;
@@ -28,7 +28,7 @@ public class LibroSemanalService {
         for (Map<String, String> fila : ganancias) {
             LocalDate fecha = ParseUtils.toDate(fila.get("Fecha"));
             if (fecha != null && !fecha.isBefore(inicio) && !fecha.isAfter(fin)) {
-                gananciaTotal += ParseUtils.toDouble(fila.get("Ganancia Total"));
+                gananciaTotal += ParseUtils.toDouble(fila.get("Ganancia Tota")); // corregido nombre
                 costosDirectos += ParseUtils.toDouble(fila.get("Costo Total"));
             }
         }
@@ -110,7 +110,7 @@ public class LibroSemanalService {
     }
 
     public static void cargarDetallePorDia(LocalDate inicio, DetallePorDiaVista detalle) {
-        List<Map<String, String>> ganancias = VerUtils.verTabla("GananciasProduccion");
+        List<Map<String, String>> ganancias = VerUtils.verTabla("Produccion");
 
         for (int i = 0; i < 7; i++) {
             LocalDate fecha = inicio.plusDays(i);
@@ -134,8 +134,8 @@ public class LibroSemanalService {
 
     private static void agregarColumnas(TableView<Map<String, String>> tabla) {
         String[] columnas = {
-                "Producto", "Cantidad producida", "Precio venta/U",
-                "Costo Directo/U", "Costo Total", "Ganancia Total"
+                "Producto", "Cantidad Producida", "Precio de Venta por Unidad",
+                "Costo Directo/U", "Costo Total", "Ganancia Tota" // corregido
         };
         for (String col : columnas) {
             TableColumn<Map<String, String>, String> c = new TableColumn<>(col);

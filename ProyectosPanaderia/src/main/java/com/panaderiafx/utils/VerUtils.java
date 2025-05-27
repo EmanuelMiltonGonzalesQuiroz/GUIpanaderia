@@ -168,4 +168,12 @@ public class VerUtils {
 
         return nombres;
     }
+    public static String buscarPorCodigo(String tabla, String campoClave, String valorClave, String campoRetorno) {
+        return verTabla(tabla).stream()
+                .filter(fila -> valorClave.equalsIgnoreCase(fila.getOrDefault(campoClave, "")))
+                .map(fila -> fila.getOrDefault(campoRetorno, ""))
+                .findFirst()
+                .orElse("");
+    }
+
 }

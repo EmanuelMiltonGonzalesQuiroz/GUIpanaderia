@@ -23,44 +23,39 @@ public class PanelSelectorRecetaConTabla extends VBox {
         setSpacing(10);
         setPadding(new Insets(10));
 
-        // Fecha
+        // Fila para seleccionar fecha
         HBox filaFecha = new HBox(10, new Label("Fecha:"), campoFecha);
 
-        // Configuración columnas
-        TableColumn<Map<String, String>, String> colCodigo = new TableColumn<>("Código receta");
-        colCodigo.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Código receta", "")));
+        // Columnas de tabla
+        agregarColumna("Código receta", "Código receta");
+        agregarColumna("Producto", "Producto");
+        agregarColumna("Versión", "Versión");
+        agregarColumna("Rendimiento", "Rendimiento");
 
-        TableColumn<Map<String, String>, String> colProducto = new TableColumn<>("Producto");
-        colProducto.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Producto", "")));
-
-        TableColumn<Map<String, String>, String> colVersion = new TableColumn<>("Versión");
-        colVersion.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Versión", "")));
-
-        TableColumn<Map<String, String>, String> colRendimiento = new TableColumn<>("Rendimiento");
-        colRendimiento.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Rendimiento", "")));
-
-        tabla.getColumns().addAll(colCodigo, colProducto, colVersion, colRendimiento);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla.setPrefHeight(500);
 
         tabla.setOnMouseClicked(event -> {
             Map<String, String> seleccion = tabla.getSelectionModel().getSelectedItem();
-            if (seleccion != null) {
+            if (seleccion != null && !seleccion.equals(recetaSeleccionada)) {
                 recetaSeleccionada = seleccion;
-                if (callbackCambio != null) {
-                    callbackCambio.accept(seleccion);
-                }
+                if (callbackCambio != null) callbackCambio.accept(seleccion);
             }
         });
 
         getChildren().addAll(filaFecha, tabla);
-        recargar(); // ← carga inicial
+        recargar();
+    }
+
+    private void agregarColumna(String titulo, String campo) {
+        TableColumn<Map<String, String>, String> col = new TableColumn<>(titulo);
+        col.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault(campo, "")));
+        tabla.getColumns().add(col);
     }
 
     public void recargar() {
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
-        tabla.getItems().clear();
-        tabla.getItems().addAll(recetas);
+        tabla.getItems().setAll(recetas);
     }
 
     public String getCodigoRecetaSeleccionado() {
@@ -78,4 +73,5 @@ public class PanelSelectorRecetaConTabla extends VBox {
     public Node getNodo() {
         return this;
     }
+    
 }

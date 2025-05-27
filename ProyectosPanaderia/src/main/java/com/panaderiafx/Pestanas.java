@@ -60,7 +60,7 @@ public class Pestanas {
         tabPane.getTabs().add(produccionResumen);
 
         // TAB 2: Registro de Ingresos
-        Tab ingresosResumen = new Tab("Registro de Ingresos");
+        Tab ingresosResumen = new Tab("Edición de Producción");
         ingresosResumen.setClosable(false);
         ingresosResumen.setStyle("-fx-font-size: 16px;");
         ingresosResumen.setContent(new Label("Cargando..."));
@@ -70,6 +70,17 @@ public class Pestanas {
             }
         });
         tabPane.getTabs().add(ingresosResumen);
+
+        Tab libroSemanal = new Tab("Libro Semanal");
+        libroSemanal.setClosable(false);
+        libroSemanal.setStyle("-fx-font-size: 16px;");
+        libroSemanal.setContent(new Label("Cargando..."));
+        libroSemanal.setOnSelectionChanged(e -> {
+            if (libroSemanal.isSelected() && libroSemanal.getContent() instanceof Label) {
+                libroSemanal.setContent(LibroSemanalController.crearVista());
+            }
+        });
+        tabPane.getTabs().add(libroSemanal);
 
         // TAB 3: Registro de Recetas
         Tab recetasTab = new Tab("Registro de Recetas");
@@ -82,6 +93,8 @@ public class Pestanas {
             }
         });
         tabPane.getTabs().add(recetasTab);
+
+        
 
         // TAB 4+: Tablas desde configuración
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
@@ -145,18 +158,6 @@ public class Pestanas {
             }
         });
         tabPane.getTabs().add(calculadora);
-
-        // NUEVA TAB: Libro Semanal (flujo de caja)
-        Tab libroSemanal = new Tab("Libro Semanal");
-        libroSemanal.setClosable(false);
-        libroSemanal.setStyle("-fx-font-size: 16px;");
-        libroSemanal.setContent(new Label("Cargando..."));
-        libroSemanal.setOnSelectionChanged(e -> {
-            if (libroSemanal.isSelected() && libroSemanal.getContent() instanceof Label) {
-                libroSemanal.setContent(LibroSemanalController.crearVista());
-            }
-        });
-        tabPane.getTabs().add(libroSemanal);
 
         return tabPane;
     }

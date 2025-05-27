@@ -1,10 +1,13 @@
 package com.panaderiafx.controllers.components.registroproduccion2;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class BotonGuardarProduccion extends HBox {
 
@@ -18,24 +21,35 @@ public class BotonGuardarProduccion extends HBox {
         btnGuardar.setOnAction(e -> {
             String codReceta = selector.getCodigoRecetaSeleccionado();
             String fecha = selector.getFechaSeleccionada();
+            String nombreProducto = VerUtils.buscarPorCodigo("Recetas", "Código receta", codReceta, "Producto");
 
             if (codReceta == null || fecha.isEmpty()) {
                 mostrarError("Debe seleccionar una receta y una fecha.");
                 return;
             }
 
-            String cantidad = formExtra.getCantidad();
-            String precioU = formExtra.getPrecioUnitario();
-            String total = formExtra.getPrecioTotal();
-            String mezcla = formExtra.getMezclas(); // nuevo campo
+            String cantidadStr = formExtra.getCantidad();
+            String precioUStr = formExtra.getPrecioUnitario();
+            String totalStr = formExtra.getPrecioTotal();
+            String mezcla = formExtra.getMezclas();
+            String costoUnitarioStr = formExtra.getCostoUnitario();
+            String costoTotalStr = formExtra.getCostoDirecto();
 
-            if (cantidad.isEmpty() || precioU.isEmpty() || total.isEmpty()) {
+            if (cantidadStr.isEmpty() || precioUStr.isEmpty() || totalStr.isEmpty()) {
                 mostrarError("Debe ingresar cantidad, precio por unidad y precio total.");
                 return;
             }
 
+            double cantidad, precioU, total, costoUnitario, costoTotal;
+
             try {
-                if (Double.parseDouble(cantidad) == 0 || Double.parseDouble(precioU) == 0 || Double.parseDouble(total) == 0) {
+                cantidad = Double.parseDouble(cantidadStr);
+                precioU = Double.parseDouble(precioUStr);
+                total = Double.parseDouble(totalStr);
+                costoUnitario = ParseUtils.toDouble(costoUnitarioStr);
+                costoTotal = ParseUtils.toDouble(costoTotalStr);
+
+                if (cantidad == 0 || precioU == 0 || total == 0) {
                     mostrarError("Cantidad, precio unitario y total deben ser mayores a cero.");
                     return;
                 }
@@ -44,24 +58,29 @@ public class BotonGuardarProduccion extends HBox {
                 return;
             }
 
-            GuardarProduccionUtils.guardar(codReceta, fecha, cantidad, precioU, total, mezcla);
-            mostrarConfirmacion("Producción registrada correctamente.");
+            double gananciaTotal = (precioU - costoUnitario) * cantidad;
+
+            Map<String, String> filaProduccion = new LinkedHashMap<>();
+            filaProduccion.put("Código receta", codReceta);
+            filaProduccion.put("Fecha", fecha);
+            filaProduccion.put("Producto", nombreProducto);
+            filaProduccion.put("Cantidad producida", String.format("%.2f", cantidad));
+            filaProduccion.put("Precio de Venta por Unidad", String.format("%.2f", precioU));
+            filaProduccion.put("Mezcla", mezcla);
+            filaProduccion.put("Costo directo", String.format("%.2f", costoTotal));
+            filaProduccion.put("Costo/U", String.format("%.4f", costoUnitario));
+            filaProduccion.put("Costo Total", String.format("%.2f", costoTotal));
+            filaProduccion.put("Ganancia Total", String.format("%.2f", gananciaTotal));
+
+            GuardarProduccionUtils.guardar(filaProduccion, formExtra.isGuardarReceta());
         });
 
         getChildren().add(btnGuardar);
     }
 
     private void mostrarError(String mensaje) {
-        Alert alert = new Alert(AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-
-    private void mostrarConfirmacion(String mensaje) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Éxito");
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();

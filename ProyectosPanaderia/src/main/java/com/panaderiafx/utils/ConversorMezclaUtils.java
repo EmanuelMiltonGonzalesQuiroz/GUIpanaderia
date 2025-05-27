@@ -4,19 +4,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * Utilidad para convertir mezclas en cantidad producida estimada,
- * leyendo datos desde Excel mediante VerUtils.
- */
 public class ConversorMezclaUtils {
 
-    /**
-     * Calcula la cantidad producida estimada a partir del número de mezclas.
-     *
-     * @param cantidadMezclas número de mezclas utilizadas
-     * @param codigoReceta    código de la receta (ej: "REC0010")
-     * @return cantidad estimada de unidades producidas
-     */
     public static int calcularProduccionDesdeMezclas(double cantidadMezclas, String codigoReceta) {
         double rendimiento = obtenerRendimientoReceta(codigoReceta);
         if (rendimiento <= 0) return 0;
@@ -24,50 +13,60 @@ public class ConversorMezclaUtils {
         double librasPorMezcla = buscarEquivalenciaMezcla();
         if (librasPorMezcla <= 0) return 0;
 
+        double harinaBaseLbs = obtenerHarinaBaseEnLibras(codigoReceta);
+        if (harinaBaseLbs <= 0) return 0;
+
+        double vecesReceta = (cantidadMezclas * librasPorMezcla) / harinaBaseLbs;
+        return (int) Math.floor(vecesReceta * rendimiento);
+    }
+
+    public static double calcularMezclasDesdeProduccion(int cantidadProducida, String codigoReceta) {
+        double rendimiento = obtenerRendimientoReceta(codigoReceta);
+        if (rendimiento <= 0) return 0;
+
+        double librasPorMezcla = buscarEquivalenciaMezcla();
+        if (librasPorMezcla <= 0) return 0;
+
+        double harinaBaseLbs = obtenerHarinaBaseEnLibras(codigoReceta);
+        if (harinaBaseLbs <= 0) return 0;
+
+        double vecesReceta = cantidadProducida / rendimiento;
+        return (vecesReceta * harinaBaseLbs) / librasPorMezcla;
+    }
+
+    public static double obtenerHarinaBaseEnLibras(String codigoReceta) {
         List<Map<String, String>> recetasIngredientes = VerUtils.verTabla("RecetasIngredientes");
         List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
 
-        Map<String, String> ingredienteFallback = null;
+        Map<String, String> primeraFila = null;
 
         for (Map<String, String> fila : recetasIngredientes) {
-            if (!fila.getOrDefault("Código receta", "").equalsIgnoreCase(codigoReceta)) continue;
+            if (!codigoReceta.equalsIgnoreCase(fila.getOrDefault("Código receta", ""))) continue;
 
-            if (ingredienteFallback == null) {
-                ingredienteFallback = fila; // guardar primera fila
-            }
+            if (primeraFila == null) primeraFila = fila;
 
             String codIngrediente = fila.get("Ingrediente");
             String unidad = fila.get("Unidades");
-            double cantidadIngrediente = parseDouble(fila.get("Cantidad"));
-            String nombreIngrediente = buscarNombreIngrediente(codIngrediente, ingredientes);
+            double cantidad = parseDouble(fila.get("Cantidad"));
+            String nombre = buscarNombreIngrediente(codIngrediente, ingredientes);
 
-            if (nombreIngrediente.toLowerCase(Locale.ROOT).contains("harina")) {
-                double librasIngrediente = convertirAPesoLibras(cantidadIngrediente, unidad);
-                if (librasIngrediente <= 0) continue;
-
-                double vecesReceta = (cantidadMezclas * librasPorMezcla) / librasIngrediente;
-                return (int) Math.round(vecesReceta * rendimiento);
+            if (nombre.toLowerCase(Locale.ROOT).contains("harina")) {
+                return convertirAPesoLibras(cantidad, unidad); // usar solo la primera harina encontrada
             }
         }
 
-        // Fallback: usar el primer ingrediente si no hay harina
-        if (ingredienteFallback != null) {
-            String codIngrediente = ingredienteFallback.get("Ingrediente");
-            String unidad = ingredienteFallback.get("Unidades");
-            double cantidadIngrediente = parseDouble(ingredienteFallback.get("Cantidad"));
-
-            double librasIngrediente = convertirAPesoLibras(cantidadIngrediente, unidad);
-            if (librasIngrediente > 0) {
-                System.err.println("⚠️ No se encontró ingrediente 'harina' en receta " + codigoReceta + ". Usando ingrediente alternativo: " + codIngrediente);
-                double vecesReceta = (cantidadMezclas * librasPorMezcla) / librasIngrediente;
-                return (int) Math.round(vecesReceta * rendimiento);
-            }
+        // Si no se encontró harina, usar el primer ingrediente de la receta
+        if (primeraFila != null) {
+            String codIngrediente = primeraFila.get("Ingrediente");
+            String unidad = primeraFila.get("Unidades");
+            double cantidad = parseDouble(primeraFila.get("Cantidad"));
+            return convertirAPesoLibras(cantidad, unidad);
         }
 
         return 0;
     }
 
-    private static double obtenerRendimientoReceta(String codigoReceta) {
+    public static double obtenerRendimientoReceta(String codigoReceta) {
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
         for (Map<String, String> fila : recetas) {
             if (fila.get("Código receta").equalsIgnoreCase(codigoReceta)) {
@@ -77,7 +76,7 @@ public class ConversorMezclaUtils {
         return 0;
     }
 
-    private static double buscarEquivalenciaMezcla() {
+    public static double buscarEquivalenciaMezcla() {
         List<Map<String, String>> conversiones = VerUtils.verTabla("TabladeConversión");
         for (Map<String, String> fila : conversiones) {
             if ("Mezcla".equalsIgnoreCase(fila.get("Unidad base")) &&
@@ -88,17 +87,18 @@ public class ConversorMezclaUtils {
         return 0;
     }
 
-    private static double convertirAPesoLibras(double cantidad, String unidadOriginal) {
+    public static double convertirAPesoLibras(double cantidad, String unidadOriginal) {
         unidadOriginal = unidadOriginal.trim().toLowerCase(Locale.ROOT);
 
         if (unidadOriginal.contains("libra")) return cantidad;
         if (unidadOriginal.contains("kilo")) return cantidad * 2.20462;
         if (unidadOriginal.contains("gramo")) return cantidad * 0.00220462;
+        if (unidadOriginal.contains("onza")) return cantidad * 0.0625;
 
         return 0;
     }
 
-    private static String buscarNombreIngrediente(String codigo, List<Map<String, String>> ingredientes) {
+    public static String buscarNombreIngrediente(String codigo, List<Map<String, String>> ingredientes) {
         for (Map<String, String> fila : ingredientes) {
             if (fila.get("Código").equalsIgnoreCase(codigo)) {
                 return fila.get("Nombre");
@@ -107,10 +107,10 @@ public class ConversorMezclaUtils {
         return "";
     }
 
-    private static double parseDouble(String val) {
+    public static double parseDouble(String val) {
         try {
             return Double.parseDouble(val.replace(",", "").trim());
-        } catch (Exception e) {
+        } catch (Exception e) { 
             return 0;
         }
     }

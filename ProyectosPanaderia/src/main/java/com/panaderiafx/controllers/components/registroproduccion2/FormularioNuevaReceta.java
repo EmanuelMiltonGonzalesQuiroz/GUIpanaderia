@@ -3,8 +3,7 @@ package com.panaderiafx.controllers.components.registroproduccion2;
 import com.panaderiafx.utils.ConversorMezclaUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.util.function.Supplier;
@@ -15,6 +14,9 @@ public class FormularioNuevaReceta {
     private final TextField campoMezcla = new TextField();
     private final TextField campoPrecioUnidad = new TextField();
     private final TextField campoPrecioTotal = new TextField();
+    private final TextField campoCostoDirecto = new TextField("0.00");
+    private final TextField campoCostoUnitario = new TextField("0.0000");
+    private final CheckBox checkGuardarReceta = new CheckBox("Guardar Receta");
 
     private boolean actualizando = false;
 
@@ -24,6 +26,7 @@ public class FormularioNuevaReceta {
     private Label campoRendimiento;
 
     private String codigoRecetaActual;
+    private Runnable onCambioMezclas;
 
     public Node crear(String nombreProducto, String version, String rendimiento) {
         if (grid == null) inicializarGrid();
@@ -39,6 +42,14 @@ public class FormularioNuevaReceta {
         this.codigoRecetaActual = codigo;
     }
 
+    public String getCodigoRecetaActual() {
+        return codigoRecetaActual;
+    }
+
+    public boolean isGuardarReceta() {
+        return checkGuardarReceta.isSelected();
+    }
+
     private void inicializarGrid() {
         grid = new GridPane();
         grid.setHgap(10);
@@ -50,10 +61,17 @@ public class FormularioNuevaReceta {
         campoVersion = crearValorLabel("-");
         campoRendimiento = crearValorLabel("-");
 
+        campoNombreProducto.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        campoVersion.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        campoRendimiento.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        checkGuardarReceta.setStyle("-fx-font-size: 18px;  -fx-font-weight: bold;");
+
         restringirSoloNumeros(campoCantidad);
         restringirSoloNumeros(campoMezcla);
         restringirSoloNumeros(campoPrecioUnidad);
         restringirSoloNumeros(campoPrecioTotal);
+        restringirSoloNumeros(campoCostoDirecto);
+        restringirSoloNumeros(campoCostoUnitario);
 
         grid.add(crearEtiqueta("Producto:"), 0, 0);
         grid.add(campoNombreProducto, 1, 0);
@@ -76,9 +94,28 @@ public class FormularioNuevaReceta {
         grid.add(crearEtiqueta("Precio total:"), 0, 6);
         grid.add(campoPrecioTotal, 1, 6);
 
-        campoCantidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
-        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
-        campoPrecioTotal.textProperty().addListener((obs, o, n) -> recalcularDesdeTotal());
+        grid.add(crearEtiqueta("Costo directo:"), 0, 7);
+        grid.add(campoCostoDirecto, 1, 7);
+
+        grid.add(crearEtiqueta("Costo/U:"), 0, 8);
+        grid.add(campoCostoUnitario, 1, 8);
+
+        grid.add(checkGuardarReceta, 1, 9);
+
+        campoCantidad.textProperty().addListener((obs, o, n) -> {
+            if (actualizando) return;
+            actualizando = true;
+
+            double cantidad = parseDouble(n);
+            if (cantidad > 0 && codigoRecetaActual != null) {
+                double mezclas = ConversorMezclaUtils.calcularMezclasDesdeProduccion((int) cantidad, codigoRecetaActual);
+                campoMezcla.setText(String.format("%.2f", mezclas));
+                if (onCambioMezclas != null) onCambioMezclas.run();
+            }
+
+            recalcularDesdeUnidad();
+            actualizando = false;
+        });
 
         campoMezcla.textProperty().addListener((obs, o, n) -> {
             if (actualizando) return;
@@ -88,46 +125,44 @@ public class FormularioNuevaReceta {
             if (mezcla > 0 && codigoRecetaActual != null) {
                 int cantidad = ConversorMezclaUtils.calcularProduccionDesdeMezclas(mezcla, codigoRecetaActual);
                 campoCantidad.setText(String.valueOf(cantidad));
+                if (onCambioMezclas != null) onCambioMezclas.run();
             }
 
             actualizando = false;
         });
+
+        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
+        campoPrecioTotal.textProperty().addListener((obs, o, n) -> recalcularDesdeTotal());
     }
 
     private void recalcularDesdeUnidad() {
         if (actualizando) return;
         actualizando = true;
-
         double cantidad = parseDouble(campoCantidad.getText());
         double precioUnidad = parseDouble(campoPrecioUnidad.getText());
-
-        if (cantidad <= 0) {
-            campoPrecioTotal.setText("0.00");
-        } else {
-            campoPrecioTotal.setText(String.format("%.2f", cantidad * precioUnidad));
-        }
-
+        campoPrecioTotal.setText(cantidad <= 0 ? "0.00" : String.format("%.2f", cantidad * precioUnidad));
         actualizando = false;
     }
-    public String getMezclas() {
-        return campoMezcla.getText().trim();
-    }
-
 
     private void recalcularDesdeTotal() {
         if (actualizando) return;
         actualizando = true;
-
         double cantidad = parseDouble(campoCantidad.getText());
         double precioTotal = parseDouble(campoPrecioTotal.getText());
-
-        if (cantidad <= 0) {
-            campoPrecioUnidad.setText("0.00");
-        } else {
-            campoPrecioUnidad.setText(String.format("%.2f", precioTotal / cantidad));
-        }
-
+        campoPrecioUnidad.setText(cantidad <= 0 ? "0.00" : String.format("%.2f", precioTotal / cantidad));
         actualizando = false;
+    }
+
+    public void setOnCambioMezclas(Runnable r) {
+        this.onCambioMezclas = r;
+    }
+
+    public String getMezclas() {
+        return campoMezcla.getText().trim();
+    }
+
+    public void setMezclas(String valor) {
+        if (valor != null) campoMezcla.setText(valor);
     }
 
     public String getCantidad() {
@@ -142,6 +177,14 @@ public class FormularioNuevaReceta {
         return campoPrecioTotal.getText().trim();
     }
 
+    public String getCostoDirecto() {
+        return campoCostoDirecto.getText().trim();
+    }
+
+    public String getCostoUnitario() {
+        return campoCostoUnitario.getText().trim();
+    }
+
     public void setCantidad(String valor) {
         campoCantidad.setText(valor);
     }
@@ -152,6 +195,14 @@ public class FormularioNuevaReceta {
 
     public void setPrecioTotal(String valor) {
         campoPrecioTotal.setText(valor);
+    }
+
+    public void setCostoDirecto(String valor) {
+        campoCostoDirecto.setText(valor);
+    }
+
+    public void setCostoUnitario(String valor) {
+        campoCostoUnitario.setText(valor);
     }
 
     public Supplier<String> getCantidadSupplier() {
@@ -175,7 +226,7 @@ public class FormularioNuevaReceta {
 
     private Label crearValorLabel(String texto) {
         Label lbl = new Label(texto);
-        lbl.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+        lbl.setStyle("-fx-font-weight: bold; -fx-font-size: 18px;");
         return lbl;
     }
 
@@ -189,7 +240,7 @@ public class FormularioNuevaReceta {
 
     private void restringirSoloNumeros(TextField campo) {
         campo.textProperty().addListener((obs, oldText, newText) -> {
-            if (!newText.matches("\\d*(\\.\\d{0,2})?")) {
+            if (!newText.matches("\\d*(\\.\\d{0,4})?")) {
                 campo.setText(oldText);
             }
         });

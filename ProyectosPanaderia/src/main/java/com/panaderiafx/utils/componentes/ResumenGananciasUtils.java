@@ -64,7 +64,7 @@ public class ResumenGananciasUtils {
         double ganancia = (precioVenta * cantidad) - costoTotal;
 
         // === CREAR FILA ===
-        fila.put("Código", CodigoGenerator.generarCodigo("GananciasProduccion", "Código"));
+        fila.put("Código", CodigoGenerator.generarCodigo("Produccion", "Código"));
         fila.put("Fecha", fecha);
         fila.put("Código receta", codigoReceta);
         fila.put("Versión", version);
@@ -75,6 +75,6 @@ public class ResumenGananciasUtils {
         fila.put("Costo Total", String.format("%.2f", costoTotal));
         fila.put("Ganancia Total", String.format("%.2f", ganancia));
 
-        CrearUtils.crearFila("GananciasProduccion", fila);
+        CrearUtils.crearFila("Produccion", fila);
     }
 }

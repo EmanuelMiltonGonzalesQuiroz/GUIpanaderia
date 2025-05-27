@@ -1,45 +1,96 @@
 package com.panaderiafx.controllers.components.registroproduccion2;
 
-import com.panaderiafx.utils.CrearUtils;
+import com.panaderiafx.controllers.components.registroproduccion2.receta.PanelIngredientesRecetaConMezclas;
 import com.panaderiafx.utils.CodigoGenerator;
+import com.panaderiafx.utils.CrearUtils;
+import com.panaderiafx.utils.VerUtils;
+import javafx.scene.control.Alert;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GuardarProduccionUtils {
 
-    /**
-     * Guarda una fila en la tabla Producción, incluyendo Mezcla si está presente.
-     *
-     * @param codReceta       Código de receta
-     * @param fecha           Fecha de producción (formato puede ser yyyy-MM-dd)
-     * @param cantidad        Cantidad producida
-     * @param precioUnitario  Precio de venta por unidad
-     * @param totalCalculado  Total de la venta (opcional si se guarda en otro lado)
-     * @param mezcla          Cantidad de mezclas usadas (puede ser null o vacío)
-     */
-    public static void guardar(String codReceta, String fecha, String cantidad, String precioUnitario, String totalCalculado, String mezcla) {
-        Map<String, String> fila = new LinkedHashMap<>();
+    public static void guardar(Map<String, String> fila, boolean guardarReceta) {
+        String fechaOriginal = fila.get("Fecha");
+        String fechaFormateada = convertirFechaSiEsNecesario(fechaOriginal);
+        fila.put("Fecha", fechaFormateada);
 
-        // Convertir fecha si está en formato yyyy-MM-dd
-        fecha = convertirFechaSiEsNecesario(fecha);
+        String[] codRecetaFinal = { fila.getOrDefault("Código receta", "") };
 
-        // Generar código automáticamente
-        String nuevoCodigo = CodigoGenerator.generarCodigo("Produccion", "Código Producción");
+        if (guardarReceta) {
+            String codRecetaAnterior = fila.get("Código receta");
+            String nombreReceta = fila.getOrDefault("Producto", "-");
 
-        fila.put("Código Producción", nuevoCodigo);
-        fila.put("Fecha", fecha);
-        fila.put("Código receta", codReceta);
-        fila.put("Cantidad producida", cantidad);
-        fila.put("Precio de Venta por Unidad", precioUnitario);
+            codRecetaFinal[0] = CodigoGenerator.generarCodigo("Recetas", "Código receta");
+            String nuevaVersion = calcularSiguienteVersionPorProducto(nombreReceta);
 
-        if (mezcla != null && !mezcla.trim().isEmpty()) {
-            fila.put("Mezcla", mezcla.trim());
+            List<Map<String, String>> ingredientes = PanelIngredientesRecetaConMezclas.obtenerIngredientesModificados();
+
+            for (Map<String, String> ing : ingredientes) {
+                if (!"✓".equals(ing.get("Check"))) continue;
+
+                Map<String, String> nueva = new LinkedHashMap<>();
+                nueva.put("Código receta", codRecetaFinal[0]);
+                nueva.put("Receta", nombreReceta);
+                nueva.put("Ingrediente", ing.getOrDefault("Ingrediente", ""));
+                nueva.put("Cantidad", ing.getOrDefault("Cantidad", ""));
+                nueva.put("Unidades", ing.getOrDefault("Unidades", ""));
+                nueva.put("Versión", nuevaVersion);
+                CrearUtils.crearFila("RecetasIngredientes", nueva);
+            }
+
+            Optional<Map<String, String>> base = VerUtils.verTabla("Recetas").stream()
+                    .filter(r -> codRecetaAnterior.equalsIgnoreCase(r.get("Código receta")))
+                    .findFirst();
+
+            base.ifPresent(r -> {
+                Map<String, String> nueva = new LinkedHashMap<>(r);
+                nueva.put("Código receta", codRecetaFinal[0]);
+                nueva.put("Rendimiento", fila.getOrDefault("Cantidad producida", ""));
+                nueva.put("Versión", nuevaVersion);
+                CrearUtils.crearFila("Recetas", nueva);
+            });
+
+            mostrarConfirmacion("✅ Producción y receta " + codRecetaFinal[0] + " guardadas.");
         }
 
-        CrearUtils.crearFila("Produccion", fila);
-        System.out.println("✅ Producción registrada: " + fila);
+        String codigoProduccion = CodigoGenerator.generarCodigo("Produccion", "Código Producción");
+
+        Map<String, String> filaProduccion = new LinkedHashMap<>();
+        filaProduccion.put("Código Producción", codigoProduccion);
+        filaProduccion.put("Fecha", fechaFormateada);
+        filaProduccion.put("Código Receta", codRecetaFinal[0]);
+        filaProduccion.put("Cantidad Producida", fila.getOrDefault("Cantidad producida", ""));
+        filaProduccion.put("Precio de Venta por Unidad", fila.getOrDefault("Precio de Venta por Unidad", ""));
+        filaProduccion.put("Mezcla", fila.getOrDefault("Mezcla", ""));
+        filaProduccion.put("Producto", fila.getOrDefault("Producto", ""));
+        filaProduccion.put("Costo Directo/U", fila.getOrDefault("Costo/U", ""));
+        filaProduccion.put("Costo Total", fila.getOrDefault("Costo Total", ""));
+        filaProduccion.put("Ganancia Tota", fila.getOrDefault("Ganancia Total", ""));
+        CrearUtils.crearFila("Produccion", filaProduccion);
+
+        List<Map<String, String>> ingredientes = PanelIngredientesRecetaConMezclas.obtenerIngredientesModificados();
+        for (Map<String, String> ing : ingredientes) {
+            String codIng = ing.getOrDefault("Ingrediente", "");
+            String nombreIng = VerUtils.buscarPorCodigo("Ingredientes", "Código", codIng, "Nombre");
+
+            Map<String, String> filaIng = new LinkedHashMap<>();
+            filaIng.put("Código Producción", codigoProduccion);
+            filaIng.put("Código Receta", codRecetaFinal[0]);
+            filaIng.put("Ingrediente", codIng);
+            filaIng.put("Nombre Ingrediente", nombreIng);
+            filaIng.put("Cantidad Usada", ing.getOrDefault("Cantidad", ""));
+            filaIng.put("Unidad", ing.getOrDefault("Unidades", ""));
+            filaIng.put("Costo Total", ing.getOrDefault("Costo", "0"));
+            filaIng.put("Incluye", "✓".equals(ing.get("Check")) ? "✓" : "-");
+            filaIng.put("Fecha Registro", fechaFormateada);
+            CrearUtils.crearFila("ProduccionIngredientes", filaIng);
+        }
+
+        if (!guardarReceta) {
+            mostrarConfirmacion("✅ Producción registrada correctamente.");
+        }
     }
 
     private static String convertirFechaSiEsNecesario(String fecha) {
@@ -49,9 +100,34 @@ public class GuardarProduccionUtils {
                 SimpleDateFormat salida = new SimpleDateFormat("dd/MM/yyyy");
                 return salida.format(entrada.parse(fecha));
             }
-        } catch (ParseException e) {
+        } catch (Exception e) {
             System.err.println("⚠️ Error al convertir la fecha: " + fecha);
         }
         return fecha;
+    }
+
+    private static String calcularSiguienteVersionPorProducto(String producto) {
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+
+        int maxVersion = recetas.stream()
+                .filter(r -> producto.equalsIgnoreCase(r.getOrDefault("Producto", "")))
+                .map(r -> r.getOrDefault("Versión", "VER0001").replaceAll("[^0-9]", ""))
+                .mapToInt(s -> {
+                    try {
+                        return Integer.parseInt(s);
+                    } catch (Exception ex) {
+                        return 1;
+                    }
+                }).max().orElse(1);
+
+        return String.format("VER%04d", maxVersion + 1);
+    }
+
+    private static void mostrarConfirmacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Éxito");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }
