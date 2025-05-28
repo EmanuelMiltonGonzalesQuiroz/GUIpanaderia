@@ -1,9 +1,1097 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-📄 Cargada tabla 'Recetas' desde hoja. Filas: 15 ⏱️ 1525 ms
-📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 516 ms
-⏱️ Tiempo en crear pestañas: 2195 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 1991 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 598 ms
+⏱️ Tiempo en crear pestañas: 2804 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2831 ms
-⏱️ Tiempo desde main() hasta GUI: 2845 ms
+⏱️ Tiempo total en start(): 3711 ms
+⏱️ Tiempo desde main() hasta GUI: 3730 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 365 ms
+📄 Cargada tabla 'Produccion' desde hoja. Filas: 34 ⏱️ 409 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 407 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 347 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 358 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 362 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 310 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 275 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 289 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 262 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 300 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 297 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 260 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 253 ms
+🔵 Iniciando generación de código para tabla: Ingredientes
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 326 ms
+🔎 Columnas encontradas: [Código, Nombre, Unidad, Precio Local, Precio Dólar, Fecha de actualización, Categoría]
+🟡 Columna de código proporcionada: Código
+🗂️ Códigos extraídos: [ING0001, ING0002, ING0003, ING0004, ING0005, ING0006, ING0007, ING0008, ING0009, ING0010, ING0011, ING0012, ING0013, ING0014, ING0015, ING0016, ING0017, ING0018, ING0019, ING0020, ING0021, ING0022, ING0023, ING0024, ING0025, ING0026, ING0027]
+✅ Código generado: ING0028
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 233 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 260 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 273 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 241 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 252 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 279 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 232 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 236 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Kilos
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 252 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Kilos
+📢 Actualizando label con: Kilos
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Materia Prima
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 239 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Materia Prima
+📢 Actualizando label con: Materia Prima
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 279 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Kilos
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 271 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Kilos
+📢 Actualizando label con: Kilos
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Materia Prima
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 249 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Materia Prima
+📢 Actualizando label con: Materia Prima
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 239 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 288 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 255 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 275 ms
+🔵 Iniciando generación de código para tabla: Recetas
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 240 ms
+🔎 Columnas encontradas: [Código receta, Producto, Rendimiento, Unidad Rendimiento, Unidades por Lote, Molde/Lote, Categoría, Subcategoría, Observaciones, Versión]
+⚠️ Columna proporcionada no válida: Código
+🔍 Evaluando columna original: 'Código receta' -> normalizado: 'codigoreceta'
+✅ Columna de código detectada por contenido: Código receta
+🗂️ Códigos extraídos: [REC0001, REC0002, REC0003, REC0004, REC0005, REC0006, REC0007, REC0008, REC0009, REC0010, REC0011, REC0012, REC0013, REC0014]
+✅ Código generado: REC0015
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 273 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 277 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 251 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 262 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 254 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 246 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 266 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Semitas
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 237 ms
+📄 Registros encontrados en tabla 'Recetas': 14
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=44.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=44 moldes de 4 unidades, Versión=VER0001}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Lote=5.0, Molde/Lote=129.0, Categoría=Pan, Subcategoría=Dulce, Observaciones=129 paquetes x 5 unid, Versión=VER0001}
+✅ Match encontrado. Mostrar: Semitas
+📢 Actualizando label con: Semitas
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Unidades
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 235 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azúcar blanca, Unidad=Kilos, Precio Local=0.8, Precio Dólar=0.4, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=1.5, Precio Dólar=0.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Levadura, Unidad=Kilos, Precio Local=10.0, Precio Dólar=5.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Leche Entera, Unidad=Litro, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0007, Nombre=Azúcar morena, Unidad=Kilos, Precio Local=0.85, Precio Dólar=0.43, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0008, Nombre=Mantequilla, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0009, Nombre=Bolsas, Unidad=Unidades, Precio Local=0.1, Precio Dólar=0.05, Fecha de actualización=05/05/2025, Categoría=Material Empaque}
+✅ Match encontrado. Mostrar: Unidades
+📢 Actualizando label con: Unidades
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Pan
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 266 ms
+📄 Registros encontrados en tabla 'Recetas': 14
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=44.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=44 moldes de 4 unidades, Versión=VER0001}
+✅ Match encontrado. Mostrar: Pan
+📢 Actualizando label con: Pan
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Dulce
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 242 ms
+📄 Registros encontrados en tabla 'Recetas': 14
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=44.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=44 moldes de 4 unidades, Versión=VER0001}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Lote=5.0, Molde/Lote=129.0, Categoría=Pan, Subcategoría=Dulce, Observaciones=129 paquetes x 5 unid, Versión=VER0001}
+✅ Match encontrado. Mostrar: Dulce
+📢 Actualizando label con: Dulce
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 331 ms
+📄 Cargada tabla 'Produccion' desde hoja. Filas: 34 ⏱️ 256 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 253 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 260 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 339 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 367 ms
+🔵 Iniciando generación de código para tabla: Produccion
+📄 Cargada tabla 'Produccion' desde hoja. Filas: 34 ⏱️ 297 ms
+🔎 Columnas encontradas: [Código Producción, Fecha, Código Receta, Cantidad Producida, Precio de Venta por Unidad, Mezcla, Producto, Costo Directo/U, Costo Total, Ganancia Tota]
+⚠️ Columna proporcionada no válida: Código
+🔍 Evaluando columna original: 'Código Producción' -> normalizado: 'codigoproduccion'
+✅ Columna de código detectada por contenido: Código Producción
+🗂️ Códigos extraídos: [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007, PRO0008, PRO0009, PRO0010, PRO0011, PRO0012, PRO0013, PRO0014, PRO0015, PRO0016, PRO0017, PRO0018, PRO0019, PRO0020, PRO0021, PRO0022, PRO0023, PRO0024, PRO0025, PRO0026, PRO0027, PRO0028, PRO0029, PRO0030, PRO0031, PRO0032, PRO0033, PRO0034]
+✅ Código generado: PRO0035
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 347 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 235 ms
+📄 Cargada tabla 'Produccion' desde hoja. Filas: 34 ⏱️ 294 ms
+📄 Cargada tabla 'Produccion' desde hoja. Filas: 34 ⏱️ 326 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 243 ms
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 230 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 253 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 318 ms
+🔵 Iniciando generación de código para tabla: Costos
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 270 ms
+🔎 Columnas encontradas: [Código, Tipo, Categoría, Item, Frecuencia, Unidad, Precio Local, Precio Dólar]
+🟡 Columna de código proporcionada: Código
+🗂️ Códigos extraídos: [COS0001, COS0002, COS0003, COS0004, COS0005, COS0006, COS0007, COS0008, COS0009, COS0010, COS0011, COS0012, COS0013, COS0014, COS0015, COS0016, COS0017, COS0018, COS0019, COS0020, COS0021, COS0022, COS0023, COS0024, COS0025, COS0026, COS0027, COS0028, COS0029, COS0030, COS0031, COS0032, COS0033, COS0034, COS0035, COS0036, COS0037]
+✅ Código generado: COS0038
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 251 ms
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 246 ms
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 255 ms
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 286 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 235 ms
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 237 ms
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 235 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Directo
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 239 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Directo
+📢 Actualizando label con: Directo
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Materia Prima
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 285 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Materia Prima
+📢 Actualizando label con: Materia Prima
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Mensual
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 237 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Mensual
+📢 Actualizando label con: Mensual
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Saco
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 244 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Saco
+📢 Actualizando label con: Saco
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 232 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Directo
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 233 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Directo
+📢 Actualizando label con: Directo
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Material Empaque
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 266 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+✅ Match encontrado. Mostrar: Material Empaque
+📢 Actualizando label con: Material Empaque
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Mensual
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 233 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Mensual
+📢 Actualizando label con: Mensual
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Bolsa
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 240 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+✅ Match encontrado. Mostrar: Bolsa
+📢 Actualizando label con: Bolsa
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 258 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Indirecto
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 291 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0028, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Integral, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.5, Precio Dólar=0.072}
+➡ Fila: {Código=COS0029, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Hot Dog, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.51, Precio Dólar=0.0735}
+➡ Fila: {Código=COS0030, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Exclusive White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0031, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Cupcake, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.07, Precio Dólar=0.01}
+➡ Fila: {Código=COS0032, Tipo=Indirecto, Categoría=Servicios, Item=Butano, Frecuencia=Semanal, Unidad=Gals., Precio Local=41.0, Precio Dólar=5.6}
+✅ Match encontrado. Mostrar: Indirecto
+📢 Actualizando label con: Indirecto
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Servicios
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 268 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0028, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Integral, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.5, Precio Dólar=0.072}
+➡ Fila: {Código=COS0029, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Hot Dog, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.51, Precio Dólar=0.0735}
+➡ Fila: {Código=COS0030, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Exclusive White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0031, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Cupcake, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.07, Precio Dólar=0.01}
+➡ Fila: {Código=COS0032, Tipo=Indirecto, Categoría=Servicios, Item=Butano, Frecuencia=Semanal, Unidad=Gals., Precio Local=41.0, Precio Dólar=5.6}
+✅ Match encontrado. Mostrar: Servicios
+📢 Actualizando label con: Servicios
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Mensual
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 236 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Mensual
+📢 Actualizando label con: Mensual
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Kw
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 259 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0028, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Integral, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.5, Precio Dólar=0.072}
+➡ Fila: {Código=COS0029, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Hot Dog, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.51, Precio Dólar=0.0735}
+➡ Fila: {Código=COS0030, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Exclusive White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0031, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Cupcake, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.07, Precio Dólar=0.01}
+➡ Fila: {Código=COS0032, Tipo=Indirecto, Categoría=Servicios, Item=Butano, Frecuencia=Semanal, Unidad=Gals., Precio Local=41.0, Precio Dólar=5.6}
+➡ Fila: {Código=COS0033, Tipo=Indirecto, Categoría=Servicios, Item=Electricidad, Frecuencia=Mensual, Unidad=Kw, Precio Local=6067.5, Precio Dólar=825.21}
+✅ Match encontrado. Mostrar: Kw
+📢 Actualizando label con: Kw
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 288 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Indirecto
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 257 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0028, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Integral, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.5, Precio Dólar=0.072}
+➡ Fila: {Código=COS0029, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Hot Dog, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.51, Precio Dólar=0.0735}
+➡ Fila: {Código=COS0030, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Exclusive White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0031, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Cupcake, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.07, Precio Dólar=0.01}
+➡ Fila: {Código=COS0032, Tipo=Indirecto, Categoría=Servicios, Item=Butano, Frecuencia=Semanal, Unidad=Gals., Precio Local=41.0, Precio Dólar=5.6}
+✅ Match encontrado. Mostrar: Indirecto
+📢 Actualizando label con: Indirecto
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Servicios
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 308 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0028, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Integral, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.5, Precio Dólar=0.072}
+➡ Fila: {Código=COS0029, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Hot Dog, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.51, Precio Dólar=0.0735}
+➡ Fila: {Código=COS0030, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Exclusive White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0031, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Cupcake, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.07, Precio Dólar=0.01}
+➡ Fila: {Código=COS0032, Tipo=Indirecto, Categoría=Servicios, Item=Butano, Frecuencia=Semanal, Unidad=Gals., Precio Local=41.0, Precio Dólar=5.6}
+✅ Match encontrado. Mostrar: Servicios
+📢 Actualizando label con: Servicios
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Mensual
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 375 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Mensual
+📢 Actualizando label con: Mensual
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Total
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 298 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+➡ Fila: {Código=COS0002, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Blanca, Frecuencia=Mensual, Unidad=Saco, Precio Local=254.75, Precio Dólar=36.8}
+➡ Fila: {Código=COS0003, Tipo=Directo, Categoría=Materia Prima, Item=Sal, Frecuencia=Mensual, Unidad=Paq., Precio Local=6.23, Precio Dólar=0.9}
+➡ Fila: {Código=COS0004, Tipo=Directo, Categoría=Materia Prima, Item=Manteca, Frecuencia=Mensual, Unidad=Caja, Precio Local=725.0, Precio Dólar=100.0}
+➡ Fila: {Código=COS0005, Tipo=Directo, Categoría=Materia Prima, Item=Propionato de Calcio, Frecuencia=Mensual, Unidad=Saco, Precio Local=3781.4, Precio Dólar=522.0}
+➡ Fila: {Código=COS0006, Tipo=Directo, Categoría=Materia Prima, Item=Mejorante, Frecuencia=Mensual, Unidad=Caja, Precio Local=671.8, Precio Dólar=92.8}
+➡ Fila: {Código=COS0007, Tipo=Directo, Categoría=Materia Prima, Item=Aceite para cocinar, Frecuencia=Mensual, Unidad=Caja, Precio Local=605.35, Precio Dólar=83.75}
+➡ Fila: {Código=COS0008, Tipo=Directo, Categoría=Materia Prima, Item=Leche Condensada, Frecuencia=Mensual, Unidad=Caja, Precio Local=1077.5, Precio Dólar=149.0}
+➡ Fila: {Código=COS0009, Tipo=Directo, Categoría=Materia Prima, Item=Leche Evaporada, Frecuencia=Mensual, Unidad=Caja, Precio Local=758.25, Precio Dólar=105.0}
+➡ Fila: {Código=COS0010, Tipo=Directo, Categoría=Materia Prima, Item=Levadura, Frecuencia=Mensual, Unidad=Caja, Precio Local=823.8, Precio Dólar=114.0}
+➡ Fila: {Código=COS0011, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Amarillo, Frecuencia=Mensual, Unidad=Gals., Precio Local=307.88, Precio Dólar=42.5}
+➡ Fila: {Código=COS0012, Tipo=Directo, Categoría=Materia Prima, Item=Vainilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=310.1, Precio Dólar=43.0}
+➡ Fila: {Código=COS0013, Tipo=Directo, Categoría=Materia Prima, Item=Azucar Morena, Frecuencia=Mensual, Unidad=Saco, Precio Local=272.45, Precio Dólar=37.72}
+➡ Fila: {Código=COS0014, Tipo=Directo, Categoría=Materia Prima, Item=Canela en Polvo, Frecuencia=Mensual, Unidad=Caja, Precio Local=1444.0, Precio Dólar=200.0}
+➡ Fila: {Código=COS0015, Tipo=Directo, Categoría=Materia Prima, Item=Pasas, Frecuencia=Mensual, Unidad=Caja, Precio Local=684.25, Precio Dólar=95.0}
+➡ Fila: {Código=COS0016, Tipo=Directo, Categoría=Materia Prima, Item=Canela dulce, Frecuencia=Mensual, Unidad=Bloque, Precio Local=41.4, Precio Dólar=5.75}
+➡ Fila: {Código=COS0017, Tipo=Directo, Categoría=Materia Prima, Item=Harina Integral, Frecuencia=Mensual, Unidad=Saco, Precio Local=756.75, Precio Dólar=105.0}
+➡ Fila: {Código=COS0018, Tipo=Directo, Categoría=Materia Prima, Item=Ajonjoli, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0019, Tipo=Directo, Categoría=Materia Prima, Item=Colorante Negro, Frecuencia=Mensual, Unidad=Bote, Precio Local=237.6, Precio Dólar=33.0}
+➡ Fila: {Código=COS0020, Tipo=Directo, Categoría=Materia Prima, Item=Avena, Frecuencia=Mensual, Unidad=Bote, Precio Local=86.4, Precio Dólar=12.0}
+➡ Fila: {Código=COS0021, Tipo=Directo, Categoría=Materia Prima, Item=Linaza, Frecuencia=Mensual, Unidad=Lb, Precio Local=64.8, Precio Dólar=9.0}
+➡ Fila: {Código=COS0022, Tipo=Directo, Categoría=Materia Prima, Item=Chia, Frecuencia=Mensual, Unidad=Lb, Precio Local=36.0, Precio Dólar=5.0}
+➡ Fila: {Código=COS0023, Tipo=Directo, Categoría=Materia Prima, Item=Leche en Polvo, Frecuencia=Mensual, Unidad=Saco, Precio Local=2322.6, Precio Dólar=310.0}
+➡ Fila: {Código=COS0024, Tipo=Directo, Categoría=Materia Prima, Item=Mantequilla, Frecuencia=Mensual, Unidad=Caja, Precio Local=487.25, Precio Dólar=65.0}
+➡ Fila: {Código=COS0025, Tipo=Directo, Categoría=Materia Prima, Item=Soda, Frecuencia=Mensual, Unidad=Caja, Precio Local=56.25, Precio Dólar=7.5}
+➡ Fila: {Código=COS0026, Tipo=Directo, Categoría=Material Empaque, Item=Sellos, Frecuencia=Mensual, Unidad=Rollo, Precio Local=38.51, Precio Dólar=5.38}
+➡ Fila: {Código=COS0027, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Ideal White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0028, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Integral, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.5, Precio Dólar=0.072}
+➡ Fila: {Código=COS0029, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Hot Dog, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.51, Precio Dólar=0.0735}
+➡ Fila: {Código=COS0030, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Exclusive White, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.55, Precio Dólar=0.08}
+➡ Fila: {Código=COS0031, Tipo=Directo, Categoría=Material Empaque, Item=Bolsas - Cupcake, Frecuencia=Mensual, Unidad=Bolsa, Precio Local=0.07, Precio Dólar=0.01}
+➡ Fila: {Código=COS0032, Tipo=Indirecto, Categoría=Servicios, Item=Butano, Frecuencia=Semanal, Unidad=Gals., Precio Local=41.0, Precio Dólar=5.6}
+➡ Fila: {Código=COS0033, Tipo=Indirecto, Categoría=Servicios, Item=Electricidad, Frecuencia=Mensual, Unidad=Kw, Precio Local=6067.5, Precio Dólar=825.21}
+➡ Fila: {Código=COS0034, Tipo=Indirecto, Categoría=Servicios, Item=Agua, Frecuencia=Mensual, Unidad=Gals., Precio Local=683.35, Precio Dólar=92.9}
+➡ Fila: {Código=COS0035, Tipo=Indirecto, Categoría=Servicios, Item=Maquina, Frecuencia=Mensual, Unidad=Total, Precio Local=0.0, Precio Dólar=0.0}
+✅ Match encontrado. Mostrar: Total
+📢 Actualizando label con: Total
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 299 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Directo
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 240 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Directo
+📢 Actualizando label con: Directo
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Materia Prima
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 241 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Materia Prima
+📢 Actualizando label con: Materia Prima
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Mensual
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 252 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Mensual
+📢 Actualizando label con: Mensual
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Saco
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 269 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Saco
+📢 Actualizando label con: Saco
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 235 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Directo
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 254 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Directo
+📢 Actualizando label con: Directo
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Materia Prima
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 226 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Materia Prima
+📢 Actualizando label con: Materia Prima
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Mensual
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 259 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Mensual
+📢 Actualizando label con: Mensual
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Saco
+📄 Cargada tabla 'Costos' desde hoja. Filas: 37 ⏱️ 300 ms
+📄 Registros encontrados en tabla 'Costos': 37
+➡ Fila: {Código=COS0001, Tipo=Directo, Categoría=Materia Prima, Item=Harina, Frecuencia=Mensual, Unidad=Saco, Precio Local=688.55, Precio Dólar=99.5}
+✅ Match encontrado. Mostrar: Saco
+📢 Actualizando label con: Saco
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 241 ms
+📄 Cargada tabla 'TasaCambio' desde hoja. Filas: 16 ⏱️ 264 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 234 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 246 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 292 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 254 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 237 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 292 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 262 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 238 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: BZD/día
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 268 ms
+📄 Registros encontrados en tabla 'Parametros': 4
+➡ Fila: {Código=PAR0001, Nombre=Costo Mano Obra Diario, Valor=80.0, Unidad=BZD/día, Tipo=ManoObra, Descripción=Costo estimado por trabajador por día completo.}
+✅ Match encontrado. Mostrar: BZD/día
+📢 Actualizando label con: BZD/día
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: ManoObra
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 274 ms
+📄 Registros encontrados en tabla 'Parametros': 4
+➡ Fila: {Código=PAR0001, Nombre=Costo Mano Obra Diario, Valor=80.0, Unidad=BZD/día, Tipo=ManoObra, Descripción=Costo estimado por trabajador por día completo.}
+✅ Match encontrado. Mostrar: ManoObra
+📢 Actualizando label con: ManoObra
+🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 266 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 232 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 264 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 312 ms
+📄 Cargada tabla 'Parametros' desde hoja. Filas: 4 ⏱️ 246 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 249 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 300 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 246 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 246 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 314 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 251 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 267 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 402 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 273 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 247 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 356 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 306 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 300 ms
+📄 Cargada tabla 'TabladeConversión' desde hoja. Filas: 30 ⏱️ 257 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 255 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 227 ms
+📄 Cargada tabla 'TabladeConversión' desde hoja. Filas: 30 ⏱️ 249 ms
+📄 Cargada tabla 'TabladeConversión' desde hoja. Filas: 30 ⏱️ 289 ms
+📄 Cargada tabla 'TabladeConversión' desde hoja. Filas: 30 ⏱️ 221 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 225 ms
+📄 Cargada tabla 'TabladeConversión' desde hoja. Filas: 30 ⏱️ 254 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 246 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 114 ⏱️ 220 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 261 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 296 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 226 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 258 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 229 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 234 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 275 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 294 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 241 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 261 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 249 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 224 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 260 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 294 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 232 ms
+🆗 setValorDesdeTabla => mostrar: Sliced Bread, cargar: REC0001
+🆗 setValorDesdeTabla => mostrar: Sliced Bread, cargar: REC0001
+📢 Actualizando label con: Sliced Bread
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 270 ms
+🆗 setValorDesdeTabla => mostrar: Hot Dog, cargar: Hot Dog
+🆗 setValorDesdeTabla => mostrar: Hot Dog, cargar: Hot Dog
+📢 Actualizando label con: Hot Dog
+🆗 setValorDesdeTabla => mostrar: Mezcla Panela - Special Bunn, cargar: Mezcla Panela - Special Bunn
+🆗 setValorDesdeTabla => mostrar: Mezcla Panela - Special Bunn, cargar: Mezcla Panela - Special Bunn
+📢 Actualizando label con: Mezcla Panela - Special Bunn
+🆗 setValorDesdeTabla => mostrar: Pan Francés, cargar: Pan Francés
+🆗 setValorDesdeTabla => mostrar: Pan Francés, cargar: Pan Francés
+📢 Actualizando label con: Pan Francés
+🆗 setValorDesdeTabla => mostrar: Pan Integral, cargar: Pan Integral
+🆗 setValorDesdeTabla => mostrar: Pan Integral, cargar: Pan Integral
+📢 Actualizando label con: Pan Integral
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 242 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 286 ms
+🆗 setValorDesdeTabla => mostrar: Galletas, cargar: Galletas
+🆗 setValorDesdeTabla => mostrar: Galletas, cargar: Galletas
+📢 Actualizando label con: Galletas
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 333 ms
+🆗 setValorDesdeTabla => mostrar: Bolsas, cargar: ING0009
+🆗 setValorDesdeTabla => mostrar: Bolsas, cargar: ING0009
+📢 Actualizando label con: Bolsas
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 253 ms
+🆗 setValorDesdeTabla => mostrar: Litro, cargar: Litro
+🆗 setValorDesdeTabla => mostrar: Litro, cargar: Litro
+📢 Actualizando label con: Litro
+🟢 Intentando crear fila en hoja: RecetasIngredientes
+   ➤ [Código receta] columna 0 ➝ REC0001
+   ➤ [Receta] columna 1 ➝ Galletas
+   ➤ [Ingrediente] columna 2 ➝ ING0009
+   ➤ [Cantidad] columna 3 ➝ 15
+   ➤ [Unidades] columna 4 ➝ Litro
+   ➤ [Versión] columna 5 ➝ 2
+✅ Fila creada correctamente en hoja 'RecetasIngredientes'.
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 115 ⏱️ 370 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 268 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 379 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 238 ms
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: RecetasIngredientes
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 260 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Produccion, Nombre Visible=Producción, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Costos, Nombre Visible=Costos, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=TasaCambio, Nombre Visible=Tasa de Cambio, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=Parametros, Nombre Visible=Parámetros, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=TabladeConversión, Nombre Visible=Tabla de Conversión, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=HistorialPrecios, Nombre Visible=Historial de Precios, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=RecetasIngredientes, Nombre Visible=Recetas Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Recetas Ingredientes
+📢 Actualizando label con: Recetas Ingredientes
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Código receta
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 232 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+✅ Match encontrado. Mostrar: Código receta
+📢 Actualizando label con: Código receta
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Select
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 234 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+✅ Match encontrado. Mostrar: Select
+📢 Actualizando label con: Select
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Recetas
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 323 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Recetas
+📢 Actualizando label con: Recetas
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Producto
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 277 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Producto, Tipo=Select, Origen=Recetas, Dato a Mostrar=Producto, Dato a Cargar=Producto}
+✅ Match encontrado. Mostrar: Producto
+📢 Actualizando label con: Producto
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Código receta
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 235 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+✅ Match encontrado. Mostrar: Código receta
+📢 Actualizando label con: Código receta
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 291 ms
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Parametros
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 363 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Produccion, Nombre Visible=Producción, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Costos, Nombre Visible=Costos, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=TasaCambio, Nombre Visible=Tasa de Cambio, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=Parametros, Nombre Visible=Parámetros, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=Sí, Vista basica=No}
+✅ Match encontrado. Mostrar: Parámetros
+📢 Actualizando label con: Parámetros
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Valor
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 273 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Producto, Tipo=Select, Origen=Recetas, Dato a Mostrar=Producto, Dato a Cargar=Producto}
+➡ Fila: {Tabla=Recetas, Campo=Rendimiento, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Unidad Rendimiento, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Recetas, Campo=Unidades por Lote, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Molde/Lote, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Categoría, Tipo=Select, Origen=Recetas, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Subcategoría, Tipo=Select, Origen=Recetas, Dato a Mostrar=Subcategoría, Dato a Cargar=Subcategoría}
+➡ Fila: {Tabla=Recetas, Campo=Observaciones, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Versión, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Produccion, Campo=Código Producción, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Produccion, Campo=Fecha, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Produccion, Campo=Código receta, Tipo=Select, Origen=Recetas, Dato a Mostrar=Producto, Código receta, Dato a Cargar=Código receta}
+➡ Fila: {Tabla=Produccion, Campo=Cantidad producida, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Produccion, Campo=Precio de Venta por Unidad, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Costos, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Costos, Campo=Tipo, Tipo=Select, Origen=Costos, Dato a Mostrar=Tipo, Dato a Cargar=Tipo}
+➡ Fila: {Tabla=Costos, Campo=Categoría, Tipo=Select, Origen=Costos, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Costos, Campo=Item, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Costos, Campo=Frecuencia, Tipo=Select, Origen=Costos, Dato a Mostrar=Frecuencia, Dato a Cargar=Frecuencia}
+➡ Fila: {Tabla=Costos, Campo=Unidad, Tipo=Select, Origen=Costos, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Costos, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Costos, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=TasaCambio, Campo=Fecha, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=TasaCambio, Campo=Local a USD, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Parametros, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Parametros, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Parametros, Campo=Valor, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+✅ Match encontrado. Mostrar: Valor
+📢 Actualizando label con: Valor
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Text
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 305 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+✅ Match encontrado. Mostrar: Text
+📢 Actualizando label con: Text
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 366 ms
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: RecetasIngredientes
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 292 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Produccion, Nombre Visible=Producción, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Costos, Nombre Visible=Costos, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=TasaCambio, Nombre Visible=Tasa de Cambio, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=Parametros, Nombre Visible=Parámetros, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=TabladeConversión, Nombre Visible=Tabla de Conversión, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=HistorialPrecios, Nombre Visible=Historial de Precios, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=RecetasIngredientes, Nombre Visible=Recetas Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Recetas Ingredientes
+📢 Actualizando label con: Recetas Ingredientes
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Código receta
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 299 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+✅ Match encontrado. Mostrar: Código receta
+📢 Actualizando label con: Código receta
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Select
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 311 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+✅ Match encontrado. Mostrar: Select
+📢 Actualizando label con: Select
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Recetas
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 231 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Recetas
+📢 Actualizando label con: Recetas
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Producto
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 219 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Recetas, Campo=Producto, Tipo=Select, Origen=Recetas, Dato a Mostrar=Producto, Dato a Cargar=Producto}
+✅ Match encontrado. Mostrar: Producto
+📢 Actualizando label con: Producto
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Código receta
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 274 ms
+📄 Registros encontrados en tabla 'ConfiguraciónFormularios': 66
+➡ Fila: {Tabla=Ingredientes, Campo=Código, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Nombre, Tipo=Text, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Unidad, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Unidad, Dato a Cargar=Unidad}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Local, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Precio Dólar, Tipo=Precio, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Fecha de actualización, Tipo=Fecha, Origen=, Dato a Mostrar=, Dato a Cargar=}
+➡ Fila: {Tabla=Ingredientes, Campo=Categoría, Tipo=Select, Origen=Ingredientes, Dato a Mostrar=Categoría, Dato a Cargar=Categoría}
+➡ Fila: {Tabla=Recetas, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+✅ Match encontrado. Mostrar: Código receta
+📢 Actualizando label con: Código receta
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 318 ms
+🆗 setValorDesdeTabla => mostrar: Código, cargar: Código
+🆗 setValorDesdeTabla => mostrar: Código, cargar: Código
+📢 Actualizando label con: Código
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 230 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 232 ms
+🛠 Modificando: {Tabla=RecetasIngredientes, Campo=Código receta, Tipo=Select, Origen=Recetas, Dato a Mostrar=Producto, Dato a Cargar=Código receta} en ConfiguraciónFormularios
+➡️ Nuevo valor: {Tabla=RecetasIngredientes, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+📋 Iniciando modificación de fila en tabla: ConfiguraciónFormularios
+🔎 Condiciones: {Tabla=RecetasIngredientes, Campo=Código receta, Tipo=Select, Origen=Recetas, Dato a Mostrar=Producto, Dato a Cargar=Código receta}
+🆕 Nuevos valores: {Tabla=RecetasIngredientes, Campo=Código receta, Tipo=Código, Origen=, Dato a Mostrar=, Dato a Cargar=}
+📌 Columnas detectadas: {Tabla=0, Campo=1, Tipo=2, Origen=3, Dato a Mostrar=4, Dato a Cargar=5}
+✅ Fila encontrada en la fila 44. Aplicando cambios...
+✏️ [Tabla] actualizado a: RecetasIngredientes
+✏️ [Campo] actualizado a: Código receta
+✏️ [Tipo] actualizado a: Código
+✏️ [Origen] actualizado a: 
+✏️ [Dato a Mostrar] actualizado a: 
+✏️ [Dato a Cargar] actualizado a: 
+💾 Cambios guardados exitosamente.
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 278 ms
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "java.util.Map.get(Object)" is null
+	at com.panaderiafx.controllers.components.FormularioModificar.lambda$crearBotonModificar$2(FormularioModificar.java:199)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:178)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1685)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:647)
+	at com.panaderiafx.controllers.components.FormularioModificar.lambda$crearBotonModificar$3(FormularioModificar.java:200)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 228 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 222 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 232 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 249 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 313 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 115 ⏱️ 260 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 244 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 241 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 233 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 246 ms
+🔵 Iniciando generación de código para tabla: RecetasIngredientes
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 115 ⏱️ 222 ms
+🔎 Columnas encontradas: [Código receta, Receta, Ingrediente, Cantidad, Unidades, Versión]
+⚠️ Columna proporcionada no válida: Código
+🔍 Evaluando columna original: 'Código receta' -> normalizado: 'codigoreceta'
+✅ Columna de código detectada por contenido: Código receta
+🗂️ Códigos extraídos: [REC0001, REC0001, REC0001, REC0001, REC0001, REC0001, REC0001, REC0001, REC0001, REC0002, REC0002, REC0002, REC0002, REC0002, REC0002, REC0002, REC0002, REC0002, REC0003, REC0003, REC0003, REC0003, REC0004, REC0004, REC0004, REC0004, REC0004, REC0004, REC0004, REC0004, REC0005, REC0005, REC0005, REC0005, REC0005, REC0005, REC0005, REC0005, REC0005, REC0006, REC0006, REC0006, REC0006, REC0006, REC0006, REC0006, REC0006, REC0006, REC0006, REC0007, REC0007, REC0008, REC0008, REC0008, REC0008, REC0008, REC0008, REC0008, REC0008, REC0008, REC0008, REC0009, REC0009, REC0010, REC0010, REC0010, REC0010, REC0010, REC0010, REC0010, REC0010, REC0010, REC0010, REC0010, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0011, REC0012, REC0012, REC0012, REC0012, REC0012, REC0012, REC0012, REC0012, REC0012, REC0013, REC0013, REC0013, REC0013, REC0013, REC0013, REC0013, REC0013, REC0013, REC0014, REC0014, REC0014, REC0014, REC0014, REC0014, REC0014, REC0001]
+✅ Código generado: REC0015
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 247 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 249 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 250 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 268 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 337 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 255 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 229 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 243 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 269 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 229 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 219 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 231 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 226 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 252 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 264 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 276 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 253 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 232 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 249 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 298 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 236 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 265 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 304 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 245 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 225 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 115 ⏱️ 225 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 115 ⏱️ 277 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Galletas
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 232 ms
+📄 Registros encontrados en tabla 'Recetas': 14
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=44.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=44 moldes de 4 unidades, Versión=VER0001}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Lote=5.0, Molde/Lote=129.0, Categoría=Pan, Subcategoría=Dulce, Observaciones=129 paquetes x 5 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0003, Producto=Pasta de Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Lote=5.0, Molde/Lote=129.0, Categoría=Pan, Subcategoría=Dulce, Observaciones=Mismo lote que REC0002, Versión=VER0001}
+➡ Fila: {Código receta=REC0004, Producto=Burger, Rendimiento=864.0, Unidad Rendimiento=Unidades, Unidades por Lote=6.0, Molde/Lote=144.0, Categoría=Pan, Subcategoría=Salado, Observaciones=144 paquetes x 6 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0005, Producto=Hot Dog, Rendimiento=640.0, Unidad Rendimiento=Unidades, Unidades por Lote=8.0, Molde/Lote=80.0, Categoría=Pan, Subcategoría=Salado, Observaciones=80 paquetes x 8 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0006, Producto=Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Especial, Observaciones=Sin empaque agrupado, Versión=VER0001}
+➡ Fila: {Código receta=REC0007, Producto=Refinar - Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Refinado, Observaciones=Refinado de REC0006, Versión=VER0001}
+➡ Fila: {Código receta=REC0008, Producto=Special Bunn, Rendimiento=120.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Especial, Observaciones=, Versión=VER0001}
+➡ Fila: {Código receta=REC0009, Producto=Mezcla Panela - Special Bunn, Rendimiento=120.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Mezcla, Observaciones=Usa mezcla de panela, Versión=VER0001}
+➡ Fila: {Código receta=REC0010, Producto=Pan Integral, Rendimiento=64.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=16.0, Categoría=Pan, Subcategoría=Integral, Observaciones=16 moldes x 4 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0011, Producto=Pan Multigrano, Rendimiento=48.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=16.0, Categoría=Pan, Subcategoría=Integral, Observaciones=16 moldes x 4 unid (con granos), Versión=VER0001}
+➡ Fila: {Código receta=REC0012, Producto=Exclusive White, Rendimiento=16.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Blanco, Observaciones=16 unidades, Versión=VER0001}
+➡ Fila: {Código receta=REC0013, Producto=Pan Francés, Rendimiento=84.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=21.0, Categoría=Pan, Subcategoría=Salado, Observaciones=21 paquetes x 4 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0014, Producto=Galletas, Rendimiento=560, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=38.0, Categoría=Repostería, Subcategoría=Galletas, Observaciones=38 paquetes, 560 grandes, 480 pequeñas, Versión=VER0001}
+✅ Match encontrado. Mostrar: Galletas
+📢 Actualizando label con: Galletas
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: ING0009
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 260 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azúcar blanca, Unidad=Kilos, Precio Local=0.8, Precio Dólar=0.4, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=1.5, Precio Dólar=0.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Levadura, Unidad=Kilos, Precio Local=10.0, Precio Dólar=5.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Leche Entera, Unidad=Litro, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0007, Nombre=Azúcar morena, Unidad=Kilos, Precio Local=0.85, Precio Dólar=0.43, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0008, Nombre=Mantequilla, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0009, Nombre=Bolsas, Unidad=Unidades, Precio Local=0.1, Precio Dólar=0.05, Fecha de actualización=05/05/2025, Categoría=Material Empaque}
+✅ Match encontrado. Mostrar: Bolsas
+📢 Actualizando label con: Bolsas
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Litro
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 229 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azúcar blanca, Unidad=Kilos, Precio Local=0.8, Precio Dólar=0.4, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=1.5, Precio Dólar=0.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Levadura, Unidad=Kilos, Precio Local=10.0, Precio Dólar=5.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Leche Entera, Unidad=Litro, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Litro
+📢 Actualizando label con: Litro
+🔎 Verificando cambios para la tabla: 🗑 Se eliminaron 1 fila(s) de 'RecetasIngredientes' con condiciones: {Código receta=REC0001, Receta=Galletas, Ingrediente=ING0009, Cantidad=15, Unidades=Litro, Versión=2} ⏱️ 665 ms
+🗑 Eliminando de RecetasIngredientes: {Código receta=REC0001, Receta=Galletas, Ingrediente=ING0009, Cantidad=15, Unidades=Litro, Versión=2}
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 227 ms
+📄 Cargada tabla 'HistorialPrecios' desde hoja. Filas: 27 ⏱️ 284 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 240 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 114 ⏱️ 297 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 327 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 262 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 114 ⏱️ 226 ms
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Galletas
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 268 ms
+📄 Registros encontrados en tabla 'Recetas': 14
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=44.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=44 moldes de 4 unidades, Versión=VER0001}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Lote=5.0, Molde/Lote=129.0, Categoría=Pan, Subcategoría=Dulce, Observaciones=129 paquetes x 5 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0003, Producto=Pasta de Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Lote=5.0, Molde/Lote=129.0, Categoría=Pan, Subcategoría=Dulce, Observaciones=Mismo lote que REC0002, Versión=VER0001}
+➡ Fila: {Código receta=REC0004, Producto=Burger, Rendimiento=864.0, Unidad Rendimiento=Unidades, Unidades por Lote=6.0, Molde/Lote=144.0, Categoría=Pan, Subcategoría=Salado, Observaciones=144 paquetes x 6 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0005, Producto=Hot Dog, Rendimiento=640.0, Unidad Rendimiento=Unidades, Unidades por Lote=8.0, Molde/Lote=80.0, Categoría=Pan, Subcategoría=Salado, Observaciones=80 paquetes x 8 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0006, Producto=Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Especial, Observaciones=Sin empaque agrupado, Versión=VER0001}
+➡ Fila: {Código receta=REC0007, Producto=Refinar - Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Refinado, Observaciones=Refinado de REC0006, Versión=VER0001}
+➡ Fila: {Código receta=REC0008, Producto=Special Bunn, Rendimiento=120.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Especial, Observaciones=, Versión=VER0001}
+➡ Fila: {Código receta=REC0009, Producto=Mezcla Panela - Special Bunn, Rendimiento=120.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Mezcla, Observaciones=Usa mezcla de panela, Versión=VER0001}
+➡ Fila: {Código receta=REC0010, Producto=Pan Integral, Rendimiento=64.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=16.0, Categoría=Pan, Subcategoría=Integral, Observaciones=16 moldes x 4 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0011, Producto=Pan Multigrano, Rendimiento=48.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=16.0, Categoría=Pan, Subcategoría=Integral, Observaciones=16 moldes x 4 unid (con granos), Versión=VER0001}
+➡ Fila: {Código receta=REC0012, Producto=Exclusive White, Rendimiento=16.0, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=-, Categoría=Pan, Subcategoría=Blanco, Observaciones=16 unidades, Versión=VER0001}
+➡ Fila: {Código receta=REC0013, Producto=Pan Francés, Rendimiento=84.0, Unidad Rendimiento=Unidades, Unidades por Lote=4.0, Molde/Lote=21.0, Categoría=Pan, Subcategoría=Salado, Observaciones=21 paquetes x 4 unid, Versión=VER0001}
+➡ Fila: {Código receta=REC0014, Producto=Galletas, Rendimiento=560, Unidad Rendimiento=Unidades, Unidades por Lote=-, Molde/Lote=38.0, Categoría=Repostería, Subcategoría=Galletas, Observaciones=38 paquetes, 560 grandes, 480 pequeñas, Versión=VER0001}
+✅ Match encontrado. Mostrar: Galletas
+📢 Actualizando label con: Galletas
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: ING0011
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 282 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azúcar blanca, Unidad=Kilos, Precio Local=0.8, Precio Dólar=0.4, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=1.5, Precio Dólar=0.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Levadura, Unidad=Kilos, Precio Local=10.0, Precio Dólar=5.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Leche Entera, Unidad=Litro, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0007, Nombre=Azúcar morena, Unidad=Kilos, Precio Local=0.85, Precio Dólar=0.43, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0008, Nombre=Mantequilla, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0009, Nombre=Bolsas, Unidad=Unidades, Precio Local=0.1, Precio Dólar=0.05, Fecha de actualización=05/05/2025, Categoría=Material Empaque}
+➡ Fila: {Código=ING0010, Nombre=Colorante, Unidad=Onzas, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=08/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0011, Nombre=Vainilla, Unidad=Litro, Precio Local=10.0, Precio Dólar=5.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Vainilla
+📢 Actualizando label con: Vainilla
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Onzas
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 266 ms
+📄 Registros encontrados en tabla 'Ingredientes': 27
+➡ Fila: {Código=ING0001, Nombre=Harina de trigo, Unidad=Kilos, Precio Local=4.0, Precio Dólar=2.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azúcar blanca, Unidad=Kilos, Precio Local=0.8, Precio Dólar=0.4, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=1.5, Precio Dólar=0.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Levadura, Unidad=Kilos, Precio Local=10.0, Precio Dólar=5.0, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Leche Entera, Unidad=Litro, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0007, Nombre=Azúcar morena, Unidad=Kilos, Precio Local=0.85, Precio Dólar=0.43, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0008, Nombre=Mantequilla, Unidad=Kilos, Precio Local=7.6, Precio Dólar=3.8, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0009, Nombre=Bolsas, Unidad=Unidades, Precio Local=0.1, Precio Dólar=0.05, Fecha de actualización=05/05/2025, Categoría=Material Empaque}
+➡ Fila: {Código=ING0010, Nombre=Colorante, Unidad=Onzas, Precio Local=3.0, Precio Dólar=1.5, Fecha de actualización=08/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Onzas
+📢 Actualizando label con: Onzas
+🔎 Verificando cambios para la tabla: 📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 228 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 284 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 306 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 257 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 289 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 114 ⏱️ 317 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 265 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 271 ms
+📄 Cargada tabla 'Ingredientes' desde hoja. Filas: 27 ⏱️ 273 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 250 ms
+📄 Cargada tabla 'RecetasIngredientes' desde hoja. Filas: 114 ⏱️ 231 ms
