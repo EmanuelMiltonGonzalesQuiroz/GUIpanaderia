@@ -1,12 +1,164 @@
 📌 Redirección de logs activada.
 🟢 Lanzando aplicación desde main()
 ✅ Entrando a start()...
-📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 1334 ms
-📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 519 ms
-⏱️ Tiempo en crear pestañas: 2023 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 1330 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 432 ms
+⏱️ Tiempo en crear pestañas: 1955 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2833 ms
-⏱️ Tiempo desde main() hasta GUI: 2847 ms
-📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 246 ms
-📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 234 ms
-📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 204 ms
+⏱️ Tiempo total en start(): 2734 ms
+⏱️ Tiempo desde main() hasta GUI: 2749 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 263 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 280 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 224 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 208 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 187 ms
+📄 Cargada tabla 'ConfiguraciónFormularios' desde hoja. Filas: 66 ⏱️ 190 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 223 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 202 ms
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: ProduccionIngredientes
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 190 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Produccion, Nombre Visible=Producción, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Costos, Nombre Visible=Costos, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=TasaCambio, Nombre Visible=Tasa de Cambio, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=Parametros, Nombre Visible=Parámetros, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=TabladeConversión, Nombre Visible=Tabla de Conversión, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=HistorialPrecios, Nombre Visible=Historial de Precios, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=No}
+➡ Fila: {Tabla=RecetasIngredientes, Nombre Visible=Recetas Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=ConfiguraciónTablas, Nombre Visible=Configuración de Tablas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=ConfiguraciónFormularios, Nombre Visible=Configuración de Formularios, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=ConfiguraciónVistaTablas, Nombre Visible=Configuración de Vista de Tablas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=No}
+➡ Fila: {Tabla=VariableDia, Nombre Visible=Varaibles del Día, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=Sí}
+➡ Fila: {Tabla=ResumenSemanal, Nombre Visible=Libro Contable, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=Sí}
+➡ Fila: {Tabla=ProduccionIngredientes, Nombre Visible=Producción Ingredientes, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Producción Ingredientes
+📢 Actualizando label con: Producción Ingredientes
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Sí
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 151 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Sí
+📢 Actualizando label con: Sí
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Sí
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 153 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+✅ Match encontrado. Mostrar: Sí
+📢 Actualizando label con: Sí
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: No
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 143 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Produccion, Nombre Visible=Producción, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Costos, Nombre Visible=Costos, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=TasaCambio, Nombre Visible=Tasa de Cambio, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=No, Vista basica=No}
+✅ Match encontrado. Mostrar: No
+📢 Actualizando label con: No
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: No
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 156 ms
+📄 Registros encontrados en tabla 'ConfiguraciónTablas': 15
+➡ Fila: {Tabla=Ingredientes, Nombre Visible=Ingredientes, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Recetas, Nombre Visible=Recetas, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Produccion, Nombre Visible=Producción, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=Costos, Nombre Visible=Costos, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=Sí, Vista basica=Sí}
+➡ Fila: {Tabla=TasaCambio, Nombre Visible=Tasa de Cambio, Mostrar=Sí, Ver=Sí, Crear=Sí, Modificar=No, Vista basica=No}
+✅ Match encontrado. Mostrar: No
+📢 Actualizando label con: No
+🛠 Modificando: {Tabla=ProduccionIngredientes, Nombre Visible=Producción Ingredientes, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=Sí} en ConfiguraciónTablas
+➡️ Nuevo valor: {Tabla=ProduccionIngredientes, Nombre Visible=Ingredientes Usados en Producción, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No}
+📋 Iniciando modificación de fila en tabla: ConfiguraciónTablas
+🔎 Condiciones: {Tabla=ProduccionIngredientes, Nombre Visible=Producción Ingredientes, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No, Vista basica=Sí}
+🆕 Nuevos valores: {Tabla=ProduccionIngredientes, Nombre Visible=Ingredientes Usados en Producción, Mostrar=Sí, Ver=Sí, Crear=No, Modificar=No}
+📌 Columnas detectadas: {Tabla=0, Nombre Visible=1, Mostrar=2, Ver=3, Crear=4, Modificar=5, Vista basica=6}
+✅ Fila encontrada en la fila 15. Aplicando cambios...
+✏️ [Tabla] actualizado a: ProduccionIngredientes
+✏️ [Nombre Visible] actualizado a: Ingredientes Usados en Producción
+✏️ [Mostrar] actualizado a: Sí
+✏️ [Ver] actualizado a: Sí
+✏️ [Crear] actualizado a: No
+✏️ [Modificar] actualizado a: No
+💾 Cambios guardados exitosamente.
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 199 ms
+Exception in thread "JavaFX Application Thread" java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because the return value of "java.util.Map.get(Object)" is null
+	at com.panaderiafx.controllers.components.FormularioModificar.lambda$crearBotonModificar$2(FormularioModificar.java:199)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(Unknown Source)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.tryAdvance(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(Unknown Source)
+	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(Unknown Source)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(Unknown Source)
+	at java.base/java.util.stream.ReferencePipeline.findFirst(Unknown Source)
+	at com.panaderiafx.controllers.components.FormularioModificar.lambda$crearBotonModificar$3(FormularioModificar.java:200)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:423)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Unknown Source)
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 154 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 161 ms
+📄 Cargada tabla 'Recetas' desde hoja. Filas: 14 ⏱️ 184 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 149 ms
+📄 Cargada tabla 'ConfiguraciónTablas' desde hoja. Filas: 15 ⏱️ 167 ms
+📄 Cargada tabla 'ProduccionIngredientes' desde hoja. Filas: 277 ⏱️ 195 ms
+📄 Cargada tabla 'ConfiguraciónVistaTablas' desde hoja. Filas: 2 ⏱️ 198 ms

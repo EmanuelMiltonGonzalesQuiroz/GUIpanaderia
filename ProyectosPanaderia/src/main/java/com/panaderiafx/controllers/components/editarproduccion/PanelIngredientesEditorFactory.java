@@ -2,7 +2,7 @@ package com.panaderiafx.controllers.components.editarproduccion;
 
 import com.panaderiafx.controllers.components.editarproduccion.helpers.EscaladoIngredientesUtils;
 import com.panaderiafx.controllers.components.editarproduccion.receta.PanelIngredientesTablaFactory;
-import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.VerUtilsOptimized;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -34,10 +34,10 @@ public class PanelIngredientesEditorFactory {
             return tablaAnterior;
         }
 
-        // ⚡ Nombres de ingredientes sí usan caché porque no cambian
+        // ⚡ Cargar nombres de ingredientes si es necesario
         if (cacheNombresIngredientes == null) {
             System.out.println("📥 Cargando nombres de ingredientes...");
-            cacheNombresIngredientes = VerUtils.verTablaConCache("Ingredientes").stream()
+            cacheNombresIngredientes = VerUtilsOptimized.verTabla("Ingredientes").stream()
                     .filter(f -> f.containsKey("Código") && f.containsKey("Nombre"))
                     .collect(Collectors.toMap(
                             f -> f.get("Código"),
@@ -46,20 +46,25 @@ public class PanelIngredientesEditorFactory {
                     ));
         }
 
-        // 🚫 Datos de producción se deben leer sin caché para ver cambios
-        VerUtils.forzarActualizacion("Produccion");
-        List<Map<String, String>> filaProduccion = VerUtils.verFilas("Produccion", Map.of("Código Producción", codigoProduccion));
+        // 🔄 Forzar recarga de Produccion y ProduccionIngredientes
+        List<Map<String, String>> filaProduccion = VerUtilsOptimized.actualizar("Produccion").stream()
+                .filter(f -> codigoProduccion.equals(f.get("Código Producción")))
+                .toList();
+
         int cantidadBase = filaProduccion.isEmpty() ? 0 : parseInt(filaProduccion.get(0).getOrDefault("Cantidad Producida", "0"));
         produccion.put("Cantidad Base", String.valueOf(cantidadBase));
 
-        // 🔁 Leer ingredientes desde ProduccionIngredientes si hay datos válidos
-        VerUtils.forzarActualizacion("ProduccionIngredientes");
-        List<Map<String, String>> ingredientesProduccion = VerUtils.verFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
+        List<Map<String, String>> ingredientesProduccion = VerUtilsOptimized.actualizar("ProduccionIngredientes").stream()
+                .filter(f -> codigoProduccion.equals(f.get("Código Producción")))
+                .toList();
+
         boolean usarProduccion = !ingredientesProduccion.isEmpty() && contieneCantidadesUsadas(ingredientesProduccion);
 
         List<Map<String, String>> fuente = usarProduccion
                 ? ingredientesProduccion
-                : VerUtils.verFilas("RecetasIngredientes", Map.of("Código receta", codigoReceta));
+                : VerUtilsOptimized.verTabla("RecetasIngredientes").stream()
+                    .filter(f -> codigoReceta.equals(f.get("Código receta")))
+                    .toList();
 
         cacheCodigoProduccion = codigoProduccion;
         System.out.println(usarProduccion ? "🔁 Cargando desde ProduccionIngredientes..." : "📄 Usando RecetasIngredientes...");

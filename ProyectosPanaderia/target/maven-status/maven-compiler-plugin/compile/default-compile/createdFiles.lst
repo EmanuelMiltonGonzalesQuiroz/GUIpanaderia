@@ -88,6 +88,7 @@ com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredien
 com\panaderiafx\controllers\components\editarproduccion\EditarProduccionUtils.class
 com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredientesFactory.class
 com\panaderiafx\utils\ConversorMezclaUtils.class
+com\panaderiafx\utils\VerUtilsOptimized$1.class
 com\panaderiafx\controllers\components\editarproduccion\helpers\EscaladoIngredientesUtils.class
 com\panaderiafx\controllers\components\registroproduccion2\BotonGuardarProduccion.class
 com\panaderiafx\controllers\components\registroreceta\TablaIngredientesEditable$3.class

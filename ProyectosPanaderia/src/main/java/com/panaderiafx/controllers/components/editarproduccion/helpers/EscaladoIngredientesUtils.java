@@ -2,7 +2,7 @@ package com.panaderiafx.controllers.components.editarproduccion.helpers;
 
 import com.panaderiafx.utils.ConversorMezclaUtils;
 import com.panaderiafx.utils.ConversorUtils;
-import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.VerUtilsOptimized;
 import javafx.collections.ObservableList;
 
 import java.util.List;
@@ -84,10 +84,8 @@ public class EscaladoIngredientesUtils {
     }
 
     public static double calcularCostoUnitario(String codIngrediente, String unidadDestino) {
-        // 🚫 Si necesitas forzar recarga desde el Excel original:
-        // VerUtils.forzarActualizacion("Ingredientes");
-
-        List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
+        // ✅ Releer directamente desde archivo con VerUtilsOptimized
+        List<Map<String, String>> ingredientes = VerUtilsOptimized.verTabla("Ingredientes");
 
         return ingredientes.stream()
                 .filter(i -> codIngrediente.equalsIgnoreCase(i.get("Código")))

@@ -1,105 +1,108 @@
 package com.panaderiafx.utils;
 
-import com.panaderiafx.utils.cache.GlobalDataCache;
-import java.util.*;
-import java.util.logging.Logger;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-/**
- * Wrapper para VerUtils que intercepta llamadas y usa cache global
- */
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.*;
+
 public class VerUtilsOptimized {
-    
-    private static final Logger LOGGER = Logger.getLogger(VerUtilsOptimized.class.getName());
-    private static final GlobalDataCache cache = GlobalDataCache.getInstance();
-    
-    // Tablas que nunca deben cachearse (siempre frescas)
-    private static final Set<String> TABLAS_NO_CACHE = Set.of(
-        "Logs", "TempData", "SessionData"
-    );
-    
-    /**
-     * Versión optimizada de verTabla que usa cache global
-     */
+
+    private static final String RUTA = "Datos\\Hoja de datos.xlsx";
+
+    // Caché controlada
+    private static final Map<String, List<Map<String, String>>> cacheTablas = new HashMap<>();
+
+    // Leer tabla con opción de usar cache
     public static List<Map<String, String>> verTabla(String nombreTabla) {
-        // Verificar si la tabla no debe cachearse
-        if (TABLAS_NO_CACHE.contains(nombreTabla)) {
-            LOGGER.info("🚫 Tabla " + nombreTabla + " marcada como no-cache, cargando directamente");
-            return VerUtils.verTabla(nombreTabla);
+        if (cacheTablas.containsKey(nombreTabla)) {
+            return cacheTablas.get(nombreTabla);
         }
-        
-        // Intentar obtener desde cache primero
-        Optional<List<Map<String, String>>> cached = cache.getListOfMaps(nombreTabla);
-        if (cached.isPresent()) {
-            LOGGER.info("🚀 VerUtils CACHE HIT para: " + nombreTabla);
-            return cached.get();
+        return actualizar(nombreTabla);
+    }
+
+    // Forzar recarga desde Excel y actualizar cache
+    public static List<Map<String, String>> actualizar(String nombreTabla) {
+        List<Map<String, String>> datos = cargarDesdeExcel(nombreTabla);
+        cacheTablas.put(nombreTabla, datos);
+        return datos;
+    }
+
+    // Buscar una fila que cumpla condiciones específicas
+    public static Map<String, String> verFila(String nombreTabla, Map<String, String> condiciones) {
+        return verTabla(nombreTabla).stream()
+                .filter(fila -> condiciones.entrySet().stream()
+                        .allMatch(cond -> cond.getValue().equals(fila.get(cond.getKey()))))
+                .findFirst()
+                .orElse(null);
+    }
+
+    // Leer directamente desde el archivo Excel
+    private static List<Map<String, String>> cargarDesdeExcel(String nombreTabla) {
+        List<Map<String, String>> resultado = new ArrayList<>();
+        try (FileInputStream fis = new FileInputStream(RUTA);
+             Workbook libro = new XSSFWorkbook(fis)) {
+
+            Sheet hoja = libro.getSheet(nombreTabla);
+            if (hoja == null) {
+                System.err.println("❌ Hoja '" + nombreTabla + "' no encontrada.");
+                return resultado;
+            }
+
+            Row encabezado = hoja.getRow(0);
+            if (encabezado == null) {
+                System.err.println("⚠️ Hoja '" + nombreTabla + "' sin encabezado.");
+                return resultado;
+            }
+
+            int columnas = encabezado.getLastCellNum();
+
+            for (int i = 1; i <= hoja.getLastRowNum(); i++) {
+                Row fila = hoja.getRow(i);
+                if (fila == null) continue;
+
+                Map<String, String> filaMapa = new LinkedHashMap<>();
+                for (int j = 0; j < columnas; j++) {
+                    Cell celda = fila.getCell(j, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                    String clave = encabezado.getCell(j).getStringCellValue();
+                    String valor = obtenerValorCelda(celda);
+                    filaMapa.put(clave, valor);
+                }
+                resultado.add(filaMapa);
+            }
+
+        } catch (IOException e) {
+            System.err.println("❌ Error al leer el Excel: " + e.getMessage());
         }
-        
-        // Si no está en cache, cargar y cachear
-        LOGGER.info("📥 VerUtils cargando tabla: " + nombreTabla);
-        long startTime = System.currentTimeMillis();
-        
-        List<Map<String, String>> data = VerUtils.verTabla(nombreTabla);
-        
-        long loadTime = System.currentTimeMillis() - startTime;
-        LOGGER.info(String.format("📄 VerUtils cargó %s: %d filas en %d ms", 
-                                nombreTabla, data.size(), loadTime));
-        
-        // Cachear el resultado
-        cache.put(nombreTabla, data);
-        
-        return data;
+        return resultado;
     }
-    
-    /**
-     * Versión optimizada de verTablaConCache
-     */
-    public static List<Map<String, String>> verTablaConCache(String nombreTabla) {
-        return verTabla(nombreTabla); // Usa la versión optimizada
-    }
-    
-    /**
-     * Versión optimizada de verFilas con cache
-     */
-    public static List<Map<String, String>> verFilas(String nombreTabla, Map<String, String> filtros) {
-        String cacheKey = nombreTabla + "_FILTRO_" + filtros.hashCode();
-        
-        Optional<List<Map<String, String>>> cached = cache.getListOfMaps(cacheKey);
-        if (cached.isPresent()) {
-            LOGGER.info("🚀 VerUtils CACHE HIT (filtrado) para: " + cacheKey);
-            return cached.get();
+
+    // Convertir celda a string
+    private static String obtenerValorCelda(Cell celda) {
+        if (celda == null) return "";
+
+        switch (celda.getCellType()) {
+            case STRING:
+                return celda.getStringCellValue().trim();
+            case NUMERIC:
+                return DateUtil.isCellDateFormatted(celda)
+                        ? celda.getDateCellValue().toString()
+                        : String.valueOf(celda.getNumericCellValue());
+            case BOOLEAN:
+                return String.valueOf(celda.getBooleanCellValue());
+            case FORMULA:
+                return celda.getCellFormula();
+            case BLANK:
+                return "";
+            default:
+                return "";
         }
-        
-        LOGGER.info("📥 VerUtils cargando con filtros: " + nombreTabla);
-        List<Map<String, String>> data = VerUtils.verFilas(nombreTabla, filtros);
-        
-        // Cachear con TTL más corto para datos filtrados
-        cache.put(cacheKey, data);
-        
-        return data;
     }
-    
-    /**
-     * Invalida cache cuando se actualiza una tabla
-     */
-    public static void forzarActualizacion(String nombreTabla) {
-        cache.invalidate(nombreTabla);
-        // También invalidar filtros relacionados
-        cache.getStats().entrySet().stream()
-                .filter(entry -> entry.getKey().toString().startsWith(nombreTabla + "_FILTRO_"))
-                .forEach(entry -> cache.invalidate(entry.getKey().toString()));
-        
-        VerUtils.forzarActualizacion(nombreTabla);
-        LOGGER.info("🔄 Forzada actualización y cache invalidado para: " + nombreTabla);
-    }
-    
-    /**
-     * Delegar otros métodos directamente a VerUtils
-     */
-    public static String buscarPorCodigo(String tabla, String columnaCodigo, String codigo, String columnaResultado) {
-        return VerUtils.buscarPorCodigo(tabla, columnaCodigo, codigo, columnaResultado);
-    }
-    
-    public static Map<String, String> verFila(String tabla, Map<String, String> filtros) {
-        return VerUtils.verFila(tabla, filtros);
+
+
+    // Borrar toda la cache (opcional)
+    public static void limpiarCache() {
+        cacheTablas.clear();
     }
 }

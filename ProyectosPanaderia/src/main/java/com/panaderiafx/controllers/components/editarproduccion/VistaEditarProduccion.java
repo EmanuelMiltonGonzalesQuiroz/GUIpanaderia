@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion;
 
+import com.panaderiafx.utils.VerUtilsOptimized;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
@@ -37,7 +39,21 @@ public class VistaEditarProduccion extends BorderPane {
 
         Button botonActualizar = new Button("🔄 Actualizar Vista");
         botonActualizar.setStyle("-fx-font-size: 14px; -fx-background-color: #FFB74D; -fx-text-fill: black;");
-        botonActualizar.setOnAction(e -> recargarVistaCompleta());
+        botonActualizar.setOnAction(e -> {
+            if (produccionActual != null) {
+                // 🔁 Forzar recarga de la hoja "Produccion"
+                VerUtilsOptimized.actualizar("Produccion");
+
+                // Actualizar la fila actual de producción desde el nuevo cache
+                String codigo = produccionActual.get("Código Producción");
+                List<Map<String, String>> producciones = VerUtilsOptimized.verTabla("Produccion");
+                produccionActual = producciones.stream()
+                        .filter(p -> codigo.equals(p.get("Código Producción")))
+                        .findFirst()
+                        .orElse(produccionActual); // si no encuentra, mantiene la actual
+            }
+            recargarVistaCompleta();
+        });
 
         Node selector = SelectorProduccionEditorFactory.crearSelector((produccion) -> {
             if (produccion == null) return;
