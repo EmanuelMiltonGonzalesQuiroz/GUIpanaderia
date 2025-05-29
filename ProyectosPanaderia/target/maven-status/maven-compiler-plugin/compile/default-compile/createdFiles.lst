@@ -47,6 +47,7 @@ com\panaderiafx\utils\RegistroRelacionado.class
 com\panaderiafx\controllers\components\table\BotonActualizar.class
 com\panaderiafx\utils\CodigoGenerator.class
 com\panaderiafx\controllers\components\table\SelectorTamanoFuente.class
+com\panaderiafx\utils\cache\GlobalDataCache.class
 com\panaderiafx\controllers\components\editarproduccion\VistaEditarProduccion.class
 com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia.class
 com\panaderiafx\utils\componentes\ParseUtils.class
@@ -111,6 +112,7 @@ com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.class
 com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesTablaFactory.class
 com\panaderiafx\controllers\components\BotonAccion.class
 com\panaderiafx\controllers\components\registroproduccion2\GuardarProduccionUtils.class
+com\panaderiafx\utils\cache\GlobalDataCache$CacheEntry.class
 com\panaderiafx\controllers\components\editarproduccion\helpers\FormularioCamposFactory.class
 com\panaderiafx\utils\componentes\GuardarLibroSemanalUtils.class
 com\panaderiafx\controllers\RegistroProduccion.class
@@ -121,3 +123,4 @@ com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia$2.cl
 com\panaderiafx\controllers\components\table\CabeceraBusqueda.class
 com\panaderiafx\controllers\components\table\ControlPaginacion.class
 com\panaderiafx\controllers\VerController.class
+com\panaderiafx\utils\VerUtilsOptimized.class

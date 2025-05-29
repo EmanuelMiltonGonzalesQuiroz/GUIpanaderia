@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TablaInteractiva extends BorderPane {
 
@@ -139,7 +140,23 @@ public class TablaInteractiva extends BorderPane {
     }
 
     private void actualizarFiltro(String texto) {
-        datosTotales = TablaUtils.filtrar(datosOriginales, texto);
+        if (texto == null || texto.trim().isEmpty()) {
+            datosTotales = FXCollections.observableArrayList(datosOriginales);
+        } else {
+            // Separar por coma y limpiar términos vacíos
+            String[] terminos = texto.split(",");
+            String patron = Arrays.stream(terminos)
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .collect(Collectors.joining("|"));
+
+            if (!patron.isEmpty()) {
+                // Usa las columnas visibles realmente presentes en la tabla
+                datosTotales = TablaUtils.filtrarConColumnas(datosOriginales, texto, columnasVisibles);
+            } else {
+                datosTotales = FXCollections.observableArrayList(datosOriginales);
+            }
+        }
         configurarPaginacion(0);
     }
 

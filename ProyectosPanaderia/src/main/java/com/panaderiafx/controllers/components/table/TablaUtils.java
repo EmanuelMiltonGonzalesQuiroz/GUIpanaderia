@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 
+import java.text.Normalizer;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -37,12 +38,67 @@ public class TablaUtils {
             return FXCollections.observableArrayList(datos);
         }
 
-        String buscar = filtro.toLowerCase();
+        List<String> terminos = Arrays.stream(filtro.split(","))
+                .map(String::trim)
+                .map(TablaUtils::normalizarTexto)
+                .filter(s -> s.length() >= 3) // ⚠️ dejar 3 como mínimo razonable
+                .toList();
+
+        if (terminos.isEmpty()) {
+            return FXCollections.observableArrayList();
+        }
+
         return FXCollections.observableArrayList(
                 datos.stream()
-                        .filter(map -> map.values().stream()
-                                .anyMatch(val -> val.toLowerCase().contains(buscar)))
+                        .filter(map -> {
+                            for (String termino : terminos) {
+                                for (String val : map.values()) {
+                                    if (val != null && normalizarTexto(val).contains(termino)) {
+                                        return true;
+                                    }
+                                }
+                            }
+                            return false;
+                        })
                         .collect(Collectors.toList())
         );
+    }
+
+    public static ObservableList<Map<String, String>> filtrarConColumnas(List<Map<String, String>> datos, String filtro, List<String> columnasFiltrables) {
+        if (filtro == null || filtro.trim().isEmpty()) {
+            return FXCollections.observableArrayList(datos);
+        }
+
+        List<String> terminos = Arrays.stream(filtro.split(","))
+                .map(String::trim)
+                .map(TablaUtils::normalizarTexto)
+                .filter(s -> s.length() >= 3)
+                .toList();
+
+        if (terminos.isEmpty()) {
+            return FXCollections.observableArrayList();
+        }
+
+        return FXCollections.observableArrayList(
+                datos.stream()
+                        .filter(map -> {
+                            // ✅ TODOS los términos deben estar en alguna columna de la fila
+                            return terminos.stream().allMatch(termino ->
+                                    columnasFiltrables.stream().anyMatch(columna -> {
+                                        String val = map.get(columna);
+                                        return val != null && normalizarTexto(val).contains(termino);
+                                    })
+                            );
+                        })
+                        .collect(Collectors.toList())
+        );
+    }
+
+
+    private static String normalizarTexto(String texto) {
+        return Normalizer.normalize(texto, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
+                .toLowerCase()
+                .trim();
     }
 }
