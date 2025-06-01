@@ -1,5 +1,6 @@
 package com.panaderiafx.utils;
 
+import com.panaderiafx.utils.cache.EditorTemporalCache;
 import java.text.Normalizer;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -49,15 +50,31 @@ public class CodigoGenerator {
         }
 
         List<String> codigosCrudos = new ArrayList<>();
+        
+        // ✅ AGREGAR CÓDIGOS DEL EXCEL
         for (Map<String, String> fila : registros) {
             String valor = fila.getOrDefault(columnaCodigo, "").trim();
             if (!valor.isBlank()) {
                 codigosCrudos.add(valor);
             }
         }
-        System.out.println("🗂️ Códigos extraídos: " + codigosCrudos);
+        
+        // ✅ TAMBIÉN AGREGAR CÓDIGOS DEL CACHE TEMPORAL
+        Map<String, Map<String, String>> cacheTabla = EditorTemporalCache.getCambios(nombreTabla);
+        if (cacheTabla != null) {
+            for (Map<String, String> filaCache : cacheTabla.values()) {
+                String codigoCache = filaCache.getOrDefault(columnaCodigo, "").trim();
+                if (!codigoCache.isBlank()) {
+                    codigosCrudos.add(codigoCache);
+                    System.out.println("📦 Código encontrado en cache: " + codigoCache);
+                }
+            }
+        }
+        
+        System.out.println("🗂️ Códigos totales extraídos (Excel + Cache): " + codigosCrudos);
 
-        Pattern pattern = Pattern.compile("^([A-Z]{3})(\\d{3,4})$");
+        // Corregido: Ahora acepta 3 o 4 letras en el prefijo
+        Pattern pattern = Pattern.compile("^([A-Z]{3,4})(\\d{3,4})$");
         Map<String, Set<Integer>> codigosPorPrefijo = new LinkedHashMap<>();
 
         for (String codigo : codigosCrudos) {
@@ -68,6 +85,8 @@ public class CodigoGenerator {
 
                 codigosPorPrefijo.putIfAbsent(prefijo, new TreeSet<>());
                 codigosPorPrefijo.get(prefijo).add(numero);
+                
+                System.out.printf("✅ Código válido: %s → Prefijo: %s, Número: %d%n", codigo, prefijo, numero);
             } else {
                 System.out.println("⚠️ Código no válido ignorado: " + codigo);
             }
@@ -81,6 +100,8 @@ public class CodigoGenerator {
         // Usar el primer prefijo encontrado
         String prefijo = codigosPorPrefijo.keySet().iterator().next();
         Set<Integer> usados = codigosPorPrefijo.get(prefijo);
+
+        System.out.printf("🔧 Usando prefijo: %s, números usados: %s%n", prefijo, usados);
 
         for (int i = 1; i <= 9999; i++) {
             if (!usados.contains(i)) {

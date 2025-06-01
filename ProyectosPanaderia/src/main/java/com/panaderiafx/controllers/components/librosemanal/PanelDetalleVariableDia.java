@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components.librosemanal;
 
+import com.panaderiafx.utils.CodigoGenerator;
 import com.panaderiafx.utils.VerUtils;
 import com.panaderiafx.utils.cache.CacheLibroSemanal;
 import com.panaderiafx.utils.cache.CacheLibroSemanal.Tipo;
@@ -264,10 +265,10 @@ public class PanelDetalleVariableDia {
 
         Button botonAgregar = new Button("+ Agregar");
         botonAgregar.setOnAction(e -> {
-            String codigo = "COSD" + String.format("%04d", tabla.getItems().size() + 1);
+            String codigo = CodigoGenerator.generarCodigo("VariableDia", "Código");
             String fecha = fechaInicio.format(FORMATO);
             Map<String, String> nueva = new HashMap<>();
-            nueva.put("Código", codigo);
+            nueva.put("Código", codigo); 
             nueva.put("Fecha", fecha);
             nueva.put("Descripción", "Nuevo gasto");
             nueva.put("Valor", "0");

@@ -1,5 +1,6 @@
 package com.panaderiafx;
 
+import com.panaderiafx.utils.VerUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +19,9 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         long startStart = System.nanoTime();
         System.out.println("✅ Entrando a start()...");
+
+        // 🔄 Cargar todo el Excel en memoria antes de iniciar
+        VerUtils.cargarTodoElExcel();
 
         BorderPane root = new BorderPane();
 

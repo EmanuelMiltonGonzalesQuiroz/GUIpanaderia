@@ -74,7 +74,7 @@ public class CrearUtils {
         } catch (Exception e) {
             System.err.println("❌ Error al crear fila: " + e.getMessage());
         }
-
+        VerUtils.refrescarExcel();
         return false;
     }
 

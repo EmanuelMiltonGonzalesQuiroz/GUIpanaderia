@@ -166,9 +166,11 @@ public class TablaInteractiva extends BorderPane {
     }
 
     private void recargarDesdeExcel() {
+        VerUtils.refrescarExcel(); // 🔄 Refresca todo el Excel
         List<Map<String, String>> nuevosDatos = VerUtils.verTabla(nombreTabla);
         actualizarDatos(nuevosDatos);
     }
+
 
     public void actualizarDatos(List<Map<String, String>> nuevosDatos) {
         List<Map<String, String>> datosTransformados = RelacionadorVisual.aplicarSustituciones(nombreTabla, nuevosDatos);

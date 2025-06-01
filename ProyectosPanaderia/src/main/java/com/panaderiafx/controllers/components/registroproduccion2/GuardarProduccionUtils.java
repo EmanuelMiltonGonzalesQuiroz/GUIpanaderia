@@ -67,7 +67,7 @@ public class GuardarProduccionUtils {
         filaProduccion.put("Producto", fila.getOrDefault("Producto", ""));
         filaProduccion.put("Costo Directo/U", fila.getOrDefault("Costo/U", ""));
         filaProduccion.put("Costo Total", fila.getOrDefault("Costo Total", ""));
-        filaProduccion.put("Ganancia Tota", fila.getOrDefault("Ganancia Total", ""));
+        filaProduccion.put("Ganancia Total", fila.getOrDefault("Ganancia Total", ""));
         CrearUtils.crearFila("Produccion", filaProduccion);
 
         List<Map<String, String>> ingredientes = PanelIngredientesRecetaConMezclas.obtenerIngredientesModificados();

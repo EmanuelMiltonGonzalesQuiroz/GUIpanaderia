@@ -75,7 +75,7 @@ public class SelectorProduccionEditorFactory {
         colMez.setMinWidth(80);
 
         TableColumn<Map<String, String>, String> colGan = new TableColumn<>("Ganancia Total");
-        colGan.setCellValueFactory(f -> new ReadOnlyStringWrapper(f.getValue().getOrDefault("Ganancia Tota", "")));
+        colGan.setCellValueFactory(f -> new ReadOnlyStringWrapper(f.getValue().getOrDefault("Ganancia Total", "")));
         colGan.setMinWidth(150);
 
         tabla.getColumns().addAll(colCod, colProd, colVer, colMez, colGan);

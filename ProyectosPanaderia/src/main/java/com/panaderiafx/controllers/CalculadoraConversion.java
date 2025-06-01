@@ -1,6 +1,6 @@
 package com.panaderiafx.controllers;
 
-import com.panaderiafx.utils.ConversorUtils;
+import com.panaderiafx.utils.ConversorUtils2;
 import com.panaderiafx.utils.VerUtils;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -87,7 +87,7 @@ public class CalculadoraConversion {
                     return;
                 }
 
-                Double resultado = ConversorUtils.convertir(
+                Double resultado = ConversorUtils2.convertir(
                     tipo,
                     unidadOrigen,
                     unidadDestino,

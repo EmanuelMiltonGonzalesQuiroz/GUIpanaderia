@@ -28,7 +28,7 @@ public class LibroSemanalService {
         for (Map<String, String> fila : ganancias) {
             LocalDate fecha = ParseUtils.toDate(fila.get("Fecha"));
             if (fecha != null && !fecha.isBefore(inicio) && !fecha.isAfter(fin)) {
-                gananciaTotal += ParseUtils.toDouble(fila.get("Ganancia Tota")); // corregido nombre
+                gananciaTotal += ParseUtils.toDouble(fila.get("Ganancia Total")); // corregido nombre
                 costosDirectos += ParseUtils.toDouble(fila.get("Costo Total"));
             }
         }
@@ -135,7 +135,7 @@ public class LibroSemanalService {
     private static void agregarColumnas(TableView<Map<String, String>> tabla) {
         String[] columnas = {
                 "Producto", "Cantidad Producida", "Precio de Venta por Unidad",
-                "Costo Directo/U", "Costo Total", "Ganancia Tota" // corregido
+                "Costo Directo/U", "Costo Total", "Ganancia Total" // corregido
         };
         for (String col : columnas) {
             TableColumn<Map<String, String>, String> c = new TableColumn<>(col);

@@ -52,7 +52,7 @@ public class ColumnasIngredientesFactory {
                 fila.put("Cantidad", cantidadStr);
                 double cantidad = ParseUtils.toDouble(cantidadStr);
                 String codIng = fila.getOrDefault("Ingrediente", "");
-                String unidad = fila.getOrDefault("Unidades", "");
+                String unidad = fila.getOrDefault("Unidad", "");  // <- corregido aquí, usar Unidad
                 double nuevoCosto = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
                 fila.put("Costo", String.format("%.2f", nuevoCosto));
                 getTableView().refresh();
@@ -125,7 +125,7 @@ public class ColumnasIngredientesFactory {
                 .mapToDouble(f -> {
                     double cantidad = ParseUtils.toDouble(f.getOrDefault("Cantidad", "1"));
                     String codIng = f.getOrDefault("Ingrediente", "");
-                    String unidad = f.getOrDefault("Unidades", "");
+                    String unidad = f.getOrDefault("Unidad", "");  // <- corregido aquí también
                     double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
                     f.put("Costo", String.format("%.2f", costo));
                     return costo;

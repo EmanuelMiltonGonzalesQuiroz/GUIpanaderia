@@ -29,6 +29,13 @@ public class PanelIngredientesRecetaConMezclas {
                         i -> i.getOrDefault("Nombre", "").trim()
                 ));
 
+        Map<String, String> mapaUnidadIngrediente = ingredientes.stream()
+                .collect(Collectors.toMap(
+                        i -> i.getOrDefault("Código", "").trim(),
+                        i -> i.getOrDefault("Unidad", "").trim(),
+                        (a, b) -> a
+                ));
+
         List<Map<String, String>> filtrados = recetasIngredientes.stream()
                 .filter(m -> m.getOrDefault("Código receta", "").trim().equalsIgnoreCase(codigoReceta.trim()))
                 .map(HashMap::new)
@@ -45,10 +52,18 @@ public class PanelIngredientesRecetaConMezclas {
 
         ingredientesModificados.clear();
         for (Map<String, String> fila : filtrados) {
+            String codIng = fila.getOrDefault("Ingrediente", "").trim();
             double cantidadOriginal = ParseUtils.toDouble(fila.getOrDefault("Cantidad", "1"));
             double cantidadEscalada = cantidadOriginal * factor;
-            fila.put("Cantidad", String.valueOf(cantidadEscalada));
+
+            // Campo "Unidad" viene de la receta
+            String unidadUsada = fila.getOrDefault("Unidades", "").trim();
+            // Unidad base del ingrediente queda implícita para la conversión
+
+            fila.put("Cantidad", String.format("%.4f", cantidadEscalada));
+            fila.put("Unidad", unidadUsada); // <- correcta para conversión
             fila.put("Check", "✓");
+
             ingredientesModificados.add(new HashMap<>(fila));
         }
 

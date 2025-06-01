@@ -55,6 +55,7 @@ public class PanelSelectorRecetaConTabla extends VBox {
 
     public void recargar() {
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+        VerUtils.refrescarExcel();
         tabla.getItems().setAll(recetas);
     }
 

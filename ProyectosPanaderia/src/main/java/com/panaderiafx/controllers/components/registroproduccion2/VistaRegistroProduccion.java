@@ -46,7 +46,11 @@ public class VistaRegistroProduccion {
 
         Button btnActualizar = new Button("🔁 ACTUALIZAR");
         btnActualizar.setStyle("-fx-background-color: #FFA726; -fx-text-fill: black; -fx-font-weight: bold;");
-        btnActualizar.setOnAction(e -> selector.recargar());
+        btnActualizar.setOnAction(e -> {
+            VerUtils.refrescarExcel(); // 🔄 recarga todo el Excel en memoria
+            selector.recargar();       // 🔁 actualiza tabla de recetas
+        });
+
 
         HBox filaBotones = new HBox(10, btnGuardar, btnActualizar);
 

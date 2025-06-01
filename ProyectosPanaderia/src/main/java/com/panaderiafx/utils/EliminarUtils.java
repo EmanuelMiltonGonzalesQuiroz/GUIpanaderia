@@ -80,7 +80,8 @@ public class EliminarUtils {
             System.err.println("❌ Error al eliminar filas: " + e.getMessage());
             e.printStackTrace();
         }
-
+        System.out.println("Eliminar");
+        VerUtils.refrescarExcel();
         return eliminados;
     }
 

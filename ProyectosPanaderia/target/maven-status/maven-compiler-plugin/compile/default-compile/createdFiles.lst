@@ -6,6 +6,7 @@ com\panaderiafx\controllers\components\librosemanal\VistaLibroSemanal.class
 com\panaderiafx\utils\componentes\CostosDirectosUtils.class
 com\panaderiafx\controllers\components\ContenedorFlexible.class
 com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtil.class
+com\panaderiafx\utils\ConversorUtils2.class
 com\panaderiafx\utils\componentes\RegistroVariableDiaUtils.class
 com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesTablaFactory.class
 com\panaderiafx\Pestanas.class

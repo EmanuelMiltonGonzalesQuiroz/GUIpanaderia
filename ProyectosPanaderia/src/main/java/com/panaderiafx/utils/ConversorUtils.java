@@ -105,8 +105,8 @@ public class ConversorUtils {
 
     private static List<Map<String, String>> obtenerDatos() {
         if (CACHE_DATOS == null) {
-            CACHE_DATOS = VerUtils.verTablaConCache(TABLA);
-            System.out.println("📥 Datos de conversión cargados en caché: " + CACHE_DATOS.size() + " filas.");
+            CACHE_DATOS = VerUtils.verTabla("TabladeConversión"); // ya accede al JSON en memoria
+            System.out.println("📥 Datos de conversión obtenidos: " + CACHE_DATOS.size() + " filas.");
         }
         return CACHE_DATOS;
     }

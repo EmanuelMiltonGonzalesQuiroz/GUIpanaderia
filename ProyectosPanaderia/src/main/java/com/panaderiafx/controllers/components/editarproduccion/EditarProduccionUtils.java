@@ -35,9 +35,9 @@ public class EditarProduccionUtils {
 
         for (Map<String, String> fila : ingredientesActuales) {
             String codIng = fila.getOrDefault("Ingrediente", "").trim();
-            String cantidadStr = fila.getOrDefault("Cantidad", "0");
-            String costoStr = fila.getOrDefault("Costo", "0");
-            String incluye = fila.getOrDefault("Check", "✓");
+            String cantidadStr = fila.getOrDefault("Cantidad", "0").trim();
+            String costoStr = fila.getOrDefault("Costo", "0").trim();
+            String incluye = fila.getOrDefault("Check", "✓").trim();
 
             double cantidadUsada = parseDouble(cantidadStr);
             double costoTotalIng = parseDouble(costoStr);
@@ -46,15 +46,16 @@ public class EditarProduccionUtils {
             nuevosValoresIng.put("Cantidad Usada", String.format("%.4f", cantidadUsada));
             nuevosValoresIng.put("Costo Total", String.format("%.4f", costoTotalIng));
             nuevosValoresIng.put("Incluye", incluye);
-            nuevosValoresIng.put("Fecha Registro", filaProd.getOrDefault("Fecha", ""));
+            nuevosValoresIng.put("Fecha Registro", campoFecha.getText().trim());
 
-            boolean modificado = ModificarUtils.modificarFila("ProduccionIngredientes", Map.of(
-                    "Código Producción", codigoProduccion,
-                    "Ingrediente", codIng
-            ), nuevosValoresIng);
+            boolean modificado = ModificarUtils.modificarFila(
+                    "ProduccionIngredientes",
+                    Map.of("Código Producción", codigoProduccion, "Ingrediente", codIng),
+                    nuevosValoresIng
+            );
 
             if (modificado) {
-                System.out.println("🧾 Ingrediente [" + codIng + "] modificado con nuevos valores.");
+                System.out.println("🧾 Ingrediente [" + codIng + "] modificado.");
             }
 
             if ("✓".equals(incluye)) {
@@ -62,7 +63,7 @@ public class EditarProduccionUtils {
             }
         }
 
-        double costoU = (cantidad > 0) ? costoTotal / cantidad : 0.0;
+        double costoU = cantidad > 0 ? costoTotal / cantidad : 0.0;
         double gananciaTotal = (precioUnit * cantidad) - costoTotal;
 
         Map<String, String> nuevosValores = Map.of(
@@ -76,14 +77,15 @@ public class EditarProduccionUtils {
                 "Ganancia Total", String.format("%.2f", gananciaTotal)
         );
 
-        boolean actualizado = ModificarUtils.modificarFila("Produccion", Map.of(
-                "Código Producción", codigoProduccion
-        ), nuevosValores);
+        boolean actualizado = ModificarUtils.modificarFila(
+                "Produccion",
+                Map.of("Código Producción", codigoProduccion),
+                nuevosValores
+        );
 
         if (actualizado) {
             mostrarConfirmacion("✅ Producción e ingredientes actualizados correctamente.");
-            VerUtils.forzarActualizacion("Produccion");
-            VerUtils.forzarActualizacion("ProduccionIngredientes");
+                    VerUtils.refrescarExcel();
         } else {
             mostrarError("No se pudo actualizar la producción.");
         }
@@ -97,11 +99,12 @@ public class EditarProduccionUtils {
 
         long tInicio = System.currentTimeMillis();
 
-        int eliminadosIngredientes = EliminarUtils.eliminarFilas("ProduccionIngredientes", Map.of("Código Producción", codigoProduccion));
-        boolean eliminadoProduccion = EliminarUtils.eliminarFila("Produccion", Map.of("Código Producción", codigoProduccion));
+        int eliminadosIngredientes = EliminarUtils.eliminarFilas("ProduccionIngredientes", Map.of(
+                "Código Producción", codigoProduccion));
+        boolean eliminadoProduccion = EliminarUtils.eliminarFila("Produccion", Map.of(
+                "Código Producción", codigoProduccion));
 
-        VerUtils.forzarActualizacion("Produccion");
-        VerUtils.forzarActualizacion("ProduccionIngredientes");
+        VerUtils.refrescarExcel();
 
         if (eliminadoProduccion || eliminadosIngredientes > 0) {
             System.out.printf("✅ Producción y %d ingrediente(s) eliminados. ⏱️ %d ms%n",

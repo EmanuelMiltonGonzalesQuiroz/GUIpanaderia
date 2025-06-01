@@ -60,11 +60,16 @@ public class ModificarUtils {
                             System.out.println("⚠️ Columna '" + cambio.getKey() + "' no encontrada.");
                         }
                     }
+
                     try (FileOutputStream fos = new FileOutputStream(RUTA)) {
                         libro.write(fos);
                         System.out.println("💾 Cambios guardados exitosamente.");
-                        return true;
                     }
+
+                    // ✅ Invalida caché para ver los cambios en memoria
+                    System.out.println("Modificar");
+                    VerUtils.refrescarExcel();
+                    return true;
                 }
             }
 
@@ -77,6 +82,7 @@ public class ModificarUtils {
 
         return false;
     }
+
     public static boolean modificarFilaSoloSiCambio(String nombreTabla, Map<String, String> condiciones, Map<String, String> nuevosValores) {
         Map<String, String> filaActual = VerUtils.verFila(nombreTabla, condiciones);
         if (filaActual == null) {
@@ -95,5 +101,4 @@ public class ModificarUtils {
 
         return modificarFila(nombreTabla, condiciones, nuevosValores);
     }
-
 }
