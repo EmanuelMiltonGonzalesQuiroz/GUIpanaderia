@@ -1,6 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion;
 
-import com.panaderiafx.utils.VerUtilsOptimized;
+import com.panaderiafx.utils.VerUtils;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.scene.control.*;
@@ -100,9 +100,11 @@ public class SelectorProduccionEditorFactory {
 
     private static List<Map<String, String>> cargarProduccionesConVersion() {
         // 🔁 Forzar recarga desde archivo
-        List<Map<String, String>> produccionesRaw = VerUtilsOptimized.actualizar("Produccion");
+        VerUtils.refrescarExcel();
 
-        Map<String, String> versionesPorReceta = VerUtilsOptimized.verTabla("Recetas").stream()
+        List<Map<String, String>> produccionesRaw = VerUtils.verTabla("Produccion");
+
+        Map<String, String> versionesPorReceta = VerUtils.verTabla("Recetas").stream()
                 .filter(r -> r.containsKey("Código receta") && r.containsKey("Versión"))
                 .collect(Collectors.toMap(
                         r -> r.get("Código receta"),
@@ -131,7 +133,7 @@ public class SelectorProduccionEditorFactory {
                         return new SimpleDateFormat("dd/MM/yyyy").parse(f);
                     } catch (ParseException e) {
                         return new Date(0);
-                    }
+                    } 
                 }))
                 .toList();
     }

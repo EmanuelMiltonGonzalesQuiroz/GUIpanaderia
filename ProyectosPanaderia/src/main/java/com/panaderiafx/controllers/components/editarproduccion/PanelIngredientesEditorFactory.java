@@ -2,7 +2,7 @@ package com.panaderiafx.controllers.components.editarproduccion;
 
 import com.panaderiafx.controllers.components.editarproduccion.helpers.EscaladoIngredientesUtils;
 import com.panaderiafx.controllers.components.editarproduccion.receta.PanelIngredientesTablaFactory;
-import com.panaderiafx.utils.VerUtilsOptimized;
+import com.panaderiafx.utils.VerUtils;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
-
+ 
 public class PanelIngredientesEditorFactory {
 
     private static Map<String, String> cacheNombresIngredientes;
@@ -37,7 +37,7 @@ public class PanelIngredientesEditorFactory {
         // ⚡ Cargar nombres de ingredientes si es necesario
         if (cacheNombresIngredientes == null) {
             System.out.println("📥 Cargando nombres de ingredientes...");
-            cacheNombresIngredientes = VerUtilsOptimized.verTabla("Ingredientes").stream()
+            cacheNombresIngredientes = VerUtils.verTabla("Ingredientes").stream()
                     .filter(f -> f.containsKey("Código") && f.containsKey("Nombre"))
                     .collect(Collectors.toMap(
                             f -> f.get("Código"),
@@ -47,22 +47,25 @@ public class PanelIngredientesEditorFactory {
         }
 
         // 🔄 Forzar recarga de Produccion y ProduccionIngredientes
-        List<Map<String, String>> filaProduccion = VerUtilsOptimized.actualizar("Produccion").stream()
+        VerUtils.refrescarExcel();
+        List<Map<String, String>> filaProduccion = VerUtils.verTabla("Produccion").stream()
                 .filter(f -> codigoProduccion.equals(f.get("Código Producción")))
                 .toList();
 
         int cantidadBase = filaProduccion.isEmpty() ? 0 : parseInt(filaProduccion.get(0).getOrDefault("Cantidad Producida", "0"));
         produccion.put("Cantidad Base", String.valueOf(cantidadBase));
-
-        List<Map<String, String>> ingredientesProduccion = VerUtilsOptimized.actualizar("ProduccionIngredientes").stream()
+        VerUtils.refrescarExcel();
+        List<Map<String, String>> ingredientesProduccion = VerUtils.verTabla("ProduccionIngredientes").stream()
                 .filter(f -> codigoProduccion.equals(f.get("Código Producción")))
                 .toList();
 
         boolean usarProduccion = !ingredientesProduccion.isEmpty() && contieneCantidadesUsadas(ingredientesProduccion);
 
+        VerUtils.refrescarExcel();
+
         List<Map<String, String>> fuente = usarProduccion
                 ? ingredientesProduccion
-                : VerUtilsOptimized.verTabla("RecetasIngredientes").stream()
+                : VerUtils.verTabla("RecetasIngredientes").stream()
                     .filter(f -> codigoReceta.equals(f.get("Código receta")))
                     .toList();
 

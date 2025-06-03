@@ -1,6 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion.receta;
 
-import com.panaderiafx.utils.VerUtilsOptimized;
+import com.panaderiafx.utils.VerUtils;
 import com.panaderiafx.utils.componentes.CostoIngredientePorRecetaUtils;
 import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,7 +18,7 @@ public class ColumnasIngredientesFactory {
         col.setCellValueFactory(f -> {
             String cod = f.getValue().getOrDefault("Ingrediente", "");
             // Buscar directamente desde Excel actualizado
-            String nombre = VerUtilsOptimized.verTabla("Ingredientes").stream()
+            String nombre = VerUtils.verTabla("Ingredientes").stream()
                     .filter(r -> cod.equals(r.getOrDefault("Código", "")))
                     .map(r -> r.getOrDefault("Nombre", ""))
                     .findFirst()
@@ -157,5 +157,5 @@ public class ColumnasIngredientesFactory {
         if (actualizarCostoEnTabla != null) {
             actualizarCostoEnTabla.accept(codProduccion, total);
         }
-    }
+    } 
 }

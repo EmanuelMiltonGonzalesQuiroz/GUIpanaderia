@@ -51,7 +51,6 @@ public class VistaRegistroProduccion {
             selector.recargar();       // 🔁 actualiza tabla de recetas
         });
 
-
         HBox filaBotones = new HBox(10, btnGuardar, btnActualizar);
 
         btnGuardar.setOnAction(e -> {
@@ -59,7 +58,7 @@ public class VistaRegistroProduccion {
             String fecha = selector.getFechaSeleccionada();
             String nombreProducto = VerUtils.buscarPorCodigo("Recetas", "Código receta", codReceta, "Producto");
             String cantidad = formExtra.getCantidad();
-            String precioU = formExtra.getPrecioUnitario();
+            String precioU = formExtra.getPrecioRegistrado(); // Usar precio registrado
             String total = formExtra.getPrecioTotal();
             String mezcla = formExtra.getMezclas();
 
@@ -105,7 +104,7 @@ public class VistaRegistroProduccion {
             String nombreProducto = filaCompleta.getOrDefault("Producto", codReceta);
             if (codReceta == null) return;
 
-            formExtra.setCodigoReceta(codReceta);
+            formExtra.setCodigoReceta(codReceta, filaCompleta); // 🟢 PASAMOS LA FILA COMPLETA
             Node nodoFormulario = formExtra.crear(nombreProducto, version, rendimiento);
             formExtra.setCantidad("0");
             formExtra.setPrecioUnitario("0");

@@ -35,11 +35,11 @@ public class VistaCrearRecetaCompleta {
                 String key = entry.getKey();
                 String val = Optional.ofNullable(entry.getValue()).orElse("").trim();
 
-                if ((key.equals("Unidades por Lote") || key.equals("Molde/Lote")) && val.isEmpty()) {
+                if ((key.equals("Unidades por Molde") || key.equals("Molde/Paquete")) && val.isEmpty()) {
                     datosCabecera.put(key, "-");
                 } else if (key.equals("Observaciones") && val.isEmpty()) {
                     datosCabecera.put(key, "Ninguna");
-                } else if (!key.equals("Unidades por Lote") && !key.equals("Molde/Lote") && val.isEmpty()) {
+                } else if (!key.equals("Unidades por Molde") && !key.equals("Molde/Paquete") && val.isEmpty()) {
                     mostrarAlerta("El campo \"" + key + "\" no puede estar vacío.");
                     return;
                 }

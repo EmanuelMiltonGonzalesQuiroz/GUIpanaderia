@@ -1,6 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion;
 
-import com.panaderiafx.utils.VerUtilsOptimized;
+import com.panaderiafx.utils.VerUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -21,7 +21,7 @@ public class VistaEditarProduccion extends BorderPane {
 
     private ObservableList<Map<String, String>> datosIngredientes;
     private Map<String, String> produccionActual;
-
+ 
     public VistaEditarProduccion() {
         setPadding(new Insets(15));
         setStyle("-fx-background-color: #FFF3E0;");
@@ -42,11 +42,13 @@ public class VistaEditarProduccion extends BorderPane {
         botonActualizar.setOnAction(e -> {
             if (produccionActual != null) {
                 // 🔁 Forzar recarga de la hoja "Produccion"
-                VerUtilsOptimized.actualizar("Produccion");
+                VerUtils.refrescarExcel();
+
+                VerUtils.verTabla("Produccion");
 
                 // Actualizar la fila actual de producción desde el nuevo cache
                 String codigo = produccionActual.get("Código Producción");
-                List<Map<String, String>> producciones = VerUtilsOptimized.verTabla("Produccion");
+                List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
                 produccionActual = producciones.stream()
                         .filter(p -> codigo.equals(p.get("Código Producción")))
                         .findFirst()

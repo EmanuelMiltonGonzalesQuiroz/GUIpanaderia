@@ -2,7 +2,7 @@ package com.panaderiafx.controllers.components.editarproduccion.helpers;
 
 import com.panaderiafx.utils.ConversorMezclaUtils;
 import com.panaderiafx.utils.ConversorUtils;
-import com.panaderiafx.utils.VerUtilsOptimized;
+import com.panaderiafx.utils.VerUtils;
 import javafx.collections.ObservableList;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class EscaladoIngredientesUtils {
                 .filter(fila -> "✓".equals(fila.getOrDefault("Check", " ")))
                 .mapToDouble(fila -> TotalesProduccionUtils.parseDouble(fila.getOrDefault("Costo", "0")))
                 .sum();
-
+ 
         produccionRef.put("Cantidad Base", String.valueOf(nuevaCantidad));
         produccionRef.put("Costo Total", String.format("%.2f", nuevoCostoTotal));
         System.out.println("✅ Ingredientes ajustados correctamente.");
@@ -84,8 +84,8 @@ public class EscaladoIngredientesUtils {
     }
 
     public static double calcularCostoUnitario(String codIngrediente, String unidadDestino) {
-        // ✅ Releer directamente desde archivo con VerUtilsOptimized
-        List<Map<String, String>> ingredientes = VerUtilsOptimized.verTabla("Ingredientes");
+        // ✅ Releer directamente desde archivo con VerUtils
+        List<Map<String, String>> ingredientes = VerUtils.verTabla("Ingredientes");
 
         return ingredientes.stream()
                 .filter(i -> codIngrediente.equalsIgnoreCase(i.get("Código")))

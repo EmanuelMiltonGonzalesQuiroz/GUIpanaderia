@@ -13,8 +13,17 @@ public class CodigoGenerator {
         List<Map<String, String>> registros = VerUtils.verTabla(nombreTabla);
 
         if (registros.isEmpty()) {
-            System.out.println("❌ No hay registros en la tabla: " + nombreTabla);
-            return "ERR0000";
+            System.out.println("❌ No se encontró ningún código válido en la tabla.");
+            
+            // Generar prefijo con primeras 3 letras del nombre de la tabla
+            String prefijoGenerico = nombreTabla.toUpperCase()
+                .replaceAll("[^A-Z]", "") // eliminar caracteres no alfabéticos
+                .concat("XXX")            // asegurar mínimo 3 letras
+                .substring(0, 3);         // tomar solo las 3 primeras
+            
+            String nuevoCodigo = prefijoGenerico + "0001";
+            System.out.println("✅ Código generado por defecto: " + nuevoCodigo);
+            return nuevoCodigo;
         }
 
         Set<String> columnas = registros.get(0).keySet();
@@ -94,8 +103,18 @@ public class CodigoGenerator {
 
         if (codigosPorPrefijo.isEmpty()) {
             System.out.println("❌ No se encontró ningún código válido en la tabla.");
-            return "ERR0000";
+            
+            // Generar prefijo con primeras 3 letras del nombre de la tabla
+            String prefijoGenerico = nombreTabla.toUpperCase()
+                .replaceAll("[^A-Z]", "") // eliminar caracteres no alfabéticos
+                .concat("XXX")            // asegurar mínimo 3 letras
+                .substring(0, 3);         // tomar solo las 3 primeras
+            
+            String nuevoCodigo = prefijoGenerico + "0001";
+            System.out.println("✅ Código generado por defecto: " + nuevoCodigo);
+            return nuevoCodigo;
         }
+
 
         // Usar el primer prefijo encontrado
         String prefijo = codigosPorPrefijo.keySet().iterator().next();
