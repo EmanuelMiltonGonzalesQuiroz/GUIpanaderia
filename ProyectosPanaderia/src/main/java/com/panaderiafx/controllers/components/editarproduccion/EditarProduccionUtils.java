@@ -3,6 +3,7 @@ package com.panaderiafx.controllers.components.editarproduccion;
 import com.panaderiafx.utils.EliminarUtils;
 import com.panaderiafx.utils.ModificarUtils;
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -29,8 +30,8 @@ public class EditarProduccionUtils {
             return;
         }
 
-        double cantidad = parseDouble(campoCantidad.getText());
-        double precioUnit = parseDouble(campoPrecioU.getText());
+        double cantidad = ParseUtils.toDouble(campoCantidad.getText());
+        double precioUnit = ParseUtils.toDouble(campoPrecioU.getText());
         double costoTotal = 0.0;
 
         for (Map<String, String> fila : ingredientesActuales) {
@@ -39,8 +40,8 @@ public class EditarProduccionUtils {
             String costoStr = fila.getOrDefault("Costo", "0").trim();
             String incluye = fila.getOrDefault("Check", "✓").trim();
 
-            double cantidadUsada = parseDouble(cantidadStr);
-            double costoTotalIng = parseDouble(costoStr);
+            double cantidadUsada = ParseUtils.toDouble(cantidadStr);
+            double costoTotalIng = ParseUtils.toDouble(costoStr);
 
             Map<String, String> nuevosValoresIng = new LinkedHashMap<>();
             nuevosValoresIng.put("Cantidad Usada", String.format("%.4f", cantidadUsada));
@@ -85,7 +86,7 @@ public class EditarProduccionUtils {
 
         if (actualizado) {
             mostrarConfirmacion("✅ Producción e ingredientes actualizados correctamente.");
-                    VerUtils.refrescarExcel();
+            VerUtils.refrescarExcel();
         } else {
             mostrarError("No se pudo actualizar la producción.");
         }
@@ -129,13 +130,5 @@ public class EditarProduccionUtils {
         alert.setHeaderText("Ha ocurrido un error");
         alert.setContentText(mensaje);
         alert.showAndWait();
-    }
-
-    private static double parseDouble(String val) {
-        try {
-            return Double.parseDouble(val.replace(",", "").trim());
-        } catch (Exception e) {
-            return 0.0;
-        }
     }
 }

@@ -54,7 +54,13 @@ public class BotonGuardarProduccion extends HBox {
                     return;
                 }
             } catch (NumberFormatException ex) {
-                mostrarError("Los valores numéricos no son válidos.");
+                mostrarError("❌ Error al interpretar valores numéricos:\n"
+                    + "- Cantidad: " + cantidadStr + "\n"
+                    + "- Precio/U: " + precioUStr + "\n"
+                    + "- Total: " + totalStr + "\n"
+                    + "- Costo/U: " + costoUnitarioStr + "\n"
+                    + "- Costo Total: " + costoTotalStr + "\n\n"
+                    + "Verifique que usen punto (.) como separador decimal, no coma (,).");
                 return;
             }
 

@@ -66,7 +66,6 @@ public class FormularioEditorProduccionFactory {
         VBox gananciaBox = FormularioCamposFactory.crearCampoSoloLecturaConLabel("📈 Ganancia Total:", produccion.getOrDefault("Ganancia", ""));
         campoGanancia = (TextField) gananciaBox.getChildren().get(1);
 
-        // 🔘 Botón de guardar
         botonGuardar = new Button("💾 Guardar Cambios");
         botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #81C784; -fx-text-fill: black;");
         botonGuardar.setOnAction(e -> EditarProduccionUtils.editarProduccionYIngredientes(
