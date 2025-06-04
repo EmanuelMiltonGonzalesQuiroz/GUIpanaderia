@@ -101,14 +101,16 @@ public class VerUtils {
                 .toList();
     }
 
-    // 🔍 Buscar valor por clave
     public static String buscarPorCodigo(String tabla, String campoClave, String valorClave, String campoRetorno) {
+        if (valorClave == null || valorClave.isBlank()) return "";
+
         return verTabla(tabla).stream()
                 .filter(fila -> valorClave.equalsIgnoreCase(fila.getOrDefault(campoClave, "")))
                 .map(fila -> fila.getOrDefault(campoRetorno, ""))
                 .findFirst()
                 .orElse("");
     }
+
 
     // 📑 Ver una columna específica
     public static List<String> verColumna(String nombreTabla, String columna) {

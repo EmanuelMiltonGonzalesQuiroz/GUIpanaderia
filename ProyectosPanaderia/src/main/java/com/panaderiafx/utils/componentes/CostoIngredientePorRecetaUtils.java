@@ -9,13 +9,11 @@ public class CostoIngredientePorRecetaUtils {
 
     private static final Map<String, Map<String, Double>> cachePorReceta = new HashMap<>();
     
-    // ❌ PROBLEMA: Variables estáticas que cachean datos sin invalidarse
     private static List<Map<String, String>> TABLA_RECETAS;
     private static List<Map<String, String>> TABLA_RECETAS_INGREDIENTES;
     private static List<Map<String, String>> TABLA_INGREDIENTES;
 
     private static void cargarTablas() {
-        // ✅ SOLUCIÓN: Siempre recargar desde VerUtils para obtener datos frescos
         TABLA_RECETAS = VerUtils.verTabla("Recetas");
         TABLA_RECETAS_INGREDIENTES = VerUtils.verTabla("RecetasIngredientes");
         TABLA_INGREDIENTES = VerUtils.verTabla("Ingredientes");
@@ -24,7 +22,7 @@ public class CostoIngredientePorRecetaUtils {
     public static double calcular(String codReceta, String codIngrediente, double ignorado) {
         if (codReceta == null || codIngrediente == null) return 0;
 
-        cargarTablas(); // Ahora siempre recarga datos frescos
+        cargarTablas();
 
         Map<String, String> receta = TABLA_RECETAS.stream()
                 .filter(r -> codReceta.equals(r.get("Código receta")))
@@ -61,7 +59,8 @@ public class CostoIngredientePorRecetaUtils {
         double cantidadUsada = ParseUtils.toDouble(detalleIngrediente.getOrDefault("Cantidad", "0"));
         String unidadUsada = detalleIngrediente.getOrDefault("Unidades", "").trim();
 
-        Double cantidadConvertida = ConversorUtils.convertir("Peso", unidadUsada, unidadIngrediente, cantidadUsada, codIngrediente);
+        String tipo = detectarTipo(unidadUsada, unidadIngrediente);
+        Double cantidadConvertida = ConversorUtils.convertir(tipo, unidadUsada, unidadIngrediente, cantidadUsada, codIngrediente);
         if (cantidadConvertida == null || cantidadConvertida <= 0) {
             System.out.printf("⚠️ Conversión fallida: %s -> %s (%s) en %s%n", unidadUsada, unidadIngrediente, codIngrediente, codReceta);
             return 0;
@@ -70,14 +69,13 @@ public class CostoIngredientePorRecetaUtils {
         double costo = cantidadConvertida * precio;
         System.out.printf("🧮 Costo %s en %s: %.2f (%.2f * %.2f)%n", codIngrediente, codReceta, costo, cantidadConvertida, precio);
 
-        // ✅ Opcional: Mantener cache pero con datos frescos
         cachePorReceta.computeIfAbsent(codReceta, k -> new HashMap<>()).put(codIngrediente, costo);
         return costo;
     }
 
     public static double calcularUnitarioDesdeReceta(String codReceta) {
         if (codReceta == null || codReceta.isBlank()) return 0;
-        cargarTablas(); // Siempre datos frescos
+        cargarTablas();
 
         Map<String, String> receta = TABLA_RECETAS.stream()
                 .filter(r -> codReceta.equals(r.get("Código receta")))
@@ -103,7 +101,6 @@ public class CostoIngredientePorRecetaUtils {
     public static double calcularDesdeDatosDirectos(String codIngrediente, String unidadUsada, double cantidadUsada) {
         if (codIngrediente == null || unidadUsada == null || cantidadUsada <= 0) return 0;
 
-        // ✅ SOLUCIÓN: Siempre recargar datos frescos para este método crítico
         TABLA_INGREDIENTES = VerUtils.verTabla("Ingredientes");
 
         Map<String, String> filaIngrediente = TABLA_INGREDIENTES.stream()
@@ -116,10 +113,10 @@ public class CostoIngredientePorRecetaUtils {
 
         String unidadIngrediente = filaIngrediente.getOrDefault("Unidad", "").trim();
         double precio = ParseUtils.toDouble(filaIngrediente.getOrDefault("Precio Local", "0"));
-        
         System.out.printf("💰 Precio obtenido para %s: %.2f%n", codIngrediente, precio);
 
-        Double cantidadConvertida = ConversorUtils.convertir("Peso", unidadUsada, unidadIngrediente, cantidadUsada, codIngrediente);
+        String tipo = detectarTipo(unidadUsada, unidadIngrediente);
+        Double cantidadConvertida = ConversorUtils.convertir(tipo, unidadUsada, unidadIngrediente, cantidadUsada, codIngrediente);
         if (cantidadConvertida == null || cantidadConvertida <= 0) {
             System.out.printf("⚠️ Conversión fallida en calcularDesdeDatosDirectos: %s -> %s%n", unidadUsada, unidadIngrediente);
             return 0;
@@ -127,11 +124,21 @@ public class CostoIngredientePorRecetaUtils {
 
         double costoFinal = cantidadConvertida * precio;
         System.out.printf("🧮 Costo calculado para %s: %.2f (%.4f * %.2f)%n", codIngrediente, costoFinal, cantidadConvertida, precio);
-        
         return costoFinal;
     }
 
-    // ✅ MÉTODO MEJORADO: Limpiar todo el estado
+    private static String detectarTipo(String unidadDesde, String unidadHasta) {
+        Set<String> herramientas = Set.of("1 taza", "1/2 taza", "1/4 taza", "1/3 taza", "1 cdta", "1 cda", "1 cucharon", "Unidades");
+        Set<String> pesos = Set.of("Gramos", "Kilos", "Libras", "Onzas");
+        Set<String> volumenes = Set.of("Mililitros", "Litro", "Onza");
+
+        if (herramientas.contains(unidadDesde) || herramientas.contains(unidadHasta)) return "Herramienta";
+        if (pesos.contains(unidadDesde) || pesos.contains(unidadHasta)) return "Peso";
+        if (volumenes.contains(unidadDesde) || volumenes.contains(unidadHasta)) return "Volumen";
+
+        return "Peso"; // fallback de seguridad
+    }
+
     public static void limpiarCache() {
         System.out.println("🧹 Limpiando cache de costos...");
         cachePorReceta.clear();
@@ -139,8 +146,7 @@ public class CostoIngredientePorRecetaUtils {
         TABLA_RECETAS_INGREDIENTES = null;
         TABLA_INGREDIENTES = null;
     }
-    
-    // ✅ NUEVO: Método para forzar actualización cuando cambien precios
+
     public static void actualizarDatos() {
         limpiarCache();
         cargarTablas();

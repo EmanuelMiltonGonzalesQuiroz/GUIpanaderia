@@ -1,105 +1,105 @@
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\App.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\ControladorFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CalculadoraConversion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\BotonAccion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\CampoSeleccionExtendido.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\CampoTexto.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ContenedorFlexible.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\EditarProduccionUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\FormularioEditorProduccionFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\EscaladoIngredientesUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\FormularioCamposFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\TotalesProduccionUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelIngredientesEditorFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtil.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredientesFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesEstiloUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesTablaFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelTotalesFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\SelectorProduccionEditorFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\VistaEditarProduccion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\EtiquetaPersonalizada.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FiltroBusqueda.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\ContenedorFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\FormularioUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\TablaBusquedaRegistros.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\TablaBusquedaValores.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FormularioDinamico.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FormularioModificar.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\DetallePorDiaVista.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\LibroSemanalService.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleCostosIndirectos.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleParametros.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\ResumenSemanal.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\SelectorSemana.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\TableCellSwitchEstiloFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\VistaLibroSemanal.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ListaSeleccion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\BotonGuardarProduccion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\FormularioNuevaReceta.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\GuardarProduccionUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\PanelSelectorRecetaConTabla.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\ColumnasIngredientesFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesEstiloUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesRecetaConMezclas.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesTablaFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelTotalesFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\VistaRegistroProduccion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroreceta\FormularioCabeceraReceta.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroreceta\TablaIngredientesEditable.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroreceta\VistaCrearRecetaCompleta.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\SelectorOpciones.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\TablaBusquedaSimple.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\TablaInteractiva.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\BotonActualizar.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\CabeceraBusqueda.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\ControlPaginacion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\SelectorTamanoFuente.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CrearController.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\LibroSemanalController.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\ModificarController.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroIngresos.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroProduccion.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroRecetas.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\VerController.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\Pestanas.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\SubPestanasFactory.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosDirectosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosIndirectosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheGananciasUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheLibroSemanal.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheParametrosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheTotalUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\EditorTemporalCache.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\GlobalDataCache.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\RecetaCacheUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CalculoCostosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostosDirectosPorRecetaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostosDirectosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostosIndirectosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\DatosRecetaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\FechaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\GananciasUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\GuardarLibroSemanalUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ParametrosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ParseUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\RegistroVariableDiaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ResumenGananciasUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorMezclaUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorUtils2.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CrearUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\EliminarUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ModificarUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RegistroCambiosUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RegistroRelacionado.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RelacionadorVisual.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\TasaCambioUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VersionUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VerUtils.java
-C:\Excel\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VistaResumenUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\App.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\ControladorFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CalculadoraConversion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\BotonAccion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\CampoSeleccionExtendido.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\CampoTexto.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ContenedorFlexible.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\EditarProduccionUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\FormularioEditorProduccionFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\EscaladoIngredientesUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\FormularioCamposFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\helpers\TotalesProduccionUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelIngredientesEditorFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtil.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\ColumnasIngredientesFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesEstiloUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesTablaFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\receta\PanelTotalesFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\SelectorProduccionEditorFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\editarproduccion\VistaEditarProduccion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\EtiquetaPersonalizada.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FiltroBusqueda.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\ContenedorFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\FormularioUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\TablaBusquedaRegistros.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\forms\TablaBusquedaValores.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FormularioDinamico.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\FormularioModificar.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\DetallePorDiaVista.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\LibroSemanalService.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleCostosIndirectos.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleParametros.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\ResumenSemanal.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\SelectorSemana.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\TableCellSwitchEstiloFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\librosemanal\VistaLibroSemanal.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\ListaSeleccion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\BotonGuardarProduccion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\FormularioNuevaReceta.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\GuardarProduccionUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\PanelSelectorRecetaConTabla.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\ColumnasIngredientesFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesEstiloUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesRecetaConMezclas.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelIngredientesTablaFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\receta\PanelTotalesFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroproduccion2\VistaRegistroProduccion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroreceta\FormularioCabeceraReceta.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroreceta\TablaIngredientesEditable.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\registroreceta\VistaCrearRecetaCompleta.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\SelectorOpciones.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\TablaBusquedaSimple.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\TablaInteractiva.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\BotonActualizar.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\CabeceraBusqueda.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\ControlPaginacion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\SelectorTamanoFuente.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\components\table\TablaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\CrearController.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\LibroSemanalController.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\ModificarController.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroIngresos.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroProduccion.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\RegistroRecetas.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\controllers\VerController.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\Pestanas.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\SubPestanasFactory.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosDirectosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheCostosIndirectosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheGananciasUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheLibroSemanal.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheParametrosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\CacheTotalUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\EditorTemporalCache.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\GlobalDataCache.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\cache\RecetaCacheUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CodigoGenerator.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CalculoCostosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostoIngredientePorRecetaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostosDirectosPorRecetaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostosDirectosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\CostosIndirectosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\DatosRecetaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\FechaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\GananciasUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\GuardarLibroSemanalUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ParametrosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ParseUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\RegistroVariableDiaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\componentes\ResumenGananciasUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorMezclaUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ConversorUtils2.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\CrearUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\EliminarUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\ModificarUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RegistroCambiosUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RegistroRelacionado.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\RelacionadorVisual.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\TasaCambioUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VersionUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VerUtils.java
+C:\Users\Desktop\OneDrive - Escuela Militar de Ingenieria\Desktop\panaderia\GUIpanaderia\ProyectosPanaderia\src\main\java\com\panaderiafx\utils\VistaResumenUtils.java

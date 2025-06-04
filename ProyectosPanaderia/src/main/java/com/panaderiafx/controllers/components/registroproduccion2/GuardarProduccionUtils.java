@@ -4,6 +4,7 @@ import com.panaderiafx.controllers.components.registroproduccion2.receta.PanelIn
 import com.panaderiafx.utils.CodigoGenerator;
 import com.panaderiafx.utils.CrearUtils;
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.scene.control.Alert;
 
 import java.text.SimpleDateFormat;
@@ -15,6 +16,22 @@ public class GuardarProduccionUtils {
         String fechaOriginal = fila.get("Fecha");
         String fechaFormateada = convertirFechaSiEsNecesario(fechaOriginal);
         fila.put("Fecha", fechaFormateada);
+
+        // ✅ VALIDACIÓN numérica previa
+        try {
+            ParseUtils.safeParseDouble(fila.getOrDefault("Cantidad producida", ""));
+            ParseUtils.safeParseDouble(fila.getOrDefault("Precio de Venta por Unidad", ""));
+            ParseUtils.safeParseDouble(fila.getOrDefault("Costo/U", ""));
+            ParseUtils.safeParseDouble(fila.getOrDefault("Costo Total", ""));
+            ParseUtils.safeParseDouble(fila.getOrDefault("Ganancia Total", ""));
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Los valores numéricos no son válidos.");
+            alert.showAndWait();
+            return;
+        }
 
         String[] codRecetaFinal = { fila.getOrDefault("Código receta", "") };
 
