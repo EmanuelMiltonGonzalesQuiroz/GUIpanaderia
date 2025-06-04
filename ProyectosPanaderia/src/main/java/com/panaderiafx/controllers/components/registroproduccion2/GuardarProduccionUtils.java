@@ -13,25 +13,13 @@ import java.util.*;
 public class GuardarProduccionUtils {
 
     public static void guardar(Map<String, String> fila, boolean guardarReceta) {
+        System.out.println("🚀 Iniciando guardado de producción...");
+        
+        VerUtils.refrescarExcel();  // 🔄 Refrescar antes de leer o escribir
+
         String fechaOriginal = fila.get("Fecha");
         String fechaFormateada = convertirFechaSiEsNecesario(fechaOriginal);
         fila.put("Fecha", fechaFormateada);
-
-        // ✅ VALIDACIÓN numérica previa
-        try {
-            ParseUtils.safeParseDouble(fila.getOrDefault("Cantidad producida", ""));
-            ParseUtils.safeParseDouble(fila.getOrDefault("Precio de Venta por Unidad", ""));
-            ParseUtils.safeParseDouble(fila.getOrDefault("Costo/U", ""));
-            ParseUtils.safeParseDouble(fila.getOrDefault("Costo Total", ""));
-            ParseUtils.safeParseDouble(fila.getOrDefault("Ganancia Total", ""));
-        } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Los valores numéricos no son válidos.");
-            alert.showAndWait();
-            return;
-        }
 
         String[] codRecetaFinal = { fila.getOrDefault("Código receta", "") };
 
@@ -74,17 +62,64 @@ public class GuardarProduccionUtils {
 
         String codigoProduccion = CodigoGenerator.generarCodigo("Produccion", "Código Producción");
 
+        // 🔧 CALCULAR PRECIO POR UNIDAD CORREGIDO
+        double cantidadProducida = ParseUtils.safeParseDouble(fila.getOrDefault("Cantidad producida", "0"));
+        double precioRegistrado = ParseUtils.safeParseDouble(fila.getOrDefault("Precio registrado", "0"));
+        
+        System.out.println("💰 Calculando precio por unidad:");
+        System.out.println("   Precio registrado: " + precioRegistrado);
+        System.out.println("   Cantidad producida: " + cantidadProducida);
+        
+        // Obtener datos para verificar si es precio por molde
+        String unidadesStr = fila.getOrDefault("Unidades por Molde", "").trim();
+        String moldesStr = fila.getOrDefault("Molde/Paquete", "").trim();
+        
+        // 🔧 CORRECCIÓN: Verificar si tenemos precio por unidad ya calculado
+        String precioUnidadExistente = fila.getOrDefault("Precio de Venta por Unidad", "").trim();
+        double precioUnidad;
+        
+        if (!precioUnidadExistente.isEmpty() && ParseUtils.esNumero(precioUnidadExistente)) {
+            // Si ya tenemos el precio por unidad calculado en el formulario, usarlo
+            precioUnidad = ParseUtils.safeParseDouble(precioUnidadExistente);
+            System.out.println("   Usando precio unitario del formulario: " + precioUnidad);
+        } else {
+            // Calcular desde precio registrado
+            boolean esPrecioPorMolde = ParseUtils.esNumero(unidadesStr) && ParseUtils.esNumero(moldesStr);
+            precioUnidad = esPrecioPorMolde ? 
+                precioRegistrado / ParseUtils.safeParseDouble(unidadesStr) : 
+                precioRegistrado;
+                
+            System.out.println("   Es precio por molde: " + esPrecioPorMolde);
+            if (esPrecioPorMolde) {
+                System.out.println("   Unidades por molde: " + unidadesStr);
+                System.out.println("   Precio unitario calculado: " + precioUnidad);
+            } else {
+                System.out.println("   Precio unitario directo: " + precioUnidad);
+            }
+        }
+        
+        double precioTotal = cantidadProducida * precioUnidad;
+        System.out.println("   Precio total calculado: " + precioTotal);
+        
+        double costoTotal = ParseUtils.safeParseDouble(fila.getOrDefault("Costo Total", "0").replace(",", "."));
+        double costoUnitario = ParseUtils.safeParseDouble(fila.getOrDefault("Costo/U", "0").replace(",", "."));
+        double ganancia = precioTotal - costoTotal;
+        
+        System.out.println("   Ganancia calculada: " + ganancia);
+
         Map<String, String> filaProduccion = new LinkedHashMap<>();
         filaProduccion.put("Código Producción", codigoProduccion);
         filaProduccion.put("Fecha", fechaFormateada);
         filaProduccion.put("Código Receta", codRecetaFinal[0]);
         filaProduccion.put("Cantidad Producida", fila.getOrDefault("Cantidad producida", ""));
-        filaProduccion.put("Precio de Venta por Unidad", fila.getOrDefault("Precio de Venta por Unidad", ""));
+        filaProduccion.put("Precio de Venta por Unidad", String.format("%.4f", precioUnidad)); // 🔧 CORREGIDO - 4 decimales
         filaProduccion.put("Mezcla", fila.getOrDefault("Mezcla", ""));
         filaProduccion.put("Producto", fila.getOrDefault("Producto", ""));
-        filaProduccion.put("Costo Directo/U", fila.getOrDefault("Costo/U", ""));
-        filaProduccion.put("Costo Total", fila.getOrDefault("Costo Total", ""));
-        filaProduccion.put("Ganancia Total", fila.getOrDefault("Ganancia Total", ""));
+        filaProduccion.put("Costo Directo/U", String.format("%.4f", costoUnitario));
+        filaProduccion.put("Costo Total", String.format("%.2f", costoTotal));
+        filaProduccion.put("Ganancia Total", String.format("%.2f", ganancia));
+        
+        System.out.println("💾 Guardando producción con precio unitario: " + String.format("%.4f", precioUnidad));
         CrearUtils.crearFila("Produccion", filaProduccion);
 
         List<Map<String, String>> ingredientes = PanelIngredientesRecetaConMezclas.obtenerIngredientesModificados();
@@ -108,6 +143,8 @@ public class GuardarProduccionUtils {
         if (!guardarReceta) {
             mostrarConfirmacion("✅ Producción registrada correctamente.");
         }
+        
+        System.out.println("✅ Guardado completado exitosamente");
     }
 
     private static String convertirFechaSiEsNecesario(String fecha) {

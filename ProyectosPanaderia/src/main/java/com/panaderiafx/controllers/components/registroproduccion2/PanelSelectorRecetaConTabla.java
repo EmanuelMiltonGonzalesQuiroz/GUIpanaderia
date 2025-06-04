@@ -74,5 +74,16 @@ public class PanelSelectorRecetaConTabla extends VBox {
     public Node getNodo() {
         return this;
     }
+
+    public Map<String, String> getFilaRecetaSeleccionada() {
+        System.out.println("📋 Obteniendo fila completa de receta seleccionada");
+        if (recetaSeleccionada != null) {
+            System.out.println("   Datos disponibles:");
+            for (Map.Entry<String, String> entry : recetaSeleccionada.entrySet()) {
+                System.out.println("     " + entry.getKey() + " = " + entry.getValue());
+            }
+        }
+        return recetaSeleccionada;
+    }
     
 }

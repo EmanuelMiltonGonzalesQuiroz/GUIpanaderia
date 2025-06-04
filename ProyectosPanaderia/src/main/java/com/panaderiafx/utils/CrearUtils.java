@@ -5,8 +5,6 @@ import java.util.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.panaderiafx.utils.componentes.ParseUtils;
-
 public class CrearUtils {
 
     private static final String RUTA = "Datos\\Hoja de datos.xlsx";
@@ -60,14 +58,7 @@ public class CrearUtils {
                 if (columnas.containsKey(entry.getKey())) {
                     int col = columnas.get(entry.getKey());
                     Cell celda = nueva.createCell(col);
-                    String valor = entry.getValue();
-                    // Intentar convertir a número si aplica
-                    try {
-                        double numero = ParseUtils.parseDouble(valor);
-                        celda.setCellValue(numero);
-                    } catch (Exception e) {
-                        celda.setCellValue(valor);
-                    }
+                    celda.setCellValue(entry.getValue());
                     System.out.printf("   ➤ [%s] columna %d ➝ %s%n", entry.getKey(), col, entry.getValue());
                 }
             }

@@ -42,7 +42,7 @@ public class VistaRegistroProduccion {
         HBox.setHgrow(columnaDerecha, Priority.ALWAYS);
 
         Button btnGuardar = new Button("💾 GUARDAR PRODUCCIÓN");
-        btnGuardar.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+        btnGuardar.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20;");
 
         Button btnActualizar = new Button("🔁 ACTUALIZAR");
         btnActualizar.setStyle("-fx-background-color: #FFA726; -fx-text-fill: black; -fx-font-weight: bold;");
@@ -58,18 +58,19 @@ public class VistaRegistroProduccion {
             String fecha = selector.getFechaSeleccionada();
             String nombreProducto = VerUtils.buscarPorCodigo("Recetas", "Código receta", codReceta, "Producto");
             String cantidad = formExtra.getCantidad();
-            String precioU = formExtra.getPrecioRegistrado(); // Usar precio registrado
+            String precioRegistrado = formExtra.getPrecioRegistrado();
+            String precioUnitario = formExtra.getPrecioUnitario(); // 🔧 OBTENER PRECIO UNITARIO
             String total = formExtra.getPrecioTotal();
             String mezcla = formExtra.getMezclas();
 
-            if (codReceta == null || fecha.isEmpty() || cantidad.isEmpty() || precioU.isEmpty() || total.isEmpty()) {
+            if (codReceta == null || fecha.isEmpty() || cantidad.isEmpty() || precioRegistrado.isEmpty() || total.isEmpty()) {
                 mostrarError("Complete todos los campos antes de guardar.");
                 return;
             }
 
             try {
-                if (Double.parseDouble(cantidad) == 0 || Double.parseDouble(precioU) == 0 || Double.parseDouble(total) == 0) {
-                    mostrarError("Cantidad, precio unitario y total deben ser mayores a cero.");
+                if (Double.parseDouble(cantidad) == 0 || Double.parseDouble(precioRegistrado) == 0 || Double.parseDouble(total) == 0) {
+                    mostrarError("Cantidad, precio registrado y total deben ser mayores a cero.");
                     return;
                 }
             } catch (NumberFormatException ex) {
@@ -77,6 +78,24 @@ public class VistaRegistroProduccion {
                 return;
             }
 
+            // 🎬 ANIMACIÓN DE CARGA CON ROTACIÓN
+            String textoOriginal = btnGuardar.getText();
+            String estiloOriginal = btnGuardar.getStyle();
+            
+            btnGuardar.setDisable(true);
+            btnGuardar.setText("⏳ GUARDANDO...");
+            btnGuardar.setStyle("-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20;");
+            
+            // 🌀 ANIMACIÓN ROTATIVA MIENTRAS GUARDA
+            javafx.animation.RotateTransition rotacion = new javafx.animation.RotateTransition(javafx.util.Duration.millis(1000), btnGuardar);
+            rotacion.setByAngle(360);
+            rotacion.setCycleCount(javafx.animation.Animation.INDEFINITE);
+            rotacion.play();
+
+            // Obtener la fila completa de la receta para tener todos los datos necesarios
+            Map<String, String> filaRecetaCompleta = selector.getFilaRecetaSeleccionada();
+            
+            // 🔧 Crear el Map con todos los datos necesarios para el cálculo correcto
             double totalNum = ParseUtils.toDouble(total);
             double costoDirecto = ParseUtils.toDouble(formExtra.getCostoDirecto());
             double ganancia = totalNum - costoDirecto;
@@ -87,14 +106,82 @@ public class VistaRegistroProduccion {
             fila.put("Fecha", fecha);
             fila.put("Producto", nombreProducto);
             fila.put("Cantidad producida", cantidad);
-            fila.put("Precio de Venta por Unidad", precioU);
+            fila.put("Precio registrado", precioRegistrado); // 🔧 Precio registrado original
+            fila.put("Precio de Venta por Unidad", precioUnitario); // 🔧 PRECIO UNITARIO CALCULADO
             fila.put("Mezcla", mezcla);
             fila.put("Costo directo", String.format("%.2f", costoDirecto));
             fila.put("Costo/U", String.format("%.4f", costoUnitario));
             fila.put("Costo Total", String.format("%.2f", costoDirecto));
             fila.put("Ganancia Total", String.format("%.2f", ganancia));
+            
+            // 🔧 Agregar datos necesarios para el cálculo del precio por unidad
+            if (filaRecetaCompleta != null) {
+                fila.put("Unidades por Molde", filaRecetaCompleta.getOrDefault("Unidades por Molde", ""));
+                fila.put("Molde/Paquete", filaRecetaCompleta.getOrDefault("Molde/Paquete", ""));
+            }
 
-            GuardarProduccionUtils.guardar(fila, formExtra.isGuardarReceta());
+            // 🔧 GUARDADO DIRECTO EN EL HILO DE JAVAFX CON ANIMACIÓN
+            try {
+                System.out.println("🔧 Precio unitario antes de guardar: " + precioUnitario);
+                GuardarProduccionUtils.guardar(fila, formExtra.isGuardarReceta());
+                
+                // 🛑 PARAR ANIMACIÓN DE CARGA
+                rotacion.stop();
+                btnGuardar.setRotate(0); // Resetear rotación
+                
+                // 🎉 ÉXITO - ANIMACIÓN RESTAURADA
+                btnGuardar.setDisable(false);
+                btnGuardar.setText("✅ GUARDADO");
+                btnGuardar.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20;");
+                
+                // 🎬 ANIMACIÓN: Pulso de éxito
+                javafx.animation.ScaleTransition pulso = new javafx.animation.ScaleTransition(javafx.util.Duration.millis(200), btnGuardar);
+                pulso.setToX(1.1);
+                pulso.setToY(1.1);
+                pulso.setAutoReverse(true);
+                pulso.setCycleCount(2);
+                pulso.play();
+                
+                // 🔄 Volver al estado original después de 2 segundos
+                javafx.animation.Timeline timeline = new javafx.animation.Timeline(
+                    new javafx.animation.KeyFrame(javafx.util.Duration.seconds(2), event -> {
+                        btnGuardar.setText(textoOriginal);
+                        btnGuardar.setStyle(estiloOriginal);
+                    })
+                );
+                timeline.play();
+                
+            } catch (Exception ex) {
+                // 🛑 PARAR ANIMACIÓN DE CARGA EN ERROR
+                rotacion.stop();
+                btnGuardar.setRotate(0); // Resetear rotación
+                
+                // ❌ ERROR - ANIMACIÓN DE ERROR
+                btnGuardar.setDisable(false);
+                btnGuardar.setText("❌ ERROR");
+                btnGuardar.setStyle("-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10 20;");
+                
+                // 🎬 ANIMACIÓN: Shake de error
+                javafx.animation.TranslateTransition shake = new javafx.animation.TranslateTransition(javafx.util.Duration.millis(100), btnGuardar);
+                shake.setFromX(0);
+                shake.setToX(10);
+                shake.setAutoReverse(true);
+                shake.setCycleCount(6);
+                shake.play();
+                
+                System.err.println("❌ Error al guardar: " + ex.getMessage());
+                ex.printStackTrace();
+                mostrarError("Error al guardar: " + ex.getMessage());
+                
+                // 🔄 Volver al estado original después de 3 segundos
+                javafx.animation.Timeline timeline = new javafx.animation.Timeline(
+                    new javafx.animation.KeyFrame(javafx.util.Duration.seconds(3), event -> {
+                        btnGuardar.setText(textoOriginal);
+                        btnGuardar.setStyle(estiloOriginal);
+                    })
+                );
+                timeline.play();
+            }
         });
 
         selector.setOnRecetaSeleccionada(filaCompleta -> {

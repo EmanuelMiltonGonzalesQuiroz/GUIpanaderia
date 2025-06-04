@@ -117,7 +117,9 @@ public class FormularioNuevaReceta {
             actualizando = true;
             double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
             double precioUnidad = ParseUtils.safeParseDouble(n);
-            campoPrecioTotal.setText(String.format("%.2f", cantidad * precioUnidad));
+            double precioTotal = cantidad * precioUnidad;
+            campoPrecioTotal.setText(String.format("%.2f", precioTotal));
+            sincronizarDatos();
             actualizando = false;
         });
 
@@ -127,21 +129,23 @@ public class FormularioNuevaReceta {
             double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
             double precioTotal = ParseUtils.safeParseDouble(n);
             if (cantidad > 0) {
-                campoPrecioUnidad.setText(String.format("%.2f", precioTotal / cantidad));
+                double precioUnidad = precioTotal / cantidad;
+                campoPrecioUnidad.setText(String.format("%.4f", precioUnidad)); // 🔧 CORREGIDO A 4 DECIMALES
             }
+            sincronizarDatos();
             actualizando = false;
         });
+
+        campoCostoDirecto.textProperty().addListener((obs, o, n) -> sincronizarDatos());
+        campoCostoUnitario.textProperty().addListener((obs, o, n) -> sincronizarDatos());
     }
 
     private void actualizarPrecioRegistrado() {
         if (filaReceta == null) return;
-
         String tipoPrecio = comboSeleccionPrecio.getValue();
         if (tipoPrecio == null || tipoPrecio.isBlank()) tipoPrecio = "Precio por Mayor";
-
         String valorPrecio = filaReceta.getOrDefault(tipoPrecio, "").trim();
-        campoPrecioRegistrado.setText(valorPrecio); // deja lo original sin conversión
-
+        campoPrecioRegistrado.setText(valorPrecio);
         recalcularDesdePrecioRegistrado();
     }
 
@@ -154,8 +158,29 @@ public class FormularioNuevaReceta {
         double precioUnidad = esPrecioPorMolde ? precioCrudo / ParseUtils.safeParseDouble(unidadesStr) : precioCrudo;
 
         double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
-        campoPrecioUnidad.setText(String.format("%.2f", precioUnidad));
-        campoPrecioTotal.setText(String.format("%.2f", cantidad * precioUnidad));
+        double precioTotal = cantidad * precioUnidad;
+
+        campoPrecioUnidad.setText(String.format("%.4f", precioUnidad)); // 🔧 CORREGIDO A 4 DECIMALES
+        campoPrecioTotal.setText(String.format("%.2f", precioTotal));
+        sincronizarDatos();
+    }
+
+    private void sincronizarDatos() {
+        if (filaReceta == null) return;
+        // 🔧 MEJORA: Usar la clave correcta que espera GuardarProduccionUtils
+        filaReceta.put("Precio de Venta por Unidad", campoPrecioUnidad.getText().trim());
+        filaReceta.put("Precio Total", campoPrecioTotal.getText().trim());
+        filaReceta.put("Precio registrado", campoPrecioRegistrado.getText().trim());
+        filaReceta.put("Cantidad producida", campoCantidad.getText().trim());
+        filaReceta.put("Mezcla", campoMezcla.getText().trim());
+        filaReceta.put("Costo directo", campoCostoDirecto.getText().trim());
+        filaReceta.put("Costo/U", campoCostoUnitario.getText().trim());
+        
+        // 🔧 DEPURACIÓN: Imprimir valores para verificar
+        System.out.println("🔧 Sincronizando datos:");
+        System.out.println("   Precio de Venta por Unidad: " + filaReceta.get("Precio de Venta por Unidad"));
+        System.out.println("   Precio Total: " + filaReceta.get("Precio Total"));
+        System.out.println("   Cantidad producida: " + filaReceta.get("Cantidad producida"));
     }
 
     // Públicos
@@ -170,12 +195,32 @@ public class FormularioNuevaReceta {
     public String getCodigoRecetaActual() { return codigoRecetaActual; }
     public Supplier<String> getCantidadSupplier() { return this::getCantidad; }
 
-    public void setCantidad(String v) { campoCantidad.setText(v); }
-    public void setPrecioUnitario(String v) { campoPrecioUnidad.setText(v); }
-    public void setPrecioTotal(String v) { campoPrecioTotal.setText(v); }
-    public void setCostoDirecto(String v) { campoCostoDirecto.setText(v); }
-    public void setCostoUnitario(String v) { campoCostoUnitario.setText(v); }
-    public void setMezclas(String v) { if (v != null) campoMezcla.setText(v); }
+    public void setCantidad(String v) { 
+        campoCantidad.setText(v); 
+        sincronizarDatos(); // 🔧 MEJORA: Sincronizar después de cambios programáticos
+    }
+    public void setPrecioUnitario(String v) { 
+        campoPrecioUnidad.setText(v); 
+        sincronizarDatos(); // 🔧 MEJORA: Sincronizar después de cambios programáticos
+    }
+    public void setPrecioTotal(String v) { 
+        campoPrecioTotal.setText(v); 
+        sincronizarDatos(); // 🔧 MEJORA: Sincronizar después de cambios programáticos
+    }
+    public void setCostoDirecto(String v) { 
+        campoCostoDirecto.setText(v); 
+        sincronizarDatos(); // 🔧 MEJORA: Sincronizar después de cambios programáticos
+    }
+    public void setCostoUnitario(String v) { 
+        campoCostoUnitario.setText(v); 
+        sincronizarDatos(); // 🔧 MEJORA: Sincronizar después de cambios programáticos
+    }
+    public void setMezclas(String v) { 
+        if (v != null) {
+            campoMezcla.setText(v); 
+            sincronizarDatos(); // 🔧 MEJORA: Sincronizar después de cambios programáticos
+        }
+    }
     public void setOnCambioMezclas(Runnable r) { this.onCambioMezclas = r; }
     public Node getNode() { return grid; }
 

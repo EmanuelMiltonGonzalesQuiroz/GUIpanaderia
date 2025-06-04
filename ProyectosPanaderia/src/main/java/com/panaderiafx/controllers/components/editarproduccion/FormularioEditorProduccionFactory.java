@@ -24,6 +24,7 @@ public class FormularioEditorProduccionFactory {
     private static String codigoProduccion;
     private static Runnable refrescarTabla;
     private static Button botonGuardar;
+    private static boolean actualizando = false;
 
     public static VBox crearFormulario(Map<String, String> produccion,
                                        ObservableList<Map<String, String>> ingredientes,
@@ -100,35 +101,23 @@ public class FormularioEditorProduccionFactory {
         comboTipoPrecio.setOnAction(e -> calcularPrecioRegistrado());
 
         campoPrecioRegistrado.textProperty().addListener((obs, o, n) -> {
-            if (campoPrecioRegistrado.isFocused()) calcularDesdeRegistrado();
-        });
-
-        // ✅ CORREGIDO: Solo recalcular totales, no modificar costo total
-        campoPrecioU.textProperty().addListener((obs, o, n) -> {
-            if (campoPrecioU.isFocused()) {
-                recalcularTotalesDesdeFormulario();
+            if (campoPrecioRegistrado.isFocused() && !actualizando) {
+                calcularDesdeRegistrado();
             }
         });
 
-        // ❌ ELIMINAR: Este listener está causando el problema
-        // campoCostoTotal.textProperty().addListener((obs, o, n) -> {
-        //     if (campoCostoTotal.isFocused()) {
-        //         double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
-        //         double total = ParseUtils.safeParseDouble(n);
-        //         if (cantidad > 0) {
-        //             double precioU = total / cantidad;
-        //             campoPrecioU.setText(String.format("%.2f", precioU));
-        //             recalcularTotalesDesdeFormulario();
-        //         }
-        //     }
-        // });
+        campoPrecioU.textProperty().addListener((obs, o, n) -> {
+            if (campoPrecioU.isFocused() && !actualizando) {
+                calcularDesdeUnitario();
+            }
+        });
 
         campoCantidad.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
                 int cantidadNueva = TotalesProduccionUtils.parseInt(campoCantidad.getText());
                 int cantidadBase = TotalesProduccionUtils.parseInt(produccionRef.getOrDefault("Cantidad Base", "0"));
                 produccionRef.put("Cantidad Producida", String.valueOf(cantidadNueva));
-                recalcularTotalesDesdeFormulario();
+                recalcularTotales();
                 if (cantidadNueva != cantidadBase && refrescarTabla != null) refrescarTabla.run();
             }
         });
@@ -142,7 +131,7 @@ public class FormularioEditorProduccionFactory {
                     produccionRef.put("Cantidad Producida", String.valueOf(nuevaCantidad));
                     if (refrescarTabla != null) refrescarTabla.run();
                 }
-                recalcularTotalesDesdeFormulario();
+                recalcularTotales();
             }
         });
 
@@ -152,7 +141,7 @@ public class FormularioEditorProduccionFactory {
                 costoUBox, costoTotalBox, gananciaBox, botonGuardar, botonEliminar
         );
 
-        calcularPrecioRegistrado();
+        calcularPrecioRegistradoInicial();
         return panel;
     }
 
@@ -165,44 +154,83 @@ public class FormularioEditorProduccionFactory {
         if (receta == null) return;
 
         String tipo = comboTipoPrecio.getValue();
-        double precioReceta = ParseUtils.safeParseDouble(receta.getOrDefault(tipo, ""));
-        double unidades = ParseUtils.safeParseDouble(receta.getOrDefault("Unidades por Molde", ""));
-        double moldes = ParseUtils.safeParseDouble(receta.getOrDefault("Molde/Paquete", ""));
+        double precioReceta = ParseUtils.safeParseDouble(receta.getOrDefault(tipo, "0"));
+        double unidades = ParseUtils.safeParseDouble(receta.getOrDefault("Unidades por Molde", "0"));
+        double moldes = ParseUtils.safeParseDouble(receta.getOrDefault("Molde/Paquete", "0"));
 
         boolean esPaquete = unidades > 0 && moldes > 0;
         double precioUnidadEsperado = esPaquete ? precioReceta / unidades : precioReceta;
-        campoPrecioRegistrado.setText(String.format("%.4f", precioUnidadEsperado));
 
-        double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
-        campoPrecioU.setText(String.format("%.2f", precioUnidadEsperado));
-        
-        // ✅ NO modificar costo total aquí, solo recalcular
-        recalcularTotalesDesdeFormulario();
+        actualizando = true;
+        campoPrecioRegistrado.setText(String.format("%.4f", precioUnidadEsperado));
+        campoPrecioU.setText(String.format("%.4f", precioUnidadEsperado));
+        actualizando = false;
+
+        recalcularTotales();
     }
 
     private static void calcularDesdeRegistrado() {
         double precioRegistrado = ParseUtils.safeParseDouble(campoPrecioRegistrado.getText());
-        campoPrecioU.setText(String.format("%.2f", precioRegistrado));
-        
-        // ✅ NO modificar costo total aquí, solo recalcular
-        recalcularTotalesDesdeFormulario();
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+        Map<String, String> receta = recetas.stream()
+                .filter(f -> f.get("Código receta").equalsIgnoreCase(codigoRecetaActual))
+                .findFirst().orElse(null);
+
+        double unidades = ParseUtils.safeParseDouble(receta != null ? receta.getOrDefault("Unidades por Molde", "1") : "1");
+        double moldes = ParseUtils.safeParseDouble(receta != null ? receta.getOrDefault("Molde/Paquete", "1") : "1");
+
+        boolean esPaquete = unidades > 0 && moldes > 0;
+        double precioUnitario = esPaquete ? precioRegistrado / unidades : precioRegistrado;
+
+        actualizando = true;
+        campoPrecioU.setText(String.format("%.4f", precioUnitario));
+        actualizando = false;
+
+        recalcularTotales();
     }
 
-    private static void recalcularTotalesDesdeFormulario() {
+    private static void calcularDesdeUnitario() {
+        double precioUnitario = ParseUtils.safeParseDouble(campoPrecioU.getText());
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+        Map<String, String> receta = recetas.stream()
+                .filter(f -> f.get("Código receta").equalsIgnoreCase(codigoRecetaActual))
+                .findFirst().orElse(null);
+
+        double unidades = ParseUtils.safeParseDouble(receta != null ? receta.getOrDefault("Unidades por Molde", "1") : "1");
+        double moldes = ParseUtils.safeParseDouble(receta != null ? receta.getOrDefault("Molde/Paquete", "1") : "1");
+
+        boolean esPaquete = unidades > 0 && moldes > 0;
+        double precioRegistrado = esPaquete ? precioUnitario * unidades : precioUnitario;
+
+        actualizando = true;
+        campoPrecioRegistrado.setText(String.format("%.4f", precioRegistrado));
+        actualizando = false;
+
+        recalcularTotales();
+    }
+
+    private static void calcularPrecioRegistradoInicial() {
+        double precioUnitarioActual = ParseUtils.safeParseDouble(produccionRef.getOrDefault("Precio de Venta por Unidad", "0"));
+        calcularDesdeUnitario();
+    }
+
+    private static void recalcularTotales() {
         TotalesProduccionUtils.recalcularTotales(
                 campoCantidad, campoPrecioU, campoCostoTotal, campoCostoU, campoGanancia
         );
+
+        // 🛠 Guardar los valores calculados en el mapa antes de guardar
+        if (produccionRef != null) {
+            produccionRef.put("Costo Total", campoCostoTotal.getText());
+            produccionRef.put("Costo Directo/U", campoCostoU.getText());
+            produccionRef.put("Ganancia", campoGanancia.getText());
+            produccionRef.put("Precio de Venta por Unidad", campoPrecioU.getText());
+            produccionRef.put("Precio Registrado", campoPrecioRegistrado.getText());
+        }
     }
+
 
     public static void actualizarTotales(String cod, Double nuevoCostoTotal) {
-        campoCostoTotal.setText(String.format("%.2f", nuevoCostoTotal));
-        if (produccionRef != null) {
-            produccionRef.put("Costo Total", String.format("%.2f", nuevoCostoTotal));
-        }
-        recalcularTotalesDesdeFormulario();
-    }
-
-    private static void activarBotonGuardar() {
         botonGuardar.setDisable(false);
         botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #81C784; -fx-text-fill: black;");
     }
