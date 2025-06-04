@@ -3,6 +3,8 @@ package com.panaderiafx.controllers.components.editarproduccion.helpers;
 import com.panaderiafx.utils.ConversorMezclaUtils;
 import com.panaderiafx.utils.ConversorUtils;
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
+
 import javafx.collections.ObservableList;
 
 import java.util.List;
@@ -98,4 +100,39 @@ public class EscaladoIngredientesUtils {
                 })
                 .orElse(0.0);
     }
+    public static double calcularMezclaDesdeProduccion(int cantidad, String codReceta) {
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+        return recetas.stream()
+            .filter(r -> r.get("Código receta").equalsIgnoreCase(codReceta))
+            .mapToDouble(r -> {
+                double rendimiento = ParseUtils.safeParseDouble(r.getOrDefault("Rendimiento", "1"));
+                return rendimiento > 0 ? cantidad / rendimiento : 0;
+            })
+            .findFirst()
+            .orElse(0);
+    }
+
+    public static void reescalarIngredientesDesdeCantidad(ObservableList<Map<String, String>> ingredientes,
+                                                        int nuevaCantidad,
+                                                        String codReceta) {
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+        double rendimiento = recetas.stream()
+            .filter(r -> r.get("Código receta").equalsIgnoreCase(codReceta))
+            .mapToDouble(r -> ParseUtils.safeParseDouble(r.getOrDefault("Rendimiento", "1")))
+            .findFirst()
+            .orElse(1);
+
+        double factor = (rendimiento > 0) ? nuevaCantidad / rendimiento : 1;
+
+        for (Map<String, String> fila : ingredientes) {
+            double base = ParseUtils.safeParseDouble(fila.getOrDefault("Cantidad Base", fila.getOrDefault("Cantidad", "0")));
+            double nueva = base * factor;
+            double costoUnitario = ParseUtils.safeParseDouble(fila.getOrDefault("Costo Unitario", "0"));
+            double nuevoCosto = nueva * costoUnitario;
+
+            fila.put("Cantidad", String.format("%.4f", nueva));
+            fila.put("Costo", String.format("%.4f", nuevoCosto));
+        }
+    }
+
 }

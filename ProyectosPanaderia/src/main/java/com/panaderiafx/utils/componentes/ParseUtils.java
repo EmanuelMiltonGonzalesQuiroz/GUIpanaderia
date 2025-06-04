@@ -51,6 +51,21 @@ public class ParseUtils {
         }
     }
 
+    public static int safeParseInt(String val) {
+        if (val == null || val.trim().isEmpty()) return 0;
+        try {
+            return Integer.parseInt(val.trim());
+        } catch (NumberFormatException e) {
+            try {
+                // Intenta parsear como double y truncar
+                return (int) Double.parseDouble(val.trim().replace(",", "."));
+            } catch (Exception ignored) {
+                return 0;
+            }
+        }
+    }
+
+
     public static boolean esNumero(String val) {
         try {
             Double.parseDouble(val.trim().replace(",", "."));
@@ -63,5 +78,7 @@ public class ParseUtils {
     public static double parseDouble(String val) {
         return safeParseDouble(val);
     }
+
+    
 
 }

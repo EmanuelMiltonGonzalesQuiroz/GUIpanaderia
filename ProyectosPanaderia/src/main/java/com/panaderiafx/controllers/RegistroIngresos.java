@@ -7,7 +7,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public class RegistroIngresos {
-
+ 
     public static Node crearVista() {
         // Contenedor raíz con margen
         StackPane layout = new StackPane();

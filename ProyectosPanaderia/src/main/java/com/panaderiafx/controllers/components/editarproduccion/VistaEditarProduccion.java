@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
-import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
@@ -17,11 +16,11 @@ public class VistaEditarProduccion extends BorderPane {
 
     private final VBox panelFormulario;
     private final VBox panelIngredientes;
-    private final VBox contenedorSelector;
+    private VBox contenedorSelector = new VBox();
 
     private ObservableList<Map<String, String>> datosIngredientes;
     private Map<String, String> produccionActual;
- 
+
     public VistaEditarProduccion() {
         setPadding(new Insets(15));
         setStyle("-fx-background-color: #FFF3E0;");
@@ -40,29 +39,32 @@ public class VistaEditarProduccion extends BorderPane {
         Button botonActualizar = new Button("🔄 Actualizar Vista");
         botonActualizar.setStyle("-fx-font-size: 14px; -fx-background-color: #FFB74D; -fx-text-fill: black;");
         botonActualizar.setOnAction(e -> {
-            if (produccionActual != null) {
-                // 🔁 Forzar recarga de la hoja "Produccion"
-                VerUtils.refrescarExcel();
+            VerUtils.refrescarExcel(); // Refrescar completamente los datos desde Excel
 
-                VerUtils.verTabla("Produccion");
+            // Limpiar datos actuales
+            this.produccionActual = null;
+            this.datosIngredientes = FXCollections.observableArrayList();
 
-                // Actualizar la fila actual de producción desde el nuevo cache
-                String codigo = produccionActual.get("Código Producción");
-                List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
-                produccionActual = producciones.stream()
-                        .filter(p -> codigo.equals(p.get("Código Producción")))
-                        .findFirst()
-                        .orElse(produccionActual); // si no encuentra, mantiene la actual
-            }
-            recargarVistaCompleta();
+            // Crear nuevo selector con datos frescos
+            Node nuevoSelector = SelectorProduccionEditorFactory.crearSelector((produccion) -> {
+                if (produccion == null) return;
+                this.produccionActual = produccion;
+                this.datosIngredientes = FXCollections.observableArrayList();
+                recargarVistaCompleta();
+            });
+
+            // Reemplazar contenido del selector
+            contenedorSelector.getChildren().setAll(botonActualizar, nuevoSelector);
+
+            // Limpiar formularios y panel de ingredientes
+            panelFormulario.getChildren().clear();
+            panelIngredientes.getChildren().clear();
         });
 
         Node selector = SelectorProduccionEditorFactory.crearSelector((produccion) -> {
             if (produccion == null) return;
-
             this.produccionActual = produccion;
             this.datosIngredientes = FXCollections.observableArrayList();
-
             recargarVistaCompleta();
         });
 
