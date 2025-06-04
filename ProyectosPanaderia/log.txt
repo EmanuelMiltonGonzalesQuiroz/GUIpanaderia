@@ -5,9 +5,9 @@
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
 📄 Cargada hoja 'Costos'. Filas: 37
 📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'Produccion'. Filas: 1
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 279
-📄 Cargada hoja 'ResumenSemanal'. Filas: 1
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
 📄 Cargada hoja 'Recetas'. Filas: 19
 📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
 📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
@@ -16,15 +16,15 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1476 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1392 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 33
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
 📄 Cargada hoja 'Costos'. Filas: 37
 📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'Produccion'. Filas: 1
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 279
-📄 Cargada hoja 'ResumenSemanal'. Filas: 1
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
 📄 Cargada hoja 'Recetas'. Filas: 19
 📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
 📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
@@ -33,8 +33,187 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 543 ms
-⏱️ Tiempo en crear pestañas: 711 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 456 ms
+⏱️ Tiempo en crear pestañas: 590 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 3003 ms
-⏱️ Tiempo desde main() hasta GUI: 3018 ms
+⏱️ Tiempo total en start(): 2705 ms
+⏱️ Tiempo desde main() hasta GUI: 2719 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 282 ms
+📥 Cargando nombres de ingredientes...
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 258 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 219 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 233 ms
+🔁 Cargando desde ProduccionIngredientes...
+⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.
+💰 Precio obtenido para ING0001: 4.00
+📥 Datos de conversión obtenidos: 30 filas.
+🧮 Costo calculado para ING0001: 45.27 (11.3187 * 4.00)
+💰 Precio obtenido para ING0002: 0.80
+🧮 Costo calculado para ING0002: 1.81 (2.2593 * 0.80)
+💰 Precio obtenido para ING0004: 7.60
+🧮 Costo calculado para ING0004: 6.15 (0.8093 * 7.60)
+💰 Precio obtenido para ING0011: 10.00
+⚠️ Unidades iguales [Litro], retorno directo: 24.95
+🧮 Costo calculado para ING0011: 249.53 (24.9535 * 10.00)
+💰 Precio obtenido para ING0001: 4.00
+🧮 Costo calculado para ING0001: 362.87 (90.7184 * 4.00)
+💰 Precio obtenido para ING0002: 0.80
+🧮 Costo calculado para ING0002: 4.22 (5.2800 * 0.80)
+💰 Precio obtenido para ING0003: 1.50
+🧮 Costo calculado para ING0003: 1.98 (1.3200 * 1.50)
+💰 Precio obtenido para ING0004: 7.60
+🧮 Costo calculado para ING0004: 40.13 (5.2800 * 7.60)
+💰 Precio obtenido para ING0028: 0.03
+⚠️ Unidades iguales [Gramos], retorno directo: 400.00
+🧮 Costo calculado para ING0028: 12.00 (400.0000 * 0.03)
+💰 Precio obtenido para ING0029: 0.08
+⚠️ Conversión fallida en calcularDesdeDatosDirectos: Gramos -> Unidades
+💰 Precio obtenido para ING0006: 3.00
+🧮 Costo calculado para ING0006: 1.20 (0.4000 * 3.00)
+💰 Precio obtenido para ING0005: 10.00
+🧮 Costo calculado para ING0005: 14.00 (1.4000 * 10.00)
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 208 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 210 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 33
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'Produccion'. Filas: 2
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 287
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 153
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 197 ms
+🔁 Cargando desde ProduccionIngredientes...
+⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.
+💰 Precio obtenido para ING0001: 4.00
+🧮 Costo calculado para ING0001: 45.27 (11.3187 * 4.00)
+💰 Precio obtenido para ING0002: 0.80
+🧮 Costo calculado para ING0002: 1.81 (2.2593 * 0.80)
+💰 Precio obtenido para ING0004: 7.60
+🧮 Costo calculado para ING0004: 6.15 (0.8093 * 7.60)
+💰 Precio obtenido para ING0011: 10.00
+⚠️ Unidades iguales [Litro], retorno directo: 24.95
+🧮 Costo calculado para ING0011: 249.53 (24.9535 * 10.00)
+💰 Precio obtenido para ING0001: 4.00
+🧮 Costo calculado para ING0001: 362.87 (90.7184 * 4.00)
+💰 Precio obtenido para ING0002: 0.80
+🧮 Costo calculado para ING0002: 4.22 (5.2800 * 0.80)
+💰 Precio obtenido para ING0003: 1.50
+🧮 Costo calculado para ING0003: 1.98 (1.3200 * 1.50)
+💰 Precio obtenido para ING0004: 7.60
+🧮 Costo calculado para ING0004: 40.13 (5.2800 * 7.60)
+💰 Precio obtenido para ING0028: 0.03
+⚠️ Unidades iguales [Gramos], retorno directo: 400.00
+🧮 Costo calculado para ING0028: 12.00 (400.0000 * 0.03)
+💰 Precio obtenido para ING0029: 0.08
+⚠️ Conversión fallida en calcularDesdeDatosDirectos: Gramos -> Unidades
+💰 Precio obtenido para ING0006: 3.00
+🧮 Costo calculado para ING0006: 1.20 (0.4000 * 3.00)
+💰 Precio obtenido para ING0005: 10.00
+🧮 Costo calculado para ING0005: 14.00 (1.4000 * 10.00)
+⏱️ Tiempo en PanelIngredientesEditorFactory: 622 ms
+⏱️ Tiempo en PanelIngredientesEditorFactory: 1352 ms

@@ -22,16 +22,45 @@ public class SelectorProduccionEditorFactory {
         ComboBox<String> comboFechas = new ComboBox<>();
         TableView<Map<String, String>> tabla = new TableView<>();
 
-        // 🚀 Cargar datos iniciales
-        List<Map<String, String>> producciones = cargarProduccionesConVersion();
-        List<String> fechasUnicas = obtenerFechasOrdenadas(producciones);
+        // ⚡ Cargar una sola vez todos los datos
+        VerUtils.refrescarExcel();
+        List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
+        Map<String, String> versiones = VerUtils.verTabla("Recetas").stream()
+                .filter(r -> r.containsKey("Código receta") && r.containsKey("Versión"))
+                .collect(Collectors.toMap(
+                        r -> r.get("Código receta"),
+                        r -> r.get("Versión"),
+                        (a, b) -> b,
+                        LinkedHashMap::new
+                ));
+
+        // ✅ Añadir versión a cada producción
+        List<Map<String, String>> produccionesConVersion = producciones.stream().map(p -> {
+            Map<String, String> fila = new LinkedHashMap<>(p);
+            String codReceta = p.getOrDefault("Código Receta", "");
+            fila.put("Versión", versiones.getOrDefault(codReceta, ""));
+            return fila;
+        }).toList();
+
+        List<String> fechasUnicas = produccionesConVersion.stream()
+                .map(p -> p.getOrDefault("Fecha", ""))
+                .filter(f -> !f.isEmpty())
+                .distinct()
+                .sorted(Comparator.comparing(f -> {
+                    try {
+                        return new SimpleDateFormat("dd/MM/yyyy").parse(f);
+                    } catch (ParseException e) {
+                        return new Date(0);
+                    }
+                }))
+                .toList();
 
         comboFechas.setItems(FXCollections.observableArrayList(fechasUnicas));
 
         if (!fechasUnicas.isEmpty()) {
             String ultimaFecha = fechasUnicas.get(fechasUnicas.size() - 1);
             comboFechas.setValue(ultimaFecha);
-            List<Map<String, String>> filtrados = actualizarTabla(tabla, producciones, ultimaFecha);
+            List<Map<String, String>> filtrados = actualizarTabla(tabla, produccionesConVersion, ultimaFecha);
             if (!filtrados.isEmpty()) {
                 Map<String, String> seleccionada = filtrados.get(filtrados.size() - 1);
                 tabla.getSelectionModel().select(seleccionada);
@@ -39,12 +68,11 @@ public class SelectorProduccionEditorFactory {
             }
         }
 
-        // ✅ AL CAMBIAR LA FECHA, RECARGAR DESDE EXCEL
+
         comboFechas.setOnAction(e -> {
             String fechaSeleccionada = comboFechas.getValue();
             if (fechaSeleccionada != null) {
-                List<Map<String, String>> produccionesActualizadas = cargarProduccionesConVersion();
-                actualizarTabla(tabla, produccionesActualizadas, fechaSeleccionada);
+                actualizarTabla(tabla, produccionesConVersion, fechaSeleccionada);
             }
         });
 
@@ -57,7 +85,7 @@ public class SelectorProduccionEditorFactory {
             }
         });
 
-        // 🧱 Columnas
+        // 📊 Columnas
         TableColumn<Map<String, String>, String> colCod = new TableColumn<>("Código Producción");
         colCod.setCellValueFactory(f -> new ReadOnlyStringWrapper(f.getValue().get("Código Producción")));
         colCod.setMinWidth(150);
@@ -96,45 +124,5 @@ public class SelectorProduccionEditorFactory {
                 .toList();
         tabla.setItems(FXCollections.observableArrayList(filtrados));
         return filtrados;
-    }
-
-    private static List<Map<String, String>> cargarProduccionesConVersion() {
-        // 🔁 Forzar recarga desde archivo
-        VerUtils.refrescarExcel();
-
-        List<Map<String, String>> produccionesRaw = VerUtils.verTabla("Produccion");
-
-        Map<String, String> versionesPorReceta = VerUtils.verTabla("Recetas").stream()
-                .filter(r -> r.containsKey("Código receta") && r.containsKey("Versión"))
-                .collect(Collectors.toMap(
-                        r -> r.get("Código receta"),
-                        r -> r.get("Versión"),
-                        (a, b) -> b,
-                        LinkedHashMap::new
-                ));
-
-        return produccionesRaw.stream()
-                .map(p -> {
-                    Map<String, String> fila = new LinkedHashMap<>(p);
-                    String codReceta = p.getOrDefault("Código Receta", "");
-                    fila.put("Versión", versionesPorReceta.getOrDefault(codReceta, ""));
-                    return fila;
-                })
-                .toList();
-    }
-
-    private static List<String> obtenerFechasOrdenadas(List<Map<String, String>> producciones) {
-        return producciones.stream()
-                .map(p -> p.getOrDefault("Fecha", ""))
-                .filter(f -> !f.isEmpty())
-                .distinct()
-                .sorted(Comparator.comparing(f -> {
-                    try {
-                        return new SimpleDateFormat("dd/MM/yyyy").parse(f);
-                    } catch (ParseException e) {
-                        return new Date(0);
-                    } 
-                }))
-                .toList();
     }
 }

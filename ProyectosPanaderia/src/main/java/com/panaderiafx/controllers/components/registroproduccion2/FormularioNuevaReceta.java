@@ -1,6 +1,7 @@
 package com.panaderiafx.controllers.components.registroproduccion2;
 
 import com.panaderiafx.utils.ConversorMezclaUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -53,9 +54,8 @@ public class FormularioNuevaReceta {
         campoNombreProducto = crearValorLabel("-");
         campoVersion = crearValorLabel("-");
         campoRendimiento = crearValorLabel("-");
-        campoPrecioRegistrado.setEditable(false);
 
-        for (TextField tf : new TextField[]{campoCantidad, campoMezcla, campoPrecioUnidad, campoPrecioTotal, campoCostoDirecto, campoCostoUnitario})
+        for (TextField tf : new TextField[]{campoCantidad, campoMezcla, campoPrecioUnidad, campoPrecioTotal, campoCostoDirecto, campoCostoUnitario, campoPrecioRegistrado})
             restringirSoloNumeros(tf);
 
         comboSeleccionPrecio.getItems().addAll("Precio por Mayor", "Precio Publics Supermarket");
@@ -82,31 +82,55 @@ public class FormularioNuevaReceta {
         campoCantidad.textProperty().addListener((obs, o, n) -> {
             if (actualizando) return;
             actualizando = true;
-            double cantidad = parseDouble(n);
+            double cantidad = ParseUtils.safeParseDouble(n);
             if (cantidad > 0 && codigoRecetaActual != null) {
                 double mezclas = ConversorMezclaUtils.calcularMezclasDesdeProduccion((int) cantidad, codigoRecetaActual);
                 campoMezcla.setText(String.format("%.2f", mezclas));
                 if (onCambioMezclas != null) onCambioMezclas.run();
             }
-            actualizarPrecioRegistrado(); // 🔁 recalcular en cada cambio de cantidad
+            recalcularDesdePrecioRegistrado();
             actualizando = false;
         });
 
         campoMezcla.textProperty().addListener((obs, o, n) -> {
             if (actualizando) return;
             actualizando = true;
-            double mezcla = parseDouble(n);
+            double mezcla = ParseUtils.safeParseDouble(n);
             if (mezcla > 0 && codigoRecetaActual != null) {
                 int cantidad = ConversorMezclaUtils.calcularProduccionDesdeMezclas(mezcla, codigoRecetaActual);
                 campoCantidad.setText(String.valueOf(cantidad));
                 if (onCambioMezclas != null) onCambioMezclas.run();
             }
-            actualizarPrecioRegistrado(); // 🔁 recalcular también al cambiar mezcla
+            recalcularDesdePrecioRegistrado();
             actualizando = false;
         });
 
-        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> recalcularDesdeUnidad());
-        campoPrecioTotal.textProperty().addListener((obs, o, n) -> recalcularDesdeTotal());
+        campoPrecioRegistrado.textProperty().addListener((obs, o, n) -> {
+            if (actualizando) return;
+            actualizando = true;
+            recalcularDesdePrecioRegistrado();
+            actualizando = false;
+        });
+
+        campoPrecioUnidad.textProperty().addListener((obs, o, n) -> {
+            if (actualizando) return;
+            actualizando = true;
+            double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+            double precioUnidad = ParseUtils.safeParseDouble(n);
+            campoPrecioTotal.setText(String.format("%.2f", cantidad * precioUnidad));
+            actualizando = false;
+        });
+
+        campoPrecioTotal.textProperty().addListener((obs, o, n) -> {
+            if (actualizando) return;
+            actualizando = true;
+            double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+            double precioTotal = ParseUtils.safeParseDouble(n);
+            if (cantidad > 0) {
+                campoPrecioUnidad.setText(String.format("%.2f", precioTotal / cantidad));
+            }
+            actualizando = false;
+        });
     }
 
     private void actualizarPrecioRegistrado() {
@@ -116,38 +140,22 @@ public class FormularioNuevaReceta {
         if (tipoPrecio == null || tipoPrecio.isBlank()) tipoPrecio = "Precio por Mayor";
 
         String valorPrecio = filaReceta.getOrDefault(tipoPrecio, "").trim();
-        String unidadesStr = filaReceta.getOrDefault("Unidades por Molde", "").trim();
-        String moldesStr = filaReceta.getOrDefault("Molde/Paquete", "").trim();
+        campoPrecioRegistrado.setText(valorPrecio); // deja lo original sin conversión
 
-        double precioCrudo = parseDouble(valorPrecio);
-        campoPrecioRegistrado.setText(precioCrudo > 0 ? String.format("%.4f", precioCrudo) : "");
-
-        boolean esPrecioPorMolde = esNumero(unidadesStr) && esNumero(moldesStr);
-        double precioUnidad = esPrecioPorMolde ? precioCrudo / parseDouble(unidadesStr) : precioCrudo;
-
-        if (precioUnidad > 0) {
-            double cantidad = parseDouble(campoCantidad.getText());
-            campoPrecioUnidad.setText(String.format("%.2f", precioUnidad));
-            campoPrecioTotal.setText(cantidad > 0 ? String.format("%.2f", precioUnidad * cantidad) : "0.00");
-        }
+        recalcularDesdePrecioRegistrado();
     }
 
-    private void recalcularDesdeUnidad() {
-        if (actualizando) return;
-        actualizando = true;
-        double cantidad = parseDouble(campoCantidad.getText());
-        double precioUnidad = parseDouble(campoPrecioUnidad.getText());
-        campoPrecioTotal.setText(cantidad <= 0 ? "0.00" : String.format("%.2f", cantidad * precioUnidad));
-        actualizando = false;
-    }
+    private void recalcularDesdePrecioRegistrado() {
+        double precioCrudo = ParseUtils.safeParseDouble(campoPrecioRegistrado.getText());
+        String unidadesStr = filaReceta != null ? filaReceta.getOrDefault("Unidades por Molde", "").trim() : "";
+        String moldesStr = filaReceta != null ? filaReceta.getOrDefault("Molde/Paquete", "").trim() : "";
 
-    private void recalcularDesdeTotal() {
-        if (actualizando) return;
-        actualizando = true;
-        double cantidad = parseDouble(campoCantidad.getText());
-        double precioTotal = parseDouble(campoPrecioTotal.getText());
-        campoPrecioUnidad.setText(cantidad <= 0 ? "0.00" : String.format("%.2f", precioTotal / cantidad));
-        actualizando = false;
+        boolean esPrecioPorMolde = ParseUtils.esNumero(unidadesStr) && ParseUtils.esNumero(moldesStr);
+        double precioUnidad = esPrecioPorMolde ? precioCrudo / ParseUtils.safeParseDouble(unidadesStr) : precioCrudo;
+
+        double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+        campoPrecioUnidad.setText(String.format("%.2f", precioUnidad));
+        campoPrecioTotal.setText(String.format("%.2f", cantidad * precioUnidad));
     }
 
     // Públicos
@@ -171,7 +179,6 @@ public class FormularioNuevaReceta {
     public void setOnCambioMezclas(Runnable r) { this.onCambioMezclas = r; }
     public Node getNode() { return grid; }
 
-    // Utilidades
     private Label crearEtiqueta(String texto) {
         Label lbl = new Label(texto);
         lbl.setStyle("-fx-background-color: #FFC107; -fx-font-weight: bold; -fx-font-size: 20px; -fx-padding: 5 10;");
@@ -184,19 +191,9 @@ public class FormularioNuevaReceta {
         return lbl;
     }
 
-    private double parseDouble(String val) {
-        try { return Double.parseDouble(val.replace(",", "").trim()); }
-        catch (Exception e) { return 0; }
-    }
-
-    private boolean esNumero(String val) {
-        try { Double.parseDouble(val.trim()); return true; }
-        catch (Exception e) { return false; }
-    }
-
     private void restringirSoloNumeros(TextField campo) {
         campo.textProperty().addListener((obs, oldText, newText) -> {
-            if (!newText.matches("\\d*(\\.\\d{0,4})?")) campo.setText(oldText);
+            if (!newText.matches("\\d*(\\.|,)?\\d{0,4}")) campo.setText(oldText);
         });
     }
 }

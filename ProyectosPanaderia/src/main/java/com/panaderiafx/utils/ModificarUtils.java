@@ -3,6 +3,8 @@ package com.panaderiafx.utils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.panaderiafx.utils.componentes.ParseUtils;
+
 import java.io.*;
 import java.util.*;
 
@@ -54,8 +56,16 @@ public class ModificarUtils {
                             int col = columnas.get(cambio.getKey());
                             Cell celda = fila.getCell(col);
                             if (celda == null) celda = fila.createCell(col);
-                            celda.setCellValue(cambio.getValue());
-                            System.out.println("✏️ [" + cambio.getKey() + "] actualizado a: " + cambio.getValue());
+
+                            String valor = cambio.getValue();
+                            try {
+                                double numero = ParseUtils.parseDouble(valor);
+                                celda.setCellValue(numero);
+                            } catch (Exception e) {
+                                celda.setCellValue(valor);
+                            }
+
+                            System.out.println("✏️ [" + cambio.getKey() + "] actualizado a: " + valor);
                         } else {
                             System.out.println("⚠️ Columna '" + cambio.getKey() + "' no encontrada.");
                         }
@@ -66,8 +76,6 @@ public class ModificarUtils {
                         System.out.println("💾 Cambios guardados exitosamente.");
                     }
 
-                    // ✅ Invalida caché para ver los cambios en memoria
-                    System.out.println("Modificar");
                     VerUtils.refrescarExcel();
                     return true;
                 }

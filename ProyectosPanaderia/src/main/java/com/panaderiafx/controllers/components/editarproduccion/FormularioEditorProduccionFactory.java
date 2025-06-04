@@ -3,16 +3,21 @@ package com.panaderiafx.controllers.components.editarproduccion;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.EscaladoIngredientesUtils;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.FormularioCamposFactory;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.TotalesProduccionUtils;
-import javafx.application.Platform;
+import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.List;
 import java.util.Map;
 
 public class FormularioEditorProduccionFactory {
 
     private static TextField campoCantidad, campoPrecioU, campoCostoTotal, campoCostoU, campoGanancia, campoMezcla;
+    private static TextField campoPrecioRegistrado;
+    private static ComboBox<String> comboTipoPrecio;
     private static String codigoRecetaActual;
     private static ObservableList<Map<String, String>> ingredientesEditable;
     private static Map<String, String> produccionRef;
@@ -44,6 +49,16 @@ public class FormularioEditorProduccionFactory {
         VBox campoFechaBox = FormularioCamposFactory.crearCampoEditableConLabel("📅 Fecha:", produccion.getOrDefault("Fecha", ""));
         TextField campoFecha = (TextField) campoFechaBox.getChildren().get(1);
 
+        comboTipoPrecio = new ComboBox<>();
+        comboTipoPrecio.getItems().addAll("Precio por Mayor", "Precio Publics Supermarket");
+        comboTipoPrecio.getSelectionModel().select("Precio por Mayor");
+        HBox tipoPrecioBox = new HBox(new Label("💱 Tipo de Precio:"), comboTipoPrecio);
+        tipoPrecioBox.setSpacing(10);
+
+        campoPrecioRegistrado = new TextField();
+        HBox precioRegistradoBox = new HBox(new Label("🧾 Precio registrado:"), campoPrecioRegistrado);
+        precioRegistradoBox.setSpacing(10);
+
         VBox cantidadBox = FormularioCamposFactory.crearCampoEditableConLabel("🔢 Cantidad producida:", produccion.getOrDefault("Cantidad Producida", ""));
         campoCantidad = (TextField) cantidadBox.getChildren().get(1);
 
@@ -65,7 +80,6 @@ public class FormularioEditorProduccionFactory {
         VBox gananciaBox = FormularioCamposFactory.crearCampoSoloLecturaConLabel("📈 Ganancia Total:", produccion.getOrDefault("Ganancia", ""));
         campoGanancia = (TextField) gananciaBox.getChildren().get(1);
 
-        // 🔘 Botón de guardar (ahora controlado)
         botonGuardar = new Button("💾 Guardar Cambios");
         botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #81C784; -fx-text-fill: black;");
         botonGuardar.setOnAction(e -> EditarProduccionUtils.editarProduccionYIngredientes(
@@ -82,61 +96,96 @@ public class FormularioEditorProduccionFactory {
         botonEliminar.setStyle("-fx-background-color: #FFCDD2; -fx-text-fill: #C62828; -fx-font-size: 14px;");
         botonEliminar.setOnAction(e -> EditarProduccionUtils.eliminarProduccionCompleta(codigoProduccion));
 
+        // Listeners
+        comboTipoPrecio.setOnAction(e -> calcularPrecioRegistrado());
+
+        campoPrecioRegistrado.textProperty().addListener((obs, o, n) -> {
+            if (campoPrecioRegistrado.isFocused()) calcularDesdeRegistrado();
+        });
+
+        // ✅ CORREGIDO: Solo recalcular totales, no modificar costo total
+        campoPrecioU.textProperty().addListener((obs, o, n) -> {
+            if (campoPrecioU.isFocused()) {
+                recalcularTotalesDesdeFormulario();
+            }
+        });
+
+        // ❌ ELIMINAR: Este listener está causando el problema
+        // campoCostoTotal.textProperty().addListener((obs, o, n) -> {
+        //     if (campoCostoTotal.isFocused()) {
+        //         double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+        //         double total = ParseUtils.safeParseDouble(n);
+        //         if (cantidad > 0) {
+        //             double precioU = total / cantidad;
+        //             campoPrecioU.setText(String.format("%.2f", precioU));
+        //             recalcularTotalesDesdeFormulario();
+        //         }
+        //     }
+        // });
+
         campoCantidad.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
-                desactivarBotonGuardar();
                 int cantidadNueva = TotalesProduccionUtils.parseInt(campoCantidad.getText());
-                int cantidadBase = TotalesProduccionUtils.parseInt(produccion.getOrDefault("Cantidad Base", "0"));
-                produccion.put("Cantidad Producida", String.valueOf(cantidadNueva));
-
-                if (cantidadNueva > 0 && codigoRecetaActual != null && cantidadNueva != cantidadBase) {
-                    Platform.runLater(() -> {
-                        if (refrescarTabla != null) refrescarTabla.run();
-                        activarBotonGuardar();
-                    });
-                } else {
-                    activarBotonGuardar();
-                }
-
+                int cantidadBase = TotalesProduccionUtils.parseInt(produccionRef.getOrDefault("Cantidad Base", "0"));
+                produccionRef.put("Cantidad Producida", String.valueOf(cantidadNueva));
                 recalcularTotalesDesdeFormulario();
+                if (cantidadNueva != cantidadBase && refrescarTabla != null) refrescarTabla.run();
             }
         });
 
         campoMezcla.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
-                desactivarBotonGuardar();
-                double mezcla = TotalesProduccionUtils.parseDouble(campoMezcla.getText());
+                double mezcla = ParseUtils.safeParseDouble(campoMezcla.getText());
                 if (mezcla > 0 && codigoRecetaActual != null) {
-                    int cantidadNueva = EscaladoIngredientesUtils.calcularProduccionDesdeMezcla(mezcla, codigoRecetaActual);
-                    int cantidadBase = TotalesProduccionUtils.parseInt(produccion.getOrDefault("Cantidad Base", "0"));
-                    campoCantidad.setText(String.valueOf(cantidadNueva));
-                    produccion.put("Cantidad Producida", String.valueOf(cantidadNueva));
-
-                    Platform.runLater(() -> {
-                        if (cantidadNueva != cantidadBase && refrescarTabla != null) refrescarTabla.run();
-                        activarBotonGuardar();
-                    });
-                } else {
-                    activarBotonGuardar();
+                    int nuevaCantidad = EscaladoIngredientesUtils.calcularProduccionDesdeMezcla(mezcla, codigoRecetaActual);
+                    campoCantidad.setText(String.valueOf(nuevaCantidad));
+                    produccionRef.put("Cantidad Producida", String.valueOf(nuevaCantidad));
+                    if (refrescarTabla != null) refrescarTabla.run();
                 }
-
-                recalcularTotalesDesdeFormulario();
-            }
-        });
-
-        campoPrecioU.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            if (!newVal) {
                 recalcularTotalesDesdeFormulario();
             }
         });
 
         panel.getChildren().addAll(
-                titulo, campoFechaBox, cantidadBox, precioBox, mezclaBox, productoBox,
+                titulo, campoFechaBox, tipoPrecioBox, precioRegistradoBox,
+                cantidadBox, precioBox, mezclaBox, productoBox,
                 costoUBox, costoTotalBox, gananciaBox, botonGuardar, botonEliminar
         );
 
-        recalcularTotalesDesdeFormulario();
+        calcularPrecioRegistrado();
         return panel;
+    }
+
+    private static void calcularPrecioRegistrado() {
+        List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
+        Map<String, String> receta = recetas.stream()
+                .filter(f -> f.get("Código receta").equalsIgnoreCase(codigoRecetaActual))
+                .findFirst().orElse(null);
+
+        if (receta == null) return;
+
+        String tipo = comboTipoPrecio.getValue();
+        double precioReceta = ParseUtils.safeParseDouble(receta.getOrDefault(tipo, ""));
+        double unidades = ParseUtils.safeParseDouble(receta.getOrDefault("Unidades por Molde", ""));
+        double moldes = ParseUtils.safeParseDouble(receta.getOrDefault("Molde/Paquete", ""));
+
+        boolean esPaquete = unidades > 0 && moldes > 0;
+        double precioUnidadEsperado = esPaquete ? precioReceta / unidades : precioReceta;
+        campoPrecioRegistrado.setText(String.format("%.4f", precioUnidadEsperado));
+
+        double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+        campoPrecioU.setText(String.format("%.2f", precioUnidadEsperado));
+        
+        // ✅ NO modificar costo total aquí, solo recalcular
+        recalcularTotalesDesdeFormulario();
+    }
+
+    private static void calcularDesdeRegistrado() {
+        double precioRegistrado = ParseUtils.safeParseDouble(campoPrecioRegistrado.getText());
+        campoPrecioU.setText(String.format("%.2f", precioRegistrado));
+        
+        // ✅ NO modificar costo total aquí, solo recalcular
+        recalcularTotalesDesdeFormulario();
     }
 
     private static void recalcularTotalesDesdeFormulario() {
@@ -153,13 +202,13 @@ public class FormularioEditorProduccionFactory {
         recalcularTotalesDesdeFormulario();
     }
 
-    private static void desactivarBotonGuardar() {
-        botonGuardar.setDisable(true);
-        botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #B0BEC5; -fx-text-fill: #555;");
-    }
-
     private static void activarBotonGuardar() {
         botonGuardar.setDisable(false);
         botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #81C784; -fx-text-fill: black;");
+    }
+
+    private static void desactivarBotonGuardar() {
+        botonGuardar.setDisable(true);
+        botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #B0BEC5; -fx-text-fill: #555;");
     }
 }
