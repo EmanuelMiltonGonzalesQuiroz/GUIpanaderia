@@ -3,8 +3,8 @@
 ✅ Entrando a start()...
 📄 Cargada hoja 'Ingredientes'. Filas: 35
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 11
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 99
+📄 Cargada hoja 'Produccion'. Filas: 0
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 0
 📄 Cargada hoja 'ResumenSemanal'. Filas: 2
 📄 Cargada hoja 'Recetas'. Filas: 19
 📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
@@ -16,12 +16,12 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1400 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1365 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 35
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 11
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 99
+📄 Cargada hoja 'Produccion'. Filas: 0
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 0
 📄 Cargada hoja 'ResumenSemanal'. Filas: 2
 📄 Cargada hoja 'Recetas'. Filas: 19
 📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
@@ -33,8 +33,338 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 480 ms
-⏱️ Tiempo en crear pestañas: 854 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 548 ms
+⏱️ Tiempo en crear pestañas: 699 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2988 ms
-⏱️ Tiempo desde main() hasta GUI: 3005 ms
+⏱️ Tiempo total en start(): 2796 ms
+⏱️ Tiempo desde main() hasta GUI: 2810 ms
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 0
+💰 Precio obtenido para ING0021: 0.25
+📥 Datos de conversión obtenidos: 30 filas.
+🧮 Costo calculado para ING0021: 399.92 (1599.6755 * 0.25)
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 0.00
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 20.0000
+   Precio Total: 18140.00
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 2267.50
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 2267.50
+   Cantidad producida: 907
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 0
+   Precio Total: 0
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 0
+💰 Precio obtenido para ING0001: 4.00
+🧮 Costo calculado para ING0001: 181.43 (45.3585 * 4.00)
+💰 Precio obtenido para ING0024: 0.80
+🧮 Costo calculado para ING0024: 523.37 (654.2090 * 0.80)
+💰 Precio obtenido para ING0004: 7.60
+🧮 Costo calculado para ING0004: 58.46 (7.6922 * 7.60)
+💰 Precio obtenido para ING0027: 0.08
+⚠️ Unidades iguales [Gramos], retorno directo: 3846.09
+🧮 Costo calculado para ING0027: 307.69 (3846.0938 * 0.08)
+💰 Precio obtenido para ING0026: 0.01
+⚠️ Unidades iguales [Gramos], retorno directo: 1538.44
+🧮 Costo calculado para ING0026: 15.38 (1538.4375 * 0.01)
+💰 Precio obtenido para ING0003: 1.50
+🧮 Costo calculado para ING0003: 0.12 (0.0769 * 1.50)
+💰 Precio obtenido para ING0011: 10.00
+🧮 Costo calculado para ING0011: 2.18 (0.2181 * 10.00)
+💰 Precio obtenido para ING0009: 0.10
+⚠️ Unidades iguales [Unidades], retorno directo: 4923.00
+🧮 Costo calculado para ING0009: 492.30 (4923.0000 * 0.10)
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 4923
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 4923
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 4923
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 0.00
+   Cantidad producida: 4923
+🔧 Sincronizando datos:
+   Precio de Venta por Unidad: 2.5000
+   Precio Total: 12307.50
+   Cantidad producida: 4923
+📋 Obteniendo fila completa de receta seleccionada
+   Datos disponibles:
+     Código receta = REC0017
+     Producto = Galletas (Grandes)
+     Rendimiento = 640.0
+     Unidad Rendimiento = Unidades
+     Unidades por Molde = -
+     Molde/Paquete = 16.0
+     Categoría = Repostería
+     Subcategoría = Galletas
+     Observaciones = 16 paquetes, 640 grandes
+     Versión = VER0002
+     Precio por Mayor = 2.5
+     Precio Publics Supermarket = 
+     Precio de Venta por Unidad = 2.5000
+     Precio Total = 12307.50
+     Precio registrado = 2.5
+     Cantidad producida = 4923
+     Mezcla = 01
+     Costo directo = 1580.93
+     Costo/U = 0.3211
+🔧 Precio unitario antes de guardar: 2.5000
+🚀 Iniciando guardado de producción...
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 35
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 0
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 0
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 298 ms
+🔵 Iniciando generación de código para tabla: Produccion
+❌ No se encontró ningún código válido en la tabla.
+✅ Código generado por defecto: PRO0001
+💰 Calculando precio por unidad:
+   Precio registrado: 2.5
+   Cantidad producida: 4923.0
+   Usando precio unitario del formulario: 2.5
+   Precio total calculado: 12307.5
+   Ganancia calculada: 10726.57
+💾 Guardando producción con precio unitario: 2.5000
+🟢 Intentando crear fila en hoja: Produccion
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Fecha] columna 1 ➝ 04/06/2025
+   ➤ [Código Receta] columna 2 ➝ REC0017
+   ➤ [Cantidad Producida] columna 3 ➝ 4923
+   ➤ [Precio de Venta por Unidad] columna 4 ➝ 2.5000
+   ➤ [Mezcla] columna 5 ➝ 01
+   ➤ [Producto] columna 6 ➝ Galletas (Grandes)
+   ➤ [Costo Directo/U] columna 7 ➝ 0.3211
+   ➤ [Costo Total] columna 8 ➝ 1580.93
+   ➤ [Ganancia Total] columna 9 ➝ 10726.57
+✅ Fila creada correctamente en hoja 'Produccion'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0001
+   ➤ [Nombre Ingrediente] columna 3 ➝ Harina de trigo
+   ➤ [Cantidad Usada] columna 4 ➝ 99.9984
+   ➤ [Unidad] columna 5 ➝ Libras
+   ➤ [Costo Total] columna 6 ➝ 181.43
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0024
+   ➤ [Nombre Ingrediente] columna 3 ➝ Azúcar
+   ➤ [Cantidad Usada] columna 4 ➝ 23076.5625
+   ➤ [Unidad] columna 5 ➝ Onzas
+   ➤ [Costo Total] columna 6 ➝ 523.37
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0004
+   ➤ [Nombre Ingrediente] columna 3 ➝ Manteca
+   ➤ [Cantidad Usada] columna 4 ➝ 7692.1875
+   ➤ [Unidad] columna 5 ➝ Gramos
+   ➤ [Costo Total] columna 6 ➝ 58.46
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0027
+   ➤ [Nombre Ingrediente] columna 3 ➝ Mantequilla
+   ➤ [Cantidad Usada] columna 4 ➝ 3846.0938
+   ➤ [Unidad] columna 5 ➝ Gramos
+   ➤ [Costo Total] columna 6 ➝ 307.69
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0026
+   ➤ [Nombre Ingrediente] columna 3 ➝ Soda
+   ➤ [Cantidad Usada] columna 4 ➝ 1538.4375
+   ➤ [Unidad] columna 5 ➝ Gramos
+   ➤ [Costo Total] columna 6 ➝ 15.38
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0003
+   ➤ [Nombre Ingrediente] columna 3 ➝ Sal
+   ➤ [Cantidad Usada] columna 4 ➝ 76.9219
+   ➤ [Unidad] columna 5 ➝ Gramos
+   ➤ [Costo Total] columna 6 ➝ 0.12
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0011
+   ➤ [Nombre Ingrediente] columna 3 ➝ Vainilla
+   ➤ [Cantidad Usada] columna 4 ➝ 7.6922
+   ➤ [Unidad] columna 5 ➝ Onzas
+   ➤ [Costo Total] columna 6 ➝ 2.18
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+🟢 Intentando crear fila en hoja: ProduccionIngredientes
+   ➤ [Código Producción] columna 0 ➝ PRO0001
+   ➤ [Código Receta] columna 1 ➝ REC0017
+   ➤ [Ingrediente] columna 2 ➝ ING0009
+   ➤ [Nombre Ingrediente] columna 3 ➝ Bolsas
+   ➤ [Cantidad Usada] columna 4 ➝ 4923.0000
+   ➤ [Unidad] columna 5 ➝ Unidades
+   ➤ [Costo Total] columna 6 ➝ 492.30
+   ➤ [Incluye] columna 7 ➝ ✓
+   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
+✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
+✅ Guardado completado exitosamente
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 35
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 1
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 8
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 19
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 16
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 230 ms
