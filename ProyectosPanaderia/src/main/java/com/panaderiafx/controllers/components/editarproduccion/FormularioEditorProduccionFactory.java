@@ -3,6 +3,7 @@ package com.panaderiafx.controllers.components.editarproduccion;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.EscaladoIngredientesUtils;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.FormularioCamposFactory;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.TotalesProduccionUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -65,7 +66,7 @@ public class FormularioEditorProduccionFactory {
         VBox gananciaBox = FormularioCamposFactory.crearCampoSoloLecturaConLabel("📈 Ganancia Total:", produccion.getOrDefault("Ganancia", ""));
         campoGanancia = (TextField) gananciaBox.getChildren().get(1);
 
-        // 🔘 Botón de guardar (ahora controlado)
+        // 🔘 Botón de guardar
         botonGuardar = new Button("💾 Guardar Cambios");
         botonGuardar.setStyle("-fx-font-size: 14px; -fx-background-color: #81C784; -fx-text-fill: black;");
         botonGuardar.setOnAction(e -> EditarProduccionUtils.editarProduccionYIngredientes(
@@ -85,8 +86,8 @@ public class FormularioEditorProduccionFactory {
         campoCantidad.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
                 desactivarBotonGuardar();
-                int cantidadNueva = TotalesProduccionUtils.parseInt(campoCantidad.getText());
-                int cantidadBase = TotalesProduccionUtils.parseInt(produccion.getOrDefault("Cantidad Base", "0"));
+                int cantidadNueva = (int) ParseUtils.safeParseDouble(campoCantidad.getText());
+                int cantidadBase = (int) ParseUtils.safeParseDouble(produccion.getOrDefault("Cantidad Base", "0"));
                 produccion.put("Cantidad Producida", String.valueOf(cantidadNueva));
 
                 if (cantidadNueva > 0 && codigoRecetaActual != null && cantidadNueva != cantidadBase) {
@@ -105,10 +106,10 @@ public class FormularioEditorProduccionFactory {
         campoMezcla.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
                 desactivarBotonGuardar();
-                double mezcla = TotalesProduccionUtils.parseDouble(campoMezcla.getText());
+                double mezcla = ParseUtils.safeParseDouble(campoMezcla.getText());
                 if (mezcla > 0 && codigoRecetaActual != null) {
                     int cantidadNueva = EscaladoIngredientesUtils.calcularProduccionDesdeMezcla(mezcla, codigoRecetaActual);
-                    int cantidadBase = TotalesProduccionUtils.parseInt(produccion.getOrDefault("Cantidad Base", "0"));
+                    int cantidadBase = (int) ParseUtils.safeParseDouble(produccion.getOrDefault("Cantidad Base", "0"));
                     campoCantidad.setText(String.valueOf(cantidadNueva));
                     produccion.put("Cantidad Producida", String.valueOf(cantidadNueva));
 
