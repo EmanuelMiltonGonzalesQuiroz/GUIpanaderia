@@ -58,7 +58,8 @@ public class ColumnasIngredientesFactory {
                 String nuevaCantidad = editor.getText().trim();
                 fila.put("Cantidad", nuevaCantidad);
 
-                double cantidad = ParseUtils.toDouble(nuevaCantidad);
+                // ✅ CORREGIDO: usar safeParseDouble en lugar de toDouble
+                double cantidad = ParseUtils.safeParseDouble(nuevaCantidad);
                 String codIng = fila.getOrDefault("Ingrediente", "");
                 String unidad = fila.getOrDefault("Unidades", "");
                 double nuevoCosto = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
@@ -136,7 +137,8 @@ public class ColumnasIngredientesFactory {
 
         for (Map<String, String> fila : datos) {
             if ("✓".equals(fila.getOrDefault("Check", "✓"))) {
-                double cantidad = ParseUtils.toDouble(fila.getOrDefault("Cantidad", "0"));
+                // ✅ CORREGIDO: usar safeParseDouble en lugar de toDouble
+                double cantidad = ParseUtils.safeParseDouble(fila.getOrDefault("Cantidad", "0"));
                 String codIng = fila.getOrDefault("Ingrediente", "");
                 String unidad = fila.getOrDefault("Unidades", "");
                 double costo = CostoIngredientePorRecetaUtils.calcularDesdeDatosDirectos(codIng, unidad, cantidad);
@@ -145,7 +147,8 @@ public class ColumnasIngredientesFactory {
             }
         }
 
-        double cantidadProducida = ParseUtils.toDouble(prod.getOrDefault("Cantidad Producida", "0"));
+        // ✅ CORREGIDO: usar safeParseDouble en lugar de toDouble
+        double cantidadProducida = ParseUtils.safeParseDouble(prod.getOrDefault("Cantidad Producida", "0"));
         double costoUnitario = (cantidadProducida > 0) ? total / cantidadProducida : 0.0;
 
         campoTotal.setText(String.format("%.2f", total));

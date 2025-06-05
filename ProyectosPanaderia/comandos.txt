@@ -7,3 +7,5 @@ mvn clean javafx:run
 clear
 git add .
 git status
+git commit -m "correciones 05 06 2025"
+git push
