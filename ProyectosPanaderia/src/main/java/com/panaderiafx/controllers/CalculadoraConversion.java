@@ -17,21 +17,20 @@ public class CalculadoraConversion {
     public static Pane crearVista() {
         List<Map<String, String>> datos = VerUtils.verTabla("TabladeConversión");
 
-        // Tipos fijos disponibles
         ComboBox<String> tipoCombo = new ComboBox<>(FXCollections.observableArrayList("Peso", "Volumen", "Herramienta"));
         ComboBox<String> unidadOrigenCombo = new ComboBox<>();
         ComboBox<String> unidadDestinoCombo = new ComboBox<>();
         ComboBox<String> ingredienteCombo = new ComboBox<>();
 
-        // Extraer ingredientes únicos de la tabla
+        // Cargar ingredientes únicos
         Set<String> ingredientes = datos.stream()
-            .map(d -> d.getOrDefault("Ingrediente (si aplica)", "").trim())
-            .filter(i -> !i.isBlank() && !i.equals("—"))
-            .collect(Collectors.toCollection(TreeSet::new));
-        
-        ingredienteCombo.getItems().add(""); // Opción vacía para conversiones generales
+                .map(d -> d.getOrDefault("Ingrediente (si aplica)", "").trim())
+                .filter(i -> !i.isBlank() && !i.equals("—"))
+                .collect(Collectors.toCollection(TreeSet::new));
+
+        ingredienteCombo.getItems().add("");
         ingredienteCombo.getItems().addAll(ingredientes);
-        ingredienteCombo.setValue(""); // Seleccionar vacío por defecto
+        ingredienteCombo.setValue("");
 
         TextField cantidadField = new TextField();
         cantidadField.setPromptText("Ej: 2.5");
@@ -44,79 +43,82 @@ public class CalculadoraConversion {
         resultadoLabel.setMaxWidth(600);
         resultadoLabel.setStyle("-fx-padding: 10; -fx-background-color: #E3F2FD; -fx-border-radius: 5;");
 
-        // 🔄 Actualizar unidades disponibles según el tipo seleccionado
-        Runnable actualizarUnidades = () -> {
-            String tipoSeleccionado = tipoCombo.getValue();
-            if (tipoSeleccionado == null) return;
-
-            Set<String> unidadesOrigen = new TreeSet<>();
-            Set<String> unidadesDestino = new TreeSet<>();
-
-            // TODAS las unidades de destino siempre disponibles (conversión cruzada)
-            unidadesDestino.addAll(Set.of("Kilos", "Gramos", "Libras", "Onzas", "Litro", "Mililitros"));
-
-            switch (tipoSeleccionado) {
-                case "Peso" -> {
-                    // Unidades de peso estándar
-                    unidadesOrigen.addAll(Set.of("Kilos", "Gramos", "Libras", "Onzas"));
-                    
-                    // También agregar herramientas que convierten a peso
-                    datos.stream()
-                        .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-                        .forEach(d -> {
-                            String unidadBase = d.getOrDefault("Unidad base", "").trim();
-                            if (!unidadBase.isEmpty()) {
-                                unidadesOrigen.add(unidadBase);
-                                System.out.printf("🔧 Herramienta para peso: %s%n", unidadBase);
-                            }
-                        });
-                }
-                case "Volumen" -> {
-                    // Unidades de volumen estándar
-                    unidadesOrigen.addAll(Set.of("Litro", "Mililitros", "Onza"));
-                    
-                    // También herramientas que convierten a volumen
-                    datos.stream()
-                        .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-                        .forEach(d -> {
-                            String unidadBase = d.getOrDefault("Unidad base", "").trim();
-                            if (!unidadBase.isEmpty()) {
-                                unidadesOrigen.add(unidadBase);
-                                System.out.printf("🔧 Herramienta para volumen: %s%n", unidadBase);
-                            }
-                        });
-                }
-                case "Herramienta" -> {
-                    // ✅ EXTRAER herramientas dinámicamente de la tabla
-                    Set<String> herramientasUnicas = new TreeSet<>();
-                    
-                    datos.stream()
-                        .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-                        .forEach(d -> {
-                            String unidadBase = d.getOrDefault("Unidad base", "").trim();
-                            if (!unidadBase.isEmpty()) {
-                                herramientasUnicas.add(unidadBase);
-                                System.out.printf("🔧 Herramienta encontrada: %s%n", unidadBase);
-                            }
-                        });
-                    
-                    unidadesOrigen.addAll(herramientasUnicas);
-                    System.out.printf("📋 Total herramientas únicas: %d%n", herramientasUnicas.size());
-                    
-                    // También agregar unidades estándar para conversión inversa
-                    unidadesOrigen.addAll(Set.of("Kilos", "Gramos", "Libras", "Onzas", "Litro", "Mililitros", "Onza"));
-                }
-            }
-
-            unidadOrigenCombo.setItems(FXCollections.observableArrayList(unidadesOrigen));
-            unidadDestinoCombo.setItems(FXCollections.observableArrayList(unidadesDestino));
+        // Función para obtener todas las unidades disponibles (para unidad destino)
+        Runnable cargarTodasLasUnidades = () -> {
+            Set<String> todasLasUnidades = new TreeSet<>();
             
-            System.out.printf("🔄 Unidades actualizadas para tipo %s: Origen=%d, Destino=%d%n", 
-                             tipoSeleccionado, unidadesOrigen.size(), unidadesDestino.size());
-            System.out.printf("📋 Unidades origen: %s%n", unidadesOrigen);
+            datos.forEach(d -> {
+                String unidadBase = d.getOrDefault("Unidad base", "").trim();
+                String unidad2 = d.getOrDefault("Unidad 2", "").trim();
+                
+                if (!unidadBase.isEmpty() && !unidadBase.equals("—")) {
+                    todasLasUnidades.add(unidadBase);
+                }
+                if (!unidad2.isEmpty() && !unidad2.equals("—")) {
+                    todasLasUnidades.add(unidad2);
+                }
+            });
+            
+            unidadDestinoCombo.setItems(FXCollections.observableArrayList(todasLasUnidades));
         };
 
-        tipoCombo.setOnAction(e -> actualizarUnidades.run());
+        // Función para actualizar unidades de origen según el tipo seleccionado
+        Runnable actualizarUnidadesOrigen = () -> {
+            String tipoSeleccionado = tipoCombo.getValue();
+            if (tipoSeleccionado == null) {
+                unidadOrigenCombo.getItems().clear();
+                return;
+            }
+
+            Set<String> unidadesOrigen = new TreeSet<>();
+
+            
+            datos.forEach(d -> {
+                String codigo = d.getOrDefault("Código", "").trim();
+                String tipoMedida = d.getOrDefault("Tipo de medida", "").trim();
+                String tipoLogico = d.getOrDefault("Tipo lógico", "").trim();
+                String unidadBase = d.getOrDefault("Unidad base", "").trim();
+                
+                boolean incluirUnidad = false;
+                String razon = "";
+                
+                // SOLO para PESO: buscar registros con Tipo lógico = "Peso"
+                if ("Peso".equalsIgnoreCase(tipoSeleccionado)) {
+                    if ("Peso".equalsIgnoreCase(tipoLogico)) {
+                        incluirUnidad = true;
+                        razon = "Tipo lógico = Peso";
+                    }
+                }
+                // SOLO para VOLUMEN: buscar registros con Tipo lógico = "Volumen"  
+                else if ("Volumen".equalsIgnoreCase(tipoSeleccionado)) {
+                    if ("Volumen".equalsIgnoreCase(tipoLogico)) {
+                        incluirUnidad = true;
+                        razon = "Tipo lógico = Volumen";
+                    }
+                }
+                // SOLO para HERRAMIENTA: buscar registros con Tipo de medida = "Herramienta"
+                else if ("Herramienta".equalsIgnoreCase(tipoSeleccionado)) {
+                    if ("Herramienta".equalsIgnoreCase(tipoMedida)) {
+                        incluirUnidad = true;
+                        razon = "Tipo medida = Herramienta";
+                    }
+                }
+                
+                    unidadesOrigen.add(unidadBase);
+                 
+            });
+
+            unidadOrigenCombo.setItems(FXCollections.observableArrayList(unidadesOrigen));
+        };
+
+        // Configurar eventos
+        tipoCombo.setOnAction(e -> {
+            actualizarUnidadesOrigen.run();
+            cargarTodasLasUnidades.run();
+        });
+
+        // Cargar todas las unidades al inicio
+        cargarTodasLasUnidades.run();
 
         Button calcularBtn = new Button("🧮 CALCULAR");
         calcularBtn.setFont(Font.font(18));
@@ -126,7 +128,7 @@ public class CalculadoraConversion {
             try {
                 String cantidadText = cantidadField.getText().trim();
                 if (cantidadText.isEmpty()) {
-                    resultadoLabel.setText("⚠️ Ingresa una cantidad válida");
+                    mostrarResultado(resultadoLabel, "⚠️ Ingresa una cantidad válida", "warning");
                     return;
                 }
 
@@ -137,54 +139,46 @@ public class CalculadoraConversion {
                 String ingrediente = ingredienteCombo.getValue();
 
                 if (tipo == null || unidadOrigen == null || unidadDestino == null) {
-                    resultadoLabel.setText("⚠️ Por favor completa todos los campos obligatorios");
+                    mostrarResultado(resultadoLabel, "⚠️ Por favor completa todos los campos obligatorios", "warning");
                     return;
                 }
 
-                // Si ingrediente está vacío, pasar null
                 if (ingrediente != null && ingrediente.trim().isEmpty()) {
                     ingrediente = null;
                 }
 
-                System.out.printf("🎯 Intentando conversión: %.2f %s → %s (Tipo: %s, Ingrediente: %s)%n", 
-                                 cantidad, unidadOrigen, unidadDestino, tipo, ingrediente);
-
-                // Para herramientas, usar el tipo original de la tabla
                 String tipoParaConversion = tipo;
                 if ("Herramienta".equals(tipo)) {
                     tipoParaConversion = "Herramienta";
                 }
 
                 Double resultado = ConversorUtils2.convertir(
-                    tipoParaConversion,
-                    unidadOrigen,
-                    unidadDestino,
-                    cantidad,
-                    ingrediente
+                        tipoParaConversion,
+                        unidadOrigen,
+                        unidadDestino,
+                        cantidad,
+                        ingrediente
                 );
 
                 if (resultado == null) {
-                    resultadoLabel.setText("❌ No se encontró una conversión válida para estos parámetros.\n" +
-                                         "Verifica que el ingrediente y las unidades sean compatibles.");
-                    resultadoLabel.setStyle("-fx-padding: 15; -fx-background-color: #FFEBEE; -fx-border-radius: 8; -fx-border-color: #f44336;");
+                    String mensaje = "❌ No se encontró una conversión válida para estos parámetros.\n" +
+                            "Verifica que el ingrediente y las unidades sean compatibles.";
+                    mostrarResultado(resultadoLabel, mensaje, "error");
                 } else {
-                    String textoResultado = String.format("✅ %.2f %s = %.4f %s", 
-                                                        cantidad, unidadOrigen, resultado, unidadDestino);
-                    
+                    String textoResultado = String.format("✅ %.2f %s = %.4f %s",
+                            cantidad, unidadOrigen, resultado, unidadDestino);
+
                     if (ingrediente != null) {
                         textoResultado += "\n🥄 Para " + ingrediente;
                     }
-                    
-                    resultadoLabel.setText(textoResultado);
-                    resultadoLabel.setStyle("-fx-padding: 15; -fx-background-color: #E8F5E8; -fx-border-radius: 8; -fx-border-color: #4CAF50;");
+
+                    mostrarResultado(resultadoLabel, textoResultado, "success");
                 }
 
             } catch (NumberFormatException ex) {
-                resultadoLabel.setText("❌ El número que ingresaste no es válido");
-                resultadoLabel.setStyle("-fx-padding: 15; -fx-background-color: #FFEBEE; -fx-border-radius: 8; -fx-border-color: #f44336;");
+                mostrarResultado(resultadoLabel, "❌ El número que ingresaste no es válido", "error");
             } catch (Exception ex) {
-                resultadoLabel.setText("❌ Error inesperado: " + ex.getMessage());
-                resultadoLabel.setStyle("-fx-padding: 15; -fx-background-color: #FFEBEE; -fx-border-radius: 8; -fx-border-color: #f44336;");
+                mostrarResultado(resultadoLabel, "❌ Error inesperado: " + ex.getMessage(), "error");
                 ex.printStackTrace();
             }
         });
@@ -198,8 +192,8 @@ public class CalculadoraConversion {
             unidadOrigenCombo.getItems().clear();
             unidadDestinoCombo.getItems().clear();
             ingredienteCombo.setValue("");
-            resultadoLabel.setText("👆 Selecciona los campos y presiona CALCULAR");
-            resultadoLabel.setStyle("-fx-padding: 10; -fx-background-color: #E3F2FD; -fx-border-radius: 5;");
+            mostrarResultado(resultadoLabel, "👆 Selecciona los campos y presiona CALCULAR", "default");
+            cargarTodasLasUnidades.run(); // Recargar las unidades destino
         });
 
         VBox formulario = new VBox(20);
@@ -216,26 +210,33 @@ public class CalculadoraConversion {
         subtitulo.setFont(Font.font(16));
         subtitulo.setStyle("-fx-text-fill: #666666; -fx-font-style: italic;");
 
+        // Crear descripción de la lógica
+        Label descripcion = new Label("💡 Unidad origen: según tipo lógico seleccionado | Unidad destino: todas disponibles");
+        descripcion.setFont(Font.font(12));
+        descripcion.setStyle("-fx-text-fill: #888888; -fx-font-style: italic;");
+        descripcion.setWrapText(true);
+
         formulario.getChildren().addAll(
-            titulo,
-            subtitulo,
-            new Separator(),
-            crearFila("📏 Tipo de medida:", tipoCombo),
-            crearFila("🥄 Ingrediente (opcional):", ingredienteCombo),
-            crearFila("🔢 Cantidad:", cantidadField),
-            crearFila("📥 Unidad origen:", unidadOrigenCombo),
-            crearFila("📤 Unidad destino:", unidadDestinoCombo),
-            new Separator(),
-            new HBox(15, calcularBtn, limpiarBtn),
-            new Separator(),
-            resultadoLabel
+                titulo,
+                subtitulo,
+                descripcion,
+                new Separator(),
+                crearFila("📏 Tipo de medida:", tipoCombo),
+                crearFila("🥄 Ingrediente (opcional):", ingredienteCombo),
+                crearFila("🔢 Cantidad:", cantidadField),
+                crearFila("📥 Unidad origen:", unidadOrigenCombo),
+                crearFila("📤 Unidad destino:", unidadDestinoCombo),
+                new Separator(),
+                new HBox(15, calcularBtn, limpiarBtn),
+                new Separator(),
+                resultadoLabel
         );
 
         VBox wrapper = new VBox(formulario);
         wrapper.setAlignment(Pos.CENTER);
         wrapper.setPadding(new Insets(30));
         wrapper.setStyle("-fx-background-color: linear-gradient(to bottom, #E8F5E8, #F1F8E9);");
-        
+
         return wrapper;
     }
 
@@ -244,14 +245,33 @@ public class CalculadoraConversion {
         label.setFont(Font.font(16));
         label.setMinWidth(200);
         label.setStyle("-fx-font-weight: bold;");
-        
+
         campo.setStyle("-fx-font-size: 14; -fx-padding: 8;");
         if (campo instanceof ComboBox) {
             campo.setMinWidth(250);
         }
-        
+
         HBox fila = new HBox(20, label, campo);
         fila.setAlignment(Pos.CENTER_LEFT);
         return fila;
+    }
+
+    private static void mostrarResultado(Label label, String mensaje, String tipo) {
+        label.setText(mensaje);
+        
+        switch (tipo) {
+            case "success":
+                label.setStyle("-fx-padding: 15; -fx-background-color: #E8F5E8; -fx-border-radius: 8; -fx-border-color: #4CAF50;");
+                break;
+            case "error":
+                label.setStyle("-fx-padding: 15; -fx-background-color: #FFEBEE; -fx-border-radius: 8; -fx-border-color: #f44336;");
+                break;
+            case "warning":
+                label.setStyle("-fx-padding: 15; -fx-background-color: #FFF3E0; -fx-border-radius: 8; -fx-border-color: #FF9800;");
+                break;
+            default:
+                label.setStyle("-fx-padding: 10; -fx-background-color: #E3F2FD; -fx-border-radius: 5;");
+                break;
+        }
     }
 }

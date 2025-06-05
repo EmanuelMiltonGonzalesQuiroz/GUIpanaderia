@@ -3,3 +3,7 @@ java --module-path libs\javafx\lib --add-modules javafx.controls,javafx.fxml -ja
 
 clear                                                                                                                                                                                    
 mvn clean javafx:run
+
+clear
+git add .
+git status

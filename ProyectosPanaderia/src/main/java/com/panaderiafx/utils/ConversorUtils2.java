@@ -3,12 +3,351 @@ package com.panaderiafx.utils;
 import java.util.*;
 
 public class ConversorUtils2 {
-
+    
     private static final String TABLA = "TabladeConversión";
+    private static List<Map<String, String>> CACHE_TABLA;
+    private static final int MAX_CONVERSION_ATTEMPTS = 3; // Evitar loops infinitos
 
-    // ✅ Unidades estándar base 
+    public static Double convertir(String tipoLogico, String unidadOrigen, String unidadDestino, double cantidad, String ingrediente) {
+        return convertir(tipoLogico, unidadOrigen, unidadDestino, cantidad, ingrediente, 0);
+    }
+
+    private static Double convertir(String tipoLogico, String unidadOrigen, String unidadDestino, double cantidad, String ingrediente, int attempts) {
+        if (attempts >= MAX_CONVERSION_ATTEMPTS) {
+            System.out.printf("🛑 Máximo de intentos alcanzado (%d) para evitar loop infinito%n", MAX_CONVERSION_ATTEMPTS);
+            return null;
+        }
+
+        if (unidadOrigen.equalsIgnoreCase(unidadDestino)) {
+            System.out.printf("⚠️ Unidades iguales [%s], retorno directo: %.2f%n", unidadOrigen, cantidad);
+            return cantidad;
+        }
+
+        // 1. Intentar conversión con mapas estáticos primero (más rápido)
+        Double resultadoEstatico = intentarConversionEstatica(unidadOrigen, unidadDestino, cantidad, ingrediente);
+        if (resultadoEstatico != null) {
+            return resultadoEstatico;
+        }
+
+        // 2. Si falla, intentar conversión inteligente vía Gramos
+        Double intermedio = null;
+        if (attempts == 0) { // Solo en el primer intento para evitar loops
+            intermedio = ConversorInteligenteUtils.convertir(unidadOrigen, "Gramos", cantidad, ingrediente);
+        }
+        
+        if (intermedio == null) {
+            System.out.printf("❌ Conversión a Gramos falló: %s → Gramos%n", unidadOrigen);
+            // 3. Intentar conversión directa con tabla Excel
+            return intentarConversionDirectaConTabla(unidadOrigen, unidadDestino, cantidad, ingrediente);
+        }
+
+        System.out.printf("🔧 Conversor establecido toma el control: %.4f Gramos → %s%n", intermedio, unidadDestino);
+
+        // 4. Intentar conversión desde Gramos usando mapas estáticos
+        Double resultadoFinal = convertirDesdeGramos(intermedio, unidadDestino, ingrediente);
+        if (resultadoFinal != null) {
+            return resultadoFinal;
+        }
+
+        // 5. Intentar conversión desde Gramos usando tabla Excel
+        Double resultadoTabla = convertirDesdeGramosConTabla(intermedio, unidadDestino, ingrediente);
+        if (resultadoTabla != null) {
+            return resultadoTabla;
+        }
+
+        // 6. Último recurso: conversión inteligente inversa (solo si no hemos intentado antes)
+        if (attempts == 0) {
+            System.out.printf("🔁 Último intento: conversión inversa Gramos → %s usando ConversorInteligenteUtils%n", unidadDestino);
+            return convertir(tipoLogico, "Gramos", unidadDestino, intermedio, ingrediente, attempts + 1);
+        }
+
+        System.out.printf("❌ Todas las estrategias de conversión fallaron%n");
+        return null;
+    }
+
+    private static Double intentarConversionEstatica(String unidadOrigen, String unidadDestino, double cantidad, String ingrediente) {
+        // Conversión directa entre unidades conocidas
+        if (UNIDADES_PESO.containsKey(unidadOrigen) && UNIDADES_PESO.containsKey(unidadDestino)) {
+            double gramos = cantidad * UNIDADES_PESO.get(unidadOrigen);
+            double resultado = gramos / UNIDADES_PESO.get(unidadDestino);
+            System.out.printf("⚖️ %.4f %s = %.4f g = %.4f %s%n", cantidad, unidadOrigen, gramos, resultado, unidadDestino);
+            return resultado;
+        }
+
+        if (UNIDADES_VOLUMEN.containsKey(unidadOrigen) && UNIDADES_VOLUMEN.containsKey(unidadDestino)) {
+            double ml = cantidad * UNIDADES_VOLUMEN.get(unidadOrigen);
+            double resultado = ml / UNIDADES_VOLUMEN.get(unidadDestino);
+            System.out.printf("💧 %.4f %s = %.4f ml = %.4f %s%n", cantidad, unidadOrigen, ml, resultado, unidadDestino);
+            return resultado;
+        }
+
+        return null;
+    }
+
+    private static Double intentarConversionDirectaConTabla(String unidadOrigen, String unidadDestino, double cantidad, String ingrediente) {
+        System.out.printf("📊 Buscando conversión directa en tabla: %s → %s%n", unidadOrigen, unidadDestino);
+        
+        List<Map<String, String>> tabla = getTabla();
+        
+        // Buscar conversión directa
+        Optional<Map<String, String>> conversion = tabla.stream()
+                .filter(d -> d.get("Unidad base") != null && d.get("Unidad 2") != null)
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase(unidadOrigen) && 
+                           d.get("Unidad 2").equalsIgnoreCase(unidadDestino))
+                .filter(d -> {
+                    String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
+                    return ing.isEmpty() || "—".equals(ing) || 
+                           (ingrediente != null && ingrediente.equalsIgnoreCase(ing));
+                })
+                .findFirst();
+
+        if (conversion.isPresent()) {
+            double factor = extraerNumero(conversion.get().get("Equivalencia aproximada"));
+            double resultado = cantidad * factor;
+            System.out.printf("📊 %.4f %s * %.4f = %.4f %s%n", cantidad, unidadOrigen, factor, resultado, unidadDestino);
+            return resultado;
+        }
+
+        // Buscar conversión inversa
+        Optional<Map<String, String>> conversionInversa = tabla.stream()
+                .filter(d -> d.get("Unidad base") != null && d.get("Unidad 2") != null)
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase(unidadDestino) && 
+                           d.get("Unidad 2").equalsIgnoreCase(unidadOrigen))
+                .filter(d -> {
+                    String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
+                    return ing.isEmpty() || "—".equals(ing) || 
+                           (ingrediente != null && ingrediente.equalsIgnoreCase(ing));
+                })
+                .findFirst();
+
+        if (conversionInversa.isPresent()) {
+            double factor = extraerNumero(conversionInversa.get().get("Equivalencia aproximada"));
+            double resultado = cantidad / factor;
+            System.out.printf("📊 %.4f %s ÷ %.4f = %.4f %s (conversión inversa)%n", cantidad, unidadOrigen, factor, resultado, unidadDestino);
+            return resultado;
+        }
+
+        return null;
+    }
+
+    private static Double convertirDesdeGramos(double gramos, String unidadDestino, String ingrediente) {
+        if (unidadDestino.equalsIgnoreCase("Gramos") || unidadDestino.equalsIgnoreCase("g")) return gramos;
+
+        if (UNIDADES_PESO.containsKey(unidadDestino)) {
+            double resultado = gramos / UNIDADES_PESO.get(unidadDestino);
+            System.out.printf("⚖️ %.4f g ÷ %.4f = %.4f %s%n", gramos, UNIDADES_PESO.get(unidadDestino), resultado, unidadDestino);
+            return resultado;
+        }
+
+        if (UNIDADES_VOLUMEN.containsKey(unidadDestino)) {
+            double ml = gramos / FACTOR_AGUA_PESO_VOLUMEN;
+            double resultado = ml / UNIDADES_VOLUMEN.get(unidadDestino);
+            System.out.printf("💧 %.4f g (agua) = %.4f ml → %.4f %s%n", gramos, ml, resultado, unidadDestino);
+            return resultado;
+        }
+
+        return null;
+    }
+
+    private static Double convertirDesdeGramosConTabla(double gramos, String unidadDestino, String ingrediente) {
+        System.out.printf("📊 Buscando conversión desde Gramos → %s en tabla%n", unidadDestino);
+        
+        List<Map<String, String>> tabla = getTabla();
+        
+        // 1. Buscar conversión directa desde Gramos
+        Optional<Map<String, String>> conversion = tabla.stream()
+                .filter(d -> d.get("Unidad base") != null && d.get("Unidad 2") != null)
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase("Gramos") && 
+                           d.get("Unidad 2").equalsIgnoreCase(unidadDestino))
+                .filter(d -> {
+                    String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
+                    return ing.isEmpty() || "—".equals(ing) || 
+                           (ingrediente != null && ingrediente.equalsIgnoreCase(ing));
+                })
+                .findFirst();
+
+        if (conversion.isPresent()) {
+            double factor = extraerNumero(conversion.get().get("Equivalencia aproximada"));
+            double resultado = gramos * factor;
+            System.out.printf("📊 %.4f Gramos * %.4f = %.4f %s%n", gramos, factor, resultado, unidadDestino);
+            return resultado;
+        }
+
+        // 2. Buscar conversión inversa hacia Gramos
+        Optional<Map<String, String>> conversionInversa = tabla.stream()
+                .filter(d -> d.get("Unidad base") != null && d.get("Unidad 2") != null)
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase(unidadDestino) && 
+                           d.get("Unidad 2").equalsIgnoreCase("Gramos"))
+                .filter(d -> {
+                    String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
+                    return ing.isEmpty() || "—".equals(ing) || 
+                           (ingrediente != null && ingrediente.equalsIgnoreCase(ing));
+                })
+                .findFirst();
+
+        if (conversionInversa.isPresent()) {
+            double factor = extraerNumero(conversionInversa.get().get("Equivalencia aproximada"));
+            double resultado = gramos / factor;
+            System.out.printf("📊 %.4f Gramos ÷ %.4f = %.4f %s (conversión inversa)%n", gramos, factor, resultado, unidadDestino);
+            return resultado;
+        }
+
+        // 3. Buscar conversión indirecta: Gramos → Volumen → Herramienta
+        Double resultadoIndirecto = intentarConversionIndirectaGramosAHerramienta(gramos, unidadDestino, ingrediente, tabla);
+        if (resultadoIndirecto != null) {
+            return resultadoIndirecto;
+        }
+
+        // 4. Buscar conversión indirecta: Gramos → Peso → Herramienta
+        return intentarConversionIndirectaGramosAPeso(gramos, unidadDestino, ingrediente, tabla);
+    }
+
+    private static Double intentarConversionIndirectaGramosAHerramienta(double gramos, String unidadDestino, String ingrediente, List<Map<String, String>> tabla) {
+        // Buscar herramientas que tengan volumen como unidad 2
+        Optional<Map<String, String>> herramientaVolumen = tabla.stream()
+                .filter(d -> d.get("Unidad base") != null && d.get("Unidad 2") != null)
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase(unidadDestino))
+                .filter(d -> esUnidadDeVolumen(d.get("Unidad 2")))
+                .filter(d -> {
+                    String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
+                    return ing.isEmpty() || "—".equals(ing) || 
+                           (ingrediente != null && ingrediente.equalsIgnoreCase(ing));
+                })
+                .findFirst();
+
+        if (herramientaVolumen.isPresent()) {
+            String unidadVolumen = herramientaVolumen.get().get("Unidad 2");
+            double factorHerramienta = extraerNumero(herramientaVolumen.get().get("Equivalencia aproximada"));
+            
+            System.out.printf("🔧 Encontrada herramienta via volumen: 1 %s = %.2f %s%n", 
+                    unidadDestino, factorHerramienta, unidadVolumen);
+
+            // Convertir Gramos → Volumen usando densidad específica
+            Double volumen = convertirGramosAVolumen(gramos, unidadVolumen, ingrediente, tabla);
+            if (volumen != null) {
+                // Convertir Volumen → Herramienta
+                double resultado = volumen / factorHerramienta;
+                System.out.printf("🏺 %.4f %s ÷ %.4f = %.4f %s%n", 
+                        volumen, unidadVolumen, factorHerramienta, resultado, unidadDestino);
+                return resultado;
+            }
+        }
+
+        return null;
+    }
+
+    private static Double intentarConversionIndirectaGramosAPeso(double gramos, String unidadDestino, String ingrediente, List<Map<String, String>> tabla) {
+        // Buscar herramientas que tengan peso como unidad 2
+        Optional<Map<String, String>> herramientaPeso = tabla.stream()
+                .filter(d -> d.get("Unidad base") != null && d.get("Unidad 2") != null)
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase(unidadDestino))
+                .filter(d -> esUnidadDePeso(d.get("Unidad 2")))
+                .filter(d -> {
+                    String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
+                    return ing.isEmpty() || "—".equals(ing) || 
+                           (ingrediente != null && ingrediente.equalsIgnoreCase(ing));
+                })
+                .findFirst();
+
+        if (herramientaPeso.isPresent()) {
+            String unidadPeso = herramientaPeso.get().get("Unidad 2");
+            double factorHerramienta = extraerNumero(herramientaPeso.get().get("Equivalencia aproximada"));
+            
+            System.out.printf("🔧 Encontrada herramienta via peso: 1 %s = %.2f %s%n", 
+                    unidadDestino, factorHerramienta, unidadPeso);
+
+            // Convertir Gramos → Unidad de peso
+            Double peso = convertirGramosAPeso(gramos, unidadPeso);
+            if (peso != null) {
+                // Convertir Peso → Herramienta
+                double resultado = peso / factorHerramienta;
+                System.out.printf("⚖️ %.4f %s ÷ %.4f = %.4f %s%n", 
+                        peso, unidadPeso, factorHerramienta, resultado, unidadDestino);
+                return resultado;
+            }
+        }
+
+        return null;
+    }
+
+    private static Double convertirGramosAVolumen(double gramos, String unidadVolumen, String ingrediente, List<Map<String, String>> tabla) {
+        // Buscar densidad específica del ingrediente
+        Optional<Map<String, String>> densidad = tabla.stream()
+                .filter(d -> d.get("Unidad base").equalsIgnoreCase("Mililitros"))
+                .filter(d -> d.get("Unidad 2").equalsIgnoreCase("Gramos"))
+                .filter(d -> ingrediente != null && ingrediente.equalsIgnoreCase(d.getOrDefault("Ingrediente (si aplica)", "").trim()))
+                .findFirst();
+
+        double ml;
+        if (densidad.isPresent()) {
+            double factor = extraerNumero(densidad.get().get("Equivalencia aproximada"));
+            ml = gramos / factor; // Gramos ÷ (g/ml) = ml
+            System.out.printf("🧪 %.2f g ÷ %.4f (densidad específica) = %.4f ml%n", gramos, factor, ml);
+        } else {
+            // Fallback: densidad del agua
+            ml = gramos / 1.0;
+            System.out.printf("💧 %.2f g ÷ 1.0 (fallback agua) = %.4f ml%n", gramos, ml);
+        }
+
+        // Convertir ml a la unidad de volumen deseada
+        if (UNIDADES_VOLUMEN.containsKey(unidadVolumen)) {
+            double factorVolumen = UNIDADES_VOLUMEN.get(unidadVolumen);
+            double resultado = ml / factorVolumen;
+            System.out.printf("🔄 %.2f ml ÷ %.4f = %.4f %s%n", ml, factorVolumen, resultado, unidadVolumen);
+            return resultado;
+        }
+
+        return null;
+    }
+
+    private static Double convertirGramosAPeso(double gramos, String unidadPeso) {
+        if (UNIDADES_PESO.containsKey(unidadPeso)) {
+            double factorPeso = UNIDADES_PESO.get(unidadPeso);
+            double resultado = gramos / factorPeso;
+            System.out.printf("⚖️ %.2f g ÷ %.4f = %.4f %s%n", gramos, factorPeso, resultado, unidadPeso);
+            return resultado;
+        }
+        return null;
+    }
+
+    private static boolean esUnidadDeVolumen(String unidad) {
+        return UNIDADES_VOLUMEN.containsKey(unidad) || 
+               Set.of("Litros", "Litro", "Mililitros", "ml", "Onza líquida").stream()
+                   .anyMatch(u -> u.equalsIgnoreCase(unidad));
+    }
+
+    private static boolean esUnidadDePeso(String unidad) {
+        return UNIDADES_PESO.containsKey(unidad) || 
+               Set.of("Libras", "Libra", "Kilos", "Kilo", "Gramos", "g", "Onzas", "Onza").stream()
+                   .anyMatch(u -> u.equalsIgnoreCase(unidad));
+    }
+
+    private static List<Map<String, String>> getTabla() {
+        if (CACHE_TABLA == null) {
+            CACHE_TABLA = VerUtils.verTabla(TABLA);
+            System.out.println("📥 [ConversorUtils2] Tabla cargada con " + CACHE_TABLA.size() + " filas.");
+        }
+        return CACHE_TABLA;
+    }
+
+    private static double extraerNumero(String texto) {
+        try {
+            if (texto == null || texto.trim().isEmpty()) return 0;
+            String limpio = texto.replace(",", ".").replaceAll("[^0-9.]", "");
+            return limpio.isEmpty() ? 0 : Double.parseDouble(limpio);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public static void limpiarCache() {
+        CACHE_TABLA = null;
+        System.out.println("🧹 Cache del ConversorUtils2 limpiado.");
+    }
+
     private static final Map<String, Double> UNIDADES_PESO = Map.ofEntries(
             Map.entry("Kilos", 1000.0),
+            Map.entry("Kilo", 1000.0),
             Map.entry("Gramos", 1.0),
             Map.entry("g", 1.0),
             Map.entry("Libras", 453.592),
@@ -16,390 +355,15 @@ public class ConversorUtils2 {
             Map.entry("Onzas", 28.3495),
             Map.entry("Onza", 28.3495)
     );
-    
+
     private static final Map<String, Double> UNIDADES_VOLUMEN = Map.ofEntries(
             Map.entry("Litro", 1000.0),
+            Map.entry("Litros", 1000.0),
             Map.entry("Mililitros", 1.0),
             Map.entry("ml", 1.0),
             Map.entry("Onza líquida", 29.5735),
-            Map.entry("Onza", 29.5735)  // Asumimos líquida si no se especifica
+            Map.entry("Onza", 29.5735)
     );
-    
-    // Combinar todas las unidades estándar
-    private static final Map<String, Double> UNIDADES_ESTANDAR = new HashMap<>();
-    static {
-        UNIDADES_ESTANDAR.putAll(UNIDADES_PESO);
-        UNIDADES_ESTANDAR.putAll(UNIDADES_VOLUMEN);
-    }
 
-    // ✅ Factores de conversión agua (1g = 1ml para agua)
-    private static final double FACTOR_AGUA_PESO_VOLUMEN = 1.0; // 1g agua = 1ml agua
-
-    private static List<Map<String, String>> CACHE_DATOS;
-    private static final Map<String, Double> CACHE_EQUIVALENCIAS = new HashMap<>();
-
-    public static Double convertir(String tipoLogico,
-                                   String unidadOrigen,
-                                   String unidadDestino,
-                                   double cantidad,
-                                   String ingrediente) {
-
-        if (unidadOrigen.equalsIgnoreCase(unidadDestino)) {
-            System.out.printf("⚠️ Unidades iguales [%s], retorno directo: %.2f%n", unidadOrigen, cantidad);
-            return cantidad;
-        }
-
-        System.out.printf("🔄 Convirtiendo: %.2f %s → %s (Ingrediente: %s, Tipo: %s)%n", 
-                         cantidad, unidadOrigen, unidadDestino, ingrediente, tipoLogico);
-
-        List<Map<String, String>> datos = obtenerDatos();
-
-        // Permitir conversión entre todos los tipos
-        List<String> tiposPermitidos = List.of("Peso", "Volumen", "Herramienta", "Conversión");
-
-        // ✅ ESTRATEGIA DE CONVERSIÓN OPTIMIZADA:
-        // 1. Convertir origen a gramos (base peso) usando ingrediente específico o fallback
-        Double valorEnGramos = convertirAGramos(cantidad, unidadOrigen, ingrediente, datos);
-        if (valorEnGramos == null) {
-            System.out.printf("❌ No se pudo convertir %s a gramos%n", unidadOrigen);
-            return null;
-        }
-
-        // 2. Convertir de gramos a unidad destino
-        Double resultado = convertirDesdeGramos(valorEnGramos, unidadDestino, ingrediente, datos);
-        if (resultado == null) {
-            System.out.printf("❌ No se pudo convertir desde gramos a %s%n", unidadDestino);
-            return null;
-        }
-
-        System.out.printf("✅ Conversión exitosa: %.2f %s = %.4f %s%n", 
-                         cantidad, unidadOrigen, resultado, unidadDestino);
-        
-        return resultado;
-    }
-
-    /**
-     * Convierte cualquier unidad a gramos (unidad base)
-     */
-    private static Double convertirAGramos(double cantidad, String unidad, String ingrediente, List<Map<String, String>> datos) {
-        
-        // 1. Si ya está en unidad de peso estándar
-        if (esUnidadDePeso(unidad)) {
-            Double factor = buscarEnUnidadesPeso(unidad);
-            if (factor != null) {
-                double resultado = cantidad * factor;
-                System.out.printf("🔢 Peso estándar: %.2f %s * %.4f = %.4f gramos%n", cantidad, unidad, factor, resultado);
-                return resultado;
-            }
-        }
-
-        // 2. Si es unidad de volumen, convertir usando densidad específica o agua
-        if (esUnidadDeVolumen(unidad)) {
-            return convertirVolumenAGramos(cantidad, unidad, ingrediente, datos);
-        }
-
-        // 3. Si es herramienta, buscar en tabla
-        return convertirHerramientaAGramos(cantidad, unidad, ingrediente, datos);
-    }
-
-    /**
-     * Convierte desde gramos a cualquier unidad destino
-     */
-    private static Double convertirDesdeGramos(double gramos, String unidadDestino, String ingrediente, List<Map<String, String>> datos) {
-        
-        // 1. Si destino es peso estándar
-        if (esUnidadDePeso(unidadDestino)) {
-            Double factor = buscarEnUnidadesPeso(unidadDestino);
-            if (factor != null) {
-                double resultado = gramos / factor;
-                System.out.printf("🔢 A peso estándar: %.4f gramos / %.4f = %.4f %s%n", gramos, factor, resultado, unidadDestino);
-                return resultado;
-            }
-        }
-
-        // 2. Si destino es volumen, usar densidad o agua
-        if (esUnidadDeVolumen(unidadDestino)) {
-            return convertirGramosAVolumen(gramos, unidadDestino, ingrediente, datos);
-        }
-
-        // 3. Si destino es herramienta (conversión inversa)
-        return convertirGramosAHerramienta(gramos, unidadDestino, ingrediente, datos);
-    }
-
-    /**
-     * Convierte volumen a gramos usando densidad específica o agua como fallback
-     */
-    private static Double convertirVolumenAGramos(double cantidad, String unidad, String ingrediente, List<Map<String, String>> datos) {
-        
-        // Primero convertir a mililitros
-        Double factorVolumen = buscarEnUnidadesVolumen(unidad);
-        if (factorVolumen == null) return null;
-        
-        double mililitros = cantidad * factorVolumen;
-        System.out.printf("📏 Volumen: %.2f %s = %.4f ml%n", cantidad, unidad, mililitros);
-
-        // Buscar densidad específica del ingrediente
-        if (ingrediente != null && !ingrediente.trim().isEmpty()) {
-            Optional<Double> densidadEspecifica = datos.stream()
-                .filter(d -> "Conversión".equals(d.getOrDefault("Tipo lógico", "")))
-                .filter(d -> "ml".equalsIgnoreCase(d.get("Unidad base")) || "Mililitros".equalsIgnoreCase(d.get("Unidad base")))
-                .filter(d -> ("g".equalsIgnoreCase(d.get("Unidad 2")) || "Gramos".equalsIgnoreCase(d.get("Unidad 2"))))
-                .filter(d -> ingrediente.equalsIgnoreCase(d.getOrDefault("Ingrediente (si aplica)", "").trim()))
-                .map(d -> extraerNumero(d.get("Equivalencia aproximada")))
-                .filter(val -> val > 0)
-                .findFirst();
-
-            if (densidadEspecifica.isPresent()) {
-                double gramos = mililitros * densidadEspecifica.get();
-                System.out.printf("🧪 Densidad específica %s: %.4f ml * %.4f = %.4f gramos%n", 
-                                 ingrediente, mililitros, densidadEspecifica.get(), gramos);
-                return gramos;
-            }
-        }
-
-        // Fallback: usar densidad del agua (1ml = 1g)
-        double gramos = mililitros * FACTOR_AGUA_PESO_VOLUMEN;
-        System.out.printf("💧 Usando densidad agua: %.4f ml * %.2f = %.4f gramos%n", 
-                         mililitros, FACTOR_AGUA_PESO_VOLUMEN, gramos);
-        return gramos;
-    }
-
-    /**
-     * Convierte gramos a volumen usando densidad específica o agua como fallback
-     */
-    private static Double convertirGramosAVolumen(double gramos, String unidadDestino, String ingrediente, List<Map<String, String>> datos) {
-        
-        // Buscar densidad específica del ingrediente
-        Double densidad = FACTOR_AGUA_PESO_VOLUMEN; // Default: agua
-        
-        if (ingrediente != null && !ingrediente.trim().isEmpty()) {
-            Optional<Double> densidadEspecifica = datos.stream()
-                .filter(d -> "Conversión".equals(d.getOrDefault("Tipo lógico", "")))
-                .filter(d -> "ml".equalsIgnoreCase(d.get("Unidad base")) || "Mililitros".equalsIgnoreCase(d.get("Unidad base")))
-                .filter(d -> ("g".equalsIgnoreCase(d.get("Unidad 2")) || "Gramos".equalsIgnoreCase(d.get("Unidad 2"))))
-                .filter(d -> ingrediente.equalsIgnoreCase(d.getOrDefault("Ingrediente (si aplica)", "").trim()))
-                .map(d -> extraerNumero(d.get("Equivalencia aproximada")))
-                .filter(val -> val > 0)
-                .findFirst();
-
-            if (densidadEspecifica.isPresent()) {
-                densidad = densidadEspecifica.get();
-                System.out.printf("🧪 Usando densidad específica de %s: %.4f%n", ingrediente, densidad);
-            }
-        }
-
-        // Convertir a mililitros
-        double mililitros = gramos / densidad;
-        System.out.printf("📏 A volumen: %.4f gramos / %.4f = %.4f ml%n", gramos, densidad, mililitros);
-
-        // Convertir a unidad destino
-        Double factorDestino = buscarEnUnidadesVolumen(unidadDestino);
-        if (factorDestino == null) return null;
-
-        double resultado = mililitros / factorDestino;
-        System.out.printf("🔢 A unidad final: %.4f ml / %.4f = %.4f %s%n", mililitros, factorDestino, resultado, unidadDestino);
-        return resultado;
-    }
-
-    /**
-     * Convierte herramienta a gramos
-     */
-    private static Double convertirHerramientaAGramos(double cantidad, String unidad, String ingrediente, List<Map<String, String>> datos) {
-        
-        // 1. Buscar conversión específica para el ingrediente
-        if (ingrediente != null && !ingrediente.trim().isEmpty()) {
-            Optional<Double> conversionEspecifica = datos.stream()
-                .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-                .filter(d -> unidad.equalsIgnoreCase(d.get("Unidad base")))
-                .filter(d -> ingrediente.equalsIgnoreCase(d.getOrDefault("Ingrediente (si aplica)", "").trim()))
-                .map(d -> {
-                    double equiv = extraerNumero(d.get("Equivalencia aproximada"));
-                    String unidad2 = d.get("Unidad 2");
-                    
-                    System.out.printf("🔍 Encontrada conversión específica: 1 %s (%s) = %.2f %s%n", 
-                                     unidad, ingrediente, equiv, unidad2);
-                    
-                    // Si equivalencia está en gramos
-                    if ("g".equalsIgnoreCase(unidad2) || "Gramos".equalsIgnoreCase(unidad2)) {
-                        return equiv;
-                    }
-                    
-                    // Si está en otra unidad, convertir
-                    Double factor = buscarEnUnidadesEstandar(unidad2);
-                    return factor != null ? equiv * factor : equiv;
-                })
-                .filter(val -> val > 0)
-                .findFirst();
-
-            if (conversionEspecifica.isPresent()) {
-                double gramos = cantidad * conversionEspecifica.get();
-                System.out.printf("🥄 Herramienta específica (%s): %.2f %s * %.4f = %.4f gramos%n", 
-                                 ingrediente, cantidad, unidad, conversionEspecifica.get(), gramos);
-                return gramos;
-            }
-        }
-
-        // 2. Buscar conversión genérica (sin ingrediente específico)
-        Optional<Double> conversionGenerica = datos.stream()
-            .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-            .filter(d -> unidad.equalsIgnoreCase(d.get("Unidad base")))
-            .filter(d -> {
-                String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
-                return ing.isEmpty() || "—".equals(ing);
-            })
-            .map(d -> {
-                double equiv = extraerNumero(d.get("Equivalencia aproximada"));
-                String unidad2 = d.get("Unidad 2");
-                
-                System.out.printf("🔍 Encontrada conversión genérica: 1 %s = %.2f %s%n", 
-                                 unidad, equiv, unidad2);
-                
-                if ("g".equalsIgnoreCase(unidad2) || "Gramos".equalsIgnoreCase(unidad2)) {
-                    return equiv;
-                }
-                
-                Double factor = buscarEnUnidadesEstandar(unidad2);
-                return factor != null ? equiv * factor : equiv;
-            })
-            .filter(val -> val > 0)
-            .findFirst();
-
-        if (conversionGenerica.isPresent()) {
-            double gramos = cantidad * conversionGenerica.get();
-            System.out.printf("🥄 Herramienta genérica: %.2f %s * %.4f = %.4f gramos%n", 
-                             cantidad, unidad, conversionGenerica.get(), gramos);
-            return gramos;
-        }
-
-        System.out.printf("❌ No se encontró conversión para herramienta: %s%n", unidad);
-        return null;
-    }
-
-    /**
-     * Convierte gramos a herramienta (conversión inversa)
-     */
-    private static Double convertirGramosAHerramienta(double gramos, String unidadDestino, String ingrediente, List<Map<String, String>> datos) {
-        
-        // Similar a convertirHerramientaAGramos pero inversa
-        if (ingrediente != null && !ingrediente.trim().isEmpty()) {
-            Optional<Double> factorEspecifico = datos.stream()
-                .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-                .filter(d -> unidadDestino.equalsIgnoreCase(d.get("Unidad base")))
-                .filter(d -> ingrediente.equalsIgnoreCase(d.getOrDefault("Ingrediente (si aplica)", "").trim()))
-                .map(d -> {
-                    double equiv = extraerNumero(d.get("Equivalencia aproximada"));
-                    String unidad2 = d.get("Unidad 2");
-                    
-                    if ("g".equalsIgnoreCase(unidad2) || "Gramos".equalsIgnoreCase(unidad2)) {
-                        return equiv;
-                    }
-                    
-                    Double factor = buscarEnUnidadesEstandar(unidad2);
-                    return factor != null ? equiv * factor : equiv;
-                })
-                .filter(val -> val > 0)
-                .findFirst();
-
-            if (factorEspecifico.isPresent()) {
-                double resultado = gramos / factorEspecifico.get();
-                System.out.printf("🔄 Gramos a herramienta (%s): %.4f / %.4f = %.4f %s%n", 
-                                 ingrediente, gramos, factorEspecifico.get(), resultado, unidadDestino);
-                return resultado;
-            }
-        }
-
-        // Conversión genérica
-        Optional<Double> factorGenerico = datos.stream()
-            .filter(d -> "Herramienta".equals(d.getOrDefault("Tipo de medida", "")))
-            .filter(d -> unidadDestino.equalsIgnoreCase(d.get("Unidad base")))
-            .filter(d -> {
-                String ing = d.getOrDefault("Ingrediente (si aplica)", "").trim();
-                return ing.isEmpty() || "—".equals(ing);
-            })
-            .map(d -> {
-                double equiv = extraerNumero(d.get("Equivalencia aproximada"));
-                String unidad2 = d.get("Unidad 2");
-                
-                if ("g".equalsIgnoreCase(unidad2) || "Gramos".equalsIgnoreCase(unidad2)) {
-                    return equiv;
-                }
-                
-                Double factor = buscarEnUnidadesEstandar(unidad2);
-                return factor != null ? equiv * factor : equiv;
-            })
-            .filter(val -> val > 0)
-            .findFirst();
-
-        if (factorGenerico.isPresent()) {
-            double resultado = gramos / factorGenerico.get();
-            System.out.printf("🔄 Gramos a herramienta genérica: %.4f / %.4f = %.4f %s%n", 
-                             gramos, factorGenerico.get(), resultado, unidadDestino);
-            return resultado;
-        }
-
-        return null;
-    }
-
-    private static Double buscarEnUnidadesPeso(String unidad) {
-        return UNIDADES_PESO.entrySet().stream()
-            .filter(entry -> entry.getKey().equalsIgnoreCase(unidad))
-            .map(Map.Entry::getValue)
-            .findFirst()
-            .orElse(null);
-    }
-
-    private static Double buscarEnUnidadesVolumen(String unidad) {
-        return UNIDADES_VOLUMEN.entrySet().stream()
-            .filter(entry -> entry.getKey().equalsIgnoreCase(unidad))
-            .map(Map.Entry::getValue)
-            .findFirst()
-            .orElse(null);
-    }
-
-    private static Double buscarEnUnidadesEstandar(String unidad) {
-        return UNIDADES_ESTANDAR.entrySet().stream()
-            .filter(entry -> entry.getKey().equalsIgnoreCase(unidad))
-            .map(Map.Entry::getValue)
-            .findFirst()
-            .orElse(null);
-    }
-
-    private static boolean esUnidadDePeso(String unidad) {
-        return UNIDADES_PESO.keySet().stream().anyMatch(u -> u.equalsIgnoreCase(unidad));
-    }
-    
-    private static boolean esUnidadDeVolumen(String unidad) {
-        return UNIDADES_VOLUMEN.keySet().stream().anyMatch(u -> u.equalsIgnoreCase(unidad));
-    }
-
-    private static double extraerNumero(String entrada) {
-        try {
-            if (entrada == null || entrada.trim().isEmpty()) return 0;
-            
-            // Limpiar la cadena: mantener solo números, puntos y comas
-            String limpio = entrada.replace(",", ".").replaceAll("[^0-9.]", "").trim();
-            
-            if (limpio.isEmpty()) return 0;
-            
-            return Double.parseDouble(limpio);
-        } catch (NumberFormatException e) {
-            System.err.println("⚠️ Error al parsear número: " + entrada);
-            return 0;
-        }
-    }
-
-    private static List<Map<String, String>> obtenerDatos() {
-        if (CACHE_DATOS == null) {
-            CACHE_DATOS = VerUtils.verTabla("TabladeConversión");
-            System.out.println("📥 [ConversorUtils2] Datos de conversión obtenidos: " + CACHE_DATOS.size() + " filas.");
-        }
-        return CACHE_DATOS;
-    }
-    
-    // ✅ Método para limpiar cache cuando se actualicen los datos
-    public static void limpiarCache() {
-        CACHE_DATOS = null;
-        CACHE_EQUIVALENCIAS.clear();
-        System.out.println("🧹 Cache de conversiones limpiado");
-    }
+    private static final double FACTOR_AGUA_PESO_VOLUMEN = 1.0;
 }

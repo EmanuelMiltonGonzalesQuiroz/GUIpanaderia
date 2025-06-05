@@ -85,9 +85,9 @@ public class FormularioEditorProduccionFactory {
         campoCantidad.focusedProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
                 desactivarBotonGuardar();
-                int cantidadNueva = (int) ParseUtils.safeParseDouble(campoCantidad.getText());
-                int cantidadBase = (int) ParseUtils.safeParseDouble(produccion.getOrDefault("Cantidad Base", "0"));
-                produccion.put("Cantidad Producida", String.valueOf(cantidadNueva));
+                double cantidadNueva = ParseUtils.safeParseDouble(campoCantidad.getText());
+                double cantidadBase = ParseUtils.safeParseDouble(produccion.getOrDefault("Cantidad Base", "0"));
+                produccion.put("Cantidad Producida", String.valueOf((int)cantidadNueva));
 
                 if (cantidadNueva > 0 && codigoRecetaActual != null && cantidadNueva != cantidadBase) {
                     Platform.runLater(() -> {
@@ -108,7 +108,7 @@ public class FormularioEditorProduccionFactory {
                 double mezcla = ParseUtils.safeParseDouble(campoMezcla.getText());
                 if (mezcla > 0 && codigoRecetaActual != null) {
                     int cantidadNueva = EscaladoIngredientesUtils.calcularProduccionDesdeMezcla(mezcla, codigoRecetaActual);
-                    int cantidadBase = (int) ParseUtils.safeParseDouble(produccion.getOrDefault("Cantidad Base", "0"));
+                    double cantidadBase = ParseUtils.safeParseDouble(produccion.getOrDefault("Cantidad Base", "0"));
                     campoCantidad.setText(String.valueOf(cantidadNueva));
                     produccion.put("Cantidad Producida", String.valueOf(cantidadNueva));
 
@@ -140,15 +140,43 @@ public class FormularioEditorProduccionFactory {
     }
 
     private static void recalcularTotalesDesdeFormulario() {
+        // Usar ParseUtils para todos los valores numéricos
+        double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+        double precioU = ParseUtils.safeParseDouble(campoPrecioU.getText());
+        double costoTotal = ParseUtils.safeParseDouble(campoCostoTotal.getText());
+        
+        // Calcular costo por unidad
+        double costoU = cantidad > 0 ? costoTotal / cantidad : 0;
+        
+        // Calcular ganancia total
+        double ingresoTotal = cantidad * precioU;
+        double gananciaTotal = ingresoTotal - costoTotal;
+        
+        // Actualizar campos con formato
+        campoCostoU.setText(String.format("%.2f", costoU));
+        campoGanancia.setText(String.format("%.2f", gananciaTotal));
+        
+        // Actualizar referencia de producción
+        if (produccionRef != null) {
+            produccionRef.put("Costo Directo/U", String.format("%.2f", costoU));
+            produccionRef.put("Ganancia", String.format("%.2f", gananciaTotal));
+            produccionRef.put("Precio de Venta por Unidad", String.format("%.2f", precioU));
+            produccionRef.put("Cantidad Producida", String.format("%.0f", cantidad));
+        }
+        
+        // También llamar al método original por si tiene lógica adicional
         TotalesProduccionUtils.recalcularTotales(
                 campoCantidad, campoPrecioU, campoCostoTotal, campoCostoU, campoGanancia
         );
     }
 
     public static void actualizarTotales(String cod, Double nuevoCostoTotal) {
-        campoCostoTotal.setText(String.format("%.2f", nuevoCostoTotal));
+        // Usar ParseUtils para el nuevo costo total
+        double costoTotal = nuevoCostoTotal != null ? nuevoCostoTotal : 0.0;
+        campoCostoTotal.setText(String.format("%.2f", costoTotal));
+        
         if (produccionRef != null) {
-            produccionRef.put("Costo Total", String.format("%.2f", nuevoCostoTotal));
+            produccionRef.put("Costo Total", String.format("%.2f", costoTotal));
         }
         recalcularTotalesDesdeFormulario();
     }

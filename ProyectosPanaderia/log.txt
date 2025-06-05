@@ -3,8 +3,8 @@
 ✅ Entrando a start()...
 📄 Cargada hoja 'Ingredientes'. Filas: 35
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 7
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 62
+📄 Cargada hoja 'Produccion'. Filas: 9
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 80
 📄 Cargada hoja 'ResumenSemanal'. Filas: 2
 📄 Cargada hoja 'Recetas'. Filas: 19
 📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
@@ -12,16 +12,16 @@
 📄 Cargada hoja 'VariableDia'. Filas: 2
 📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
 📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1351 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1374 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 35
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 7
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 62
+📄 Cargada hoja 'Produccion'. Filas: 9
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 80
 📄 Cargada hoja 'ResumenSemanal'. Filas: 2
 📄 Cargada hoja 'Recetas'. Filas: 19
 📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
@@ -29,15 +29,15 @@
 📄 Cargada hoja 'VariableDia'. Filas: 2
 📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
 📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 30
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 452 ms
-⏱️ Tiempo en crear pestañas: 609 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 416 ms
+⏱️ Tiempo en crear pestañas: 569 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2587 ms
-⏱️ Tiempo desde main() hasta GUI: 2601 ms
+⏱️ Tiempo total en start(): 2599 ms
+⏱️ Tiempo desde main() hasta GUI: 2614 ms
 🔧 Sincronizando datos:
    Precio de Venta por Unidad: 0.4625
    Precio Total: 0.00
@@ -83,207 +83,54 @@
    Precio Total: 0.00
    Cantidad producida: 0
 💰 Precio obtenido para ING0001: 4.00
-📥 Datos de conversión obtenidos: 30 filas.
-🧮 Costo calculado para ING0001: 725.75 (181.4368 * 4.00)
+⚡ Conversión rápida: 200.0000 Libras = 90718.4000 unidades base = 90.7184 Kilos
+🧮 Costo calculado para ING0001: 362.87 (90.7184 * 4.00)
 💰 Precio obtenido para ING0002: 0.80
-🧮 Costo calculado para ING0002: 8.45 (10.5600 * 0.80)
+⚡ Conversión rápida: 5280.0000 Gramos = 5280.0000 unidades base = 5.2800 Kilos
+🧮 Costo calculado para ING0002: 4.22 (5.2800 * 0.80)
 💰 Precio obtenido para ING0003: 1.50
-🧮 Costo calculado para ING0003: 3.96 (2.6400 * 1.50)
+⚡ Conversión rápida: 1320.0000 Gramos = 1320.0000 unidades base = 1.3200 Kilos
+🧮 Costo calculado para ING0003: 1.98 (1.3200 * 1.50)
 💰 Precio obtenido para ING0004: 7.60
-🧮 Costo calculado para ING0004: 80.26 (10.5600 * 7.60)
+⚡ Conversión rápida: 5280.0000 Gramos = 5280.0000 unidades base = 5.2800 Kilos
+🧮 Costo calculado para ING0004: 40.13 (5.2800 * 7.60)
 💰 Precio obtenido para ING0034: 1.00
-🧮 Costo calculado para ING0034: 0.80 (0.8000 * 1.00)
+⚡ Conversión rápida: 400.0000 Gramos = 400.0000 unidades base = 0.4000 Kilos
+🧮 Costo calculado para ING0034: 0.40 (0.4000 * 1.00)
 💰 Precio obtenido para ING0035: 1.00
-🧮 Costo calculado para ING0035: 1.20 (1.2000 * 1.00)
+⚡ Conversión rápida: 600.0000 Gramos = 600.0000 unidades base = 0.6000 Kilos
+🧮 Costo calculado para ING0035: 0.60 (0.6000 * 1.00)
 💰 Precio obtenido para ING0006: 3.00
-🧮 Costo calculado para ING0006: 2.40 (0.8000 * 3.00)
+🔧 Intentando conversión legacy: Gramos → Litro
+📥 [ConversorUtils] Datos de conversión obtenidos: 75 filas.
+📏 Unidad estándar Gramos: 1.0000
+➡️ 400.0000 Gramos * 1.0000 = 400.0000 (unidad base)
+📏 Unidad estándar Litro: 1000.0000
+✅ Conversión legacy exitosa: 400.0000 (base) ÷ 1000.0000 = 0.4000 Litro
+🧮 Costo calculado para ING0006: 1.20 (0.4000 * 3.00)
 💰 Precio obtenido para ING0005: 10.00
-🧮 Costo calculado para ING0005: 28.00 (2.8000 * 10.00)
+⚡ Conversión rápida: 1400.0000 Gramos = 1400.0000 unidades base = 1.4000 Kilos
+🧮 Costo calculado para ING0005: 14.00 (1.4000 * 10.00)
 💰 Precio obtenido para ING0009: 0.10
-⚠️ Unidades iguales [Unidades], retorno directo: 704.00
-🧮 Costo calculado para ING0009: 70.40 (704.0000 * 0.10)
+⚠️ Unidades iguales [Unidades], retorno directo: 352.00
+🧮 Costo calculado para ING0009: 35.20 (352.0000 * 0.10)
 🔧 Sincronizando datos:
    Precio de Venta por Unidad: 0.4625
    Precio Total: 0.00
-   Cantidad producida: 704
+   Cantidad producida: 352
 🔧 Sincronizando datos:
    Precio de Venta por Unidad: 0.4625
    Precio Total: 0.00
-   Cantidad producida: 704
+   Cantidad producida: 352
 🔧 Sincronizando datos:
    Precio de Venta por Unidad: 0.4625
    Precio Total: 0.00
-   Cantidad producida: 704
+   Cantidad producida: 352
 🔧 Sincronizando datos:
    Precio de Venta por Unidad: 0.4625
    Precio Total: 0.00
-   Cantidad producida: 704
+   Cantidad producida: 352
 🔧 Sincronizando datos:
    Precio de Venta por Unidad: 0.4625
-   Precio Total: 325.60
-   Cantidad producida: 704
-📋 Obteniendo fila completa de receta seleccionada
-   Datos disponibles:
-     Código receta = REC0001
-     Producto = Sliced Bread
-     Rendimiento = 176.0
-     Unidad Rendimiento = Unidades
-     Unidades por Molde = 4.0
-     Molde/Paquete = 44.0
-     Categoría = Pan
-     Subcategoría = Blanco
-     Observaciones = 44 moldes de 4 unidades
-     Versión = VER0001
-     Precio por Mayor = 1.85
-     Precio Publics Supermarket = 0.0
-     Precio de Venta por Unidad = 0.4625
-     Precio Total = 325.60
-     Precio registrado = 1.85
-     Cantidad producida = 704
-     Mezcla = 04
-     Costo directo = 921.21
-     Costo/U = 1.3085
-🔧 Precio unitario antes de guardar: 0.4625
-🚀 Iniciando guardado de producción...
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 35
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 7
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 62
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 19
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 149
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 66
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 30
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 16
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 296 ms
-🔵 Iniciando generación de código para tabla: Produccion
-🔎 Columnas encontradas: [Código Producción, Fecha, Código Receta, Cantidad Producida, Precio de Venta por Unidad, Mezcla, Producto, Costo Directo/U, Costo Total, Ganancia Total]
-🟡 Columna de código proporcionada: Código Producción
-🗂️ Códigos totales extraídos (Excel + Cache): [PRO0001, PRO0002, PRO0003, PRO0004, PRO0005, PRO0006, PRO0007]
-✅ Código válido: PRO0001 → Prefijo: PRO, Número: 1
-✅ Código válido: PRO0002 → Prefijo: PRO, Número: 2
-✅ Código válido: PRO0003 → Prefijo: PRO, Número: 3
-✅ Código válido: PRO0004 → Prefijo: PRO, Número: 4
-✅ Código válido: PRO0005 → Prefijo: PRO, Número: 5
-✅ Código válido: PRO0006 → Prefijo: PRO, Número: 6
-✅ Código válido: PRO0007 → Prefijo: PRO, Número: 7
-🔧 Usando prefijo: PRO, números usados: [1, 2, 3, 4, 5, 6, 7]
-✅ Código generado: PRO0008
-🟢 Intentando crear fila en hoja: Produccion
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Fecha] columna 1 ➝ 04/06/2025
-   ➤ [Código Receta] columna 2 ➝ REC0001
-   ➤ [Cantidad Producida] columna 3 ➝ 704
-   ➤ [Precio de Venta por Unidad] columna 4 ➝ 0.4625
-   ➤ [Mezcla] columna 5 ➝ 04
-   ➤ [Producto] columna 6 ➝ Sliced Bread
-   ➤ [Costo Directo/U] columna 7 ➝ 1.3085
-   ➤ [Costo Total] columna 8 ➝ 921.21
-   ➤ [Ganancia Total] columna 9 ➝ -595.61
-✅ Fila creada correctamente en hoja 'Produccion'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0001
-   ➤ [Nombre Ingrediente] columna 3 ➝ Harina de trigo
-   ➤ [Cantidad Usada] columna 4 ➝ 400.00
-   ➤ [Unidad] columna 5 ➝ Libras
-   ➤ [Costo Total] columna 6 ➝ 725.75
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0002
-   ➤ [Nombre Ingrediente] columna 3 ➝ Azúcar blanca
-   ➤ [Cantidad Usada] columna 4 ➝ 10560.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 8.45
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0003
-   ➤ [Nombre Ingrediente] columna 3 ➝ Sal
-   ➤ [Cantidad Usada] columna 4 ➝ 2640.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 3.96
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0004
-   ➤ [Nombre Ingrediente] columna 3 ➝ Manteca
-   ➤ [Cantidad Usada] columna 4 ➝ 10560.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 80.26
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0034
-   ➤ [Nombre Ingrediente] columna 3 ➝ Propionato de Calcio
-   ➤ [Cantidad Usada] columna 4 ➝ 800.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 0.80
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0035
-   ➤ [Nombre Ingrediente] columna 3 ➝ Mejorante
-   ➤ [Cantidad Usada] columna 4 ➝ 1200.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 1.20
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0006
-   ➤ [Nombre Ingrediente] columna 3 ➝ Leche Entera
-   ➤ [Cantidad Usada] columna 4 ➝ 800.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 2.40
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0005
-   ➤ [Nombre Ingrediente] columna 3 ➝ Levadura
-   ➤ [Cantidad Usada] columna 4 ➝ 2800.00
-   ➤ [Unidad] columna 5 ➝ Gramos
-   ➤ [Costo Total] columna 6 ➝ 28.00
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-🟢 Intentando crear fila en hoja: ProduccionIngredientes
-   ➤ [Código Producción] columna 0 ➝ PRO0008
-   ➤ [Código Receta] columna 1 ➝ REC0001
-   ➤ [Ingrediente] columna 2 ➝ ING0009
-   ➤ [Nombre Ingrediente] columna 3 ➝ Bolsas
-   ➤ [Cantidad Usada] columna 4 ➝ 704.00
-   ➤ [Unidad] columna 5 ➝ Unidades
-   ➤ [Costo Total] columna 6 ➝ 70.40
-   ➤ [Incluye] columna 7 ➝ ✓
-   ➤ [Fecha Registro] columna 8 ➝ 04/06/2025
-✅ Fila creada correctamente en hoja 'ProduccionIngredientes'.
-✅ Guardado completado exitosamente
+   Precio Total: 162.80
+   Cantidad producida: 352

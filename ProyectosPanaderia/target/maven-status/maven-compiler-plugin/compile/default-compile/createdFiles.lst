@@ -7,6 +7,7 @@ com\panaderiafx\utils\componentes\CostosDirectosUtils.class
 com\panaderiafx\controllers\components\ContenedorFlexible.class
 com\panaderiafx\controllers\components\editarproduccion\PanelRecargaIngredientesUtil.class
 com\panaderiafx\utils\ConversorUtils2.class
+com\panaderiafx\utils\ConversorInteligenteUtils$NodoConversion.class
 com\panaderiafx\utils\componentes\RegistroVariableDiaUtils.class
 com\panaderiafx\controllers\components\editarproduccion\receta\PanelIngredientesTablaFactory.class
 com\panaderiafx\Pestanas.class
@@ -120,6 +121,7 @@ com\panaderiafx\controllers\RegistroProduccion.class
 com\panaderiafx\utils\VersionUtils.class
 com\panaderiafx\controllers\CalculadoraConversion.class
 com\panaderiafx\controllers\components\librosemanal\DetallePorDiaVista.class
+com\panaderiafx\utils\ConversorInteligenteUtils.class
 com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia$2.class
 com\panaderiafx\controllers\components\table\CabeceraBusqueda.class
 com\panaderiafx\controllers\components\table\ControlPaginacion.class
