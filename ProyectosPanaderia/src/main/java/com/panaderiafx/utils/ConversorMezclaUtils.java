@@ -51,7 +51,8 @@ public class ConversorMezclaUtils {
             String nombre = buscarNombreIngrediente(codIngrediente, ingredientes);
 
             if (nombre.toLowerCase(Locale.ROOT).contains("harina")) {
-                return convertirAPesoLibras(cantidad, unidad); // usar solo la primera harina encontrada
+                // NUEVO: Usar ConversorUtils mejorado para conversión precisa
+                return convertirAPesoLibras(cantidad, unidad, nombre); // usar solo la primera harina encontrada
             }
         }
 
@@ -60,7 +61,8 @@ public class ConversorMezclaUtils {
             String codIngrediente = primeraFila.get("Ingrediente");
             String unidad = primeraFila.get("Unidades");
             double cantidad = parseDouble(primeraFila.get("Cantidad"));
-            return convertirAPesoLibras(cantidad, unidad);
+            String nombre = buscarNombreIngrediente(codIngrediente, ingredientes);
+            return convertirAPesoLibras(cantidad, unidad, nombre);
         }
 
         return 0;
@@ -87,15 +89,157 @@ public class ConversorMezclaUtils {
         return 0;
     }
 
-    public static double convertirAPesoLibras(double cantidad, String unidadOriginal) {
-        unidadOriginal = unidadOriginal.trim().toLowerCase(Locale.ROOT);
+    /**
+     * VERSIÓN MEJORADA: Convierte cualquier unidad de peso a Libras usando ConversorUtils
+     * @param cantidad Cantidad a convertir
+     * @param unidadOriginal Unidad original (ej: "Gramos", "Kilos", "taza", "Saco")
+     * @param ingrediente Nombre del ingrediente para conversiones específicas (opcional)
+     * @return Cantidad convertida a Libras
+     */
+    public static double convertirAPesoLibras(double cantidad, String unidadOriginal, String ingrediente) {
+        if (cantidad <= 0) return 0;
+        
+        String unidadNormalizada = normalizarUnidad(unidadOriginal);
+        
+        System.out.printf("🔄 [ConversorMezclaUtils] Convirtiendo: %.4f %s → Libras (ingrediente: %s)%n", 
+                cantidad, unidadNormalizada, ingrediente != null ? ingrediente : "genérico");
 
-        if (unidadOriginal.contains("libra")) return cantidad;
-        if (unidadOriginal.contains("kilo")) return cantidad * 2.20462;
-        if (unidadOriginal.contains("gramo")) return cantidad * 0.00220462;
-        if (unidadOriginal.contains("onza")) return cantidad * 0.0625;
+        // Si ya está en libras, retornar directamente
+        if (esUnidadLibras(unidadNormalizada)) {
+            System.out.printf("✅ Ya en libras: %.4f%n", cantidad);
+            return cantidad;
+        }
 
+        // Intentar conversión usando ConversorUtils mejorado
+        Double resultado = ConversorUtils.convertir("Peso", unidadNormalizada, "Libras", cantidad, ingrediente);
+        
+        if (resultado != null && resultado > 0) {
+            System.out.printf("✅ Conversión exitosa con ConversorUtils: %.4f Libras%n", resultado);
+            return resultado;
+        }
+
+        // Fallback: Usar conversión manual (legacy) para compatibilidad
+        System.out.printf("⚠️ ConversorUtils falló, usando conversión manual legacy%n");
+        double resultadoLegacy = convertirAPesoLibrasLegacy(cantidad, unidadOriginal);
+        
+        if (resultadoLegacy > 0) {
+            System.out.printf("✅ Conversión legacy exitosa: %.4f Libras%n", resultadoLegacy);
+            return resultadoLegacy;
+        }
+
+        System.out.printf("❌ No se pudo convertir %s a Libras%n", unidadOriginal);
         return 0;
+    }
+
+    /**
+     * Sobrecarga para mantener compatibilidad con código existente
+     */
+    public static double convertirAPesoLibras(double cantidad, String unidadOriginal) {
+        return convertirAPesoLibras(cantidad, unidadOriginal, null);
+    }
+
+    /**
+     * Conversión manual legacy (mantener como fallback)
+     */
+    private static double convertirAPesoLibrasLegacy(double cantidad, String unidadOriginal) {
+        String unidad = unidadOriginal.trim().toLowerCase(Locale.ROOT);
+
+        if (unidad.contains("libra")) return cantidad;
+        if (unidad.contains("kilo")) return cantidad * 2.20462;
+        if (unidad.contains("gramo")) return cantidad * 0.00220462;
+        if (unidad.contains("onza") && !unidad.contains("líquida")) return cantidad * 0.0625;
+
+        System.out.printf("⚠️ Unidad desconocida en conversión legacy: %s%n", unidadOriginal);
+        return 0;
+    }
+
+    /**
+     * Normaliza nombres de unidades para mejorar compatibilidad
+     */
+    private static String normalizarUnidad(String unidad) {
+        if (unidad == null) return "";
+        
+        String normalizada = unidad.trim();
+        
+        // Normalizar variantes comunes
+        return switch (normalizada.toLowerCase()) {
+            case "g" -> "Gramos";
+            case "kg" -> "Kilos";
+            case "lb", "lbs" -> "Libras";
+            case "oz" -> "Onzas";
+            default -> normalizada;
+        };
+    }
+
+    /**
+     * Detecta si una unidad ya representa libras
+     */
+    private static boolean esUnidadLibras(String unidad) {
+        String unidadLower = unidad.toLowerCase();
+        return unidadLower.contains("libra") || 
+               unidadLower.equals("lb") || 
+               unidadLower.equals("lbs");
+    }
+
+    /**
+     * NUEVA FUNCIÓN: Convierte cualquier unidad a otra usando ConversorUtils
+     * Útil para futuras expansiones del sistema de mezclas
+     */
+    public static double convertirUnidades(double cantidad, String unidadOrigen, String unidadDestino, String ingrediente) {
+        System.out.printf("🔄 [ConversorMezclaUtils] Conversión general: %.4f %s → %s (ingrediente: %s)%n", 
+                cantidad, unidadOrigen, unidadDestino, ingrediente != null ? ingrediente : "genérico");
+
+        // Determinar tipo lógico basado en unidades
+        String tipoLogico = determinarTipoLogico(unidadOrigen, unidadDestino);
+        
+        Double resultado = ConversorUtils.convertir(tipoLogico, unidadOrigen, unidadDestino, cantidad, ingrediente);
+        
+        if (resultado != null) {
+            System.out.printf("✅ Conversión general exitosa: %.4f %s%n", resultado, unidadDestino);
+            return resultado;
+        }
+
+        System.out.printf("❌ Conversión general falló: %s → %s%n", unidadOrigen, unidadDestino);
+        return 0;
+    }
+
+    /**
+     * Determina el tipo lógico más apropiado para la conversión
+     */
+    private static String determinarTipoLogico(String unidadOrigen, String unidadDestino) {
+        // Palabras clave para peso
+        String[] palabrasPeso = {"gramo", "kilo", "libra", "onza", "g", "kg", "lb", "lbs", "oz"};
+        // Palabras clave para volumen
+        String[] palabrasVolumen = {"litro", "mililitro", "ml", "l", "galón", "onza líquida"};
+        // Palabras clave para herramientas
+        String[] palabrasHerramienta = {"taza", "saco", "caja", "paquete", "bote", "rollo", "bolsa", "galones"};
+
+        boolean origenEsPeso = contieneAlgunaPalabra(unidadOrigen.toLowerCase(), palabrasPeso);
+        boolean destinoEsPeso = contieneAlgunaPalabra(unidadDestino.toLowerCase(), palabrasPeso);
+        
+        boolean origenEsVolumen = contieneAlgunaPalabra(unidadOrigen.toLowerCase(), palabrasVolumen);
+        boolean destinoEsVolumen = contieneAlgunaPalabra(unidadDestino.toLowerCase(), palabrasVolumen);
+        
+        boolean origenEsHerramienta = contieneAlgunaPalabra(unidadOrigen.toLowerCase(), palabrasHerramienta);
+        boolean destinoEsHerramienta = contieneAlgunaPalabra(unidadDestino.toLowerCase(), palabrasHerramienta);
+
+        // Lógica de determinación
+        if (origenEsHerramienta || destinoEsHerramienta) return "Herramienta";
+        if (origenEsPeso && destinoEsPeso) return "Peso";
+        if (origenEsVolumen && destinoEsVolumen) return "Volumen";
+        if ((origenEsPeso && destinoEsVolumen) || (origenEsVolumen && destinoEsPeso)) return "Peso"; // Conversión peso-volumen
+
+        return "Peso"; // Default
+    }
+
+    /**
+     * Verifica si un texto contiene alguna de las palabras especificadas
+     */
+    private static boolean contieneAlgunaPalabra(String texto, String[] palabras) {
+        for (String palabra : palabras) {
+            if (texto.contains(palabra)) return true;
+        }
+        return false;
     }
 
     public static String buscarNombreIngrediente(String codigo, List<Map<String, String>> ingredientes) {
@@ -113,5 +257,25 @@ public class ConversorMezclaUtils {
         } catch (Exception e) { 
             return 0;
         }
+    }
+
+    /**
+     * NUEVA FUNCIÓN: Limpiar caches relacionados
+     */
+    public static void limpiarCache() {
+        ConversorUtils.limpiarCache();
+        System.out.println("🧹 [ConversorMezclaUtils] Cache de conversiones limpiado.");
+    }
+
+    /**
+     * NUEVA FUNCIÓN: Mostrar estadísticas de conversiones
+     */
+    public static void mostrarEstadisticas() {
+        System.out.println("📊 [ConversorMezclaUtils] Estadísticas:");
+        ConversorUtils.mostrarEstadisticasCache();
+        
+        // Mostrar equivalencia de mezcla actual
+        double equivalencia = buscarEquivalenciaMezcla();
+        System.out.printf("📏 Equivalencia Mezcla: 1 Mezcla = %.2f Libras%n", equivalencia);
     }
 }

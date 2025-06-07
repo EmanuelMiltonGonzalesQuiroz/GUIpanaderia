@@ -1843,3 +1843,28 @@ Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x6
 Launcher args:	--module-path libs/javafx/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;target\PanaderiaFX-1.0-SNAPSHOT-jar-with-dependencies.jar;libs\javafx\lib\javafx.base.jar;libs\javafx\lib\javafx.controls.jar;libs\javafx\lib\javafx.fxml.jar;libs\javafx\lib\javafx.graphics.jar" com.panaderiafx.App
 Args length:	370/32768 chars
 Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Excel\ProyectosPanaderia\PanaderiaFX.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Excel\ProyectosPanaderia\.
+Requires JDK:	No
+Requires 64-Bit: Yes
+Java min ver:	1.017.000
+Java max ver:	
+JRE paths:	libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64
+Check launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe (OK)
+Version string: 1.017.000_014 / 64-Bit (OK)
+Main class:	com.panaderiafx.App
+Add classpath:	target\PanaderiaFX-1.0-SNAPSHOT-jar-with-dependencies.jar
+Add classpath:	libs\javafx\lib\*.jar
+      "      :	libs\javafx\lib\javafx.base.jar
+      "      :	libs\javafx\lib\javafx.controls.jar
+      "      :	libs\javafx\lib\javafx.fxml.jar
+      "      :	libs\javafx\lib\javafx.graphics.jar
+Launcher:	C:\Excel\ProyectosPanaderia\libs\jre\zulu17.56.15-ca-jre17.0.14-win_x64\bin\javaw.exe
+Launcher args:	--module-path libs/javafx/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.base -classpath "C:\Excel\ProyectosPanaderia\PanaderiaFX.exe;target\PanaderiaFX-1.0-SNAPSHOT-jar-with-dependencies.jar;libs\javafx\lib\javafx.base.jar;libs\javafx\lib\javafx.controls.jar;libs\javafx\lib\javafx.fxml.jar;libs\javafx\lib\javafx.graphics.jar" com.panaderiafx.App
+Args length:	370/32768 chars
+Exit code:	0

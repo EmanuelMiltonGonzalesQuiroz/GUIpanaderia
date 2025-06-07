@@ -12,7 +12,6 @@ public class RegistroCambiosUtils {
         try {
             if ("Ingredientes".equalsIgnoreCase(tabla)) {
                 manejarCambioPrecioIngredientes(condiciones, nuevosValores);
-                manejarCambioUnidadRecetasIngredientes(condiciones, nuevosValores);
             } else if ("Recetas".equalsIgnoreCase(tabla)) {
                 manejarVersionReceta(condiciones, nuevosValores);
             }
@@ -61,41 +60,6 @@ public class RegistroCambiosUtils {
         }
     }
     
-    private static void manejarCambioUnidadRecetasIngredientes(Map<String, String> condiciones, Map<String, String> nuevosValores) {
-        String codigoIngrediente = condiciones.get("Código");
-        String unidadAntes = condiciones.get("Unidad");
-        String unidadNueva = nuevosValores.get("Unidad");
-
-        if (unidadAntes != null && unidadNueva != null && !unidadAntes.equalsIgnoreCase(unidadNueva)) {
-            List<Map<String, String>> recetas = VerUtils.verTabla("RecetasIngredientes");
-
-            System.out.println("📋 RecetasIngredientes ANTES (posibles afectados):");
-            recetas.stream()
-                    .filter(receta -> receta.get("Ingrediente").equalsIgnoreCase(codigoIngrediente))
-                    .forEach(System.out::println);
-
-            for (Map<String, String> receta : recetas) {
-                if (receta.get("Ingrediente").equalsIgnoreCase(codigoIngrediente)) {
-                    Map<String, String> filaNueva = new LinkedHashMap<>(receta);
-                    filaNueva.put("Unidades", unidadNueva);
-
-                    System.out.println("🔄 Actualizando unidad ➝ " +
-                            receta.get("Código receta") + " [" +
-                            unidadAntes + " → " + unidadNueva + "]");
-
-                    ModificarUtils.modificarFila("RecetasIngredientes", receta, filaNueva);
-                }
-            }
-
-            List<Map<String, String>> recetasDespues = VerUtils.verTabla("RecetasIngredientes");
-            System.out.println("📋 RecetasIngredientes DESPUÉS:");
-            recetasDespues.stream()
-                    .filter(receta -> receta.get("Ingrediente").equalsIgnoreCase(codigoIngrediente))
-                    .forEach(System.out::println);
-        } else {
-            System.out.println("🟡 No hubo cambio de unidad en ingredientes.");
-        }
-    }
 
     private static void manejarVersionReceta(Map<String, String> condiciones, Map<String, String> nuevosValores) {
         String receta = condiciones.getOrDefault("Producto", "");
