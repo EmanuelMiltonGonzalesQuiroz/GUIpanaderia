@@ -30,8 +30,8 @@ public class EditarProduccionUtils {
             return;
         }
 
-        double cantidad = ParseUtils.toDouble(campoCantidad.getText());
-        double precioUnit = ParseUtils.toDouble(campoPrecioU.getText());
+        double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+        double precioUnit = ParseUtils.safeParseDouble(campoPrecioU.getText());
         double costoTotal = 0.0;
 
         for (Map<String, String> fila : ingredientesActuales) {
@@ -40,8 +40,8 @@ public class EditarProduccionUtils {
             String costoStr = fila.getOrDefault("Costo", "0").trim();
             String incluye = fila.getOrDefault("Check", "✓").trim();
 
-            double cantidadUsada = ParseUtils.toDouble(cantidadStr);
-            double costoTotalIng = ParseUtils.toDouble(costoStr);
+            double cantidadUsada = ParseUtils.safeParseDouble(cantidadStr);
+            double costoTotalIng = ParseUtils.safeParseDouble(costoStr);
 
             Map<String, String> nuevosValoresIng = new LinkedHashMap<>();
             nuevosValoresIng.put("Cantidad Usada", String.format("%.4f", cantidadUsada));

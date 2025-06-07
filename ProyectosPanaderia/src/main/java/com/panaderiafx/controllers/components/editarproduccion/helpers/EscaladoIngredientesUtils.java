@@ -33,7 +33,7 @@ public class EscaladoIngredientesUtils {
         double nuevoCostoTotal = ingredientesEditable.stream()
                 .peek(fila -> recalcularFilaIngrediente(fila, factor))
                 .filter(fila -> "✓".equals(fila.getOrDefault("Check", " ")))
-                .mapToDouble(fila -> TotalesProduccionUtils.parseDouble(fila.getOrDefault("Costo", "0")))
+                .mapToDouble(fila -> ParseUtils.safeParseDouble(fila.getOrDefault("Costo", "0")))
                 .sum();
  
         produccionRef.put("Cantidad Base", String.valueOf(nuevaCantidad));
@@ -57,7 +57,7 @@ public class EscaladoIngredientesUtils {
 
     private static void recalcularFilaIngrediente(Map<String, String> fila, double factor) {
         String codIng = fila.getOrDefault("Ingrediente", "");
-        double cantidadBaseIng = TotalesProduccionUtils.parseDouble(fila.getOrDefault("Cantidad Base", "0"));
+        double cantidadBaseIng = ParseUtils.safeParseDouble(fila.getOrDefault("Cantidad Base", "0"));
         String unidad = fila.getOrDefault("Unidades", "");
 
         if (factor != 1.0) {
@@ -94,12 +94,13 @@ public class EscaladoIngredientesUtils {
                 .findFirst()
                 .map(fila -> {
                     String unidadBase = fila.getOrDefault("Unidad", "").trim();
-                    double precioBase = TotalesProduccionUtils.parseDouble(fila.getOrDefault("Precio Local", "0"));
+                    double precioBase = ParseUtils.safeParseDouble(fila.getOrDefault("Precio Local", "0"));
                     Double cantidadConvertida = ConversorUtils.convertir("Peso", unidadBase, unidadDestino, 1.0, codIngrediente);
                     return (cantidadConvertida == null || cantidadConvertida == 0) ? 0 : precioBase / cantidadConvertida;
                 })
                 .orElse(0.0);
     }
+    
     public static double calcularMezclaDesdeProduccion(int cantidad, String codReceta) {
         List<Map<String, String>> recetas = VerUtils.verTabla("Recetas");
         return recetas.stream()
@@ -134,5 +135,4 @@ public class EscaladoIngredientesUtils {
             fila.put("Costo", String.format("%.4f", nuevoCosto));
         }
     }
-
 }

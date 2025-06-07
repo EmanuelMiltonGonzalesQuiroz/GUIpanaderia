@@ -1,5 +1,6 @@
 package com.panaderiafx.controllers.components.editarproduccion.helpers;
 
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.scene.control.TextField;
 
 public class TotalesProduccionUtils {
@@ -7,9 +8,9 @@ public class TotalesProduccionUtils {
     public static void recalcularTotales(TextField campoCantidad, TextField campoPrecioU, TextField campoCostoTotal,
                                          TextField campoCostoU, TextField campoGanancia) {
         try {
-            double cantidad = parseDouble(campoCantidad.getText());
-            double precio = parseDouble(campoPrecioU.getText());
-            double costoTotal = parseDouble(campoCostoTotal.getText());
+            double cantidad = ParseUtils.safeParseDouble(campoCantidad.getText());
+            double precio = ParseUtils.safeParseDouble(campoPrecioU.getText());
+            double costoTotal = ParseUtils.safeParseDouble(campoCostoTotal.getText());
 
             double costoU = (cantidad > 0) ? costoTotal / cantidad : 0.0;
             double ganancia = (precio * cantidad) - costoTotal;
@@ -22,19 +23,14 @@ public class TotalesProduccionUtils {
         }
     }
 
+    // Métodos deprecated - usar ParseUtils en su lugar
+    @Deprecated
     public static double parseDouble(String val) {
-        try {
-            return Double.parseDouble(val.replace(",", "").trim());
-        } catch (Exception e) {
-            return 0;
-        }
+        return ParseUtils.safeParseDouble(val);
     }
 
+    @Deprecated
     public static int parseInt(String val) {
-        try {
-            return Integer.parseInt(val.replace(",", "").trim());
-        } catch (Exception e) {
-            return 0;
-        }
+        return ParseUtils.safeParseInt(val);
     }
 }

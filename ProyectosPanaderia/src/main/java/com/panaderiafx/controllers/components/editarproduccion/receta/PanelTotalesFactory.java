@@ -39,10 +39,10 @@ public class PanelTotalesFactory {
 
         double total = datos.stream()
                 .filter(f -> "✓".equals(f.getOrDefault("Check", "")))
-                .mapToDouble(f -> ParseUtils.toDouble(f.getOrDefault("Costo", "0")))
+                .mapToDouble(f -> ParseUtils.safeParseDouble(f.getOrDefault("Costo", "0")))
                 .sum();
 
-        double cantidadProducida = ParseUtils.toDouble(prod.getOrDefault("Cantidad producida", "0"));
+        double cantidadProducida = ParseUtils.safeParseDouble(prod.getOrDefault("Cantidad producida", "0"));
         double costoUnitario = (cantidadProducida > 0) ? total / cantidadProducida : 0.0;
 
         campoTotal.setText(String.format("%.2f", total));

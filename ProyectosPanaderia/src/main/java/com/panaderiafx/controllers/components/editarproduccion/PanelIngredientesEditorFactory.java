@@ -3,6 +3,7 @@ package com.panaderiafx.controllers.components.editarproduccion;
 import com.panaderiafx.controllers.components.editarproduccion.helpers.EscaladoIngredientesUtils;
 import com.panaderiafx.controllers.components.editarproduccion.receta.PanelIngredientesTablaFactory;
 import com.panaderiafx.utils.VerUtils;
+import com.panaderiafx.utils.componentes.ParseUtils;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -26,7 +27,7 @@ public class PanelIngredientesEditorFactory {
 
         String codigoProduccion = produccion.get("Código Producción");
         String codigoReceta = produccion.get("Código Receta");
-        int cantidadActual = parseInt(produccion.getOrDefault("Cantidad Producida", "0"));
+        int cantidadActual = ParseUtils.safeParseInt(produccion.getOrDefault("Cantidad Producida", "0"));
 
         // ⚠️ Si no cambió nada y hay tabla previa, se reutiliza
         if (cantidadActual == ultimaCantidadActual && cacheCodigoProduccion.equals(codigoProduccion) && tablaAnterior != null) {
@@ -52,7 +53,7 @@ public class PanelIngredientesEditorFactory {
                 .filter(f -> codigoProduccion.equals(f.get("Código Producción")))
                 .toList();
 
-        int cantidadBase = filaProduccion.isEmpty() ? 0 : parseInt(filaProduccion.get(0).getOrDefault("Cantidad Producida", "0"));
+        int cantidadBase = filaProduccion.isEmpty() ? 0 : ParseUtils.safeParseInt(filaProduccion.get(0).getOrDefault("Cantidad Producida", "0"));
         produccion.put("Cantidad Base", String.valueOf(cantidadBase));
         VerUtils.refrescarExcel();
         List<Map<String, String>> ingredientesProduccion = VerUtils.verTabla("ProduccionIngredientes").stream()
@@ -136,22 +137,6 @@ public class PanelIngredientesEditorFactory {
     }
 
     private static boolean contieneCantidadesUsadas(List<Map<String, String>> lista) {
-        return lista.stream().anyMatch(f -> parseDouble(f.getOrDefault("Cantidad Usada", "0")) > 0);
-    }
-
-    private static double parseDouble(String val) {
-        try {
-            return Double.parseDouble(val.replace(",", "").trim());
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
-    private static int parseInt(String val) {
-        try {
-            return Integer.parseInt(val.replace(",", "").trim());
-        } catch (Exception e) {
-            return 0;
-        }
+        return lista.stream().anyMatch(f -> ParseUtils.safeParseDouble(f.getOrDefault("Cantidad Usada", "0")) > 0);
     }
 }
