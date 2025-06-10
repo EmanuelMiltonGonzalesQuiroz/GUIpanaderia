@@ -48,6 +48,16 @@ public class Pestanas {
         }
     }
 
+    /** Envuelve cualquier Node dentro de un ScrollPane con scroll horizontal */
+    private static ScrollPane wrapHorizontalScroll(Node content) {
+        ScrollPane sp = new ScrollPane(content);
+        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        sp.setFitToHeight(true);
+        sp.setFitToWidth(true);
+        return sp;
+    }
+
     private static TabPane generarVista(boolean vistaBasica) {
         TabPane tabPane = new TabPane();
         Set<String> agregados = new HashSet<>();
@@ -56,7 +66,7 @@ public class Pestanas {
         Tab produccionResumen = new Tab("Registro de Producción");
         produccionResumen.setClosable(false);
         produccionResumen.setStyle("-fx-font-size: 16px;");
-        produccionResumen.setContent(RegistroProduccion.crearVista());
+        produccionResumen.setContent(wrapHorizontalScroll(RegistroProduccion.crearVista()));
         tabPane.getTabs().add(produccionResumen);
 
         // TAB 2: Registro de Ingresos
@@ -66,37 +76,39 @@ public class Pestanas {
         ingresosResumen.setContent(new Label("Cargando..."));
         ingresosResumen.setOnSelectionChanged(e -> {
             if (ingresosResumen.isSelected() && ingresosResumen.getContent() instanceof Label) {
-                ingresosResumen.setContent(RegistroIngresos.crearVista());
+                Node vista = RegistroIngresos.crearVista();
+                ingresosResumen.setContent(wrapHorizontalScroll(vista));
             }
         });
         tabPane.getTabs().add(ingresosResumen);
 
+        // TAB 3: Libro Semanal
         Tab libroSemanal = new Tab("Libro Semanal");
         libroSemanal.setClosable(false);
         libroSemanal.setStyle("-fx-font-size: 16px;");
         libroSemanal.setContent(new Label("Cargando..."));
         libroSemanal.setOnSelectionChanged(e -> {
             if (libroSemanal.isSelected() && libroSemanal.getContent() instanceof Label) {
-                libroSemanal.setContent(LibroSemanalController.crearVista());
+                Node vista = LibroSemanalController.crearVista();
+                libroSemanal.setContent(wrapHorizontalScroll(vista));
             }
         });
         tabPane.getTabs().add(libroSemanal);
 
-        // TAB 3: Registro de Recetas
+        // TAB 4: Registro de Recetas
         Tab recetasTab = new Tab("Registro de Recetas");
         recetasTab.setClosable(false);
         recetasTab.setStyle("-fx-font-size: 16px;");
         recetasTab.setContent(new Label("Cargando..."));
         recetasTab.setOnSelectionChanged(e -> {
             if (recetasTab.isSelected() && recetasTab.getContent() instanceof Label) {
-                recetasTab.setContent(RegistroRecetas.crearVista());
+                Node vista = RegistroRecetas.crearVista();
+                recetasTab.setContent(wrapHorizontalScroll(vista));
             }
         });
         tabPane.getTabs().add(recetasTab);
 
-        
-
-        // TAB 4+: Tablas desde configuración
+        // TAB 5+: Tablas desde configuración
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
         for (Map<String, String> fila : config) {
             String nombreSistema = fila.get("Tabla");
@@ -105,21 +117,18 @@ public class Pestanas {
             String basica = fila.getOrDefault("Vista basica", "No");
 
             boolean incluir = mostrar.equalsIgnoreCase("Sí") &&
-                    (!vistaBasica || basica.equalsIgnoreCase("Sí"));
-
+                              (!vistaBasica || basica.equalsIgnoreCase("Sí"));
             if (incluir) {
                 Tab tab = new Tab(nombreVisible);
                 tab.setClosable(false);
                 tab.setStyle("-fx-font-size: 16px;");
                 tab.setContent(new Label("Cargando..."));
-
                 tab.setOnSelectionChanged(e -> {
                     if (tab.isSelected() && tab.getContent() instanceof Label) {
                         Node subTabs = SubPestanasFactory.crear(nombreSistema, nombreVisible, vistaBasica);
-                        tab.setContent(subTabs);
+                        tab.setContent(wrapHorizontalScroll(subTabs));
                     }
                 });
-
                 tabPane.getTabs().add(tab);
                 agregados.add(nombreSistema.toLowerCase());
             }
@@ -134,27 +143,26 @@ public class Pestanas {
                     tab.setClosable(false);
                     tab.setStyle("-fx-font-size: 16px;");
                     tab.setContent(new Label("Cargando..."));
-
                     tab.setOnSelectionChanged(e -> {
                         if (tab.isSelected() && tab.getContent() instanceof Label) {
                             Node subTabs = SubPestanasFactory.crear(hoja, hoja, false);
-                            tab.setContent(subTabs);
+                            tab.setContent(wrapHorizontalScroll(subTabs));
                         }
                     });
-
                     tabPane.getTabs().add(tab);
                 }
             }
         }
 
-        // TAB: Calculadora de Conversión
+        // TAB final: Calculadora de Conversión
         Tab calculadora = new Tab("Calculadora de Conversión");
         calculadora.setClosable(false);
         calculadora.setStyle("-fx-font-size: 16px;");
         calculadora.setContent(new Label("Cargando..."));
         calculadora.setOnSelectionChanged(e -> {
             if (calculadora.isSelected() && calculadora.getContent() instanceof Label) {
-                calculadora.setContent(CalculadoraConversion.crearVista());
+                Node vista = CalculadoraConversion.crearVista();
+                calculadora.setContent(wrapHorizontalScroll(vista));
             }
         });
         tabPane.getTabs().add(calculadora);

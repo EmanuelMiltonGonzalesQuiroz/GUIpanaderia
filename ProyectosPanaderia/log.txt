@@ -16,7 +16,7 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1418 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1531 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 31
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
@@ -33,106 +33,182 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 461 ms
-⏱️ Tiempo en crear pestañas: 619 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 464 ms
+⏱️ Tiempo en crear pestañas: 633 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2641 ms
-⏱️ Tiempo desde main() hasta GUI: 2658 ms
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0
-   Precio Total: 0
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0
-   Precio Total: 0
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 0
-🔄 [ConversorMezclaUtils] Convirtiendo: 100.0000 Libras → Libras (ingrediente: Harina)
-✅ Ya en libras: 100.0000
+⏱️ Tiempo total en start(): 2962 ms
+⏱️ Tiempo desde main() hasta GUI: 2977 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 293 ms
+📥 Cargando nombres de ingredientes...
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 246 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 268 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 267 ms
+🔁 Cargando desde ProduccionIngredientes...
+⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.
 💰 Precio obtenido para ING0001: 1.00
-⚠️ Unidades iguales [Libras], retorno directo: 100.00
-🧮 Costo calculado para ING0001: 99.50 (100.0000 * 1.00)
+⚠️ Unidades iguales [Libras], retorno directo: 99.99
+🧮 Costo calculado para ING0001: 99.49 (99.9900 * 1.00)
 💰 Precio obtenido para ING0002: 0.81
-⚡ Conversión rápida: 2640.0000 Gramos = 2640.0000 unidades base = 2.6400 Kilos
-🧮 Costo calculado para ING0002: 2.14 (2.6400 * 0.81)
-💰 Precio obtenido para ING0003: 0.40
-⚡ Conversión rápida: 660.0000 Gramos = 660.0000 unidades base = 0.6600 Kilos
-🧮 Costo calculado para ING0003: 0.26 (0.6600 * 0.40)
+⚡ Conversión rápida: 23075.0000 Onzas = 654164.7125 unidades base = 654.1647 Kilos
+🧮 Costo calculado para ING0002: 530.72 (654.1647 * 0.81)
 💰 Precio obtenido para ING0004: 5.00
-⚡ Conversión rápida: 2640.0000 Gramos = 2640.0000 unidades base = 5.8202 Libras
-🧮 Costo calculado para ING0004: 29.10 (5.8202 * 5.00)
-💰 Precio obtenido para ING0005: 5.22
-⚡ Conversión rápida: 200.0000 Gramos = 200.0000 unidades base = 0.4409 Libras
-🧮 Costo calculado para ING0005: 2.30 (0.4409 * 5.22)
-💰 Precio obtenido para ING0006: 4.64
-⚡ Conversión rápida: 300.0000 Gramos = 300.0000 unidades base = 0.6614 Libras
-🧮 Costo calculado para ING0006: 3.07 (0.6614 * 4.64)
-💰 Precio obtenido para ING0009: 17.50
-🔧 Intentando conversión legacy: Gramos → Litros
-📥 [ConversorUtils] Datos de conversión obtenidos: 75 filas.
-📏 Unidad estándar Gramos: 1.0000
-➡️ 200.0000 Gramos * 1.0000 = 200.0000 (unidad base)
-📏 Unidad estándar Litros: 1000.0000
-✅ Conversión legacy exitosa: 200.0000 (base) ÷ 1000.0000 = 0.2000 Litros
-🧮 Costo calculado para ING0009: 3.50 (0.2000 * 17.50)
-💰 Precio obtenido para ING0010: 0.76
-⚠️ Unidades iguales [Gramos], retorno directo: 700.00
-🧮 Costo calculado para ING0010: 533.05 (700.0000 * 0.76)
+⚡ Conversión rápida: 7691.6700 Gramos = 7691.6700 unidades base = 16.9572 Libras
+🧮 Costo calculado para ING0004: 84.79 (16.9572 * 5.00)
+💰 Precio obtenido para ING0024: 0.02
+⚠️ Unidades iguales [Gramos], retorno directo: 3845.83
+🧮 Costo calculado para ING0024: 91.92 (3845.8300 * 0.02)
+💰 Precio obtenido para ING0025: 1.25
+⚡ Conversión rápida: 1538.3300 Gramos = 1538.3300 unidades base = 3.3914 Libras
+🧮 Costo calculado para ING0025: 4.24 (3.3914 * 1.25)
+💰 Precio obtenido para ING0003: 0.40
+⚡ Conversión rápida: 76.9200 Gramos = 76.9200 unidades base = 0.0769 Kilos
+🧮 Costo calculado para ING0003: 0.03 (0.0769 * 0.40)
+💰 Precio obtenido para ING0012: 0.21
+⚡ Conversión rápida: 7.6900 Onzas = 218.0077 unidades base = 218.0077 Gramos
+🧮 Costo calculado para ING0012: 44.93 (218.0077 * 0.21)
 💰 Precio obtenido para ING0027: 0.08
-⚠️ Unidades iguales [Unidades], retorno directo: 176.00
-🧮 Costo calculado para ING0027: 14.08 (176.0000 * 0.08)
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 176
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 176
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 176
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 0.00
-   Cantidad producida: 176
-🔧 Sincronizando datos:
-   Precio de Venta por Unidad: 0.4625
-   Precio Total: 81.40
-   Cantidad producida: 176
+⚠️ Unidades iguales [Unidades], retorno directo: 3692.00
+🧮 Costo calculado para ING0027: 295.36 (3692.0000 * 0.08)
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 208 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 233 ms
+♻️ Refrescando datos desde archivo Excel...
+📄 Cargada hoja 'Ingredientes'. Filas: 31
+📄 Cargada hoja 'HistorialPrecios'. Filas: 27
+📄 Cargada hoja 'Produccion'. Filas: 48
+📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
+📄 Cargada hoja 'ResumenSemanal'. Filas: 2
+📄 Cargada hoja 'Recetas'. Filas: 18
+📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
+📄 Cargada hoja 'Costos'. Filas: 37
+📄 Cargada hoja 'VariableDia'. Filas: 2
+📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
+📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
+📄 Cargada hoja 'TabladeConversión'. Filas: 75
+📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
+📄 Cargada hoja 'Parametros'. Filas: 4
+📄 Cargada hoja 'TasaCambio'. Filas: 1
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 213 ms
+🔁 Cargando desde ProduccionIngredientes...
+⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.
+💰 Precio obtenido para ING0001: 1.00
+⚠️ Unidades iguales [Libras], retorno directo: 99.99
+🧮 Costo calculado para ING0001: 99.49 (99.9900 * 1.00)
+💰 Precio obtenido para ING0002: 0.81
+⚡ Conversión rápida: 23075.0000 Onzas = 654164.7125 unidades base = 654.1647 Kilos
+🧮 Costo calculado para ING0002: 530.72 (654.1647 * 0.81)
+💰 Precio obtenido para ING0004: 5.00
+⚡ Conversión rápida: 7691.6700 Gramos = 7691.6700 unidades base = 16.9572 Libras
+🧮 Costo calculado para ING0004: 84.79 (16.9572 * 5.00)
+💰 Precio obtenido para ING0024: 0.02
+⚠️ Unidades iguales [Gramos], retorno directo: 3845.83
+🧮 Costo calculado para ING0024: 91.92 (3845.8300 * 0.02)
+💰 Precio obtenido para ING0025: 1.25
+⚡ Conversión rápida: 1538.3300 Gramos = 1538.3300 unidades base = 3.3914 Libras
+🧮 Costo calculado para ING0025: 4.24 (3.3914 * 1.25)
+💰 Precio obtenido para ING0003: 0.40
+⚡ Conversión rápida: 76.9200 Gramos = 76.9200 unidades base = 0.0769 Kilos
+🧮 Costo calculado para ING0003: 0.03 (0.0769 * 0.40)
+💰 Precio obtenido para ING0012: 0.21
+⚡ Conversión rápida: 7.6900 Onzas = 218.0077 unidades base = 218.0077 Gramos
+🧮 Costo calculado para ING0012: 44.93 (218.0077 * 0.21)
+💰 Precio obtenido para ING0027: 0.08
+⚠️ Unidades iguales [Unidades], retorno directo: 3692.00
+🧮 Costo calculado para ING0027: 295.36 (3692.0000 * 0.08)
+⏱️ Tiempo en PanelIngredientesEditorFactory: 659 ms
+⏱️ Tiempo en PanelIngredientesEditorFactory: 1462 ms

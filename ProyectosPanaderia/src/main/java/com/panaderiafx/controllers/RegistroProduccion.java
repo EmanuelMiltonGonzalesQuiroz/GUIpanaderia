@@ -17,5 +17,5 @@ public class RegistroProduccion {
         layout.getChildren().add(vistaRegistro);
 
         return layout;
-    }
+    } 
 }
