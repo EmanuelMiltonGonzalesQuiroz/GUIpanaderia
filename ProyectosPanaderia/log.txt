@@ -16,7 +16,7 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 1531 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 2403 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 31
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
@@ -33,11 +33,11 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 464 ms
-⏱️ Tiempo en crear pestañas: 633 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 701 ms
+⏱️ Tiempo en crear pestañas: 967 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2962 ms
-⏱️ Tiempo desde main() hasta GUI: 2977 ms
+⏱️ Tiempo total en start(): 4411 ms
+⏱️ Tiempo desde main() hasta GUI: 4430 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 31
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
@@ -54,161 +54,90 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 293 ms
-📥 Cargando nombres de ingredientes...
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 31
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 48
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 18
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 75
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 246 ms
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 31
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 48
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 18
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 75
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 268 ms
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 31
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 48
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 18
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 75
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 267 ms
-🔁 Cargando desde ProduccionIngredientes...
-⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.
-💰 Precio obtenido para ING0001: 1.00
-⚠️ Unidades iguales [Libras], retorno directo: 99.99
-🧮 Costo calculado para ING0001: 99.49 (99.9900 * 1.00)
-💰 Precio obtenido para ING0002: 0.81
-⚡ Conversión rápida: 23075.0000 Onzas = 654164.7125 unidades base = 654.1647 Kilos
-🧮 Costo calculado para ING0002: 530.72 (654.1647 * 0.81)
-💰 Precio obtenido para ING0004: 5.00
-⚡ Conversión rápida: 7691.6700 Gramos = 7691.6700 unidades base = 16.9572 Libras
-🧮 Costo calculado para ING0004: 84.79 (16.9572 * 5.00)
-💰 Precio obtenido para ING0024: 0.02
-⚠️ Unidades iguales [Gramos], retorno directo: 3845.83
-🧮 Costo calculado para ING0024: 91.92 (3845.8300 * 0.02)
-💰 Precio obtenido para ING0025: 1.25
-⚡ Conversión rápida: 1538.3300 Gramos = 1538.3300 unidades base = 3.3914 Libras
-🧮 Costo calculado para ING0025: 4.24 (3.3914 * 1.25)
-💰 Precio obtenido para ING0003: 0.40
-⚡ Conversión rápida: 76.9200 Gramos = 76.9200 unidades base = 0.0769 Kilos
-🧮 Costo calculado para ING0003: 0.03 (0.0769 * 0.40)
-💰 Precio obtenido para ING0012: 0.21
-⚡ Conversión rápida: 7.6900 Onzas = 218.0077 unidades base = 218.0077 Gramos
-🧮 Costo calculado para ING0012: 44.93 (218.0077 * 0.21)
-💰 Precio obtenido para ING0027: 0.08
-⚠️ Unidades iguales [Unidades], retorno directo: 3692.00
-🧮 Costo calculado para ING0027: 295.36 (3692.0000 * 0.08)
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 31
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 48
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 18
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 75
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 208 ms
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 31
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 48
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 18
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 75
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 233 ms
-♻️ Refrescando datos desde archivo Excel...
-📄 Cargada hoja 'Ingredientes'. Filas: 31
-📄 Cargada hoja 'HistorialPrecios'. Filas: 27
-📄 Cargada hoja 'Produccion'. Filas: 48
-📄 Cargada hoja 'ProduccionIngredientes'. Filas: 460
-📄 Cargada hoja 'ResumenSemanal'. Filas: 2
-📄 Cargada hoja 'Recetas'. Filas: 18
-📄 Cargada hoja 'RecetasIngredientes'. Filas: 145
-📄 Cargada hoja 'Costos'. Filas: 37
-📄 Cargada hoja 'VariableDia'. Filas: 2
-📄 Cargada hoja 'ConfiguraciónFormularios'. Filas: 77
-📄 Cargada hoja 'ConfiguraciónVistaTablas'. Filas: 2
-📄 Cargada hoja 'TabladeConversión'. Filas: 75
-📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
-📄 Cargada hoja 'Parametros'. Filas: 4
-📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 213 ms
-🔁 Cargando desde ProduccionIngredientes...
-⏭️ Factor no cambió o es 1.0, se omite recalculado de ingredientes.
-💰 Precio obtenido para ING0001: 1.00
-⚠️ Unidades iguales [Libras], retorno directo: 99.99
-🧮 Costo calculado para ING0001: 99.49 (99.9900 * 1.00)
-💰 Precio obtenido para ING0002: 0.81
-⚡ Conversión rápida: 23075.0000 Onzas = 654164.7125 unidades base = 654.1647 Kilos
-🧮 Costo calculado para ING0002: 530.72 (654.1647 * 0.81)
-💰 Precio obtenido para ING0004: 5.00
-⚡ Conversión rápida: 7691.6700 Gramos = 7691.6700 unidades base = 16.9572 Libras
-🧮 Costo calculado para ING0004: 84.79 (16.9572 * 5.00)
-💰 Precio obtenido para ING0024: 0.02
-⚠️ Unidades iguales [Gramos], retorno directo: 3845.83
-🧮 Costo calculado para ING0024: 91.92 (3845.8300 * 0.02)
-💰 Precio obtenido para ING0025: 1.25
-⚡ Conversión rápida: 1538.3300 Gramos = 1538.3300 unidades base = 3.3914 Libras
-🧮 Costo calculado para ING0025: 4.24 (3.3914 * 1.25)
-💰 Precio obtenido para ING0003: 0.40
-⚡ Conversión rápida: 76.9200 Gramos = 76.9200 unidades base = 0.0769 Kilos
-🧮 Costo calculado para ING0003: 0.03 (0.0769 * 0.40)
-💰 Precio obtenido para ING0012: 0.21
-⚡ Conversión rápida: 7.6900 Onzas = 218.0077 unidades base = 218.0077 Gramos
-🧮 Costo calculado para ING0012: 44.93 (218.0077 * 0.21)
-💰 Precio obtenido para ING0027: 0.08
-⚠️ Unidades iguales [Unidades], retorno directo: 3692.00
-🧮 Costo calculado para ING0027: 295.36 (3692.0000 * 0.08)
-⏱️ Tiempo en PanelIngredientesEditorFactory: 659 ms
-⏱️ Tiempo en PanelIngredientesEditorFactory: 1462 ms
+✅ Excel cargado completamente. Hojas totales: 15 ⏱️ Tiempo: 466 ms
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: REC0007
+📄 Registros encontrados en tabla 'Recetas': 18
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176, Unidad Rendimiento=Unidades, Unidades por Molde=4, Molde/Paquete=44, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0003, Producto=Pasta de Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=0.0, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0004, Producto=Burger, Rendimiento=864.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=144.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=36 latas, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0005, Producto=Bread Roll, Rendimiento=2880.0, Unidad Rendimiento=Unidades, Unidades por Molde=12.0, Molde/Paquete=240.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.85}
+➡ Fila: {Código receta=REC0006, Producto=Hot Dog, Rendimiento=480.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=80.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0007, Producto=Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Molde=-, Molde/Paquete=-, Categoría=Pan, Subcategoría=Blanco, Observaciones=Usa 2 panes por unidad, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.35}
+✅ Match encontrado. Mostrar: Round Bunn
+📢 Actualizando label con: Round Bunn
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Round Bunn
+📄 Registros encontrados en tabla 'Recetas': 18
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176, Unidad Rendimiento=Unidades, Unidades por Molde=4, Molde/Paquete=44, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0003, Producto=Pasta de Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=0.0, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0004, Producto=Burger, Rendimiento=864.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=144.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=36 latas, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0005, Producto=Bread Roll, Rendimiento=2880.0, Unidad Rendimiento=Unidades, Unidades por Molde=12.0, Molde/Paquete=240.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.85}
+➡ Fila: {Código receta=REC0006, Producto=Hot Dog, Rendimiento=480.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=80.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0007, Producto=Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Molde=-, Molde/Paquete=-, Categoría=Pan, Subcategoría=Blanco, Observaciones=Usa 2 panes por unidad, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.35}
+✅ Match encontrado. Mostrar: Round Bunn
+📢 Actualizando label con: Round Bunn
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: ING0001
+📄 Registros encontrados en tabla 'Ingredientes': 31
+➡ Fila: {Código=ING0001, Nombre=Harina, Unidad=Libras, Precio Local=0.995, Precio Dólar=0.4975, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Harina
+📢 Actualizando label con: Harina
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Libras
+📄 Registros encontrados en tabla 'Ingredientes': 31
+➡ Fila: {Código=ING0001, Nombre=Harina, Unidad=Libras, Precio Local=0.995, Precio Dólar=0.4975, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Libras
+📢 Actualizando label con: Libras
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: REC0007
+📄 Registros encontrados en tabla 'Recetas': 18
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176, Unidad Rendimiento=Unidades, Unidades por Molde=4, Molde/Paquete=44, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0003, Producto=Pasta de Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=0.0, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0004, Producto=Burger, Rendimiento=864.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=144.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=36 latas, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0005, Producto=Bread Roll, Rendimiento=2880.0, Unidad Rendimiento=Unidades, Unidades por Molde=12.0, Molde/Paquete=240.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.85}
+➡ Fila: {Código receta=REC0006, Producto=Hot Dog, Rendimiento=480.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=80.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0007, Producto=Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Molde=-, Molde/Paquete=-, Categoría=Pan, Subcategoría=Blanco, Observaciones=Usa 2 panes por unidad, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.35}
+✅ Match encontrado. Mostrar: Round Bunn
+📢 Actualizando label con: Round Bunn
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Round Bunn
+📄 Registros encontrados en tabla 'Recetas': 18
+➡ Fila: {Código receta=REC0001, Producto=Sliced Bread, Rendimiento=176, Unidad Rendimiento=Unidades, Unidades por Molde=4, Molde/Paquete=44, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0}
+➡ Fila: {Código receta=REC0002, Producto=Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0003, Producto=Pasta de Semitas, Rendimiento=645.0, Unidad Rendimiento=Unidades, Unidades por Molde=5.0, Molde/Paquete=129.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=0.0, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0004, Producto=Burger, Rendimiento=864.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=144.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=36 latas, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0005, Producto=Bread Roll, Rendimiento=2880.0, Unidad Rendimiento=Unidades, Unidades por Molde=12.0, Molde/Paquete=240.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.85}
+➡ Fila: {Código receta=REC0006, Producto=Hot Dog, Rendimiento=480.0, Unidad Rendimiento=Unidades, Unidades por Molde=6.0, Molde/Paquete=80.0, Categoría=Pan, Subcategoría=Blanco, Observaciones=Ninguna, Versión=VER0001, Precio por Mayor=2.6, Precio Publics Supermarket=0.0}
+➡ Fila: {Código receta=REC0007, Producto=Round Bunn, Rendimiento=140.0, Unidad Rendimiento=Unidades, Unidades por Molde=-, Molde/Paquete=-, Categoría=Pan, Subcategoría=Blanco, Observaciones=Usa 2 panes por unidad, Versión=VER0001, Precio por Mayor=1.85, Precio Publics Supermarket=2.35}
+✅ Match encontrado. Mostrar: Round Bunn
+📢 Actualizando label con: Round Bunn
+🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: ING0013
+📄 Registros encontrados en tabla 'Ingredientes': 31
+➡ Fila: {Código=ING0001, Nombre=Harina, Unidad=Libras, Precio Local=0.995, Precio Dólar=0.4975, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azucar Blanca, Unidad=Kilos, Precio Local=0.8113, Precio Dólar=0.40565, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=0.3968, Precio Dólar=0.1984, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Libras, Precio Local=5.0, Precio Dólar=2.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Propionato de Calcio, Unidad=Libras, Precio Local=5.22, Precio Dólar=2.61, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Mejorante, Unidad=Libras, Precio Local=4.64, Precio Dólar=2.32, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0007, Nombre=Aceite para cocinar, Unidad=Litros, Precio Local=13.9583, Precio Dólar=6.97915, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0008, Nombre=Leche Condensada, Unidad=Litros, Precio Local=24.8333, Precio Dólar=12.41665, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0009, Nombre=Leche Evaporada, Unidad=Litros, Precio Local=17.5, Precio Dólar=8.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0010, Nombre=Levadura, Unidad=Gramos, Precio Local=0.7615, Precio Dólar=0.38075, Fecha de actualización=08/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0011, Nombre=Colorante Amarillo, Unidad=Litros, Precio Local=7.0833, Precio Dólar=3.54165, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0012, Nombre=Vainilla, Unidad=Gramos, Precio Local=0.2061, Precio Dólar=0.10305, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0013, Nombre=Azúcar Morena, Unidad=Kilos, Precio Local=0.8315, Precio Dólar=0.41575, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Azúcar Morena
+📢 Actualizando label con: Azúcar Morena
+🔎 Verificando cambios para la tabla: 🔎 Verificando cambios para la tabla: 🔍 Buscando valorMostrar para: Gramos
+📄 Registros encontrados en tabla 'Ingredientes': 31
+➡ Fila: {Código=ING0001, Nombre=Harina, Unidad=Libras, Precio Local=0.995, Precio Dólar=0.4975, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0002, Nombre=Azucar Blanca, Unidad=Kilos, Precio Local=0.8113, Precio Dólar=0.40565, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0003, Nombre=Sal, Unidad=Kilos, Precio Local=0.3968, Precio Dólar=0.1984, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0004, Nombre=Manteca, Unidad=Libras, Precio Local=5.0, Precio Dólar=2.5, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0005, Nombre=Propionato de Calcio, Unidad=Libras, Precio Local=5.22, Precio Dólar=2.61, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0006, Nombre=Mejorante, Unidad=Libras, Precio Local=4.64, Precio Dólar=2.32, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0007, Nombre=Aceite para cocinar, Unidad=Litros, Precio Local=13.9583, Precio Dólar=6.97915, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0008, Nombre=Leche Condensada, Unidad=Litros, Precio Local=24.8333, Precio Dólar=12.41665, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0009, Nombre=Leche Evaporada, Unidad=Litros, Precio Local=17.5, Precio Dólar=8.75, Fecha de actualización=05/05/2025, Categoría=Materia Prima}
+➡ Fila: {Código=ING0010, Nombre=Levadura, Unidad=Gramos, Precio Local=0.7615, Precio Dólar=0.38075, Fecha de actualización=08/05/2025, Categoría=Materia Prima}
+✅ Match encontrado. Mostrar: Gramos
+📢 Actualizando label con: Gramos
+🔎 Verificando cambios para la tabla: 
