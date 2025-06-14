@@ -4,6 +4,7 @@ import com.panaderiafx.controllers.CalculadoraConversion;
 import com.panaderiafx.controllers.RegistroIngresos;
 import com.panaderiafx.controllers.RegistroProduccion;
 import com.panaderiafx.controllers.RegistroRecetas;
+import com.panaderiafx.controllers.RegistroVentas;
 import com.panaderiafx.controllers.LibroSemanalController;
 import com.panaderiafx.utils.VerUtils;
 import javafx.geometry.Insets;
@@ -81,6 +82,19 @@ public class Pestanas {
             }
         });
         tabPane.getTabs().add(ingresosResumen);
+
+        // TAB 2: Registro de Ingresos
+        Tab registroVentas = new Tab("Ventas");
+        registroVentas.setClosable(false);
+        registroVentas.setStyle("-fx-font-size: 16px;");
+        registroVentas.setContent(new Label("Cargando..."));
+        registroVentas.setOnSelectionChanged(e -> {
+            if (registroVentas.isSelected() && registroVentas.getContent() instanceof Label) {
+                Node vista = RegistroVentas.crearVista();
+                registroVentas.setContent(wrapHorizontalScroll(vista));
+            }
+        });
+        tabPane.getTabs().add(registroVentas);
 
         // TAB 3: Libro Semanal
         Tab libroSemanal = new Tab("Libro Semanal");
