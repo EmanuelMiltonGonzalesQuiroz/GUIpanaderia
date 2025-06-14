@@ -1,6 +1,5 @@
 package com.panaderiafx.controllers.components.registroventas;
 
-import com.panaderiafx.utils.CodigoGenerator;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;

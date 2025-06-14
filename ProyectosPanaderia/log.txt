@@ -17,7 +17,7 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 16 ⏱️ Tiempo: 1453 ms
+✅ Excel cargado completamente. Hojas totales: 16 ⏱️ Tiempo: 1424 ms
 ♻️ Refrescando datos desde archivo Excel...
 📄 Cargada hoja 'Ingredientes'. Filas: 31
 📄 Cargada hoja 'HistorialPrecios'. Filas: 27
@@ -35,109 +35,8 @@
 📄 Cargada hoja 'ConfiguraciónTablas'. Filas: 15
 📄 Cargada hoja 'Parametros'. Filas: 4
 📄 Cargada hoja 'TasaCambio'. Filas: 1
-✅ Excel cargado completamente. Hojas totales: 16 ⏱️ Tiempo: 488 ms
-⏱️ Tiempo en crear pestañas: 662 ms
+✅ Excel cargado completamente. Hojas totales: 16 ⏱️ Tiempo: 587 ms
+⏱️ Tiempo en crear pestañas: 725 ms
 ✅ Mostrando ventana principal...
-⏱️ Tiempo total en start(): 2805 ms
-⏱️ Tiempo desde main() hasta GUI: 2818 ms
-📊 Tabla Ventas cargada con 2 registros
-📊 Tabla Producción cargada con 48 registros
-📊 Tabla Ventas cargada con 2 registros
-📦 Cargando inventario...
-📊 PRO0001 - Total vendido calculado: 352.0
-   PRO0001 (Sliced Bread): Producida=352, Vendida=352, Restante=0
-📊 PRO0002 - Total vendido calculado: 0.0
-   PRO0002 (Semitas): Producida=1743, Vendida=0, Restante=1743
-📊 PRO0003 - Total vendido calculado: 0.0
-   PRO0003 (Pasta de Semitas): Producida=1743, Vendida=0, Restante=1743
-📊 PRO0004 - Total vendido calculado: 496.0
-   PRO0004 (Burger): Producida=1296, Vendida=496, Restante=800
-📊 PRO0005 - Total vendido calculado: 0.0
-   PRO0005 (Bread Roll): Producida=360, Vendida=0, Restante=360
-📊 PRO0006 - Total vendido calculado: 0.0
-   PRO0006 (Hot Dog): Producida=180, Vendida=0, Restante=180
-📊 PRO0007 - Total vendido calculado: 0.0
-   PRO0007 (Round Bunn): Producida=35, Vendida=0, Restante=35
-📊 PRO0008 - Total vendido calculado: 0.0
-   PRO0008 (Refinar - Round Bunn): Producida=180, Vendida=0, Restante=180
-📊 PRO0009 - Total vendido calculado: 0.0
-   PRO0009 (Long Bunn): Producida=186, Vendida=0, Restante=186
-📊 PRO0010 - Total vendido calculado: 0.0
-   PRO0010 (Pan Integral): Producida=483, Vendida=0, Restante=483
-📊 PRO0011 - Total vendido calculado: 0.0
-   PRO0011 (Pan Multigrano): Producida=430, Vendida=0, Restante=430
-📊 PRO0012 - Total vendido calculado: 0.0
-   PRO0012 (Granos - Pan Multigrano): Producida=15200, Vendida=0, Restante=15200
-📊 PRO0013 - Total vendido calculado: 0.0
-   PRO0013 (Exclusive White): Producida=128, Vendida=0, Restante=128
-📊 PRO0014 - Total vendido calculado: 0.0
-   PRO0014 (Sliced Bread): Producida=176, Vendida=0, Restante=176
-📊 PRO0015 - Total vendido calculado: 0.0
-   PRO0015 (Burger): Producida=432, Vendida=0, Restante=432
-📊 PRO0016 - Total vendido calculado: 0.0
-   PRO0016 (Bread Roll): Producida=360, Vendida=0, Restante=360
-📊 PRO0017 - Total vendido calculado: 0.0
-   PRO0017 (Hot Dog): Producida=180, Vendida=0, Restante=180
-📊 PRO0018 - Total vendido calculado: 0.0
-   PRO0018 (Round Bunn): Producida=35, Vendida=0, Restante=35
-📊 PRO0019 - Total vendido calculado: 0.0
-   PRO0019 (Refinar - Round Bunn): Producida=180, Vendida=0, Restante=180
-📊 PRO0020 - Total vendido calculado: 0.0
-   PRO0020 (Galletas (Grandes)): Producida=4923, Vendida=0, Restante=4923
-📊 PRO0021 - Total vendido calculado: 0.0
-   PRO0021 (Sliced Bread): Producida=176, Vendida=0, Restante=176
-📊 PRO0022 - Total vendido calculado: 0.0
-   PRO0022 (Burger): Producida=864, Vendida=0, Restante=864
-📊 PRO0023 - Total vendido calculado: 0.0
-   PRO0023 (Bread Roll): Producida=720, Vendida=0, Restante=720
-📊 PRO0024 - Total vendido calculado: 0.0
-   PRO0024 (Hot Dog): Producida=180, Vendida=0, Restante=180
-📊 PRO0025 - Total vendido calculado: 0.0
-   PRO0025 (Round Bunn): Producida=35, Vendida=0, Restante=35
-📊 PRO0026 - Total vendido calculado: 0.0
-   PRO0026 (Refinar - Round Bunn): Producida=180, Vendida=0, Restante=180
-📊 PRO0027 - Total vendido calculado: 0.0
-   PRO0027 (Pan Integral): Producida=645, Vendida=0, Restante=645
-📊 PRO0028 - Total vendido calculado: 0.0
-   PRO0028 (Pan Multigrano): Producida=430, Vendida=0, Restante=430
-📊 PRO0029 - Total vendido calculado: 0.0
-   PRO0029 (Granos - Pan Multigrano): Producida=15200, Vendida=0, Restante=15200
-📊 PRO0030 - Total vendido calculado: 0.0
-   PRO0030 (Exclusive White): Producida=128, Vendida=0, Restante=128
-📊 PRO0031 - Total vendido calculado: 0.0
-   PRO0031 (Sliced Bread): Producida=176, Vendida=0, Restante=176
-📊 PRO0032 - Total vendido calculado: 0.0
-   PRO0032 (Burger): Producida=864, Vendida=0, Restante=864
-📊 PRO0033 - Total vendido calculado: 0.0
-   PRO0033 (Bread Roll): Producida=360, Vendida=0, Restante=360
-📊 PRO0034 - Total vendido calculado: 0.0
-   PRO0034 (Hot Dog): Producida=180, Vendida=0, Restante=180
-📊 PRO0035 - Total vendido calculado: 0.0
-   PRO0035 (Round Bunn): Producida=35, Vendida=0, Restante=35
-📊 PRO0036 - Total vendido calculado: 0.0
-   PRO0036 (Refinar - Round Bunn): Producida=180, Vendida=0, Restante=180
-📊 PRO0037 - Total vendido calculado: 0.0
-   PRO0037 (Pan Integral): Producida=241, Vendida=0, Restante=241
-📊 PRO0038 - Total vendido calculado: 0.0
-   PRO0038 (Pan Multigrano): Producida=430, Vendida=0, Restante=430
-📊 PRO0039 - Total vendido calculado: 0.0
-   PRO0039 (Granos - Pan Multigrano): Producida=15200, Vendida=0, Restante=15200
-📊 PRO0040 - Total vendido calculado: 0.0
-   PRO0040 (Sliced Bread): Producida=176, Vendida=0, Restante=176
-📊 PRO0041 - Total vendido calculado: 0.0
-   PRO0041 (Burger): Producida=432, Vendida=0, Restante=432
-📊 PRO0042 - Total vendido calculado: 0.0
-   PRO0042 (Bread Roll): Producida=360, Vendida=0, Restante=360
-📊 PRO0043 - Total vendido calculado: 0.0
-   PRO0043 (Hot Dog): Producida=120, Vendida=0, Restante=120
-📊 PRO0044 - Total vendido calculado: 0.0
-   PRO0044 (Round Bunn): Producida=35, Vendida=0, Restante=35
-📊 PRO0045 - Total vendido calculado: 0.0
-   PRO0045 (Refinar - Round Bunn): Producida=180, Vendida=0, Restante=180
-📊 PRO0046 - Total vendido calculado: 0.0
-   PRO0046 (Long Bunn): Producida=186, Vendida=0, Restante=186
-📊 PRO0047 - Total vendido calculado: 0.0
-   PRO0047 (Galletas (Grandes)): Producida=4923, Vendida=0, Restante=4923
-📊 PRO0048 - Total vendido calculado: 0.0
-   PRO0048 (Galletas (Pequeñas)): Producida=3692, Vendida=0, Restante=3692
-📦 Inventario cargado con 48 productos
+⏱️ Tiempo total en start(): 2899 ms
+⏱️ Tiempo desde main() hasta GUI: 2913 ms

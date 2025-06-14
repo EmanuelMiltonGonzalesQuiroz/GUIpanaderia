@@ -8,6 +8,7 @@ import com.panaderiafx.controllers.RegistroVentas;
 import com.panaderiafx.controllers.LibroSemanalController;
 import com.panaderiafx.utils.VerUtils;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -22,6 +23,10 @@ public class Pestanas {
         BorderPane root = new BorderPane();
 
         VBox cabecera = new VBox(10);
+        HBox filaSuperior = new HBox(20); // Espacio entre botón y versión
+        filaSuperior.setPadding(new Insets(10));
+        filaSuperior.setAlignment(Pos.CENTER_LEFT); // Alinear elementos al inicio
+
         Button botonCambioVista = new Button("🔁 Cambiar a vista avanzada");
         actualizarEstiloBoton(botonCambioVista, vistaBasica);
 
@@ -33,8 +38,15 @@ public class Pestanas {
             root.setCenter(generarVista(vistaBasica));
         });
 
-        cabecera.setPadding(new Insets(10));
-        cabecera.getChildren().add(botonCambioVista);
+        Label labelVersion = new Label("Versión: 1.1.0");
+        labelVersion.setStyle("-fx-font-weight: bold; -fx-text-fill: #555;");
+
+        Region espaciador = new Region();
+        HBox.setHgrow(espaciador, Priority.ALWAYS);
+
+        filaSuperior.getChildren().addAll(botonCambioVista, espaciador, labelVersion);
+        cabecera.getChildren().add(filaSuperior);
+
         root.setTop(cabecera);
         root.setCenter(generarVista(vistaBasica));
 
@@ -83,8 +95,8 @@ public class Pestanas {
         });
         tabPane.getTabs().add(ingresosResumen);
 
-        // TAB 2: Registro de Ingresos
-        Tab registroVentas = new Tab("Ventas");
+        // TAB 3: Registro de Ventas
+        Tab registroVentas = new Tab("Gestión de Ventas");
         registroVentas.setClosable(false);
         registroVentas.setStyle("-fx-font-size: 16px;");
         registroVentas.setContent(new Label("Cargando..."));
@@ -96,7 +108,7 @@ public class Pestanas {
         });
         tabPane.getTabs().add(registroVentas);
 
-        // TAB 3: Libro Semanal
+        // TAB 4: Libro Semanal
         Tab libroSemanal = new Tab("Libro Semanal");
         libroSemanal.setClosable(false);
         libroSemanal.setStyle("-fx-font-size: 16px;");
@@ -109,7 +121,7 @@ public class Pestanas {
         });
         tabPane.getTabs().add(libroSemanal);
 
-        // TAB 4: Registro de Recetas
+        // TAB 5: Registro de Recetas
         Tab recetasTab = new Tab("Registro de Recetas");
         recetasTab.setClosable(false);
         recetasTab.setStyle("-fx-font-size: 16px;");
@@ -122,7 +134,7 @@ public class Pestanas {
         });
         tabPane.getTabs().add(recetasTab);
 
-        // TAB 5+: Tablas desde configuración
+        // Configuración dinámica
         List<Map<String, String>> config = VerUtils.verTabla("ConfiguraciónTablas");
         for (Map<String, String> fila : config) {
             String nombreSistema = fila.get("Tabla");
@@ -131,7 +143,7 @@ public class Pestanas {
             String basica = fila.getOrDefault("Vista basica", "No");
 
             boolean incluir = mostrar.equalsIgnoreCase("Sí") &&
-                              (!vistaBasica || basica.equalsIgnoreCase("Sí"));
+                    (!vistaBasica || basica.equalsIgnoreCase("Sí"));
             if (incluir) {
                 Tab tab = new Tab(nombreVisible);
                 tab.setClosable(false);
@@ -148,7 +160,7 @@ public class Pestanas {
             }
         }
 
-        // Tablas restantes si vista avanzada
+        // Tablas adicionales si vista avanzada
         if (!vistaBasica) {
             List<String> hojas = VerUtils.obtenerNombresTablas();
             for (String hoja : hojas) {
