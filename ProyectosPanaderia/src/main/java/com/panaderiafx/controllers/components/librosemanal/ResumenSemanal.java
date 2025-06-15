@@ -106,9 +106,12 @@ public class ResumenSemanal extends VBox {
         return fila;
     }
 
+    /**
+     * CAMBIO: Actualizado para reflejar que ahora mostramos "Beneficios" en lugar de "Ganancia B."
+     */
     private String formatoVisible(Tipo tipo) {
         return switch (tipo) {
-            case GANANCIA_B -> "Ganancia B.";
+            case GANANCIA_B -> "Beneficios Totales"; // CAMBIO: Nombre más claro
             case COSTO_DIRECTO -> "Costos Directos";
             case COSTO_INDIRECTO -> "Costos Indirectos";
             case PARAMETROS -> "Parámetros";

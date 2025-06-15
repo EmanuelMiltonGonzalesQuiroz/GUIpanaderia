@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Panel registrar ventas con estadísticas simplificadas y generador de códigos
+ * Panel registrar ventas con estadísticas simplificadas, generador de códigos y filtro por tiempo de vida
  */
 public class RegistrarVentaPanel {
     
@@ -18,6 +18,7 @@ public class RegistrarVentaPanel {
     private TextField txtCantidadVendida;
     private TextField txtProducto;
     private TextField txtCodigoProduccion;
+    private TextField txtTiempoVida; // NUEVO: Campo tiempo de vida
     private TablaVentasComponent tablaVentas;
     private TablaProduccionComponent tablaProduccion;
     private EstadisticasSimplificadas estadisticas;
@@ -40,7 +41,7 @@ public class RegistrarVentaPanel {
         
         panelTablaVentas.setPrefWidth(500);
         panelFormulario.setPrefWidth(300);
-        panelTablaProduccion.setPrefWidth(500);
+        panelTablaProduccion.setPrefWidth(550); // Ampliado para nueva columna
         panelEstadisticas.setPrefWidth(300);
         
         contenedorPrincipal.getChildren().addAll(
@@ -72,10 +73,29 @@ public class RegistrarVentaPanel {
         // Etiquetas de sección
         Label lblVenta = ComponentesUI.crearEtiquetaTitulo("Venta");
         
+        // NUEVO: Campo Tiempo de Vida
+        Label lblTiempoVida = ComponentesUI.crearEtiquetaTitulo("Tiempo de Vida (días)");
+        txtTiempoVida = ComponentesUI.crearCampoNumerico("3"); // Valor por defecto: 7 días
+        txtTiempoVida.setPrefWidth(270);
+        
+        // Listener para filtrar producciones cuando cambie el tiempo de vida
+        txtTiempoVida.textProperty().addListener((obs, oldVal, newVal) -> {
+            filtrarProduccionesPorTiempoVida();
+        });
+        
         // Fecha (único campo de fecha, editable)
         Label lblFecha = ComponentesUI.crearEtiquetaTitulo("Fecha de venta");
         dateFecha = new DatePicker(LocalDate.now());
         dateFecha.setPrefWidth(270);
+        
+        // Listener para filtrar producciones cuando cambie la fecha
+        dateFecha.valueProperty().addListener((obs, oldVal, newVal) -> {
+            filtrarProduccionesPorTiempoVida();
+            // NUEVO: Actualizar fecha de venta en tabla de producción para colores
+            if (newVal != null) {
+                tablaProduccion.setFechaVenta(newVal);
+            }
+        });
         
         // Producto (NO editable, se carga automáticamente)
         Label lblProducto = ComponentesUI.crearEtiquetaTitulo("Seleccionar Producto");
@@ -114,6 +134,7 @@ public class RegistrarVentaPanel {
         
         panel.getChildren().addAll(
             lblVenta,
+            lblTiempoVida, txtTiempoVida, // NUEVO: Campo tiempo de vida
             lblFecha, dateFecha,
             lblProducto, txtProducto,
             lblProduccion, txtCodigoProduccion,
@@ -149,6 +170,34 @@ public class RegistrarVentaPanel {
         
         panel.getChildren().addAll(titulo, estadisticasNode);
         return panel;
+    }
+    
+    /**
+     * NUEVO: Método para filtrar producciones por tiempo de vida
+     */
+    private void filtrarProduccionesPorTiempoVida() {
+        try {
+            int tiempoVida = Integer.parseInt(txtTiempoVida.getText().trim());
+            LocalDate fechaVenta = dateFecha.getValue();
+            
+            if (fechaVenta != null && tiempoVida > 0) {
+                // Calcular rango de fechas
+                LocalDate fechaInicio = fechaVenta.minusDays(tiempoVida);
+                LocalDate fechaFin = fechaVenta.plusDays(tiempoVida);
+                
+                System.out.println("🗓️ Filtrando producciones por tiempo de vida:");
+                System.out.println("   Fecha de venta: " + fechaVenta.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                System.out.println("   Tiempo de vida: " + tiempoVida + " días");
+                System.out.println("   Rango: " + fechaInicio.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
+                                 " al " + fechaFin.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                
+                // Aplicar filtro en la tabla de producción
+                tablaProduccion.aplicarFiltroTiempoVida(fechaInicio, fechaFin);
+            }
+        } catch (NumberFormatException e) {
+            // Si hay error en el número, mostrar todas las producciones
+            tablaProduccion.mostrarTodasLasProducciones();
+        }
     }
     
     private void manejarSeleccionProduccion() {
@@ -238,6 +287,9 @@ public class RegistrarVentaPanel {
         tablaVentas.actualizar();
         tablaProduccion.actualizar();
         
+        // Reaplicar filtro de tiempo de vida
+        filtrarProduccionesPorTiempoVida();
+        
         // Actualizar estadísticas
         actualizarEstadisticasEnTiempoReal();
         
@@ -272,6 +324,7 @@ public class RegistrarVentaPanel {
                     ComponentesUI.mostrarExito("Venta guardada exitosamente");
                     limpiarFormulario();
                     tablaVentas.actualizar();
+                    filtrarProduccionesPorTiempoVida(); // Reaplicar filtro
                     actualizarEstadisticasEnTiempoReal();
                 } else {
                     ComponentesUI.mostrarError("Error al guardar la venta");
@@ -316,6 +369,8 @@ public class RegistrarVentaPanel {
         txtCodigoProduccion.clear();
         txtProducto.clear();
         dateFecha.setValue(LocalDate.now());
+        txtTiempoVida.setText("7"); // Restaurar valor por defecto
         estadisticas.limpiar();
+        filtrarProduccionesPorTiempoVida(); // Reaplicar filtro con valores por defecto
     }
 }

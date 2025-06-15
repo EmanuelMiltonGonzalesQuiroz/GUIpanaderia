@@ -71,7 +71,7 @@ public class VistaVentas {
     }
     
     private Tab crearPestanaEditar() {
-        Tab tab = new Tab("Produccion");
+        Tab tab = new Tab("Edición");
         tab.setClosable(false);
         tab.setContent(new EditarVentaPanel(ventasService).crear());
         return tab;

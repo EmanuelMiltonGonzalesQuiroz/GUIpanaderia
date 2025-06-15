@@ -202,66 +202,84 @@ public class PanelDetalleVariableDia {
             }
         });
 
+        // CAMBIO: Columna de producción ampliada con fecha y producto
         TableColumn<Map<String, String>, String> colProduccion = new TableColumn<>("Producción asociada");
-            colProduccion.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Producción asociada", "-")));
-            colProduccion.setCellFactory(tc -> new TableCell<>() {
-                private final ComboBox<String> combo = new ComboBox<>();
-                private final Map<String, String> mapaFechaPorCodigo = new HashMap<>();
+        colProduccion.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getOrDefault("Producción asociada", "-")));
+        colProduccion.setPrefWidth(300); // Ampliado para mostrar más información
+        colProduccion.setCellFactory(tc -> new TableCell<>() {
+            private final ComboBox<String> combo = new ComboBox<>();
+            private final Map<String, ProduccionInfo> mapaProduccionInfo = new HashMap<>();
 
-                {
-                    combo.setOnAction(e -> {
-                        int idx = getIndex();
-                        if (idx >= 0 && idx < tabla.getItems().size()) {
-                            Map<String, String> fila = tabla.getItems().get(idx);
-                            String codSeleccionado = combo.getValue();
-                            if (codSeleccionado != null) {
-                                fila.put("Producción asociada", codSeleccionado);
-                                String fecha = mapaFechaPorCodigo.getOrDefault(codSeleccionado, null);
-                                if (fecha != null) {
-                                    fila.put("Fecha", fecha);
-                                }
-                                EditorTemporalCache.guardarFila("VariableDia", fila.get("Código"), fila);
-                                tabla.refresh();
+            {
+                combo.setOnAction(e -> {
+                    int idx = getIndex();
+                    if (idx >= 0 && idx < tabla.getItems().size()) {
+                        Map<String, String> fila = tabla.getItems().get(idx);
+                        String seleccionado = combo.getValue();
+                        if (seleccionado != null) {
+                            // Extraer solo el código de producción (primera parte antes del " | ")
+                            String codigoProduccion = seleccionado.split(" \\| ")[0];
+                            fila.put("Producción asociada", codigoProduccion);
+                            
+                            // Actualizar fecha automáticamente
+                            ProduccionInfo info = mapaProduccionInfo.get(codigoProduccion);
+                            if (info != null) {
+                                fila.put("Fecha", info.fecha);
                             }
+                            
+                            EditorTemporalCache.guardarFila("VariableDia", fila.get("Código"), fila);
+                            tabla.refresh();
                         }
-                    });
-                }
-
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                    } else {
-                        List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
-                        List<String> opciones = new ArrayList<>();
-                        mapaFechaPorCodigo.clear();
-
-                        for (Map<String, String> prod : producciones) {
-                            String cod = prod.getOrDefault("Código Producción", "-");
-                            String fecha = prod.getOrDefault("Fecha", "-");
-                            LocalDate f = ParseUtils.toDate(fecha);
-                            if (f != null && !f.isBefore(fechaInicio) && !f.isAfter(fechaInicio.plusDays(6))) {
-                                opciones.add(cod);
-                                mapaFechaPorCodigo.put(cod, fecha);
-                            }
-                        }
-
-                        combo.setItems(FXCollections.observableArrayList(opciones));
-
-                        Map<String, String> fila = tabla.getItems().get(getIndex());
-                        String actual = fila.getOrDefault("Producción asociada", "-");
-
-                        combo.setValue(actual);
-                        setGraphic(combo);
                     }
+                });
+            }
+
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    List<Map<String, String>> producciones = VerUtils.verTabla("Produccion");
+                    List<String> opciones = new ArrayList<>();
+                    mapaProduccionInfo.clear();
+
+                    // CAMBIO: Crear opciones con formato "Código | Fecha | Producto"
+                    for (Map<String, String> prod : producciones) {
+                        String codigo = prod.getOrDefault("Código Producción", "-");
+                        String fecha = prod.getOrDefault("Fecha", "-");
+                        String producto = prod.getOrDefault("Producto", "-");
+                        
+                        LocalDate f = ParseUtils.toDate(fecha);
+                        if (f != null && !f.isBefore(fechaInicio) && !f.isAfter(fechaInicio.plusDays(6))) {
+                            // Formato mejorado: "PRO0001 | 18/05/2025 | Sliced Bread"
+                            String opcionDisplay = String.format("%s | %s | %s", codigo, fecha, producto);
+                            opciones.add(opcionDisplay);
+                            
+                            // Guardar información para uso posterior
+                            mapaProduccionInfo.put(codigo, new ProduccionInfo(fecha, producto));
+                        }
+                    }
+
+                    combo.setItems(FXCollections.observableArrayList(opciones));
+
+                    // Seleccionar el valor actual
+                    Map<String, String> fila = tabla.getItems().get(getIndex());
+                    String codigoActual = fila.getOrDefault("Producción asociada", "-");
+                    
+                    // Buscar la opción que corresponde al código actual
+                    String opcionActual = opciones.stream()
+                            .filter(opcion -> opcion.startsWith(codigoActual + " | "))
+                            .findFirst()
+                            .orElse("-");
+                    
+                    combo.setValue(opcionActual);
+                    setGraphic(combo);
                 }
-            });
-
-
+            }
+        });
 
         tabla.getColumns().addAll(colCodigo, colFecha, colVariable, colDescripcion, colProduccion, colEfecto);
-
 
         Button botonAgregar = new Button("+ Agregar");
         botonAgregar.setOnAction(e -> {
@@ -293,5 +311,18 @@ public class PanelDetalleVariableDia {
             else total -= valor;
         }
         CacheLibroSemanal.set(Tipo.COSTOS_DIA, total);
+    }
+    
+    /**
+     * NUEVO: Clase para almacenar información de producción
+     */
+    private static class ProduccionInfo {
+        final String fecha;
+        final String producto;
+        
+        ProduccionInfo(String fecha, String producto) {
+            this.fecha = fecha;
+            this.producto = producto;
+        }
     }
 }

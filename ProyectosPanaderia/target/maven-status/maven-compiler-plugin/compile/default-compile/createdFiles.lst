@@ -112,6 +112,7 @@ com\panaderiafx\controllers\RegistroVentas.class
 com\panaderiafx\SubPestanasFactory.class
 com\panaderiafx\controllers\components\registroventas\VentaModel.class
 com\panaderiafx\utils\componentes\CalculoCostosUtils.class
+com\panaderiafx\controllers\components\librosemanal\PanelDetalleVariableDia$ProduccionInfo.class
 com\panaderiafx\controllers\CrearController.class
 com\panaderiafx\utils\componentes\ResumenGananciasUtils.class
 com\panaderiafx\controllers\components\librosemanal\PanelDetalleCostosIndirectos$1.class

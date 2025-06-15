@@ -15,7 +15,7 @@ public class ComponentesUI {
         "-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;";
     
     private static final String ESTILO_BOTON_SECUNDARIO = 
-        "-fx-background-color:rgb(0, 55, 235); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;";
+        "-fx-background-color:rgb(255, 188, 3); -fx-font-weight: bold; -fx-padding: 8 15;";
     
     private static final String ESTILO_BOTON_PELIGRO = 
         "-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 15;";

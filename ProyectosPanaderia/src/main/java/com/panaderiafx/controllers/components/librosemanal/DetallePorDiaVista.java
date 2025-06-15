@@ -43,6 +43,9 @@ public class DetallePorDiaVista extends VBox {
         }
     }
 
+    /**
+     * CAMBIO: Actualizado el mensaje placeholder para reflejar ventas en lugar de producciones
+     */
     private VBox crearPanelDia(LocalDate fecha) {
         VBox panel = new VBox(10);
         panel.setStyle("-fx-border-color: #FF9800; -fx-border-width: 1; -fx-padding: 10;");
@@ -53,7 +56,8 @@ public class DetallePorDiaVista extends VBox {
         dia.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
 
         TableView<Map<String, String>> tabla = new TableView<>();
-        tabla.setPlaceholder(new Label("No hay producciones registradas."));
+        // CAMBIO: Mensaje actualizado para ventas
+        tabla.setPlaceholder(new Label("No hay ventas registradas para este día."));
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         panel.getChildren().addAll(dia, tabla);

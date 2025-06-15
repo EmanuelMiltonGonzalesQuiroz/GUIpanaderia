@@ -38,13 +38,26 @@ public class Pestanas {
             root.setCenter(generarVista(vistaBasica));
         });
 
+        Button botonVerReportes = new Button("📊 Ver Reportes");
+        botonVerReportes.setStyle("-fx-background-color:rgb(251, 255, 0); -fx-padding: 6 12; -fx-font-weight: bold;");
+        botonVerReportes.setOnAction(e -> {
+            try {
+                new ProcessBuilder("cmd", "/c", "start", "Datos\\Panaderia2.pbix").start();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                Alert alerta = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el reporte.");
+                alerta.showAndWait();
+            }
+        });
+
+
         Label labelVersion = new Label("Versión: 1.1.0");
         labelVersion.setStyle("-fx-font-weight: bold; -fx-text-fill: #555;");
 
         Region espaciador = new Region();
         HBox.setHgrow(espaciador, Priority.ALWAYS);
 
-        filaSuperior.getChildren().addAll(botonCambioVista, espaciador, labelVersion);
+        filaSuperior.getChildren().addAll(botonCambioVista, espaciador,botonVerReportes, labelVersion);
         cabecera.getChildren().add(filaSuperior);
 
         root.setTop(cabecera);
