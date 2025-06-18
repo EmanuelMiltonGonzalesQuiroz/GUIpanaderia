@@ -75,7 +75,7 @@ public class RegistrarVentaPanel {
         
         // NUEVO: Campo Tiempo de Vida
         Label lblTiempoVida = ComponentesUI.crearEtiquetaTitulo("Tiempo de Vida (días)");
-        txtTiempoVida = ComponentesUI.crearCampoNumerico("3"); // Valor por defecto: 7 días
+        txtTiempoVida = ComponentesUI.crearCampoNumerico("3"); // Valor por defecto: 3 días
         txtTiempoVida.setPrefWidth(270);
         
         // Listener para filtrar producciones cuando cambie el tiempo de vida
@@ -203,25 +203,13 @@ public class RegistrarVentaPanel {
     private void manejarSeleccionProduccion() {
         TablaProduccionComponent.ProduccionRow seleccionada = tablaProduccion.getSeleccionado();
         if (seleccionada != null) {
-            // CARGA AUTOMÁTICA de datos
+            // CARGA AUTOMÁTICA de datos (SIN CAMBIAR LA FECHA DE VENTA)
             txtCodigoProduccion.setText(seleccionada.getCodigoProduccion());
             txtProducto.setText(seleccionada.getProducto());
             
-            // Cargar fecha
-            String fechaProduccion = seleccionada.getFecha();
-            if (fechaProduccion != null && !fechaProduccion.isEmpty()) {
-                try {
-                    String[] partes = fechaProduccion.split("/");
-                    if (partes.length == 3) {
-                        int dia = Integer.parseInt(partes[0]);
-                        int mes = Integer.parseInt(partes[1]);
-                        int anio = Integer.parseInt(partes[2]);
-                        dateFecha.setValue(LocalDate.of(anio, mes, dia));
-                    }
-                } catch (Exception e) {
-                    dateFecha.setValue(LocalDate.now());
-                }
-            }
+            // ELIMINADO: NO cambiar la fecha de venta
+            // La fecha de venta debe permanecer como está (fecha actual o fecha seleccionada por el usuario)
+            // NO hacer: dateFecha.setValue(LocalDate.of(anio, mes, dia));
             
             // Cargar precio y cantidad
             String precioVenta = obtenerPrecioVentaDeProduccion(seleccionada.getCodigoProduccion());
@@ -233,6 +221,12 @@ public class RegistrarVentaPanel {
             
             // Actualizar estadísticas
             actualizarEstadisticasEnTiempoReal();
+            
+            System.out.println("✅ Producción seleccionada:");
+            System.out.println("   Código: " + seleccionada.getCodigoProduccion());
+            System.out.println("   Producto: " + seleccionada.getProducto());
+            System.out.println("   Fecha de producción: " + seleccionada.getFecha());
+            System.out.println("   Fecha de venta (NO cambiada): " + dateFecha.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         }
     }
     
@@ -368,8 +362,8 @@ public class RegistrarVentaPanel {
         txtCantidadVendida.clear();
         txtCodigoProduccion.clear();
         txtProducto.clear();
-        dateFecha.setValue(LocalDate.now());
-        txtTiempoVida.setText("7"); // Restaurar valor por defecto
+        dateFecha.setValue(LocalDate.now()); // Restaurar a fecha actual
+        txtTiempoVida.setText("3"); // Restaurar valor por defecto
         estadisticas.limpiar();
         filtrarProduccionesPorTiempoVida(); // Reaplicar filtro con valores por defecto
     }
