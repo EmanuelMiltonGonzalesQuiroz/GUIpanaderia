@@ -42,7 +42,7 @@ public class Pestanas {
         botonVerReportes.setStyle("-fx-background-color:rgb(251, 255, 0); -fx-padding: 6 12; -fx-font-weight: bold;");
         botonVerReportes.setOnAction(e -> {
             try {
-                new ProcessBuilder("cmd", "/c", "start", "Datos\\Panaderia2.pbix").start();
+                new ProcessBuilder("cmd", "/c", "start", "Datos\\dashboard.pbix").start();
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Alert alerta = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el reporte.");
